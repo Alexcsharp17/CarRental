@@ -1,0 +1,6 @@
+D:\GitHub\CarRental\CarRental\CarRental.DAL\bin\Debug\CarRental.DAL.dll
+D:\GitHub\CarRental\CarRental\CarRental.DAL\bin\Debug\CarRental.DAL.pdb
+D:\GitHub\CarRental\CarRental\CarRental.DAL\obj\Debug\CarRental.DAL.csprojAssemblyReference.cache
+D:\GitHub\CarRental\CarRental\CarRental.DAL\obj\Debug\CarRental.DAL.csproj.CoreCompileInputs.cache
+D:\GitHub\CarRental\CarRental\CarRental.DAL\obj\Debug\CarRental.DAL.dll
+D:\GitHub\CarRental\CarRental\CarRental.DAL\obj\Debug\CarRental.DAL.pdb
