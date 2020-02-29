@@ -1,11 +1,27 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿body,html {
+    height: 100%;
+    min-height: 100%;
+    
 }
+#wrapper {
+    min-height: 100%;
+}
+
+#main {
+    overflow: auto;
+    padding-bottom: 50px; /* this needs to be bigger than footer height*/
+}
+#footer {
+    position: relative;
+    margin-top: -50px; /* negative value of footer height */
+    height: 60px;
+    clear: both;
+    padding-top: 20px;
+} 
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
+  
     padding-right: 15px;
 }
 
@@ -22,3 +38,33 @@ select,
 textarea {
     max-width: 280px;
 }
+navbar{
+    background-color:white;
+}
+/*Sidebar Styles*/
+
+/*Home index styles*/
+.sign{
+    height:20px;
+    width:20px;
+}
+.sign_cap{
+    font-size:12px;
+    font-weight:bold;
+}
+.pr_table *{
+    font-size:12px;
+    padding:0;
+}
+.pr_table th, .pr_table td {
+    padding: 5px;
+}
+.pr_tabble_btn {
+    font-size: 12px;
+    width: 120px;
+    height: 50px;
+    padding-top: 15px;
+}
+
+
+

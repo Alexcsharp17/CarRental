@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{501D0CBF-576D-4FAB-A534-2922EE308297}</ProjectGuid>
+    <ProjectGuid>{BD4BC71B-11DD-4ADD-A146-495CAAE4C311}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CarRental.UnitTests</RootNamespace>
@@ -100,7 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CarRental.WEB\CarRental.WEB.csproj">
-      <Project>{C811A45C-64AB-49E8-AD74-9DA70046CBC2}</Project>
+      <Project>{679BC19D-73AF-4926-BBAF-DFB24FB835C7}</Project>
       <Name>CarRental.WEB</Name>
     </ProjectReference>
   </ItemGroup>
