@@ -14,6 +14,10 @@ namespace CarRental.WEB.Helpers
                                               PagingInfo pagingInfo,
                                               Func<int, string> pageUrl)
         {
+            if (pagingInfo.CurrentPage > pagingInfo.TotalPages)
+            {
+                pagingInfo.CurrentPage = pagingInfo.TotalPages;
+            }
             StringBuilder result = new StringBuilder();
             
             if (pagingInfo.TotalPages <= 6) //if we have less than 6 pages
@@ -28,7 +32,7 @@ namespace CarRental.WEB.Helpers
                         tag.AddCssClass("selected");
                         tag.AddCssClass("btn-primary");
                     }
-                    tag.AddCssClass("btn btn-default");
+                    tag.AddCssClass("btn btn-default border");
                     result.Append(tag.ToString());
                 }
             }
@@ -45,7 +49,7 @@ namespace CarRental.WEB.Helpers
                 for (int i = 1; i <= 6; i++)
                 {
                     TagBuilder tag = new TagBuilder("a");
-                    tag.MergeAttribute("href", pageUrl(i));
+                    tag.MergeAttribute("href",pageUrl(i));
                     tag.InnerHtml = i.ToString();
                     if (i == pagingInfo.CurrentPage)
                     {

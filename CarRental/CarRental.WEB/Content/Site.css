@@ -17,6 +17,7 @@
     height: 60px;
     clear: both;
     padding-top: 20px;
+    background-color: #dbdbdb;
 } 
 
 /* Set padding to keep content from hitting the edges */
@@ -38,11 +39,76 @@ select,
 textarea {
     max-width: 280px;
 }
+.auth{
+}
 navbar{
     background-color:white;
 }
 /*Sidebar Styles*/
+.sidebar {
+    
+    width: 250px;
+    height:100%;
+    float: left;
+    padding: 5px;
+    background-color: #ffb426;
+    webkit-transition: left 1s ease-in-out 0.1s;
+    moz-transition: left 1s ease-in-out 0.1s;
+    o-transition: left 1s ease-in-out 0.1s;
+    transition: left 1s ease-in-out 0.1s;
+    z-index:999;
+}
+.side_sect {
+    background-color: #ffb426;
+}
+.content{
+    margin-left:250px;
+    padding:20px;
+}
+.icon-menu {
+    display: none;
+    height: 30px;
+    width: 25px;
+    float: left;
+    padding: 5px 0;
+    cursor: pointer;
+    margin-left: 200px;
+    
+   
+}
 
+.divide{
+    display:block;
+    height:2px;
+    width:20px;
+    margin:3px 0;
+    background-color:black;
+}
+@media (max-width: 991px){
+    .icon-menu {
+        display: block;
+        z-index: 2;
+        margin-left: -30px;
+        margin-top:20px;
+        width:22px;
+       
+    }
+    .sidebar{
+        position:relative;
+        left:-250px;
+        width:250px;
+        height:100%;
+        
+    }
+        .sidebar.active {
+            left: 0;
+            
+        }
+    .content{
+        margin-left:0;
+    }
+    
+}
 /*Home index styles*/
 .sign{
     height:20px;
@@ -65,6 +131,96 @@ navbar{
     height: 50px;
     padding-top: 15px;
 }
+.top-line{
+    height:50px;
+    background-color:orangered;
+}
+#back-to-top {
+    position: fixed;
+    z-index: 999;
+    display: none;
+    bottom: 70px;
+    right: 15px;
+    cursor: pointer;
+}
 
+    #back-to-top i {
+        width: 50px;
+        height: 50px;
+        display: block;
+      
+        
+        text-align: center;
+        font-size: 16px;
+        line-height: 50px;
+        border-radius: 5px;
+        -webkit-transition: .3s all;
+        -moz-transition: .3s all;
+        -ms-transition: .3s all;
+        -o-transition: .3s all;
+        transition: .3s all;
+    }
+    .top-block{
+        color:black;
+    }
+ /*Side search styles*/
+ .sear_name{
+     width:240px;
+    
+ }
+
+.s_btn {
+    padding: 3px;
+  
+}
+
+
+.big_check {
+    width: 25px;
+    height: 25px;
+    border-radius:20%;
+}
+#top-bl{
+    height:50px;
+    
+}
+.cheks-head {
+   height:50px;
+   width:246px;
+    background-color:cornflowerblue;
+    font-size:18px;
+    font-weight:bold;
+    text-align:center;
+    color:white;
+    padding-top:10px;
+}
+.check_row {
+    width: 248px;
+    height: 40px;
+    padding-top: 7px;
+    margin: 0;
+    border-top: 1px solid #565656;
+    opacity: 0.9;
+    border-collapse: collapse;
+}
+    .check_row:hover {
+       
+        opacity:1;
+        font-weight:bold;
+    }
+.sear-sec {
+    margin-top: 10px;
+    border: 2px solid #565656;
+    width: 250px;
+    margin-left:-5px;
+    border-collapse:collapse;
+  
+    
+}
+ /*Admin area*/
+ .adm_but{
+     width:80px;
+     margin-top:4px;
+ }
 
 

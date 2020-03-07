@@ -17,11 +17,7 @@ namespace CarRental.DAL.Repositories
             Database = db;
         }
 
-        public void Create(ClientProfile item)
-        {
-            Database.ClientProfiles.Add(item);
-            Database.SaveChanges();
-        }
+        
 
         public void Dispose()
         {

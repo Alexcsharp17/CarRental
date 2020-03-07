@@ -8,19 +8,24 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using CarRental.DAL.Entities;
 
 namespace CarRental.DAL.EF
-{
+{  
+    /// <summary>
+    /// Application context used to connect to database  
+    /// </summary>
     public class ApplicationContext : IdentityDbContext<ApplicationUser> 
     {
         public ApplicationContext(string conectionString) : base(conectionString) { }
 
-        public DbSet<ClientProfile> ClientProfiles { get; set; }
+  
         public DbSet<Car> Cars { get; set; }
-    
+        public DbSet<ExceptionDetail> ExceptionDetails { get; set; }
         public DbSet<Order> Orders { get; set; }
-      // static ApplicationContext()
-      // {
-      //     Database.SetInitializer<ApplicationContext>(new CarRentalDbInitializer());
-      // }
+        //Initializer call to fill db with default data
+
+        static ApplicationContext()
+        {
+            Database.SetInitializer<ApplicationContext>(new CarRentalDbInitializer());
+        }
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{

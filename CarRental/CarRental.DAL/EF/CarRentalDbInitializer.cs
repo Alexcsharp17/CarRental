@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CarRental.DAL.EF
 {
-  public  class CarRentalDbInitializer : DropCreateDatabaseAlways<ApplicationContext>
+  public  class CarRentalDbInitializer : CreateDatabaseIfNotExists<ApplicationContext>
     {
         protected override void Seed(ApplicationContext context)
         {

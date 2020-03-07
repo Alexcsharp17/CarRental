@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace CarRental.BLL.Infrastracture
 {
+    /// <summary>
+    /// Represent the Fabrica pattern.
+    /// Used to create the instance of Service
+    /// </summary>
     public class ServiceModule : NinjectModule
     {
         private string connectionString;

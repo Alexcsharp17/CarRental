@@ -119,3 +119,6 @@ D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\roslyn\System.Net.Sockets.dll
 D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
 D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\roslyn\System.Threading.Tasks.Extensions.dll
 D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\WebActivatorEx.dll
+D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\AutoMapper.dll
+D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\AutoMapper.pdb
+D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\AutoMapper.xml

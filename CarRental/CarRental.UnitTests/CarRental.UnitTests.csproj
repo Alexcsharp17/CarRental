@@ -89,16 +89,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="GenericTest1.GenericTest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CarRental.BLL\CarRental.BLL.csproj">
+      <Project>{89bd81f9-4b6f-4755-b3f5-e46237b51bc0}</Project>
+      <Name>CarRental.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarRental.DAL\CarRental.DAL.csproj">
+      <Project>{0d19db10-76bb-41e1-80e5-fb490ec9e510}</Project>
+      <Name>CarRental.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CarRental.WEB\CarRental.WEB.csproj">
       <Project>{679BC19D-73AF-4926-BBAF-DFB24FB835C7}</Project>
       <Name>CarRental.WEB</Name>

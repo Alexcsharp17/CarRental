@@ -38,3 +38,6 @@ D:\GitHub\CarRental\CarRental\CarRental.BLL\bin\Debug\ru\System.Web.Razor.resour
 D:\GitHub\CarRental\CarRental\CarRental.BLL\bin\Debug\ru\System.Web.WebPages.resources.dll
 D:\GitHub\CarRental\CarRental\CarRental.BLL\bin\Debug\ru\System.Web.WebPages.Deployment.resources.dll
 D:\GitHub\CarRental\CarRental\CarRental.BLL\bin\Debug\ru\System.Web.WebPages.Razor.resources.dll
+D:\GitHub\CarRental\CarRental\CarRental.BLL\bin\Debug\AutoMapper.dll
+D:\GitHub\CarRental\CarRental\CarRental.BLL\bin\Debug\AutoMapper.pdb
+D:\GitHub\CarRental\CarRental\CarRental.BLL\bin\Debug\AutoMapper.xml

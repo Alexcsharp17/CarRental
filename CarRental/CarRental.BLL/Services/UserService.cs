@@ -22,28 +22,30 @@ namespace CarRental.BLL.Services
         {
             Database = uow;
         }
-       
+
 
         public async Task<OperationDetails> Create(UserDTO userDto)
         {
+
             ApplicationUser user = await Database.UserManager.FindByEmailAsync(userDto.Email);
             if (user == null)
             {
-                user = new ApplicationUser { Email = userDto.Email, UserName = userDto.Email };
+
+                user = new ApplicationUser { Email = userDto.Email, UserName = userDto.Email,
+                    PassportNumb=userDto.PassportNumb,Banned=userDto.Banned, Name=userDto.Name
+                };
                 var result = await Database.UserManager.CreateAsync(user, userDto.Password);
                 if (result.Errors.Count() > 0)
                     return new OperationDetails(false, result.Errors.FirstOrDefault(), "");
-                // добавляем роль
+                // add role
                 await Database.UserManager.AddToRoleAsync(user.Id, userDto.Role);
-                // создаем профиль клиента
-                ClientProfile clientProfile = new ClientProfile { Id = user.Id, Address = userDto.Address, Name = userDto.Name };
-                Database.ClientManager.Create(clientProfile);
+                
                 await Database.SaveAsync();
-                return new OperationDetails(true, "Регистрация успешно пройдена", "");
+                return new OperationDetails(true, "You have sucessfully completed registration", "");
             }
             else
             {
-                return new OperationDetails(false, "Пользователь с таким логином уже существует", "Email");
+                return new OperationDetails(false, "User with this nick is have already created!", "Email");
             }
         }
 
@@ -53,7 +55,7 @@ namespace CarRental.BLL.Services
             // находим пользователя
             ApplicationUser user = await Database.UserManager.FindAsync(userDto.Email, userDto.Password);
             // авторизуем его и возвращаем объект ClaimsIdentity
-            if (user != null)
+            if (user != null && !user.Banned)
                 claim = await Database.UserManager.CreateIdentityAsync(user,
                                             DefaultAuthenticationTypes.ApplicationCookie);
             return claim;
@@ -79,118 +81,7 @@ namespace CarRental.BLL.Services
             Database.Dispose();
         }
 
-        public IEnumerable<CarDTO> Cars
-        {
-            get
-            {
-                var cars = Database.Cars.ToList();
-                List<CarDTO> cardto = new List<CarDTO>();
-                foreach (Car c in cars)
-                {
-                    CarDTO car = CarMapper.CarDTO(c);
-                    
-                    cardto.Add(car);
-                }
-                IEnumerable<CarDTO> carDTOs = cardto;
-                return (carDTOs);
-            }
-
-        }
-        void IUserService.CreateCar(CarDTO cardto)
-        {
-            Car car = CarMapper.DTOCar(cardto);
-            Database.CreateCar(car);
-        }
-
-        CarDTO IUserService.FindCar(int id)
-        {
-           Car car= Database.FindCar(id);
-            CarDTO dto = Mappers.CarMapper.CarDTO(car);
-            return (dto);
-        }
-        IEnumerable<CarDTO> IUserService.FindCars(string name = null, string manufactorer = null,
-            string carType = null, int LowPrice = 0, int UppPrice = int.MaxValue)
-        {
-            List <CarDTO> dtos= new List<CarDTO>();
-           IEnumerable<Car> Cars= Database.FindCars(name, manufactorer, carType, LowPrice, UppPrice);
-            foreach(var c in Cars)
-            {
-                var dto= CarMapper.CarDTO(c);
-                dtos.Add(dto);
-            }
-            return dtos;
-        }
-        void IUserService.DeleteCar(int id)
-        {
-            Database.DeleteCar(id);
-            
-        }
-        public IEnumerable<OrderDTO> Orders
-        {
-            get
-            {
-                var orders = Database.Orders.ToList();
-                List<OrderDTO> orderdto = new List<OrderDTO>();
-                foreach (Order o in orders)
-                {
-                    OrderDTO order = OrderMapper.OrderDTO(o);
-                    
-                    orderdto.Add(order);
-                }
-                IEnumerable<OrderDTO> OrderDTOs = orderdto;
-                return (OrderDTOs);
-            }
-        }
-
-        void IUserService.CreateOrder(OrderDTO orderdto)
-        {
-            Order order = OrderMapper.DTOOrder(orderdto);
-            Database.CreateOrder(order);
-        }
-
-        OrderDTO IUserService.FindOrder (int id)
-        {
-          return OrderMapper.OrderDTO(Database.FindOrder(id));
-        }
-        IEnumerable<OrderDTO> IUserService.FindOrders(string userId)
-        {
-            var orders= Database.FindOrders(userId);
-            List<OrderDTO> dtos = new List<OrderDTO>();
-            foreach(var o in orders)
-            {
-                dtos.Add(OrderMapper.OrderDTO(o));
-            }
-            return dtos;
-        }
-        void IUserService.DeleteOrder(int id)
-        {
-            Database.DeleteOrder(id);
-            
-        }
-       
-       
-        public IEnumerable<UserDTO> Users
-        {
-            get
-            {
-                var users = Database.Users.ToList();
-                List<UserDTO> userdto = new List<UserDTO>();
-                foreach (ApplicationUser u in users)
-                {
-                    UserDTO user = new UserDTO();
-
-                    user.Address = u.ClientProfile.Address;
-                    user.Address = u.Email;
-                    user.Id = u.Id;
-                    user.UserName = u.UserName;
-                    user.UserName = u.ClientProfile.Name;
-                    userdto.Add(user);
-                }
-                IEnumerable<UserDTO> UserDTOs = userdto;
-                return (UserDTOs);
-            }
-        }
-        
+    
 
        
 

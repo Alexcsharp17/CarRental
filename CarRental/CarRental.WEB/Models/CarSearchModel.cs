@@ -1,18 +1,31 @@
 ﻿using CarRental.BLL.DTO;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace CarRental.WEB.Models
 {
     public class CarSearchModel
     {
-      public string Manufactorer { get; set; }
-      public  string CarType { get; set; }
-       public  string Name { get; set; }
-      public int LowPrice { get; set; }
-       public int UppPrice { get; set; }
+
+        public List<string> manufactorers=new List<string>();
+     
+      public List<string> CarTypes=new List<string>();
+        public List<string> FuelTypes = new List<string>();
+        public List<string> Transmissions = new List<string>();
+        [Display(Name = "Model Name")]
+        public  string Name { get; set; }
+        public int Page { get; set; }
+        public string Sort { get; set; }
+        public int MinPrice { get; set; }
+        [Display(Name = "From")]
+        public int LowPrice { get; set; }
+      public  int MaxPrice { get; set; }
+        [Display(Name = "To")]
+        public int UppPrice { get; set; }
          
     }
 }

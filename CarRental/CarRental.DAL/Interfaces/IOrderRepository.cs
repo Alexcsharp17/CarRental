@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace CarRental.DAL.Interfaces
 {
+    /// <summary>
+    /// Specify the method which should be implemented in Unit of Work
+    /// or Other repository.
+    /// </summary>
     public interface IOrderRepository
     {
         IEnumerable<Order> Orders { get; }

@@ -49,7 +49,7 @@ namespace CarRental.DAL.Entities
         [Required(ErrorMessage = "Please input price")]
         [Range(1, int.MaxValue, ErrorMessage = "The value must be more than 0")]
         //The price is set in gryvnas per day.
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
         [Display(Name = "Door")]
         [Range(1, 10, ErrorMessage = "Input value between 1 and 10")]

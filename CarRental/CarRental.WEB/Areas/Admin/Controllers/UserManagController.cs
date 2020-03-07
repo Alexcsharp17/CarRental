@@ -13,7 +13,12 @@ namespace CarRental.WEB.Areas.Admin.Controllers
 {
     public class UserManagController : Controller
     {
-        private IUserService DataAcessService
+        private IDatAcessService DatAcessService;
+        public UserManagController(IDatAcessService serv)
+        {
+            DatAcessService = serv;
+        }
+        private IUserService UserService
         {
             get
             {
@@ -23,8 +28,8 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         // GET: Admin/UserManag
         public ActionResult GetUsers()
         {
-            var users = DataAcessService.Users.Where(u => u.Role == "user");
-            if (users == null)
+            var users = DatAcessService.Users;
+            if (users.Count() == 0)
             {
                 return HttpNotFound();
             }
@@ -32,37 +37,32 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         }
         public ActionResult GetManagers()
         {
-            var users = DataAcessService.Users.Where(u => u.Role == "manager");
-            if (users == null)
+            var users = DatAcessService.Users.Where(u => u.Role == "manager");
+            if (users.Count() == 0)
             {
                 return HttpNotFound();
             }
             return View(users);
         }
-        public ActionResult CreateManager()
+        [HttpGet]
+      public ActionResult EditUser(string id)
         {
-            return View();
+        
+            var user = DatAcessService.Users.FirstOrDefault(u => u.Id == id);
+            
+            return View(user);
         }
-        //public ActionResult CreateManager(RegisterModel model)
-        //{
-        //    UserService.cre
-        //    if (ModelState.IsValid)
-        //    {
-        //        UserDTO userDto = new UserDTO
-        //        {
-        //            Email = model.Email,
-        //            Password = model.Password,
-        //            Address = model.Address,
-        //            Name = model.Name,
-        //            Role = "manager"
-        //        };
-        //        OperationDetails operationDetails = await UserService.Create(userDto);
-        //        if (operationDetails.Succedeed)
-        //            return View("SuccessRegister");
-        //        else
-        //            ModelState.AddModelError(operationDetails.Property, operationDetails.Message);
-        //    }
-        //    return View(model);
-        //}
+        [HttpPost]
+        public ActionResult EditUser(UserDTO user)
+        {
+            if (ModelState.IsValid)
+            {
+                DatAcessService.CreateUser(user);
+                return RedirectToAction("GetUsers", "UserManag", new { res = "changed" });
+            }
+            return View(user);
+        }
+
+       
     }
 }

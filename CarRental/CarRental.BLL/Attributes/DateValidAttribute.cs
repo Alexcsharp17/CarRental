@@ -7,13 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CarRental.BLL.Attributes
-{
+{/// <summary>
+/// Used to validate car rent time span 
+/// </summary>
     class DateValidAttribute : ValidationAttribute
     {
         public override bool IsValid(object value)
         {
             OrderDTO o = value as OrderDTO;
-            if (o.StartTime > o.EndTime)
+            if (o.StartTime > o.EndTime )
             {
                 return false;
             }

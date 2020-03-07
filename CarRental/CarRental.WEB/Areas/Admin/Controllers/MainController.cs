@@ -1,26 +1,46 @@
-﻿using CarRental.BLL.DTO;
+﻿using CarRental.BLL.Attributes;
+using CarRental.BLL.DTO;
+using CarRental.BLL.Infrastracture;
 using CarRental.BLL.Interfaces;
+using CarRental.WEB.Models;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
 namespace CarRental.WEB.Areas.Admin.Controllers
 {
-
+    [ExceptionLogger]
+    [Authorize(Roles ="admin")]
     public class MainController : Controller
     {
         private IDatAcessService DatAcessService;
         public MainController(IDatAcessService serv)
         {
             DatAcessService = serv;
+           
         }
-        
-        
-        
-        public ActionResult Index()
+      
+      
+
+        private IUserService UserService
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<IUserService>();
+            }
+        }
+        public ActionResult GetExceptions()
+        {
+            var exceptions = DatAcessService.Exceptions;
+            return View(exceptions);
+        }
+
+        public ActionResult GetCars()
         {
             var cars = DatAcessService.Cars;
             return View(cars);
@@ -39,19 +59,42 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 DatAcessService.CreateCar(car);
-                return RedirectToAction("Index", "Main");
+                return RedirectToAction("GetCars", "Main");
             }
             else
             {
+
                 return View(car);
             }
         }
+        public ActionResult CarDetail(int id)
+        {
+           var car= DatAcessService.FindCar(id);
+            if (car == null)
+            {
+                return HttpNotFound();
+            }
+            return View(car);
+        }
 
-       
-       
+        [HttpPost]
+        public PartialViewResult FileUpload(HttpPostedFileBase uploadFile)
+        {
+           
+            if (uploadFile != null && uploadFile.ContentLength > 0 && uploadFile.ContentLength<10000000)
+            {
+                string filePath = Path.Combine(Server.MapPath("/Content/Img/cars"), Path.GetFileName(uploadFile.FileName));
+                uploadFile.SaveAs(filePath);
+                ViewBag.Name=uploadFile.FileName;
+                ViewBag.filePath = filePath;
+            }
+           
+            return PartialView();
+        }
+
 
         // GET: Admin/Main/Details/5
-        public ActionResult Details(int id)
+        public ActionResult CarDetails(int id)
         {
             return View();
         }
@@ -60,7 +103,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
 
         // GET: Admin/Main/Edit/5
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult EditCar(int id)
         {
             var car = DatAcessService.FindCar(id);
             if (car == null)
@@ -72,7 +115,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
 
         // POST: Admin/Main/Edit/5
         [HttpPost]
-        public ActionResult Edit(CarDTO car)
+        public ActionResult EditCar(CarDTO car)
         {
             if (ModelState.IsValid)
             {
@@ -89,6 +132,11 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         public ActionResult Delete(int id)
         {
            var car= DatAcessService.FindCar(id);
+            var filePath = Server.MapPath("~"+car.Image);
+            if (System.IO.File.Exists(filePath))
+            {
+                System.IO.File.Delete(filePath);
+            }
             if (car == null)
             {
                 return HttpNotFound();
@@ -101,7 +149,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         public ActionResult Delete(CarDTO car)
         {
             DatAcessService.DeleteCar(car.CarId);
-            return RedirectToAction("Index", "Main");
+            return RedirectToAction("GetCars", "Main");
         }
         [HttpGet]
         public ActionResult DleteSoft(int id)
@@ -118,6 +166,34 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         {
             DatAcessService.DeleteCarSoft(car.CarId);
             return RedirectToAction("Index", "Main");
+        }
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Register(RegisterModel model)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                UserDTO userDto = new UserDTO
+                {
+                    Email = model.Email,
+                    Password = model.Password,
+                  
+                    Name = model.Name,
+                    Role = "manager"
+                };
+                OperationDetails operationDetails = await UserService.Create(userDto);
+                if (operationDetails.Succedeed)
+                    return View("SuccessRegister");
+                else
+                    ModelState.AddModelError(operationDetails.Property, operationDetails.Message);
+            }
+            return View(model);
         }
 
     }

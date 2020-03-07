@@ -8,8 +8,12 @@ namespace CarRental.DAL.Entities
 {
     public class ApplicationUser : IdentityUser
     {
-        public virtual ClientProfile ClientProfile { get; set; }
+        
+        public bool Banned { get; set; }
+        public string Name { get; set; }
+        public int PassportNumb { get; set; }
         public ICollection<Order> Orders { get; set; }
+        public string RepairInvoice { get; set; }
         public ApplicationUser()
         {
             Orders = new List<Order>();

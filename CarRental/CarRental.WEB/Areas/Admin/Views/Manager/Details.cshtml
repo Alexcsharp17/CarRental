@@ -1,0 +1,105 @@
+﻿@model CarRental.BLL.DTO.OrderDTO
+
+<div>
+    <h4>OrderDTO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+
+        <dd>
+            @Html.HiddenFor(model => model.OrderId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CarId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CarId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CarDTO.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model=>model.CarDTO.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Driver)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDeleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PassportNumb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PassportNumb)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ManagComment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManagComment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrdSum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrdSum)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditStatus", new {  id = Model.OrderId },new {@class="btn btn-warning"}) 
+    @Html.ActionLink("Back to List","GetOrders", new { @class="btn btn-secondary"})
+</p>

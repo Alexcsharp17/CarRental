@@ -9,6 +9,10 @@ using System.Web.Mvc;
 
 namespace CarRental.BLL.DTO
 {
+    /// <summary>
+    /// CarDTO - special Data transfer object.
+    /// Used to transfer data of car entity between DAL and BLL(Layers)
+    /// </summary>
    public class CarDTO
     {
         [HiddenInput(DisplayValue = false)]
@@ -45,7 +49,7 @@ namespace CarRental.BLL.DTO
         [Required(ErrorMessage = "Please input price")]
         [Range(1, int.MaxValue, ErrorMessage = "The value must be more than 0")]
         //The price is set in gryvnas per day.
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
         [Display(Name = "Door")]
         [Range(1, 10, ErrorMessage = "Input value between 1 and 10")]
@@ -56,7 +60,7 @@ namespace CarRental.BLL.DTO
         public string FuelType { get; set; }
 
         [Display(Name = "Fuel consumption")]
-        [Range(1, 20, ErrorMessage = "Input value between 1 and 20")]
+     
         public int FuelConsump { get; set; }
 
         public bool IsDeleted { get; set; }
@@ -67,7 +71,7 @@ namespace CarRental.BLL.DTO
         public string CarType { get; set; }
 
         [Display(Name = "Engine capacity")]
-        [Range(1, 20, ErrorMessage = "Input value between 1 and 20")]
+        
         public int EngSize { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
         

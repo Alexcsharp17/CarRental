@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace CarRental.DAL.Interfaces
 {
+    /// <summary>
+    /// Isp identity client manager interface
+    /// </summary>
     public interface IClientManager : IDisposable
     {
-        void Create(ClientProfile item);
+        
     }
 }

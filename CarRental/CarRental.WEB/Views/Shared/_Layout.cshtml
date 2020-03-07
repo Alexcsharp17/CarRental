@@ -1,73 +1,96 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title – CarRental</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/jquery-ui-1.12.1.js")
+    @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.js")
 </head>
 <body>
     <div class="wraper " id="wrapper">
-        <nav class="navbar navbar-expand-lg navbar-light  ">
+        <nav class="navbar  navbar-light  ">
 
-            <a class="navbar-brand" href="@Url.Action("Index","Home")" class="navbar-brand"><img class="img-fluid" src="~/Content/img/logo.gif" alt="Logo" /></a>
+          
+            <img class="img-fluid" src="~/Content/img/logo.gif" alt="Logo" />
+            <div class="auth">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="mt-2">
+                        <div>
+                            <img alt="Us. Area" src="~/Content/img/ico/user-male-circle.png" style="height:20px;" />
 
-
-
-            <button class="navbar-toggler float-right " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse ml-5 mb-4" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto ">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">PersonalCab <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Reviews</a>
-                    </li>
-                    <li class="">
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <div class="mt-2">
-                                <span ml-1>@Html.ActionLink("Hello " + User.Identity.Name.ToString(), "Index", "PersCab")</span>
-                                <span class="ml-1">@Html.ActionLink("Log out", "Logout", "Account")</span>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Something else here</a>
                             </div>
-                        }
-                        else
-                        {
-                            <span> @Html.ActionLink("Log in", "Login", "Account", new { })</span>
-                            <span>@Html.ActionLink("Register", "Register", "Account")</span>
-                        }
-                    </li>
 
-                </ul>
 
+                            <span ml-1>@Html.ActionLink("User Area", "Index", "PersCab")</span>
+                        </div>
+                        <span>
+                            <img alt="Us. Area" src="~/Content/img/ico/logout-rounded-left.png" style="height:20px;" />
+                            <span class="ml-1">@Html.ActionLink("Log out", "Logout", "Account")</span>
+                        </span>
+                    </div>
+                }
+                else
+                {
+                    <span>
+                        <img alt="Us. Area" src="~/Content/img/ico/login-rounded-right.png" style="height:20px;" />
+                        <span> @Html.ActionLink("Log in", "Login", "Account")</span>
+                    </span>
+                    <span>
+                        <img alt="Us. Area" src="~/Content/img/ico/user-male-circle.png" style="height:20px;" />
+                        <span>@Html.ActionLink("Register", "Register", "Account")</span>
+                    </span>
+
+                }
             </div>
+
         </nav>
         <div class=" body-content " id="main">
-            <div class="row ">
-                <div class="col-2 navbar-toggler" id="sidebar-wrapper">
+            <div class="clearfix" >
+                <div class="side_sect " >
 
                     @RenderSection("SideSearch", false)
 
                 </div>
-                <div class="col-10 container-fluid">@RenderBody()</div>
+                <div class=" content">@RenderBody()</div>
             </div>
 
         </div>
     </div>
-    <footer id="footer" class="bg-dark container-fluid ">
-        <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
+    <footer id="footer" class=" container-fluid  ">
+        <div class="float-left">&copy; @DateTime.Now.Year – Car Rental</div>
+        <div class="float-right d-flex flex-row"><img alt="Our Phone:" src="~/Content/img/ico/phone.png" style="width:20px;height:20px;" /><p>+380998857510</p> </div> 
     </footer>
-    @Scripts.Render("~/bundles/jquery")
+   
+    @Styles.Render("~/Content/themes/base/jquery-ui.css")
+    @Styles.Render("~/Content/themes/base/base.css")
+    @Styles.Render("~/Content/themes/base/datepicker.css")
+
+
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+
+    <script type="text/javascript">
+        $(document).ready(function ($) {
+            $('.icon-menu').click(function (event) {
+                $('.sidebar').toggleClass('active');
+            });
+        });
+    </script>
   
 </body>
 </html>

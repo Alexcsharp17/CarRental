@@ -8,6 +8,12 @@ namespace CarRental.BLL.Infrastracture
 {
     public class OperationDetails
     {
+        /// <summary>
+        /// Class used to transfer validation messeges between layers
+        /// </summary>
+        /// <param name="succedeed"></param>
+        /// <param name="message"></param>
+        /// <param name="prop"></param>
         public OperationDetails(bool succedeed, string message, string prop)
         {
             Succedeed = succedeed;

@@ -9,21 +9,27 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace CarRental.BLL.DTO
-{   [DateValid(ErrorMessage ="End Date Should be grater or equal to start.")]
+{
+    /// <summary>
+    /// OrderDTO - special Data transfer object.
+    /// Used to transfer data of car entity between DAL and BLL(Layers)
+    /// </summary>
+
+    [DateValid(ErrorMessage ="End Date Should be grater or equal to start.")]
    public class OrderDTO
     {
         [HiddenInput(DisplayValue = false)]
        
         public int OrderId { get; set; }
-        [HiddenInput(DisplayValue = false)]
+      
         public string User_Id { get; set; }
-        [HiddenInput(DisplayValue = false)]
+        
         public int CarId { get; set; }
-        [DataType(DataType.Date)]
+        
         [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Start rent")]
         public DateTime StartTime { get; set; }
-        [DataType(DataType.Date)]
+        
         [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
         
         [Display(Name = "End rent")]
@@ -31,9 +37,9 @@ namespace CarRental.BLL.DTO
         //Client needs driver
         [Display(Name = "Driver necessity")]
         public bool Driver { get; set; }
-        [HiddenInput(DisplayValue = false)]
+       
         public bool IsDeleted { get; set; }
-        [HiddenInput(DisplayValue = false)]
+        
         public string Status { get; set; }
        
         public int PassportNumb { get; set; }

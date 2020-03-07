@@ -20,7 +20,10 @@ namespace CarRental.DAL.Interfaces
         ApplicationRoleManager RoleManager { get; }
         List<ApplicationUser> GetUsers();
         Task SaveAsync();
-        
+        void EditUser(ApplicationUser user);
         IEnumerable<ApplicationUser> Users{get;}
+        void AddExeption(ExceptionDetail ex);
+        IEnumerable<ExceptionDetail> Exceptions { get; }
+        void CreateUser(ApplicationUser user);
     }
 }

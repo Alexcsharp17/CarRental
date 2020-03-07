@@ -26,6 +26,7 @@ namespace CarRental.WEB.Controllers
                 }
             }
        
+
         private IAuthenticationManager AuthenticationManager
             {
                 get
@@ -55,8 +56,9 @@ namespace CarRental.WEB.Controllers
                 
                     if (claim == null)
                     {
-                        ModelState.AddModelError("", "Неверный логин или пароль.");
+                        ModelState.AddModelError("", "Incorrect login/password or your account has been banned.");
                     }
+                    
                     else
                     {
                         AuthenticationManager.SignOut();
@@ -92,7 +94,7 @@ namespace CarRental.WEB.Controllers
                     {
                         Email = model.Email,
                         Password = model.Password,
-                        Address = model.Address,
+                       
                         Name = model.Name,
                         Role = "user"
                     };
@@ -112,9 +114,9 @@ namespace CarRental.WEB.Controllers
                     UserName = "somemail@mail.ru",
                     Password = "ad46D_ewr3",
                     Name = "Семен Семенович Горбунков",
-                    Address = "ул. Спортивная, д.30, кв.75",
+                    
                     Role = "admin",
-                }, new List<string> { "user", "admin" });
+                }, new List<string> { "user", "admin","manager" });
             }
         }
     

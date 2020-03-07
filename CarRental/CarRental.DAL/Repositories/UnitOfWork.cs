@@ -5,12 +5,19 @@ using CarRental.DAL.Interfaces;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CarRental.DAL.Repositories
 {
+    /// <summary>
+    /// Class represent Unit of Work , which specified in 
+    /// UnitOfWork pattern. Using ninject i bind this class
+    /// to IUnitOfWork Interface. That allows me to get acess
+    /// to it's class methods and properties.
+    /// </summary>
     public class UnitOfWork : IUnitOfWork
     {
         private ApplicationContext db;
@@ -75,7 +82,7 @@ namespace CarRental.DAL.Repositories
         {   
             get {
                 
-                return db.Cars;
+                return db.Cars.ToList();
             }
         }
         public IEnumerable<ApplicationUser> Users
@@ -84,7 +91,7 @@ namespace CarRental.DAL.Repositories
         }
         public IEnumerable<Order> Orders
         {
-            get { return db.Orders; }
+            get { return db.Orders.ToList(); }
         }
         public void CreateCar(Entities.Car car)
         {
@@ -120,7 +127,10 @@ namespace CarRental.DAL.Repositories
                     dbEntry.Driver = order.Driver;
                     dbEntry.StartTime = order.StartTime;
                     dbEntry.EndTime = order.EndTime;
+                    dbEntry.OrdSum = order.OrdSum;
                     dbEntry.OrderId = order.OrderId;
+                    dbEntry.Status = order.Status;
+                    dbEntry.ManagComment = order.ManagComment;
                 }
             }
             db.SaveChanges();
@@ -130,7 +140,7 @@ namespace CarRental.DAL.Repositories
         public Car FindCar(int id)
         {
             var cars = db.Cars.FirstOrDefault(c => c.CarId == id);
-            return (cars);
+            return cars;
         }
         public Order FindOrder(int id)
         {
@@ -142,20 +152,34 @@ namespace CarRental.DAL.Repositories
             var orders = db.Orders.Where(o => o.User_Id == userId);
             return (orders);
         }
-        IEnumerable<Car> ICarRepository.FindCars(string name= null, string manufactorer = null, string carType = null, int LowPrice = 0, int UppPrice = int.MaxValue)
+        IEnumerable<Car> ICarRepository.FindCars(string name= null, string manufactorer = null, 
+            string carType = null, string fuelType = null, string transmission = null, int LowPrice = 0, int UppPrice = int.MaxValue)
         {
-            IEnumerable<Car> cars= db.Cars;
+            IEnumerable<Car> cars= db.Cars.ToList();
             if (name != null)
             {
-                cars = cars.Where(c => c.Name.Contains(name));
+                cars = cars.Where(c => c.Name.ToLower().Contains(name.ToLower()));
             }
-            if (manufactorer != null)
+            if (manufactorer != "")
             {
-                cars = cars.Where(c => c.Manufacturer.Contains(manufactorer));
+                cars = cars.Where(c => manufactorer.ToLower().Contains(c.Manufacturer.ToLower()));
+              
             }
-            if(UppPrice!=0 && LowPrice != 0){
-                cars = cars.Where(c => c.Price < UppPrice && c.Price > LowPrice);
+            if (carType != "")
+            {
+                cars = cars.Where(c =>carType.ToLower().Contains(c.CarType.ToLower()));
             }
+            if (fuelType != "")
+            {
+                cars = cars.Where(c => fuelType.ToLower().Contains(c.FuelType.ToLower()));
+            }
+            if (transmission != "")
+            {
+                cars = cars.Where(c => transmission.ToLower().Contains(c.AutomaticTransm.ToString().ToLower()));
+            }
+            if (UppPrice!=0 && LowPrice != 0){
+                cars = cars.Where(c => c.Price <= UppPrice && c.Price >= LowPrice);
+            }          
             else if (UppPrice != 0)
             {
                 cars = cars.Where(c => c.Price < UppPrice);
@@ -164,15 +188,16 @@ namespace CarRental.DAL.Repositories
             {
                 cars = cars.Where(c => c.Price > LowPrice);
             }
-            
+           
             return (cars);
         }
         public Car DeleteCar(int id)
         {
             Car dbEntry = db.Cars.Find(id);
-            
+           
             if (dbEntry != null)
             {
+
                 db.Cars.Remove(dbEntry);
                 db.SaveChanges();
             }
@@ -212,6 +237,43 @@ namespace CarRental.DAL.Repositories
                 db.SaveChanges();
             }
             return dbEntry;
+        }
+        public void AddExeption(ExceptionDetail ex)
+        {
+            db.ExceptionDetails.Add(ex);
+            db.SaveChanges();
+        }
+        public IEnumerable<ExceptionDetail> Exceptions
+        {
+            get { return db.ExceptionDetails.ToList(); }
+        }
+
+        public void EditUser(ApplicationUser user)
+        {
+            var us = db.Users.Find(user.Id);
+
+            us.UserName = user.UserName;
+            us.Banned = user.Banned;
+            us.PassportNumb = user.PassportNumb;
+            us.Name = user.Name;
+            us.PhoneNumber = user.PhoneNumber;
+            us.RepairInvoice = user.RepairInvoice;
+            db.Users.Add(us);
+           
+        }
+       public void CreateUser(ApplicationUser user)
+        {
+            ApplicationUser dbEntry = db.Users.Find(user.Id);
+            if (dbEntry != null)
+            {
+                dbEntry.UserName = user.UserName;
+                dbEntry.PassportNumb = user.PassportNumb;
+                dbEntry.PhoneNumber = user.PhoneNumber;
+                dbEntry.Banned = user.Banned;
+                
+            }
+        
+        db.SaveChanges();
         }
     }
 }

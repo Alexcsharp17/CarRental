@@ -1,58 +1,143 @@
 ﻿@model CarRental.WEB.Models.CarSearchModel
 
-@using (Ajax.BeginForm("CarSearch", "SideSearch", new AjaxOptions { UpdateTargetId = "car_area" }, FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
+@Styles.Render("~/Content/themes/base/all.css")
+<div class="sidebar  h-100">
+    @using (Ajax.BeginForm("CarSearch", "SideSearch", FormMethod.Post, new AjaxOptions { UpdateTargetId = "car_area" }))
+    {
+        @Html.AntiForgeryToken()
 
     <div class="form-horizontal mr-5">
-        <h4>CarSearchModel</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Manufactorer, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Manufactorer, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Manufactorer, "", new { @class = "text-danger" })
+
+        <div class="icon-menu  ml-2 ">
+            <span class="divide"></span>
+            <span class="divide"></span>
+            <span class="divide"></span>
+
+        </div>
+
+        <div id="top-bl"></div>
+        <div class="cheks-head"><p>Model name</p></div>
+        <div class="form-group mt-2">
+
+            <div class="sear_name">
+                <span>
+                    <input type="text" name="Name" data-autocomplete-source='@Url.Action("AutocompleteSearch", "SideSearch")' class="form-control d-inline w-75" />
+                    <input type="submit" value="Apply" class="btn btn-success s_btn  " id="sbm" />
+                </span>
+
+            </div>
+        </div>
+        <div class="sear-sec">
+            <div class="cheks-head container-fluid"><p>Select manufactorer</p></div>
+
+            @for (var i = 0; i < Model.manufactorers.Count(); i++)
+            {
+
+                <label class="check_row d-flex align-content-center">
+
+                    <span>
+                        <input type="checkbox" class="big_check" name="manufss" value=@Model.manufactorers[i] />
+                    </span>
+                    <span id="test">
+                        @Html.DisplayFor(model => model.manufactorers[i])
+                    </span>
+
+                </label>
+
+            }
+        </div>
+        <div class="sear-sec">
+            <div class="cheks-head"> <p>Select class</p></div>
+            @for (var i = 0; i < Model.CarTypes.Count(); i++)
+            {
+                <label class="check_row d-flex align-content-center">
+
+                    <span>
+                        <input type="checkbox" class="big_check" name="typess" value=@Model.CarTypes[i] />
+                    </span>
+                    <span>
+                        @Html.DisplayFor(model => model.CarTypes[i])
+                    </span>
+
+
+                </label>
+            }
+        </div>
+        <div class="sear-sec">
+            <div class="cheks-head"><p>Select Fuel Type</p></div>
+            @for (var i = 0; i < Model.FuelTypes.Count(); i++)
+            {
+                <label class="check_row d-flex align-content-center">
+
+                    <span>
+                        <input type="checkbox" class="big_check" name="fueltypess" value=@Model.FuelTypes[i] />
+                    </span>
+                    <span>
+                        @Html.DisplayFor(model => model.FuelTypes[i])
+                    </span>
+
+                </label>
+            }
+        </div>
+        <div class="sear-sec">
+            <div class="cheks-head"><p>Automatic transmission</p></div>
+            @for (var i = 0; i < Model.Transmissions.Count(); i++)
+            {
+                <label class="check_row d-flex align-content-center">
+
+                    <label>
+                        <input type="checkbox" class="big_check" name="transmissionss" value=@Model.Transmissions[i] />
+                    </label>
+                    <label>
+                        @Html.DisplayFor(model => model.Transmissions[i])
+                    </label>
+
+
+                </label>
+            }
+        </div>
+        <div class="sear-sec">
+            <div class="cheks-head"><p>Price</p></div>
+            <div class="d-flex flex-row">
+                <div>
+                    @Html.LabelFor(model => model.LowPrice, new { @class = "pl-2" })
+                    @Html.EditorFor(model => model.LowPrice, new { htmlAttributes = new { @class = "form-control", placeholder = Model.UppPrice } })
+                </div>
+                <div class="ml-2">
+                    @Html.LabelFor(model => model.UppPrice, new { @class = "pl-2" })
+                    @Html.EditorFor(model => model.UppPrice, new { htmlAttributes = new { @class = "form-control", placeholder = Model.LowPrice } })
+                </div>
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CarType, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CarType, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CarType, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        @*<input type="hidden" name="sort" id="sort" />*@
+        @Html.HiddenFor(model => model.Sort, new { @id = "sort", name = "sort" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.LowPrice, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LowPrice, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LowPrice, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.UppPrice, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UppPrice, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UppPrice, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+
+
+
     </div>
-}
+    }
+</div>
 
+
+<script>
+
+    $(document).on('change', ':input', function () {
+        var s = $("#sort").val($("#sorting").find(":selected").val());
+       
+        $("#sort").replaceWith(s);
+
+        $("#sbm").click();
+    });
+    $(function () {
+        $("[data-autocomplete-source]").each(function () {
+            var target = $(this);
+            target.autocomplete({ source: target.attr("data-autocomplete-source") });
+        });
+    });
+
+</script>
