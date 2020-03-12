@@ -17,7 +17,7 @@
     height: 60px;
     clear: both;
     padding-top: 20px;
-    background-color: #dbdbdb;
+    background-color: orange;
 } 
 
 /* Set padding to keep content from hitting the edges */
@@ -40,9 +40,11 @@ textarea {
     max-width: 280px;
 }
 .auth{
+    color:black;
+    font-size:18px;
 }
-navbar{
-    background-color:white;
+.navbar{
+    background-color:orange;
 }
 /*Sidebar Styles*/
 .sidebar {
@@ -51,7 +53,7 @@ navbar{
     height:100%;
     float: left;
     padding: 5px;
-    background-color: #ffb426;
+    
     webkit-transition: left 1s ease-in-out 0.1s;
     moz-transition: left 1s ease-in-out 0.1s;
     o-transition: left 1s ease-in-out 0.1s;
@@ -72,9 +74,21 @@ navbar{
     float: left;
     padding: 5px 0;
     cursor: pointer;
-    margin-left: 200px;
+   
     
    
+}
+#close-sec{
+    display:none;
+    font-weight:bold;
+    width:200px;
+}
+
+#close-sec {
+    display: block;
+}
+#cl-ic{
+    margin-left:120px;
 }
 
 .divide{
@@ -88,8 +102,8 @@ navbar{
     .icon-menu {
         display: block;
         z-index: 2;
-        margin-left: -30px;
-        margin-top:20px;
+        float-left;
+        margin-top:1px;
         width:22px;
        
     }
@@ -107,6 +121,7 @@ navbar{
     .content{
         margin-left:0;
     }
+    
     
 }
 /*Home index styles*/
@@ -160,9 +175,14 @@ navbar{
         -o-transition: .3s all;
         transition: .3s all;
     }
-    .top-block{
-        color:black;
+    #top-block{
+        font-weight:bold;
+        margin-bottom:50px;
     }
+#top-bl {
+    font-weight: bold;
+    margin-bottom: 30px;
+}
  /*Side search styles*/
  .sear_name{
      width:240px;
@@ -171,7 +191,9 @@ navbar{
 
 .s_btn {
     padding: 3px;
-  
+    padding: 3px;
+    height:35px;
+    margin-top:-4px;
 }
 
 
@@ -180,10 +202,7 @@ navbar{
     height: 25px;
     border-radius:20%;
 }
-#top-bl{
-    height:50px;
-    
-}
+
 .cheks-head {
    height:50px;
    width:246px;
@@ -193,11 +212,14 @@ navbar{
     text-align:center;
     color:white;
     padding-top:10px;
+    margin-right:5px;
+    border:1px,solid,black;
 }
 .check_row {
     width: 248px;
     height: 40px;
     padding-top: 7px;
+    padding-left:5px;
     margin: 0;
     border-top: 1px solid #565656;
     opacity: 0.9;
@@ -214,8 +236,7 @@ navbar{
     width: 250px;
     margin-left:-5px;
     border-collapse:collapse;
-  
-    
+    background-color:lightgray;
 }
  /*Admin area*/
  .adm_but{

@@ -39,6 +39,16 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             var exceptions = DatAcessService.Exceptions;
             return View(exceptions);
         }
+        public ActionResult DeleteException(int id)
+        {
+            DatAcessService.DeleteException(id);
+            return RedirectToAction("GetExceptions");
+        }
+        public ActionResult DeleteExceptions()
+        {
+            DatAcessService.DeleteExceptions();
+            return RedirectToAction("GetExceptions");
+        }
 
         public ActionResult GetCars()
         {
@@ -120,7 +130,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 DatAcessService.CreateCar(car);
-                return RedirectToAction("Index", "Main");
+                return RedirectToAction("GetCars", "Main");
             }
             else
             {
@@ -167,34 +177,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             DatAcessService.DeleteCarSoft(car.CarId);
             return RedirectToAction("Index", "Main");
         }
-        public ActionResult Register()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterModel model)
-        {
-            
-            if (ModelState.IsValid)
-            {
-                UserDTO userDto = new UserDTO
-                {
-                    Email = model.Email,
-                    Password = model.Password,
-                  
-                    Name = model.Name,
-                    Role = "manager"
-                };
-                OperationDetails operationDetails = await UserService.Create(userDto);
-                if (operationDetails.Succedeed)
-                    return View("SuccessRegister");
-                else
-                    ModelState.AddModelError(operationDetails.Property, operationDetails.Message);
-            }
-            return View(model);
-        }
+      
 
     }
 }

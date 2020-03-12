@@ -9,40 +9,43 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace CarRental.WEB.Areas.Admin.Controllers
-{
+{ 
     public class ManagerController : Controller
     {
+        static IEnumerable<string> userss = new List<string>();
         public int pageSize = 6;
         private IDatAcessService DatAcessService;
         public ManagerController(IDatAcessService serv)
         {
             DatAcessService = serv;
+            var us = DatAcessService.Users.Select(u => u.Name);
+            userss = us;
         }
-        
-        // GET: Admin/Manager
-        public ActionResult GetOrders(int page=1)
+        public ActionResult OrderIndex()
         {
-            var ord = DatAcessService.Orders.Where(o=>o.IsDeleted==false);
-            if (ord == null)
-            {
-                return View("Empty store");
-            }
-            foreach(var o in ord)
-            {
-                o.CarDTO = DatAcessService.FindCar(o.CarId);
-            }
-            OrderListViewModel model = new OrderListViewModel() {
-                Orders=ord,
-                PagingInfo = new PagingInfo
-                {
-                    CurrentPage = page,
-                    ItemsPerPage = pageSize,
-                    TotalItems = DatAcessService.Orders.Count()
-                }
+            return View(DatAcessService.Orders);
+        }
 
-            };
-           
-            return View(model);
+      
+        public PartialViewResult GetOrders(string id=null)
+        {
+            List<OrderDTO> ordrs = new List<OrderDTO>();
+            if (id == null)
+            {
+                return PartialView("~/Views/Home/EmptySear.cshtml");
+            }
+            else
+            {
+                id = id.Substring(0, id.Length - 1);
+                string[] strid = id.Split(Convert.ToChar("|"));
+                for (int i = 0; i < strid.Length; i++)
+                {
+                    ordrs.Add(DatAcessService.Orders.FirstOrDefault(o => o.OrderId == Convert.ToInt32(strid[i])));
+                }
+            }
+           IEnumerable<OrderDTO> orders = ordrs;
+            var el = orders.FirstOrDefault();
+            return PartialView("~/Views/Home/RendOrders.cshtml", orders);
         }
         //Manager can change order status and leave a comment.
         [HttpGet]
@@ -110,6 +113,13 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             var ord = DatAcessService.FindOrder(id);
              ord.CarDTO = DatAcessService.FindCar(ord.CarId);
             return View(ord);
+        }
+        public ActionResult AutocompleteUsName(string term)
+        {
+            var models = userss.Where(a => a.ToLower().Contains(term.ToLower()))
+                            .Select(a => new { value = a })
+                            .Distinct();
+            return Json(models, JsonRequestBehavior.AllowGet);
         }
     }
 }

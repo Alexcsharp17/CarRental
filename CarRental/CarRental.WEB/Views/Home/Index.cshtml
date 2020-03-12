@@ -5,14 +5,13 @@
     ViewBag.Title = "Cars";
 }
 
-<div class=" " id="car_area">
+<div class="ml-0 content" id="car_area">
     <div class="container-fluid">
         <div class=" float-left">
             <div class="icon-menu border p1 ">
                 <span class="divide"></span>
                 <span class="divide"></span>
                 <span class="divide"></span>
-
             </div>
         </div>
     </div>
@@ -21,10 +20,10 @@
         {
             <div class="offset-6 col-4">
                 <select id="sorting">
+                    <option selected disabled>Sort</option>
                     @foreach (var e in ViewBag.Sort)
                     {
                         <option value=@e>@e</option>
-
                     }
                 </select>
 
@@ -32,10 +31,10 @@
 
         }
     </div>
-    <div class="flex-row flex-wrap d-flex justify-content-center">
-        <div class="row">
 
-        </div>
+
+    <div class="flex-row flex-wrap d-flex justify-content-center">
+       
         @foreach (var c in Model.Cars)
         {
 
@@ -131,14 +130,10 @@
                             </tr>
                         </tbody>
                     </table>
-
-
                     @Html.ActionLink("Rent", "Checkout", "PersCab", new { id = c.CarId, pleage = false }, new { @class = "btn btn-info float-left pr_tabble_btn align-middle", @id = "rent" })
                     @Html.ActionLink("Rent  with pleage  ", "Checkout", "PersCab", new { id = c.CarId, pleage = true }, new { @class = "btn btn-success pr_tabble_btn align-middle float-right" })
-
                 </div>
             </div>
-
         }
     </div>
 
@@ -148,7 +143,7 @@
 
     </div>
 
-
+    <div class="clearfix"></div>
     <div class="text-center mt-2">
 
         @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))

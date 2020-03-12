@@ -11,21 +11,21 @@ using System.Web;
 using System.Web.Mvc;
 using System.Security.Claims;
 using CarRental.WEB.Models;
+using Microsoft.AspNet.Identity;
 
 namespace CarRental.WEB.Controllers
 {
-    
-        // GET: Account
-        public class AccountController : Controller
+
+    // GET: Account
+    public class AccountController : Controller
+    {
+        private IUserService UserService
         {
-            private IUserService UserService
+            get
             {
-                get
-                {
-                    return HttpContext.GetOwinContext().GetUserManager<IUserService>();
-                }
+                return HttpContext.GetOwinContext().GetUserManager<IUserService>();
             }
-       
+        }
 
         private IAuthenticationManager AuthenticationManager
             {
@@ -34,9 +34,6 @@ namespace CarRental.WEB.Controllers
                     return HttpContext.GetOwinContext().Authentication;
                 }
             }
-
-        
-
             public ActionResult Login(string returnUrl)
             {
             ViewBag.ReturnUrl = returnUrl;
@@ -66,7 +63,11 @@ namespace CarRental.WEB.Controllers
                         {
                             IsPersistent = true
                         }, claim);
+                     
+                  
+                    
                         return RedirectToAction("Index", "Home");
+                    
                     }
                 }
                 return View(model);

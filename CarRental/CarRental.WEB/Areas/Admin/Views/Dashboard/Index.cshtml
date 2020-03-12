@@ -7,7 +7,7 @@
         <div class="card-body">
             <h5 class="card-title">Order management (Manager)</h5>
             <p class="card-text">Total orders - @ViewBag.Orders</p>
-            @Html.ActionLink("Open","GetOrders","Manager", new { area = "Admin" },new {@class="btn btn-info" })
+            @Html.ActionLink("Open","OrderIndex","Manager", new { area = "Admin" },new {@class="btn btn-info" })
         </div>
     </div>
     <div class="card mt-2">
@@ -27,7 +27,7 @@
         <div class="card-body">
             <h5 class="card-title">User management(Admin)</h5>
             <p class="card-text">User list - @ViewBag.Users</p>
-            @Html.ActionLink("Open", "GetUsers", "UserManag", new { area = "Admin" }, new { @class = "btn btn-info" })
+            @Html.ActionLink("Open", "UserIndex", "UserManag", new { area = "Admin" }, new { @class = "btn btn-info" })
         </div>
     </div>
     <div class="card mt-2">

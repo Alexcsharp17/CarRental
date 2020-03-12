@@ -14,7 +14,7 @@ namespace CarRental.WEB.Controllers
     [ExceptionLogger]
     public class HomeController : Controller
     {
-        public int pageSize = 6;
+        public int pageSize = 10;
        
         private IDatAcessService DatAcessService;
        public HomeController(IDatAcessService serv)
@@ -112,13 +112,10 @@ namespace CarRental.WEB.Controllers
             page = page < Convert.ToInt32(Math.Ceiling((double)DatAcessService.Cars.Count() / pageSize)) ? page :
                Convert.ToInt32(Math.Ceiling((double)DatAcessService.Cars.Count() / pageSize));
             List<CarDTO> crs = new List<CarDTO>();
+          
             if (id == null)
             {
-                crs = DatAcessService.Cars
-                    .Where(c => c.IsDeleted == false)
-                   .OrderBy(car => car.CarId)
-                   .Skip((page - 1) * pageSize)
-                   .Take(pageSize).ToList();
+                return PartialView("~/Views/Home/EmptySear.cshtml");
             }
             else
             {
@@ -129,10 +126,11 @@ namespace CarRental.WEB.Controllers
                 for (int i = 0; i < strid.Length; i++)
                 {
                     crs.Add(DatAcessService.FindCar(Convert.ToInt32(strid[i])));
-                }
-                crs = crs.Skip((page - 1) * pageSize)
-                   .Take(pageSize).ToList();
+                }              
             }
+            int totCars = crs.Count();
+            crs = crs.Skip((page - 1) * pageSize)
+                  .Take(pageSize).ToList();
             IEnumerable<CarDTO> cars = crs.Where(c => c.IsDeleted == false);
             CarsListViewModel model = new CarsListViewModel
             {
@@ -140,7 +138,7 @@ namespace CarRental.WEB.Controllers
                 ,
                 PagingInfo = new PagingInfo
                 {
-                    TotalItems = DatAcessService.Cars.Count(),
+                    TotalItems = totCars,
                     CurrentPage = page,
                     ItemsPerPage = pageSize,
 

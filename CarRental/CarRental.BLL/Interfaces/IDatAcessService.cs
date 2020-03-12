@@ -28,6 +28,8 @@ namespace CarRental.BLL.Interfaces
         IEnumerable<CarDTO> FindCars(string name = null, string manufactorer = null, string carType = null, string fuelType = null, string transmission = null, int LowPrice = 0, int UppPrice = int.MaxValue);
         void DeleteCar(int id);
         void DeleteCarSoft(int id);
+        void DeleteExceptions();
+        void DeleteException(int id);
         
     }
 }

@@ -1,0 +1,58 @@
+﻿<div class="sidebar">
+    @using (Ajax.BeginForm("OrderSearch", "SideSearch", new AjaxOptions { UpdateTargetId = "order_area", InsertionMode = InsertionMode.Replace }))
+    {<div class="">
+    <div class="sear-sec">
+        <div class="sear_name mb-2 check_row ">
+            <span>
+                <input type="text" name="usid" class="form-control d-inline w-75" />
+                <input type="submit" value="Apply" class="btn btn-success s_btn  " id="sbm" />
+            </span>
+        </div>
+    </div>
+    <div class=" sear-sec">
+        <div class="cheks-head">Order Status</div>
+        <div class="check_row">
+            <span>
+                <input type="checkbox" class="big_check" name="statuses" value="pending" />
+            </span>
+            <span class="ml-1 pb-4">
+                Pending
+            </span>
+        </div>
+        <div class="check_row">
+            <span>
+                <input type="checkbox" class="big_check" name="statuses" value="approved" />
+            </span>
+            <span class="ml-1 pb-4">
+                Approved
+            </span>
+        </div>
+        <div class="check_row">
+            <span>
+                <input type="checkbox" class="big_check" name="statuses" value="confirmed" />
+            </span>
+            <span class="ml-1 pb-4">
+                Confirmed
+            </span>
+        </div>
+        <div class="check_row">
+            <span>
+                <input type="checkbox" class="big_check" name="statuses" value="rejected" />
+            </span>
+            <span class="ml-1 pb-4">
+                Rejected
+            </span>
+        </div>
+    </div>
+</div>    
+    }
+
+ </div>
+<script>
+
+    $(document).on('change', ':input', function () {
+        $("#sbm").click();
+    });
+
+</script>
+

@@ -1,0 +1,89 @@
+﻿@model IEnumerable<CarRental.BLL.DTO.OrderDTO>
+
+
+@{
+    ViewBag.Title = "GetOrders";
+}
+
+<h2>Manager dashboard </h2>
+
+<div class="content" id="order_area">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().User_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().CarDTO.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().OrdSum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().EndTime)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().OrdSum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Status)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().ManagComment)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <p>@item.User_Id</p>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarDTO.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrdSum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndTime)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrdSum)
+                </td>
+                <td>
+                    <span>@item.Status</span>
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ManagComment)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditStatus", new { Id = item.OrderId }, new { @class = "btn btn-warning  adm_but" })
+                    @Html.ActionLink("Details", "Details", new { Id = item.OrderId }, new { @class = "btn btn-info adm_but" })
+                    @Html.ActionLink("Delete", "DeleteOrder", new { ordId = item.OrderId }, new { @class = "btn btn-danger adm_but" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+@section SideSearch{
+    @Html.Action("OrderSearch", "SideSearch", new { area = "" })
+}
+<script>
+        $(document).on('change', ':input', function () {
+            $("#sbm").click();
+        });
+    });
+</script>

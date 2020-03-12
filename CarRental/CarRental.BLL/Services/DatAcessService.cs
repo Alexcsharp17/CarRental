@@ -169,6 +169,14 @@ namespace CarRental.BLL.Services
                 return exepts;
                 }
          }
+        void IDatAcessService.DeleteExceptions()
+        {
+            Database.DeleteExceptions();
+        }
+        void IDatAcessService.DeleteException(int id)
+        {
+            Database.DeleteException(id);
+        }
 
     }
 }

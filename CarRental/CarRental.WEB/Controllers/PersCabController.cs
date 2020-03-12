@@ -20,26 +20,26 @@ namespace CarRental.WEB.Controllers
     {
         public int pageSize = 8;
         private IDatAcessService DatAcessService;
-        
+
         public PersCabController(IDatAcessService serv)
         {
             DatAcessService = serv;
         }
-        
 
 
-        public ActionResult Index(string res=null, int page = 1)
+
+        public ActionResult Index(string res = null, int page = 1)
         {
             User.Identity.GetUserId();
             var ords = DatAcessService.Orders.Where(o => o.User_Id == User.Identity.GetUserId());
-               if (ords.Count()==0)
-                {
-                    return View("EmptyCart");
-                }    
-               foreach(var o in ords)
-                {
-                    o.CarDTO = DatAcessService.FindCar(o.CarId);
-                }
+            if (ords.Count() == 0)
+            {
+                return View("EmptyCart");
+            }
+            foreach (var o in ords)
+            {
+                o.CarDTO = DatAcessService.FindCar(o.CarId);
+            }
             PersonalCabViewModel model = new PersonalCabViewModel()
             {
                 User = DatAcessService.Users.FirstOrDefault(u => u.Id == User.Identity.GetUserId()),
@@ -47,6 +47,25 @@ namespace CarRental.WEB.Controllers
             };
             ViewBag.Res = res;
             return View(model);
+        }
+        public ActionResult Fines()
+        {
+            User.Identity.GetUserId();
+            var ords = DatAcessService.Orders.Where(o => o.User_Id == User.Identity.GetUserId() && o.Status=="fined");
+            if (ords.Count() == 0)
+            {
+                return View("EmptyFines");
+            }
+            foreach (var o in ords)
+            {
+                o.CarDTO = DatAcessService.FindCar(o.CarId);
+            }
+            return View(ords);
+        }
+        public ActionResult Profile()
+        {
+           
+           return View(DatAcessService.Users.FirstOrDefault(u => u.Id == User.Identity.GetUserId()));
         }
         [HttpGet]
         public ActionResult Checkout(int id=0)

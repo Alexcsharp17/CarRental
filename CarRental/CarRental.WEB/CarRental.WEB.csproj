@@ -169,6 +169,7 @@
     <Compile Include="Areas\Admin\Controllers\MainController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManagerController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserManagController.cs" />
+    <Compile Include="Areas\Admin\Models\UserSearModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -197,7 +198,11 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\img\Duster.png" />
+    <Content Include="Content\img\cars\car1.jpg" />
+    <Content Include="Content\img\cars\car2.jpg" />
+    <Content Include="Content\img\cars\car3.jpg" />
+    <Content Include="Content\img\cars\Duster.jpg" />
+    <Content Include="Content\img\error.jpg" />
     <Content Include="Content\img\flags\Abkhazia.png" />
     <Content Include="Content\img\flags\Afghanistan.png" />
     <Content Include="Content\img\flags\Aland.png" />
@@ -461,7 +466,11 @@
     <Content Include="Content\img\ico\a.png" />
     <Content Include="Content\img\ico\air-conditioner.png" />
     <Content Include="Content\img\ico\car-door.png" />
+    <Content Include="Content\img\ico\cart.png" />
     <Content Include="Content\img\ico\circled-user.png" />
+    <Content Include="Content\img\ico\close.png" />
+    <Content Include="Content\img\ico\edit.png" />
+    <Content Include="Content\img\ico\fines.png" />
     <Content Include="Content\img\ico\human.png" />
     <Content Include="Content\img\ico\icon_top.png" />
     <Content Include="Content\img\ico\login-rounded-right.png" />
@@ -472,14 +481,15 @@
     <Content Include="Content\img\ico\search.png" />
     <Content Include="Content\img\ico\user-male-circle.png" />
     <Content Include="Content\img\ico\wheel.png" />
-    <Content Include="Content\img\Logan.jpg" />
+    <Content Include="Content\img\cars\Logan.jpg" />
     <Content Include="Content\img\logo.gif" />
-    <Content Include="Content\img\mercedes-sprinter-272.jpg" />
-    <Content Include="Content\img\mercedes-sprinter.jpg" />
-    <Content Include="Content\img\opel-vivaro.jpg" />
-    <Content Include="Content\img\Peugeot 301.jpg" />
+    <Content Include="Content\img\cars\mercedes-sprinter-272.jpg" />
+    <Content Include="Content\img\cars\mercedes-sprinter.jpg" />
+    <Content Include="Content\img\cars\opel-vivaro.jpg" />
+    <Content Include="Content\img\cars\Peugeot 301.jpg" />
     <Content Include="Content\img\vehicle1.jpg" />
     <Content Include="Content\img\visa.jpg" />
+    <Content Include="Content\img\logo.png" />
     <Content Include="Content\price_range_style.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -540,7 +550,6 @@
     <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Main\GetCars.cshtml" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
@@ -557,9 +566,6 @@
     <Content Include="Areas\Admin\Views\UserManag\CreateManager.cshtml" />
     <Content Include="Areas\Admin\Views\Manager\GetOrders.cshtml" />
     <Content Include="Areas\Admin\Views\Manager\EmptyStore.cshtml" />
-    <Content Include="Areas\Admin\Views\Main\SuccessRegister.cshtml" />
-    <Content Include="Areas\Admin\Views\Main\Register.cshtml" />
-    <Content Include="Areas\Admin\Views\UserManag\GetUsers.cshtml" />
     <Content Include="Areas\Admin\Views\UserManag\GetManagers.cshtml" />
     <Content Include="Areas\Admin\Views\Manager\ChangeStat.cshtml" />
     <Content Include="Areas\Admin\Views\Main\EditCar.cshtml" />
@@ -570,6 +576,16 @@
     <Content Include="Areas\Admin\Views\Manager\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Main\CarDetail.cshtml" />
     <Content Include="Areas\Admin\Views\UserManag\EditUser.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManag\UserDetails.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManag\UserIndex.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManag\EmptySear.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EmptyUsSear.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManag\EmptyCarSear.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManag\SuccessRegister.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManag\Register.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManag\GetUsers.cshtml" />
+    <Content Include="Areas\Admin\Views\UserManag\RendUsers.cshtml" />
+    <Content Include="Areas\Admin\Views\Manager\OrderIndex.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -706,12 +722,18 @@
     <Content Include="Views\Home\RendCar.cshtml" />
     <Content Include="Views\PersCab\EditProf.cshtml" />
     <Content Include="Views\Home\RendCars.cshtml" />
+    <Content Include="Views\Home\EmptySear.cshtml" />
+    <Content Include="Views\PersCab\Profile.cshtml" />
+    <Content Include="Views\SideSearch\UserSearch.cshtml" />
+    <Content Include="Views\PersCab\Fines.cshtml" />
+    <Content Include="Views\PersCab\EmptyFines.cshtml" />
+    <Content Include="Views\Home\RendUsers.cshtml" />
+    <Content Include="Views\SideSearch\OrderSearch.cshtml" />
+    <Content Include="Views\Home\RendOrders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\AutoComplete\" />
-    <Folder Include="Content\img\cars\" />
     <Folder Include="Views\Cart\" />
     <Folder Include="Views\Manage\" />
   </ItemGroup>

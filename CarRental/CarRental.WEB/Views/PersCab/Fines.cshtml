@@ -1,0 +1,78 @@
+﻿@model IEnumerable<CarRental.BLL.DTO.OrderDTO>
+
+@{
+    ViewBag.Title = "Fines";
+}
+
+<div class="d-flex flex-row flex-wrap">
+
+    <div class=" ">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().CarDTO.Name)
+                </th>
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().StartTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().EndTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().Driver)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().Status)
+                </th>
+                <th>
+                    Manager comment
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CarDTO.Name)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Driver)
+                    </td>
+                    <td>
+                        @if (item.Status.ToLower() == "approved")
+                        {
+                            <div class="alert alert-success ">@item.Status</div>
+
+                        }
+                        else if (item.Status.ToLower() == "rejected")
+                        {
+                            <div class="alert alert-danger ">@item.Status</div>
+                        }
+                        else
+                        {
+                            <div class="alert alert-info ">@item.Status</div>
+                        }
+                    </td>
+                    <td>
+                        @item.ManagComment
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Cancel", "DeleteOrder", "PersCab", new { Id = item.OrderId }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

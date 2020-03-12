@@ -13,34 +13,45 @@
 </head>
 <body>
     <div class="wraper " id="wrapper">
-        <nav class="navbar  navbar-light  ">
-
-          
-            <img class="img-fluid" src="~/Content/img/logo.gif" alt="Logo" />
+        <nav class="navbar  navbar-light  " id="navbr">
+            <a href="@Url.Action("Index","Home",new {area="" })">
+                <img class="" src="~/Content/img/logo.png" alt="Logo" style="height:40px;" />
+            </a>
+            @*<div class="float-right d-flex flex-row sticky-top"><p>Contacts:</p> <img alt="Our Phone:" src="~/Content/img/ico/phone.png" style="width:20px;height:20px;" /><p>+380998857510</p> </div>*@
             <div class="auth">
                 @if (User.Identity.IsAuthenticated)
                 {
                     <div class="mt-2">
                         <div>
-                            <img alt="Us. Area" src="~/Content/img/ico/user-male-circle.png" style="height:20px;" />
+                            <div class="dropdown mr-3">
+                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span>@User.Identity.Name</span>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <label class="dropdown-item m-0 " for="us_ar">
+                                        @*<img alt="Us. Area" src="~/Content/img/ico/user-male-circle.png" style="height:20px;" class="ml-0" />*@
+                                        @Html.ActionLink(User.Identity.Name, "Profile", "PersCab", null, new { @class = "btn btn-secondary w-100" })
+                                    </label>
+                                    <label class="dropdown-item">
+                                        @*<img alt="Orders" src="~/Content/img/ico/cart.png" style="height:20px;" />*@
+                                        <span class="">@Html.ActionLink("My orders", "Index", "PersCab", null, new { @class = "btn  btn-secondary w-100 pr-3" })</span>
+                                    </label>
 
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                    <label class="dropdown-item">
+                                        @*<img alt="Orders" src="~/Content/img/ico/fines.png" style="height:20px;" />*@
+                                        <span class="">@Html.ActionLink("Fines", "Fines", "PersCab", null, new { @class = "btn btn-secondary w-100 pr-5" })</span>
+                                    </label>
+                                    <label class="dropdown-item">
+                                        @*<img alt="Us. Area" src="~/Content/img/ico/logout-rounded-left.png" style="height:20px;" />*@
+                                        <span class="d-block">@Html.ActionLink("Exit", "Logout", "Account", null, new { @class = "btn btn-secondary w-100 pr-5" })</span>
+                                    </label>
+                                </div>
                             </div>
 
-
-                            <span ml-1>@Html.ActionLink("User Area", "Index", "PersCab")</span>
+                            <div class="btn-"></div>
+                            <span ml-1></span>
                         </div>
-                        <span>
-                            <img alt="Us. Area" src="~/Content/img/ico/logout-rounded-left.png" style="height:20px;" />
-                            <span class="ml-1">@Html.ActionLink("Log out", "Logout", "Account")</span>
-                        </span>
+
                     </div>
                 }
                 else
@@ -65,14 +76,13 @@
                     @RenderSection("SideSearch", false)
 
                 </div>
-                <div class=" content">@RenderBody()</div>
+                <div class="">@RenderBody()</div>
             </div>
 
         </div>
     </div>
-    <footer id="footer" class=" container-fluid  ">
-        <div class="float-left">&copy; @DateTime.Now.Year – Car Rental</div>
-        <div class="float-right d-flex flex-row"><img alt="Our Phone:" src="~/Content/img/ico/phone.png" style="width:20px;height:20px;" /><p>+380998857510</p> </div> 
+    <footer id="footer" class=" container-fluid  text-center">
+        <div>&copy; @DateTime.Now.Year – Car Rental,All Rights Reserved</div>
     </footer>
    
     @Styles.Render("~/Content/themes/base/jquery-ui.css")
@@ -89,7 +99,20 @@
             $('.icon-menu').click(function (event) {
                 $('.sidebar').toggleClass('active');
             });
+            if ($(window).width() > 991) {
+                $("#close-sec").hide();
+            };
         });
+        $(window).resize(function () {
+                     
+            if ($(window).width() > 991) {
+                $("#close-sec").hide();
+            }; 
+            if ($(window).width() < 991) {
+                $("#close-sec").show();
+            }; 
+        });
+
     </script>
   
 </body>

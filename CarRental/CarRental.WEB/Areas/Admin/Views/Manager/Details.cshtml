@@ -1,10 +1,10 @@
 ﻿@model CarRental.BLL.DTO.OrderDTO
 
-<div>
-    <h4>OrderDTO</h4>
+<div class="content">
+    <h4>Order details</h4>
     <hr />
     <dl class="dl-horizontal">
-        
+
 
         <dd>
             @Html.HiddenFor(model => model.OrderId)
@@ -30,7 +30,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model=>model.CarDTO.Name)
+            @Html.DisplayFor(model => model.CarDTO.Name)
         </dd>
 
         <dt>
@@ -98,8 +98,9 @@
         </dd>
 
     </dl>
+
+    <p>
+        @Html.ActionLink("Edit", "EditStatus", new { id = Model.OrderId }, new { @class = "btn btn-warning" })
+
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "EditStatus", new {  id = Model.OrderId },new {@class="btn btn-warning"}) 
-    @Html.ActionLink("Back to List","GetOrders", new { @class="btn btn-secondary"})
-</p>

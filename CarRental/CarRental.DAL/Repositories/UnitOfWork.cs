@@ -247,7 +247,26 @@ namespace CarRental.DAL.Repositories
         {
             get { return db.ExceptionDetails.ToList(); }
         }
-
+        public void DeleteException(int id)
+        {
+            ExceptionDetail dbEntry = db.ExceptionDetails.Find(id);
+            if (dbEntry != null)
+            {
+                db.ExceptionDetails.Remove(dbEntry);
+             
+                db.SaveChanges();
+            }
+        }
+        public void DeleteExceptions()
+        {
+            var ex = db.ExceptionDetails;
+            foreach(var e in ex)
+            {
+                db.ExceptionDetails.Remove(e);
+            }
+            db.SaveChanges();
+        }
+       
         public void EditUser(ApplicationUser user)
         {
             var us = db.Users.Find(user.Id);

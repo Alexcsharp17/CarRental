@@ -30,7 +30,8 @@ namespace CarRental.WEB.Helpers
                     if (i == pagingInfo.CurrentPage)
                     {
                         tag.AddCssClass("selected");
-                        tag.AddCssClass("btn-primary");
+                        tag.AddCssClass("btn-primary ");
+
                     }
                     tag.AddCssClass("btn btn-default border");
                     result.Append(tag.ToString());

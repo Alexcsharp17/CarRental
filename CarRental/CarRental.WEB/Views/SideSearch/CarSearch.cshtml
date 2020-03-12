@@ -5,45 +5,40 @@
     @using (Ajax.BeginForm("CarSearch", "SideSearch", FormMethod.Post, new AjaxOptions { UpdateTargetId = "car_area" }))
     {
         @Html.AntiForgeryToken()
-
     <div class="form-horizontal mr-5">
-
-        <div class="icon-menu  ml-2 ">
-            <span class="divide"></span>
-            <span class="divide"></span>
-            <span class="divide"></span>
-
-        </div>
-
-        <div id="top-bl"></div>
-        <div class="cheks-head"><p>Model name</p></div>
-        <div class="form-group mt-2">
-
-            <div class="sear_name">
-                <span>
-                    <input type="text" name="Name" data-autocomplete-source='@Url.Action("AutocompleteSearch", "SideSearch")' class="form-control d-inline w-75" />
-                    <input type="submit" value="Apply" class="btn btn-success s_btn  " id="sbm" />
-                </span>
+        <div id="close-sec" class="mb-2 container-fluid ">
+            <div class="icon-menu  ml-2 d-flex flex-row p-1" >
+                <div class="d-flex flex-row container-fluid ml-5">
+                    
+                    <img alt="X" src="~/Content/img/ico/close.png" style="height:35px;width:35px;" class="float-right d-inline"  id="cl-ic"/>
+                </div>
 
             </div>
         </div>
+        <div id="top-bl" ></div>        
+        <div class="form-group mt-2">
+            <div class="sear-sec">
+                <div class="cheks-head container-fluid"><p>Model name</p></div>
+                <div class="sear_name mt-1 mb-1">
+                    <span>
+                        <input type="text" name="Name" data-autocomplete-source='@Url.Action("AutocompleteSearch", "SideSearch")' class="form-control d-inline w-75" />
+                        <input type="submit" value="Apply" class="btn btn-success s_btn  " id="sbm" />
+                    </span>
+                </div>
+            </div>           
+        </div>
         <div class="sear-sec">
             <div class="cheks-head container-fluid"><p>Select manufactorer</p></div>
-
             @for (var i = 0; i < Model.manufactorers.Count(); i++)
             {
-
                 <label class="check_row d-flex align-content-center">
-
                     <span>
                         <input type="checkbox" class="big_check" name="manufss" value=@Model.manufactorers[i] />
                     </span>
-                    <span id="test">
+                    <span class="ml-1">
                         @Html.DisplayFor(model => model.manufactorers[i])
                     </span>
-
                 </label>
-
             }
         </div>
         <div class="sear-sec">
@@ -51,15 +46,12 @@
             @for (var i = 0; i < Model.CarTypes.Count(); i++)
             {
                 <label class="check_row d-flex align-content-center">
-
                     <span>
                         <input type="checkbox" class="big_check" name="typess" value=@Model.CarTypes[i] />
                     </span>
-                    <span>
+                    <span  class="ml-1">
                         @Html.DisplayFor(model => model.CarTypes[i])
                     </span>
-
-
                 </label>
             }
         </div>
@@ -68,14 +60,12 @@
             @for (var i = 0; i < Model.FuelTypes.Count(); i++)
             {
                 <label class="check_row d-flex align-content-center">
-
                     <span>
                         <input type="checkbox" class="big_check" name="fueltypess" value=@Model.FuelTypes[i] />
                     </span>
-                    <span>
+                    <span  class="ml-1">
                         @Html.DisplayFor(model => model.FuelTypes[i])
                     </span>
-
                 </label>
             }
         </div>
@@ -84,15 +74,12 @@
             @for (var i = 0; i < Model.Transmissions.Count(); i++)
             {
                 <label class="check_row d-flex align-content-center">
-
                     <label>
                         <input type="checkbox" class="big_check" name="transmissionss" value=@Model.Transmissions[i] />
                     </label>
-                    <label>
+                    <label  class="ml-1">
                         @Html.DisplayFor(model => model.Transmissions[i])
                     </label>
-
-
                 </label>
             }
         </div>
@@ -109,30 +96,35 @@
                 </div>
             </div>
         </div>
-
         @*<input type="hidden" name="sort" id="sort" />*@
         @Html.HiddenFor(model => model.Sort, new { @id = "sort", name = "sort" })
-
-
-
-
-
-
-
+        @Html.HiddenFor(model => model.Page, new { @id="Page",name="page"})
     </div>
     }
 </div>
 
 
 <script>
+    $(document).ready(function () {
+        $(".paginat").children("a").click(function (event) {
+            alert("hello");
+            event.preventDefault();
+            var s = $("#Page").val($(".selected").val());
+            $("#Page").replaceWith(s);
+            var sort = $("#sort").val($("#sorting").find(":selected").val());
+            $("#sort").replaceWith(sort);
+            $("#sbm").click();
+        });
+    });
 
     $(document).on('change', ':input', function () {
-        var s = $("#sort").val($("#sorting").find(":selected").val());
-       
+        var s = $("#sort").val($("#sorting").find(":selected").val());     
         $("#sort").replaceWith(s);
-
+        var p = $("#Page").val($(".selected").val());
+        $("#Page").replaceWith(p);
         $("#sbm").click();
     });
+   
     $(function () {
         $("[data-autocomplete-source]").each(function () {
             var target = $(this);
