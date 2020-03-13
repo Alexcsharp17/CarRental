@@ -1,12 +1,12 @@
 ﻿@model CarRental.BLL.DTO.OrderDTO
-<div class="content">
+<div class="m-4 bg-light border">
     @using (Html.BeginForm())
-    {
+    {   
         @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-
-            <hr />
+        <div class="form-horizontal p-3">
+            <h4 class="font-weight-bold text-center">Edit Order</h4>
+         
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
 
@@ -56,23 +56,23 @@
             </div>
 
             <div class="form-group">
-                <p class="control-label col-md-2 ">Mark As Сompleted</p>
+               
 
                 <div class="col-md-10">
                     <div class="checkbox">
-                        @Html.EditorFor(model => model.IsDeleted, new { htmlAttributes = new { @class = "big_check" } })
+                        @Html.HiddenFor(model => model.IsDeleted, new { htmlAttributes = new { @class = "big_check" } })
 
                     </div>
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group ml-3">
                 <select class="form-control" id="Status" name="Status">
-
                     <option value="pending">Pending</option>
-                    <option value="approved">Approved</option>
-                    <option value="rejected">Rejected</option>
                     <option value="confirmed">Confirmed</option>
+                    <option value="rejected">Rejected</option>
+                    <option value="fine">Fine</option>
+                    <option value="completed">Completed</option>
                 </select>
             </div>
 

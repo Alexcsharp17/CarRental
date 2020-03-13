@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<CarRental.BLL.DTO.UserDTO>
 @Styles.Render("~/Content/themes/base/all.css")
 <div id="user_area">
-    <p class="btn btn-info">
-        @Html.ActionLink("Add Manager", "Register", null, new { @class = "btn btn-info" })
+    <p>
+        @Html.ActionLink("Add Manager", "Register",new {Area = "Admin" }, new { @class = "btn btn-info" })
     </p>
 
     <table class="table">
@@ -46,9 +46,9 @@
                     @Html.DisplayFor(modelItem => item.Role)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "EditUser", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "UserDetails", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @Html.ActionLink("Change", "EditUser", new { id = item.Id,area="Admin" }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Detail", "UserDetails", new { id = item.Id,area="Admin" }, new { @class = "btn btn-info" })
+
                 </td>
             </tr>
         }

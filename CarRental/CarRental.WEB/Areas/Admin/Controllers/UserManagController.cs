@@ -1,4 +1,5 @@
-﻿using CarRental.BLL.DTO;
+﻿using CarRental.BLL.Attributes;
+using CarRental.BLL.DTO;
 using CarRental.BLL.Infrastracture;
 using CarRental.BLL.Interfaces;
 using CarRental.WEB.Areas.Admin.Models;
@@ -13,6 +14,8 @@ using System.Web.Mvc;
 
 namespace CarRental.WEB.Areas.Admin.Controllers
 {
+    [ExceptionLogger]
+    [Authorize(Roles = "admin")]
     public class UserManagController : Controller
     {
         static IEnumerable<string> userss = new List<string>();

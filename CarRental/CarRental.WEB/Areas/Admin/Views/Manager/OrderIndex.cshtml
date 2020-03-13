@@ -5,10 +5,10 @@
     ViewBag.Title = "GetOrders";
 }
 
-<h2>Manager dashboard </h2>
+<h2  class="text-center">Manager dashboard </h2>
 
 <div class="content" id="order_area">
-    <table class="table">
+    <table class="table table-bordered table-striped">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.FirstOrDefault().User_Id)
@@ -62,7 +62,27 @@
                     @Html.DisplayFor(modelItem => item.OrdSum)
                 </td>
                 <td>
-                    <span>@item.Status</span>
+                    @if (item.Status.ToLower() == "pending")
+                    {
+                        <span class="bg-info d-block text-center font-weight-bold">@item.Status</span>
+                    }
+                    else if (item.Status.ToLower() == "completed")
+                    {
+                        <span class="bg-secondary d-block text-center ">@item.Status</span>
+                    }
+                    else if (item.Status.ToLower() == "confirmed")
+                    {
+                        <span class="bg-success d-block text-center font-weight-bold">@item.Status</span>
+                    }
+                    else if (item.Status.ToLower() == "rejected")
+                    {
+                        <span class="bg-warning d-block text-center font-weight-bold">@item.Status</span>
+                    }
+                    else if (item.Status.ToLower() == "fine")
+                    {
+                        <span class="bg-danger d-block text-center font-weight-bold">@item.Status</span>
+                    }
+                
                 </td>
 
                 <td>

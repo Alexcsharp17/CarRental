@@ -1,84 +1,82 @@
 ﻿@model CarRental.BLL.DTO.UserDTO
+<div class="row">
+    <div class="col-4 offset-4 bg-light border mt-5">
+        <h4 class="text-center ">Profile details</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
 
-<div>
-    <h4>Profile details</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Role)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Role)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Role)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Role)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Banned)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Banned)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Banned)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Banned)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.RepairInvoice)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RepairInvoice)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RepairInvoice)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.RepairInvoice)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PassportNumb)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PassportNumb)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PassportNumb)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PassportNumb)
-        </dd>
-
-    </dl>
+        </dl>
+       
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

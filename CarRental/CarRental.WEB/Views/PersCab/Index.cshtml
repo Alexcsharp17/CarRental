@@ -1,5 +1,6 @@
 ﻿@model CarRental.WEB.Models.PersonalCabViewModel
 
+<div class="m-5">
 @if (ViewBag.Res == "added")
 {
     <div class="alert alert-primary" role="alert" id="alert">
@@ -12,11 +13,11 @@ else if (ViewBag.Res == "deleted")
         You have canceled  reservation!
     </div>
 }
-
-<div class="d-flex flex-row flex-wrap">   
+<div class="row">   
  
-        <div class=" ">
-            <table class="table">
+        <div class="col-10 offset-1  ">
+            <h4 class="text-center">Your Orders</h4>
+            <table class="table table-striped table-bordered">
                 <tr>
                     <th>
                         @Html.DisplayNameFor(model => model.Orders.FirstOrDefault().CarDTO.Name)
@@ -58,12 +59,20 @@ else if (ViewBag.Res == "deleted")
                             @Html.DisplayFor(modelItem => item.Driver)
                         </td>
                         <td>
-                            @if (item.Status.ToLower() == "approved")
+                            @if (item.Status.ToLower() == "confirmed")
                             {
                                 <div class="alert alert-success ">@item.Status</div>
 
                             }
                             else if (item.Status.ToLower() == "rejected")
+                            {
+                                <div class="alert alert-warning ">@item.Status</div>
+                            }
+                            else if (item.Status.ToLower() == "completed")
+                            {
+                                <div class="alert alert-secondary ">@item.Status</div>
+                            }
+                            else if (item.Status.ToLower() == "fined")
                             {
                                 <div class="alert alert-danger ">@item.Status</div>
                             }
@@ -84,6 +93,7 @@ else if (ViewBag.Res == "deleted")
 
             </table>
         </div>
+</div>
 </div>
 <script>
     $(document).ready(function () {

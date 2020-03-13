@@ -49,6 +49,11 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             DatAcessService.DeleteExceptions();
             return RedirectToAction("GetExceptions");
         }
+        public ActionResult ExceptionDetails(int id)
+        {
+          ExceptionDetailDTO exc= DatAcessService.Exceptions.FirstOrDefault(e => e.Id == id);
+            return View(exc);
+        }
 
         public ActionResult GetCars()
         {

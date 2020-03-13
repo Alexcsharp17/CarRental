@@ -1,4 +1,5 @@
-﻿using CarRental.BLL.DTO;
+﻿using CarRental.BLL.Attributes;
+using CarRental.BLL.DTO;
 using CarRental.BLL.Interfaces;
 using CarRental.WEB.Models;
 using Microsoft.AspNet.Identity.Owin;
@@ -9,7 +10,9 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace CarRental.WEB.Areas.Admin.Controllers
-{ 
+{
+    [ExceptionLogger]
+    [Authorize(Roles = "admin, manager")]
     public class ManagerController : Controller
     {
         static IEnumerable<string> userss = new List<string>();
@@ -23,7 +26,12 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         }
         public ActionResult OrderIndex()
         {
-            return View(DatAcessService.Orders);
+            var ord = DatAcessService.Orders;
+            foreach(var o in ord)
+            {
+                o.CarDTO = DatAcessService.FindCar(o.CarId);
+            }
+            return View(ord);
         }
 
       
@@ -44,7 +52,10 @@ namespace CarRental.WEB.Areas.Admin.Controllers
                 }
             }
            IEnumerable<OrderDTO> orders = ordrs;
-            var el = orders.FirstOrDefault();
+            foreach(var o in orders)
+            {
+                o.CarDTO = DatAcessService.FindCar(o.CarId);
+            }
             return PartialView("~/Views/Home/RendOrders.cshtml", orders);
         }
         //Manager can change order status and leave a comment.
@@ -66,7 +77,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 DatAcessService.CreateOrder(order);
-                return RedirectToAction("GetOrders", "Manager");
+                return RedirectToAction("OrderIndex", "Manager");
             }
             else
             {
@@ -74,17 +85,6 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             }
         }
 
-
-        [HttpPost]
-        public ActionResult EditOrder(OrderDTO order)
-        {
-            if (ModelState.IsValid)
-            {
-                DatAcessService.CreateOrder(order);
-                return RedirectToAction("GetOrders", new { res = "edited" });
-            }
-            else return View(order);
-        }
         public ActionResult DeleteOrder(int ordId){
             var order = DatAcessService.Orders.Where(o => o.OrderId == ordId);
             if (order == null)
@@ -92,17 +92,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             DatAcessService.DeleteOrder(ordId);
-            return RedirectToAction("GetOrders", new { res = "deleted" });
-        }
-        public ActionResult DeleteOrderSoft(int ordId)
-        {
-            var order = DatAcessService.Orders.Where(o => o.OrderId == ordId);
-            if (order == null)
-            {
-                return HttpNotFound();
-            }
-            DatAcessService.DeleteOrderSoft(ordId);
-            return RedirectToAction("GetOrders", new { res = "deleted" });
+            return RedirectToAction("OrderIndex", new { res = "deleted" });
         }
         public ActionResult Details(int id)
         {

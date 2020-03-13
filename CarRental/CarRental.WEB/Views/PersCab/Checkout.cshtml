@@ -4,8 +4,8 @@
     ViewBag.Title = "Checkout";
 }
 
-<div class="row">
-    <div class="card mr-3 mt-3 rounded-lg" style="width: 18rem;">
+<div class="row mt-2">
+    <div class="card mr-3 mt-3 rounded-lg offset-2 col-3 bg-light" style="width: 18rem;">
         <h4 class="text-center mb-0 mt-1">@Model.CarDTO.Name</h4>
         <div class="text-center ">
             <span class="mr-1">@Model.CarDTO.FuelConsump L</span>|
@@ -103,7 +103,7 @@
 
     
 
-    <div class="col-sm-12 col-md-5">
+    <div class="col-5 bg-light mt-3 border">
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()

@@ -566,7 +566,6 @@
     <Content Include="Areas\Admin\Views\UserManag\CreateManager.cshtml" />
     <Content Include="Areas\Admin\Views\Manager\GetOrders.cshtml" />
     <Content Include="Areas\Admin\Views\Manager\EmptyStore.cshtml" />
-    <Content Include="Areas\Admin\Views\UserManag\GetManagers.cshtml" />
     <Content Include="Areas\Admin\Views\Manager\ChangeStat.cshtml" />
     <Content Include="Areas\Admin\Views\Main\EditCar.cshtml" />
     <Content Include="Areas\Admin\Views\Main\FileUpload.cshtml" />
@@ -586,6 +585,7 @@
     <Content Include="Areas\Admin\Views\UserManag\GetUsers.cshtml" />
     <Content Include="Areas\Admin\Views\UserManag\RendUsers.cshtml" />
     <Content Include="Areas\Admin\Views\Manager\OrderIndex.cshtml" />
+    <Content Include="Areas\Admin\Views\Main\ExceptionDetails.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -730,6 +730,7 @@
     <Content Include="Views\Home\RendUsers.cshtml" />
     <Content Include="Views\SideSearch\OrderSearch.cshtml" />
     <Content Include="Views\Home\RendOrders.cshtml" />
+    <Content Include="Views\Home\RendMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

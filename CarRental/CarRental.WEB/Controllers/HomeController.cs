@@ -2,6 +2,7 @@
 using CarRental.BLL.DTO;
 using CarRental.BLL.Interfaces;
 using CarRental.WEB.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
@@ -149,7 +150,25 @@ namespace CarRental.WEB.Controllers
            
             return PartialView(model);
         }
-       
+       public PartialViewResult RendMenu()
+        {
+            var userID = User.Identity.GetUserId();
+            var orders = DatAcessService.FindOrders(userID);
+            var fines = orders.Where(o => o.Status == "fine");
+            UserDTO user = DatAcessService.Users.FirstOrDefault(u => u.Id == userID);
+            var fillpfof = false;
+            
+            if(User.Identity.IsAuthenticated) { 
+            if(user.Name==null || user.PassportNumb==0)
+            {
+                fillpfof = true;
+            }
+            ViewBag.Fines = fines.Count();
+            ViewBag.Orders = orders.Count();
+            ViewBag.Fillprof = fillpfof;
+            }
+            return PartialView();
+        }
 
     }
 }

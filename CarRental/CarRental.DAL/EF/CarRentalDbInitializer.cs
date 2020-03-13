@@ -41,6 +41,7 @@ namespace CarRental.DAL.EF
             Car c27 = new Car { CarId = 27, Name = "Peugeot 55", AirConditon = true, AutomaticTransm = true, DriveUnit = "rear", Capacity = 5, Manufacturer = "Peugeot", Price = 32, CarType = "premium", Door = 4, FuelType = "Petrol", EngSize = 3, FuelConsump = 4, Image = "/Content/img/cars/Peugeot 301.jpg" };
             Car c28 = new Car { CarId = 28, Name = "Opel Remi", AirConditon = true, AutomaticTransm = false, DriveUnit = "front", Capacity = 5, Manufacturer = "Opel", Price = 32, CarType = "premium", Door = 4, FuelType = "Petrol", EngSize = 2, FuelConsump = 4, Image = "/Content/img/cars/opel-vivaro.jpg" };
 
+            
             context.Cars.Add(c1);
             context.Cars.Add(c2);
             context.Cars.Add(c3);

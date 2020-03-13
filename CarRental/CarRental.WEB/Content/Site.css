@@ -158,6 +158,13 @@ textarea {
     right: 15px;
     cursor: pointer;
 }
+#ph_numb{
+    min-width:180px;
+    max-width:190px;
+}
+.card{
+    min-width:260px;
+}
 
     #back-to-top i {
         width: 50px;
@@ -243,5 +250,6 @@ textarea {
      width:80px;
      margin-top:4px;
  }
+
 
 

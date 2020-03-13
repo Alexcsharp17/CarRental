@@ -9,7 +9,7 @@ using System.Web.Mvc;
 namespace CarRental.WEB.Areas.Admin.Controllers
 {
     [ExceptionLogger]
-    [Authorize(Roles = "admin")]
+    [Authorize(Roles = "admin, manager")]
     public class DashboardController : Controller
     {
         private IDatAcessService DatAcessService;

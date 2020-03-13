@@ -1,6 +1,7 @@
 ﻿using CarRental.BLL.Infrastracture;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,10 @@ namespace CarRental.BLL.DTO
         public string Role { get; set; }
         public bool Banned { get; set; }
         public string RepairInvoice { get; set; }
-        public int PhoneNumber { get; set; }
+        [Display(Name = "Mobile Number:")]
+        [Required(ErrorMessage = "Mobile Number is required.")]
+        [RegularExpression(@"^([0-9]{10})$", ErrorMessage = "Invalid Mobile Number.")]
+        public string PhoneNumber { get; set; }
 
         public int PassportNumb { get; set; }
     }
