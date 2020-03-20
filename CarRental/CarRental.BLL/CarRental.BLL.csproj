@@ -94,8 +94,6 @@
     <Compile Include="Infrastracture\ServiceModule.cs" />
     <Compile Include="Interfaces\UserService.cs" />
     <Compile Include="Interfaces\IDatAcessService.cs" />
-    <Compile Include="Mappers\CarMapper.cs" />
-    <Compile Include="Mappers\OrderMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DatAcessService.cs" />
     <Compile Include="Services\ServiceCreator.cs" />

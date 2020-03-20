@@ -1,6 +1,4 @@
 ﻿<div class="sidebar">
-
-
     @using(Ajax.BeginForm("UserSearch", "SideSearch", new AjaxOptions { UpdateTargetId = "user_area", InsertionMode = InsertionMode.Replace }))
     {<div class="">
         <div class="sear-sec">
@@ -11,7 +9,7 @@
                 </span>
             </div>
          </div>
-        <div class=" sear-sec">
+        @*<div class=" sear-sec">
             <div class="cheks-head">User Role</div>
             <div class="check_row">
                 <span>
@@ -29,7 +27,7 @@
                     Users
                 </span>
             </div>
-        </div>
+        </div>*@
         <div class="sear-sec">
             <div class="cheks-head">Status</div>
             <label class="check_row">

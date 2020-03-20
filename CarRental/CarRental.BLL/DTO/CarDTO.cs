@@ -32,7 +32,7 @@ namespace CarRental.BLL.DTO
         public int Capacity { get; set; }
 
         //(Four, front,rear)
-        [Display(Name = "DriveUnit")]
+        [Display(Name = "Drive Unit")]
         [Required(ErrorMessage = "Please input DriveUnit type")]
         public string DriveUnit { get; set; }
 

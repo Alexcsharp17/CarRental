@@ -108,7 +108,7 @@ namespace CarRental.WEB.Controllers
             ViewBag.Sort = new List<string>() { "ascending", "descending" };
             return View(model);
         }
-        public PartialViewResult RendCars( int page = 1,string id=null)
+        public PartialViewResult RendCars( int page = 1,string id=null,string sort="")
         {
             page = page < Convert.ToInt32(Math.Ceiling((double)DatAcessService.Cars.Count() / pageSize)) ? page :
                Convert.ToInt32(Math.Ceiling((double)DatAcessService.Cars.Count() / pageSize));
@@ -147,7 +147,7 @@ namespace CarRental.WEB.Controllers
 
             };
             ViewBag.Sort = new List<string>() { "ascending", "descending" };
-           
+            ViewBag.s = sort;
             return PartialView(model);
         }
        public PartialViewResult RendMenu()

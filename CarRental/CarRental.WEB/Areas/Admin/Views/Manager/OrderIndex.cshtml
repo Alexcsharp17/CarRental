@@ -89,9 +89,10 @@
                     @Html.DisplayFor(modelItem => item.ManagComment)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "EditStatus", new { Id = item.OrderId }, new { @class = "btn btn-warning  adm_but" })
-                    @Html.ActionLink("Details", "Details", new { Id = item.OrderId }, new { @class = "btn btn-info adm_but" })
-                    @Html.ActionLink("Delete", "DeleteOrder", new { ordId = item.OrderId }, new { @class = "btn btn-danger adm_but" })
+                    <a href="@Url.Action("EditStatus", new {  Id = item.OrderId} )" class="btn btn-warning adm_but"><i class="fa fa-edit mr-1 d-inline"></i>Edit</a>
+                    <a href="@Url.Action("Details", new { Id = item.OrderId } )" class="btn btn-info adm_but text-dark"><i class="fa fa-info mr-1 d-inline"></i>Detail</a>
+                    <a href="@Url.Action("DeleteOrder", new { ordId = item.OrderId } )" class="btn btn-danger adm_but text-dark"><i class="fa fa-trash mr-1 d-inline"></i>Delete</a>
+
                 </td>
             </tr>
         }
@@ -105,5 +106,5 @@
         $(document).on('change', ':input', function () {
             $("#sbm").click();
         });
-    });
+   
 </script>

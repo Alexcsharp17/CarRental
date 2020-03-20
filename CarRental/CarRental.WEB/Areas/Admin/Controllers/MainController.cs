@@ -102,8 +102,16 @@ namespace CarRental.WEB.Areas.Admin.Controllers
                 uploadFile.SaveAs(filePath);
                 ViewBag.Name=uploadFile.FileName;
                 ViewBag.filePath = filePath;
+            }           
+            return PartialView();
+        }
+      public PartialViewResult FileDelete(string route)
+        {
+            var filePath = Server.MapPath("~" + route);
+            if (System.IO.File.Exists(filePath))
+            {
+                System.IO.File.Delete(filePath);
             }
-           
             return PartialView();
         }
 
@@ -125,6 +133,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+           
             return View(car);
         }
 
@@ -146,12 +155,9 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
-           var car= DatAcessService.FindCar(id);
-            var filePath = Server.MapPath("~"+car.Image);
-            if (System.IO.File.Exists(filePath))
-            {
-                System.IO.File.Delete(filePath);
-            }
+           
+            var car= DatAcessService.FindCar(id);
+           
             if (car == null)
             {
                 return HttpNotFound();
@@ -163,9 +169,16 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Delete(CarDTO car)
         {
+           
+            var filePath = Server.MapPath("~" + car.Image);
+            if (System.IO.File.Exists(filePath))
+            {
+                System.IO.File.Delete(filePath);
+            }
             DatAcessService.DeleteCar(car.CarId);
             return RedirectToAction("GetCars", "Main");
         }
+
         [HttpGet]
         public ActionResult DleteSoft(int id)
         {

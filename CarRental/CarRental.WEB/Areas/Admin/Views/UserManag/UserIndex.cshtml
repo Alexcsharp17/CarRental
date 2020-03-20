@@ -3,15 +3,16 @@
 @Styles.Render("~/Content/themes/base/all.css")
 <div class="content   " id="user_area">
     <p>
-        @Html.ActionLink("Add Manager", "Register", null, new { @class = "btn btn-info" })
+        <a href="@Url.Action("Register" )" class="btn btn-info ml-1"><i class="fa fa-plus mr-1"></i>Add Manager</a>
     </p>
+   
 
-    <table class="table table-bordered table-striped" >
+    <table class="table table-bordered table-striped">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
-            
+
             <th>
                 @Html.DisplayNameFor(model => model.UserName)
             </th>
@@ -29,9 +30,9 @@
         {
             <tr>
                 <td>
-                   <p>@item.Email</p>
+                    <p>@item.Email</p>
                 </td>
-              
+
                 <td>
                     @Html.DisplayFor(modelItem => item.UserName)
                 </td>
@@ -43,9 +44,9 @@
                     @Html.DisplayFor(modelItem => item.Role)
                 </td>
                 <td>
-                    @Html.ActionLink("Change", "EditUser", new { id = item.Id },new { @class="btn btn-warning"}) 
-                    @Html.ActionLink("Detail", "UserDetails", new { id = item.Id }, new { @class = "btn btn-info" }) 
-                  
+                   
+                    <a href="@Url.Action("EditUser", new { id =item.Id } )" class="btn btn-warning adm_but"><i class="fa fa-edit mr-1 d-inline"></i>Edit</a>
+                    <a href="@Url.Action("UserDetails", new { id = item.Id } )" class="btn btn-info adm_but text-dark"><i class="fa fa-info mr-1 d-inline"></i>Detail</a>
                 </td>
             </tr>
         }

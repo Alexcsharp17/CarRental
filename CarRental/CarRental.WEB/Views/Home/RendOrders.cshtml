@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<CarRental.BLL.DTO.OrderDTO>
 
 <div class="content ml-0" id="order_area">
-    <table class="table">
+    <table class="table table-bordered table-striped">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.FirstOrDefault().User_Id)
@@ -55,16 +55,36 @@
                     @Html.DisplayFor(modelItem => item.OrdSum)
                 </td>
                 <td>
-                    <span>@item.Status</span>
+                    @if (item.Status.ToLower() == "pending")
+                    {
+                        <span class="bg-info d-block text-center font-weight-bold">@item.Status</span>
+                    }
+                    else if (item.Status.ToLower() == "completed")
+                    {
+                        <span class="bg-secondary d-block text-center ">@item.Status</span>
+                    }
+                    else if (item.Status.ToLower() == "confirmed")
+                    {
+                        <span class="bg-success d-block text-center font-weight-bold">@item.Status</span>
+                    }
+                    else if (item.Status.ToLower() == "rejected")
+                    {
+                        <span class="bg-warning d-block text-center font-weight-bold">@item.Status</span>
+                    }
+                    else if (item.Status.ToLower() == "fine")
+                    {
+                        <span class="bg-danger d-block text-center font-weight-bold">@item.Status</span>
+                    }
+
                 </td>
 
                 <td>
                     @Html.DisplayFor(modelItem => item.ManagComment)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "EditStatus", new { Id = item.OrderId ,area="Admin"}, new { @class = "btn btn-warning  adm_but" })
-                    @Html.ActionLink("Details", "Details", new { Id = item.OrderId, area = "Admin" }, new { @class = "btn btn-info adm_but" })
-                    @Html.ActionLink("Delete", "DeleteOrder", new { ordId = item.OrderId, area = "Admin" }, new { @class = "btn btn-danger adm_but" })
+                    <a href="@Url.Action("EditStatus", new {  Id = item.OrderId} )" class="btn btn-warning adm_but"><i class="fa fa-edit mr-1 d-inline"></i>Edit</a>
+                    <a href="@Url.Action("Details", new { Id = item.OrderId } )" class="btn btn-info adm_but text-dark"><i class="fa fa-info mr-1 d-inline"></i>Detail</a>
+                    <a href="@Url.Action("DeleteOrder", new { ordId = item.OrderId } )" class="btn btn-danger adm_but text-dark"><i class="fa fa-trash mr-1 d-inline"></i>Delete</a>
                 </td>
             </tr>
         }

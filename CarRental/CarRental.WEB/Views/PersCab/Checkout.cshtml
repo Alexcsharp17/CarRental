@@ -3,9 +3,9 @@
 @{
     ViewBag.Title = "Checkout";
 }
-
-<div class="row mt-2">
-    <div class="card mr-3 mt-3 rounded-lg offset-2 col-3 bg-light" style="width: 18rem;">
+<script src="~/Scripts/umd/popper.js"></script>
+<div class="row mt-2 checkout">
+    <div class="card offset-3 offset-sm-4 offset-lg-2 offset-md-2 col-10 col-md-4  mt-3 rounded-lg  bg-light" style="max-width:260px;">
         <h4 class="text-center mb-0 mt-1">@Model.CarDTO.Name</h4>
         <div class="text-center ">
             <span class="mr-1">@Model.CarDTO.FuelConsump L</span>|
@@ -16,7 +16,7 @@
         {
             Model.CarDTO.Image = "/Content/img/vehicle1.jpg";
         }
-         
+
 
         <img src="@Model.CarDTO.Image" class=" img-fluid ml-2 mr-2 rounded" alt="carDescription">
         <div class="card-body pt-1 p-2">
@@ -101,99 +101,145 @@
         </div>
     </div>
 
-    
 
-    <div class="col-5 bg-light mt-3 border">
+
+    <div class="col-12 col-sm-12 col-md-4 rounded bg-light mt-3 ml-sm-3 border d-flex justify-content-center">
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
 
-            <div class="form-horizontal">
-                
+        <div class="form-horizontal">
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group m-0">
+
+                <div class="col-md-10">
+                    @Html.HiddenFor(model => model.OrderId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.OrderId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.HiddenFor(model => model.User_Id, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.User_Id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.HiddenFor(model => model.CarId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CarId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <h5 class="ml-2">Take car</h5>
+            <div class="form-group ml-2  ">
+                <select id="start_p" class="form-control ">
+                    <option value="Kharkiv Gagarina 23">Kharkiv Gagarina 23</option>
+                    <option value="Kharkiv South Railvay">Kharkiv South Railvay</option>
+                    <option value="Kharkiv Central Airport">Kharkiv Central Airport</option>
+                </select>
+            </div>
+
+            <div class="d-flex flex-row mb-0">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label d-inp datepicker ml-3 mb-0" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control d-inp" } })
+                    </div>
+                </div>
+                <div class="  ">
+                    <select id="start_t" class="form-control ">
+                        @for (int i = 0; i < 24; i++)
+                        {
+                            <option value=@i>@i:00</option>
+                        }
+
+                    </select>
+                    @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+            <h5 class="ml-2 mt-0">Return car</h5>
+            <div class="form-group ml-2 ">
+                <select id="end_p" class="form-control ">
+                    <option value="Kharkiv Gagarina 23">Kharkiv Gagarina 23</option>
+                    <option value="Kharkiv South Railvay">Kharkiv South Railvay</option>
+                    <option value="Kharkiv Central Airport">"Kharkiv Central Airport</option>
+                </select>
+            </div>
+            <div class="flex-row d-flex">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label d-inp datepicker ml-3 mb-0" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control d-inp" } })
+                    </div>
+                </div>
                
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
 
-                    <div class="col-md-10">
-                        @Html.HiddenFor(model => model.OrderId, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.OrderId, "", new { @class = "text-danger" })
-                    </div>
+                <div class="  ">
+                    <select id="end_t" class="form-control ">
+                        @for (int i = 0; i < 24; i++)
+                        {
+                            <option value=@i>@i:00</option>
+                        }
+
+                    </select>
+                    @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
+
                 </div>
 
-                <div class="form-group">
-
-                    <div class="col-md-10">
-                        @Html.HiddenFor(model => model.User_Id, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.User_Id, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-
-                    <div class="col-md-10">
-                        @Html.HiddenFor(model => model.CarId, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.CarId, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-2 datepicker" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control"} })
-                        @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label col-md-2 datepicker" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Driver, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <div class="checkbox">
-                            @Html.EditorFor(model => model.Driver)
-                            @Html.ValidationMessageFor(model => model.Driver, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.PassportNumb, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <div class="checkbox">
-                            @Html.EditorFor(model => model.PassportNumb)
-                         
-                            @Html.ValidationMessageFor(model => model.PassportNumb, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-
-                    <div class="col-md-10">
-                        <div class="checkbox">
-                            @Html.HiddenFor(model => model.IsDeleted)
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-
-                    <div class="col-md-10">
-                        @Html.HiddenFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Order" class="btn btn-success" />
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Driver, htmlAttributes: new { @class = "control-label ml-3" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Driver, new { htmlAttributes = new { @class = "big_check mb-0" } })
+                        @Html.ValidationMessageFor(model => model.Driver, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
+            <div class="form-group">
+                <p class="control-label ml-3"> Passport Number</p>
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.PassportNumb, new { htmlAttributes = new { @class = "control-label d-inp rounded" } })
+
+                        @Html.ValidationMessageFor(model => model.PassportNumb, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.HiddenFor(model => model.IsDeleted)
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.HiddenFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            @Html.Hidden("start_time", null, new { AllowHtmlAttributes = new { @id = "start_time" } })
+            @Html.Hidden("end_time", null, new { AllowHtmlAttributes = new { @id = "end_time" } })
+            @Html.Hidden("start_place",null, new { AllowHtmlAttributes = new { @id = "start_place" } })
+            @Html.Hidden("end_place", new { AllowHtmlAttributes = new { @id = "end_place" } })
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Order" class="btn btn-success" id="sb_but" />
+                </div>
+            </div>
+        </div>
         }
     </div>
 </div>
@@ -206,10 +252,10 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('input[type=datetime]').datepicker({
-                dateFormat: "dd/M/yy",
+                dateFormat: 'dd/mm/yy',
                 startDate: new Date(),
-                changeMonth: true,                
-                changeYear: true,              
+                changeMonth: true,
+                changeYear: true,
                 minDate: new Date(),
                 maxDate: '+2y',
                 onSelect: function (dateText, inst) {
@@ -217,6 +263,20 @@
                         $("#txtStartDate").datepicker("getDate"));
                 }
             });
+            $('#sb_but').click(function (e) {
+                
+                var s1 = $("#start_time").val($("#start_t").find(":selected").val());
+                var s2 = $("#end_time").val($("#end_t").find(":selected").val());
+                var p1 = $("#start_place").val($("#start_p").find(":selected").val());
+                var s2 = $("#end_place").val($("#end_p").find(":selected").val());
+                $("#start_time").replaceWith(s1);
+                $("#end_time").replaceWith(s2);
+                $("#start_place").replaceWith(p1);
+                $("#end_place").replaceWith(p2);
+                
+            });
+                
+            
 
         });
     </script>

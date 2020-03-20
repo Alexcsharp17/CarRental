@@ -26,12 +26,12 @@ namespace CarRental.BLL.DTO
         
         public int CarId { get; set; }
         
-        [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Start rent")]
         public DateTime StartTime { get; set; }
-        
-        [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
-        
+        [Display(Name = "Take car")]
+        public string StartPlace { get; set; }
+        [Display(Name = "Return car")]
+        public string EndPlace { get; set; }
         [Display(Name = "End rent")]
         public DateTime EndTime { get; set; }
         //Client needs driver

@@ -2,9 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\CarRental",
+    "\\CarRental\\CarRental.BLL",
+    "\\CarRental\\CarRental.BLL\\Interfaces",
+    "\\CarRental\\CarRental.BLL\\Services",
     "\\CarRental\\CarRental.WEB",
-    "\\CarRental\\CarRental.WEB\\Views",
-    "\\CarRental\\CarRental.WEB\\Views\\Home"
+    "\\CarRental\\CarRental.WEB\\Areas",
+    "\\CarRental\\CarRental.WEB\\Areas\\Admin",
+    "\\CarRental\\CarRental.WEB\\Areas\\Admin\\Views",
+    "\\CarRental\\CarRental.WEB\\Areas\\Admin\\Views\\Main"
   ],
   "PreviewInSolutionExplorer": false
 }

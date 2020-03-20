@@ -112,6 +112,11 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group m-2">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                </div>
+            </div>
 
             <div id="res">
 
@@ -119,17 +124,15 @@
         }
 
         @using (Ajax.BeginForm("FileUpload", "Main", new AjaxOptions { UpdateTargetId = "res" }, new { enctype = "multipart/form-data" }))
-        {<div id="res">
+        {
 
-                <input id="fil" type="file" name="uploadFile" value="Choose Immage" class="btn btn-secondary" />
-                <input type="submit" value="Confirm Immage" class="btn btn-primary" />
-            </div>
+            <input id="fil" type="file" name="uploadFile" value="Choose Immage" class="btn btn-secondary" />
+          
+            <input type="submit" value="Confirm Immage" class="btn btn-primary" />
+
         }
-        <div class="form-group m-2">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-success" />
-            </div>
-        </div>
+
+
     </div>
 </div>
 <script>

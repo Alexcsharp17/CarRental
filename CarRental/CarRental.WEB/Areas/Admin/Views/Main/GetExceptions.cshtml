@@ -2,7 +2,8 @@
 
 <div class="m-2">
     <p>
-        @Html.ActionLink("ClearList", "DeleteExceptions", null, new { @class = "btn btn-danger" })
+        <a href="@Url.Action("DeleteExceptions")" , class="btn btn-danger  text-dark"><i class="fa fa-fire-alt mr-1 d-inline"></i>Clear all</a>
+
     </p>
     <table class="table table-bordered table-striped">
         <tr>
@@ -39,9 +40,8 @@
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
-
-                    @Html.ActionLink("Details", "ExceptionDetails", new { id = item.Id }, new { @class = "btn btn-info m-1" })
-                    @Html.ActionLink("Delete", "DeleteException", new { id = item.Id }, new { @class = "btn btn-warning m-1" })
+                    <a href="@Url.Action("ExceptionDetails", new { id = item.Id } )" , class="btn btn-info adm_but text-dark"><i class="fa fa-info mr-1 d-inline"></i>Detail</a>
+                    <a href="@Url.Action("DeleteException", new { id = item.Id } )" , class="btn btn-warning adm_but text-dark"><i class="fa fa-trash mr-1 d-inline"></i>Detail</a>
                 </td>
             </tr>
         }

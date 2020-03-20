@@ -6,9 +6,10 @@
 
 <h4 class="container-fluid text-center font-weight-bolder">Car Managment</h4>
 
-<p class="ml-3">
-    @Html.ActionLink("Add Car", "CreateCar",null,new{ @class="btn btn-info ml-1"})
+<p class="ml-3 mb-0">
+    <a href="@Url.Action("CreateCar" )" class="btn btn-info ml-1"><i class="fa fa-plus mr-1"></i>Add Car</a>
 </p>
+
 <br />
 <div class="ml-3 pl-0 container-fluid">
     <table class="table table-bordered table-striped">
@@ -26,7 +27,7 @@
                 @Html.DisplayNameFor(model => model.DriveUnit)
             </th>
             <th>
-               <p>Auto Tran</p>
+                <p>Auto Tran</p>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.AirConditon)
@@ -62,9 +63,10 @@
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "EditCar", new { id = item.CarId }, new { @class = "btn btn-warning adm_but" })
-                    @Html.ActionLink("Details", "CarDetail", new { id = item.CarId }, new { @class = "btn btn-info adm_but" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CarId }, new { @class = "btn btn-danger adm_but" })
+                   
+                    <a href="@Url.Action("EditCar", new { id = item.CarId } )" class="btn btn-warning adm_but"><i class="fa fa-edit mr-1 d-inline"></i>Edit</a>
+                    <a href="@Url.Action("CarDetail", new { id = item.CarId } )" class="btn btn-info adm_but text-dark"><i class="fa fa-info mr-1 d-inline"></i>Detail</a>
+                    <a href="@Url.Action("Delete", new { id = item.CarId } )" class="btn btn-danger adm_but text-dark"><i class="fa fa-trash mr-1 d-inline"></i>Delete</a>
                 </td>
             </tr>
         }

@@ -108,6 +108,7 @@ namespace CarRental.DAL.Repositories
                     dbEntry.Capacity = car.Capacity;
                     dbEntry.Manufacturer = car.Manufacturer;
                     dbEntry.Price = car.Price;
+                    dbEntry.Image = car.Image;
 
                 }
 
@@ -189,7 +190,7 @@ namespace CarRental.DAL.Repositories
                 cars = cars.Where(c => c.Price > LowPrice);
             }
            
-            return (cars);
+            return cars;
         }
         public Car DeleteCar(int id)
         {

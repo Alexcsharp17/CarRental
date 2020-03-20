@@ -2,7 +2,7 @@
 using CarRental.BLL.Calculations;
 using CarRental.BLL.DTO;
 using CarRental.BLL.Interfaces;
-using CarRental.BLL.Mappers;
+
 using CarRental.WEB.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -85,13 +85,18 @@ namespace CarRental.WEB.Controllers
             order.CarId = car.CarId;
           
             order.User_Id= User.Identity.GetUserId();
-            
+            order.StartTime = DateTime.Now.Date;
             order.PassportNumb = DatAcessService.Users.FirstOrDefault(u => u.Id == order.User_Id).PassportNumb;
             return View(order);
         }
         [HttpPost]
-        public ActionResult Checkout(OrderDTO order)
+        public ActionResult Checkout(OrderDTO order,string start_time=null,
+            string end_time=null,string start_place=null,string end_place=null)
         {
+          order.StartTime=order.StartTime.AddHours(Convert.ToDouble(start_time));
+          order.EndTime=order.EndTime.AddHours(Convert.ToDouble(end_time));
+            order.StartPlace = start_place;
+            order.EndPlace = end_place;
             if (ModelState.IsValid)
             {
                 var car = DatAcessService.FindCar(order.CarId);

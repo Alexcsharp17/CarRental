@@ -5,14 +5,12 @@
         @Html.ActionLink("Add Manager", "Register",new {Area = "Admin" }, new { @class = "btn btn-info" })
     </p>
 
-    <table class="table">
+    <table class="table table-bordered table-striped">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
+           
             <th>
                 @Html.DisplayNameFor(model => model.UserName)
             </th>
@@ -30,11 +28,9 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Email)
+                    <p>@item.Email</p>
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Password)
-                </td>
+               
                 <td>
                     @Html.DisplayFor(modelItem => item.UserName)
                 </td>

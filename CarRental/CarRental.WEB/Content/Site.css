@@ -58,7 +58,7 @@ textarea {
     moz-transition: left 1s ease-in-out 0.1s;
     o-transition: left 1s ease-in-out 0.1s;
     transition: left 1s ease-in-out 0.1s;
-    z-index:999;
+    
 }
 .side_sect {
     background-color: #ffb426;
@@ -74,7 +74,6 @@ textarea {
     float: left;
     padding: 5px 0;
     cursor: pointer;
-   
     
    
 }
@@ -102,7 +101,7 @@ textarea {
     .icon-menu {
         display: block;
         z-index: 2;
-        float-left;
+        float:left;   
         margin-top:1px;
         width:22px;
        
@@ -112,12 +111,15 @@ textarea {
         left:-250px;
         width:250px;
         height:100%;
+       display:none;
         
     }
         .sidebar.active {
             left: 0;
-            
+            position:relative;
+            display:block;
         }
+    
     .content{
         margin-left:0;
     }
@@ -159,11 +161,23 @@ textarea {
     cursor: pointer;
 }
 #ph_numb{
-    min-width:180px;
-    max-width:190px;
+    min-width:165px;
+    max-width:165px;
 }
 .card{
     min-width:260px;
+  
+}
+
+.d-inp{
+    width:105px;
+   
+    margin-bottom:10px;
+}
+#start_t,#end_t{
+    height:35px;
+    margin-top:30px;
+    width:90px;
 }
 
     #back-to-top i {
@@ -189,6 +203,9 @@ textarea {
 #top-bl {
     font-weight: bold;
     margin-bottom: 30px;
+}
+.car_area{
+
 }
  /*Side search styles*/
  .sear_name{
@@ -247,9 +264,23 @@ textarea {
 }
  /*Admin area*/
  .adm_but{
-     width:80px;
+     width:85px;
      margin-top:4px;
  }
-
-
+textarea {
+    width: 300px;
+    height: 150px;
+}
+/*checkout*/
+.checkout h5{
+    margin:4px;
+    margin-left:10px;
+    margin-bottom:6px;
+}
+.checkout .form-control {
+    margin: 4px;
+}
+.checkout .form-group {
+    margin-bottom: 6px;
+}
 

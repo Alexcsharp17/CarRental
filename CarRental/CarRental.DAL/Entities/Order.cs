@@ -20,6 +20,11 @@ namespace CarRental.DAL.Entities
         public Car Car { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
+    
+        public string StartPlace { get; set; }
+      
+        public string EndPlace { get; set; }
+        
         //Client needs driver
         public bool Driver { get; set; }
         public bool IsDeleted { get; set; }

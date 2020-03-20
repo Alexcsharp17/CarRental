@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title – CarRental</title>
+    <link href="~/Content/Fonts/fontawesome-free-5.12.1-web/css/all.css" rel="stylesheet" />
+    <link href="~/Content/Fonts/fontawesome-free-5.12.1-web/css/fontawesome.min.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
@@ -54,10 +56,21 @@
         $(document).ready(function ($) {
             $('.icon-menu').click(function (event) {
                 $('.sidebar').toggleClass('active');
+                $('.content').toggleClass('ml-0');
             });
             if ($(window).width() > 991) {
                 $("#close-sec").hide();
             };
+            $(".paginat").find("a").click(function (e) {
+                e.preventDefault();
+                var a = $(this).attr("href").replace(/[^\d.]/g, '');
+                var p = $("#Page").val(a);
+                $("#Page").replaceWith(p);
+                var a = parseInt(a);
+
+                $("#sbm").click();
+
+            });
         });
         $(window).resize(function () {
                      
@@ -68,7 +81,7 @@
                 $("#close-sec").show();
             }; 
         });
-
+       
     </script>
   
 </body>

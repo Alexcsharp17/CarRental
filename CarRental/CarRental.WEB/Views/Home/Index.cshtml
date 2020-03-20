@@ -6,7 +6,7 @@
 }
 
 <div class="ml-0 content" id="car_area">
-    <div class="container-fluid">
+    <div class="container-fluid mt-3 ">
         <div class=" float-left">
             <div class="icon-menu border p1 ">
                 <span class="divide"></span>
@@ -34,7 +34,7 @@
 
 
     <div class="flex-row flex-wrap d-flex justify-content-center">
-       
+
         @foreach (var c in Model.Cars)
         {
 
@@ -144,12 +144,13 @@
     </div>
     <div class="fixed-top text-center  row">
         <div class="col-2 offset-5 bg-success rounded-lg rounded-bottom" id="ph_numb">
-            <img src="~/Content/img/ico/phone.png" alt="Ph" style="width:20px;" class="mb-1 mr-1"/>
-        099-660-25-10</div>
+            <img src="~/Content/img/ico/phone.png" alt="Ph" style="width:20px;" class="mb-1 mr-1" />
+            099-660-25-10
+        </div>
     </div>
 
     <div class="clearfix"></div>
-    <div class="text-center mt-2">
+    <div class="text-center mt-2 paginat">
 
         @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
     </div>
@@ -177,4 +178,6 @@
         }, 1500);
         return false;
     });
+  
+   
 </script>

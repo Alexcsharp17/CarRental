@@ -51,33 +51,33 @@ namespace CarRental.WEB.Controllers
             var MinPrice = DatAcessService.Cars
                             .Select(c => c.Price)
                             .Min();
-            int i = 0;
+           
             foreach(var t in uniqueManuf)
             {
                 mod.manufactorers.Add(t);
-                i++;
+               
             }
           
-             i = 0;
+            
             
             foreach (var t in uniqueCarTyp)
             {
                 mod.CarTypes.Add(t);
-                i++;
+               
             }
-            i = 0;
+           
 
             foreach (var t in uniqueTransm)
             {
                 mod.Transmissions.Add(t.ToString());
-                i++;
+               
             }
-            i = 0;
+            
 
             foreach (var t in uniqueFuelTyp)
             {
                 mod.FuelTypes.Add(t);
-                i++;
+               
             }
 
 
@@ -150,7 +150,7 @@ namespace CarRental.WEB.Controllers
                     ids = ids + car.CarId + "I";
                 }
                
-                return RedirectToAction("RendCars", "Home", new{id=ids,page=model.Page
+                return RedirectToAction("RendCars", "Home", new{id=ids,page=model.Page!=0?model.Page:1,sort=model.Sort
             }); 
             }
             return View();

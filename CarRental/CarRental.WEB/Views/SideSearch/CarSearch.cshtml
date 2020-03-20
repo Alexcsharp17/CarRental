@@ -7,13 +7,13 @@
         @Html.AntiForgeryToken()
     <div class="form-horizontal mr-5">
         <div id="close-sec" class="mb-2 container-fluid ">
-            <div class="icon-menu  ml-2 d-flex flex-row p-1" >
+            @*<div class="icon-menu  ml-2 d-flex flex-row p-1" >
                 <div class="d-flex flex-row container-fluid ml-5">
                     
                     <img alt="X" src="~/Content/img/ico/close.png" style="height:35px;width:35px;" class="float-right d-inline"  id="cl-ic"/>
                 </div>
 
-            </div>
+            </div>*@
         </div>
         <div id="top-bl" ></div>        
         <div class="form-group mt-2">
@@ -105,31 +105,19 @@
 
 
 <script>
-    $(document).ready(function () {
-        $(".paginat").children("a").click(function (event) {
-            alert("hello");
-            event.preventDefault();
-            var s = $("#Page").val($(".selected").val());
-            $("#Page").replaceWith(s);
-            var sort = $("#sort").val($("#sorting").find(":selected").val());
-            $("#sort").replaceWith(sort);
-            $("#sbm").click();
-        });
-    });
+
 
     $(document).on('change', ':input', function () {
-        var s = $("#sort").val($("#sorting").find(":selected").val());     
+        var s = $("#sort").val($("#sorting").find(":selected").val());
         $("#sort").replaceWith(s);
-        var p = $("#Page").val($(".selected").val());
-        $("#Page").replaceWith(p);
+      
         $("#sbm").click();
-    });
-   
+    }); 
     $(function () {
         $("[data-autocomplete-source]").each(function () {
             var target = $(this);
             target.autocomplete({ source: target.attr("data-autocomplete-source") });
         });
     });
-
+   
 </script>
