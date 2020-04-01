@@ -112,25 +112,30 @@
                     </div>
                 </div>
             </div>
+            <label for="fil" class="btn btn-secondary ml-2"><i class="fa fa-images mr-1"></i> Image</label>
+            <div id="res" class="bg-secondary">
+                
+            </div>
             <div class="form-group m-2">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-success" />
+                    <button type="submit" class="btn btn-primary adm_but text-white"><i class="fa fa-save mr-1 d-inline"></i>Create</button>
                 </div>
             </div>
 
-            <div id="res">
 
-            </div>
         }
 
         @using (Ajax.BeginForm("FileUpload", "Main", new AjaxOptions { UpdateTargetId = "res" }, new { enctype = "multipart/form-data" }))
         {
 
-            <input id="fil" type="file" name="uploadFile" value="Choose Immage" class="btn btn-secondary" />
-          
-            <input type="submit" value="Confirm Immage" class="btn btn-primary" />
+            <input id="fil" type="file" name="uploadFile" value="Choose Immage" class="btn btn-secondary d-none" />
+
+            <input type="submit" value="Confirm Immage" class="btn btn-primary d-none mr-2" id="sb" />
 
         }
+        <div>
+
+        </div>
 
 
     </div>
@@ -142,5 +147,7 @@
             target.autocomplete({ source: target.attr("data-autocomplete-source") });
         });
     });
-    $('#imageFile').change(function () { uploadFile(); });
+    $(document).on('change', '#fil', function () {
+        $("#sb").click();
+    }); 
 </script>

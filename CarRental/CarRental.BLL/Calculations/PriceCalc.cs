@@ -11,27 +11,27 @@ namespace CarRental.BLL.Calculations
     /// </summary>
    public class PriceCalc
     {
-        public static int PricePerDays(int price, int days)
+        public static int PricePerDays(int price, TimeSpan days)
         {
-            if (days < 3)
+            if (days.Days < 3)
             {
-                return price;
+                return Convert.ToInt32(Math.Round( price/24 *days.TotalHours));
             }
-            else if (days < 9)
+            else if (days.Days < 9)
             {
-                return Convert.ToInt32(Math.Round( price * 0.9));
+                return Convert.ToInt32(Math.Round( price * 0.9)/24*days.TotalHours);
             }
-            else if (days <= 25)
+            else if (days.Days <= 25)
             {
-                return Convert.ToInt32(Math.Round(price * 0.7));
+                return Convert.ToInt32(Math.Round(price * 0.7)/24*days.TotalHours);
             }
-            else if(days > 26)
+            else if(days.Days > 26)
             {
-                return Convert.ToInt32(Math.Round(price * 0.6));
+                return Convert.ToInt32(Math.Round(price * 0.6)/24*days.TotalHours);
             }
             else
             {
-                return price;
+                return Convert.ToInt32( price/24*days.TotalHours);
             }
 
         }

@@ -15,7 +15,7 @@ namespace CarRental.BLL.Attributes
         public override bool IsValid(object value)
         {
             OrderDTO o = value as OrderDTO;
-            if (o.StartTime > o.EndTime )
+            if (o.StartTime >= o.EndTime )
             {
                 return false;
             }

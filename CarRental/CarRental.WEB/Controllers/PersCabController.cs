@@ -100,7 +100,7 @@ namespace CarRental.WEB.Controllers
             if (ModelState.IsValid)
             {
                 var car = DatAcessService.FindCar(order.CarId);
-                order.OrdSum = PriceCalc.PricePerDays(car.Price,(order.EndTime - order.StartTime).Days);
+                order.OrdSum = PriceCalc.PricePerDays(car.Price,(order.EndTime - order.StartTime));
                 order.Status = "Pending";
                 DatAcessService.CreateOrder(order);
                 return RedirectToAction("Index", "PersCab", new { res = "added" });

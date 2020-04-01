@@ -12,10 +12,10 @@ namespace CarRental.UnitTests.Controllers
         [TestMethod]
         public void PriceCalcIsCorrect()
         {
-            Assert.AreEqual(50, PriceCalc.PricePerDays(50, 2));
-            Assert.AreEqual(45, PriceCalc.PricePerDays(50, 5));
-            Assert.AreEqual(35, PriceCalc.PricePerDays(50, 22));
-            Assert.AreEqual(30, PriceCalc.PricePerDays(50, 27));
+            Assert.AreEqual(Convert.ToInt32(Math.Round((50/24)*(DateTime.Now.AddDays(2)-DateTime.Now).TotalHours)), PriceCalc.PricePerDays(50, (DateTime.Now.AddDays(2) - DateTime.Now)));
+          
+
+
         }
         
     }

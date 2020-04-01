@@ -13,7 +13,7 @@
     {
         <div class="offset-6 col-4">
 
-            <select id="sorting">              
+            <select id="sorting" class="custom-select">              
                     <option disabled>Sort</option>             
 
                 @foreach (var e in ViewBag.Sort)
@@ -30,6 +30,7 @@
             </select>
 
         </div>
+
 
     }
 </div>
@@ -150,7 +151,9 @@
             </div>
         </div>
         <div id="back-to-top">
-            <i class="fa fa-chevron-up"><img alt="TOP" src="~/Content/img/ico/icon_top.png" /></i>
+
+            <i class=""><img alt="TOP" src="~/Content/img/ico/icon_top.png" /></i>
+
         </div>
 
         <div class="clearfix"></div>
@@ -172,5 +175,23 @@
             $("#sbm").click();
 
         });
+    });
+    var limit = $(window).height() / 3,
+        $backToTop = $('#back-to-top');
+
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > limit) {
+            $backToTop.fadeIn();
+        } else {
+            $backToTop.fadeOut();
+        }
+    });
+
+    // scroll body to 0px on click
+    $backToTop.click(function () {
+        $('body,html').animate({
+            scrollTop: 0
+        }, 1500);
+        return false;
     });
 </script>

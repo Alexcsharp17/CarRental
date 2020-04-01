@@ -5,7 +5,7 @@
     ViewBag.Title = "Cars";
 }
 
-<div class="ml-0 content" id="car_area">
+<div class="ml-0 content mt-0 pt-0" id="car_area">
     <div class="container-fluid mt-3 ">
         <div class=" float-left">
             <div class="icon-menu border p1 ">
@@ -19,7 +19,7 @@
         @using (Ajax.BeginForm("CarSearch", "SideSearch", new AjaxOptions { UpdateTargetId = "car_area" }))
         {
             <div class="offset-6 col-4">
-                <select id="sorting">
+                <select id="sorting" class="custom-select">
                     <option selected disabled>Sort</option>
                     @foreach (var e in ViewBag.Sort)
                     {
@@ -139,7 +139,7 @@
 
     <div id="back-to-top">
 
-        <i class="fa fa-chevron-up"><img alt="TOP" src="~/Content/img/ico/icon_top.png" /></i>
+        <i class=""><img alt="TOP" src="~/Content/img/ico/icon_top.png" /></i>
 
     </div>
     <div class="fixed-top text-center  row">
