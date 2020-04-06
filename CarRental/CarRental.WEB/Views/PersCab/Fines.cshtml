@@ -1,78 +1,85 @@
 ﻿@model IEnumerable<CarRental.BLL.DTO.OrderDTO>
 
+
 @{
-    ViewBag.Title = "Fines";
+    ViewBag.Title = "GetOrders";
 }
 
-<div class="d-flex flex-row flex-wrap">
-
-    <div class=" ">
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.FirstOrDefault().CarDTO.Name)
-                </th>
 
 
-                <th>
-                    @Html.DisplayNameFor(model => model.FirstOrDefault().StartTime)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FirstOrDefault().EndTime)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FirstOrDefault().Driver)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FirstOrDefault().Status)
-                </th>
-                <th>
-                    Manager comment
-                </th>
-                <th></th>
-            </tr>
+<div class="content " id="order_area">
+    <div class="bg-dark text-danger p-1 border rounded text-capitalize border border-primary"><h4 class="text-center">Fines</h4></div>
 
-            @foreach (var item in Model)
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+           
+            <th class="align-middle  text-center">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().CarDTO.Name)
+            </th>
+
+            <th class="align-middle text-center">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().StartTime)
+            </th>
+            <th class="align-middle text-center">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().EndTime)
+            </th>
+
+            <th class="align-middle text-center">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().OrdSum)
+            </th>
+            <th class="align-middle text-center">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Status)
+            </th>
+
+            <th class="align-middle text-center">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().ManagComment)
+            </th>
+           
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+
+            <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.CarDTO.Name)
+            </td>
+
+            <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
+            <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.OrdSum)
+            </td>
+
+            @if (item.Status.ToLower() == "pending")
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CarDTO.Name)
-                    </td>
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.StartTime)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EndTime)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Driver)
-                    </td>
-                    <td>
-                        @if (item.Status.ToLower() == "approved")
-                        {
-                            <div class="alert alert-success ">@item.Status</div>
-
-                        }
-                        else if (item.Status.ToLower() == "rejected")
-                        {
-                            <div class="alert alert-danger ">@item.Status</div>
-                        }
-                        else
-                        {
-                            <div class="alert alert-info ">@item.Status</div>
-                        }
-                    </td>
-                    <td>
-                        @item.ManagComment
-                    </td>
-                    <td>
-
-                        @Html.ActionLink("Cancel", "DeleteOrder", "PersCab", new { Id = item.OrderId }, new { @class = "btn btn-danger" })
-                    </td>
-                </tr>
+                <td class="  text-center align-middle ">@item.Status</td>
             }
+            else if (item.Status.ToLower() == "completed")
+            {
+                <td class="bg-secondary  text-center align-middle ">@item.Status</td>
+            }
+            else if (item.Status.ToLower() == "confirmed")
+            {
+                <td class="bg-success  text-center align-middle ">@item.Status</td> }
+            else if (item.Status.ToLower() == "rejected")
+            {
+                <td class="bg-warning  text-center align-middle ">@item.Status</td> }
+            else if (item.Status.ToLower() == "fine")
+            {
+                <td class="bg-danger  text-center align-middle ">@item.Status</td>}
 
-        </table>
-    </div>
+
+            <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.ManagComment)
+            </td>
+
+        </tr>
+        }
+
+    </table>
 </div>

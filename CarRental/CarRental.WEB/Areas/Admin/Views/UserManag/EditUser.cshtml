@@ -1,12 +1,13 @@
 ﻿@model CarRental.BLL.DTO.UserDTO
 <div class="row ">
-    <div class="col-4 offset-4">
+    <div class="col-4 offset-4 p-0 mt-3 border border-primary rounded" >
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
+            <div class="bg-dark text-white p-1"><h4 class="text-center">Edit User</h4></div>
 
-            <div class="form-horizontal  bg-light border p-4">
-                <h4 class="text-center border-bottom">Edit User</h4>
+            <div class="form-horizontal  bg-light border p-2">
+
 
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.Id)
@@ -42,7 +43,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Banned, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <p class="text-primary ml-3">Banned:</p>
                     <div class="col-md-10">
                         <div class="checkbox">
                             @Html.EditorFor(model => model.Banned)
@@ -51,14 +52,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.RepairInvoice, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.RepairInvoice, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.RepairInvoice, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
+              
                 <div class="form-group">
                     <div class="col-md-10">
                         @Html.HiddenFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
@@ -73,7 +67,7 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                       
+
                         <button type="submit" class="btn btn-primary adm_but text-white"><i class="fa fa-save mr-2 d-inline"></i>Save</button>
 
                     </div>

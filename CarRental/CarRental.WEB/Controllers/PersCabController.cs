@@ -50,8 +50,8 @@ namespace CarRental.WEB.Controllers
         }
         public ActionResult Fines()
         {
-            User.Identity.GetUserId();
-            var ords = DatAcessService.Orders.Where(o => o.User_Id == User.Identity.GetUserId() && o.Status=="fined");
+           var us= User.Identity.GetUserId();
+            var ords = DatAcessService.Orders.Where(o => o.User_Id == User.Identity.GetUserId() && o.Status=="fine");
             if (ords.Count() == 0)
             {
                 return View("EmptyFines");

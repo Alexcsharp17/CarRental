@@ -1,10 +1,12 @@
 ﻿@model CarRental.BLL.DTO.OrderDTO
 
-<div class="m-5 row">
-    <div class="p-4 bg-light body-content col-4 offset-4 ">
-        <h4 class="font-weight-bold text-center">Order details</h4>
+<div class="m-5 row ">
+    <div class="border border-primary rounded p-0 bg-light body-content col-4 offset-4 ">
+        <div class="bg-dark text-white p-1">
+            <h4 class="font-weight-bold text-center">Order details</h4>
+        </div>
 
-        <dl class="dl-horizontal">
+        <dl class="dl-horizontal pl-3 pt-0">
 
 
             <dd>
@@ -108,12 +110,12 @@
             <dd>
                 @Html.DisplayFor(model => model.OrdSum)
             </dd>
+            <p>
+                @Html.ActionLink("Edit", "EditStatus", new { id = Model.OrderId }, new { @class = "btn btn-warning" })
 
+            </p>
         </dl>
 
-        <p>
-            @Html.ActionLink("Edit", "EditStatus", new { id = Model.OrderId }, new { @class = "btn btn-warning" })
-
-        </p>
+        
     </div>
 </div>

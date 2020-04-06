@@ -1,23 +1,24 @@
 ﻿@model IEnumerable<CarRental.BLL.DTO.ExceptionDetailDTO>
 
 <div class="m-2">
-    <p>
+    <p class="ml-3">
         <a href="@Url.Action("DeleteExceptions")" , class="btn btn-danger  text-dark"><i class="fa fa-fire-alt mr-1 d-inline"></i>Clear all</a>
 
     </p>
-    <table class="table table-bordered table-striped">
+    
+    <table class="table table-bordered table-striped table-hover">
         <tr>
-            <th>
+            <th class="align-middle text-center ">
                 @Html.DisplayNameFor(model => model.ExceptionMessage)
             </th>
-            <th>
+            <th class="align-middle text-center ">
                 @Html.DisplayNameFor(model => model.ControllerName)
             </th>
-            <th>
+            <th class="align-middle text-center ">
                 @Html.DisplayNameFor(model => model.ActionName)
             </th>
 
-            <th>
+            <th class="align-middle text-center ">
                 @Html.DisplayNameFor(model => model.Date)
             </th>
             <th></th>
@@ -26,22 +27,22 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td class="align-middle text-center ">
                     @Html.DisplayFor(modelItem => item.ExceptionMessage)
                 </td>
-                <td>
+                <td class="align-middle text-center ">
                     @Html.DisplayFor(modelItem => item.ControllerName)
                 </td>
-                <td>
+                <td class="align-middle text-center ">
                     @Html.DisplayFor(modelItem => item.ActionName)
                 </td>
 
-                <td>
+                <td class="align-middle text-center ">
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
                     <a href="@Url.Action("ExceptionDetails", new { id = item.Id } )" , class="btn btn-info adm_but text-dark"><i class="fa fa-info mr-1 d-inline"></i>Detail</a>
-                    <a href="@Url.Action("DeleteException", new { id = item.Id } )" , class="btn btn-warning adm_but text-dark"><i class="fa fa-trash mr-1 d-inline"></i>Detail</a>
+                    <a href="@Url.Action("DeleteException", new { id = item.Id } )" , class="btn btn-warning adm_but text-dark"><i class="fa fa-trash mr-1 d-inline"></i>Delete</a>
                 </td>
             </tr>
         }

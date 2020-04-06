@@ -109,7 +109,11 @@ namespace CarRental.DAL.Repositories
                     dbEntry.Manufacturer = car.Manufacturer;
                     dbEntry.Price = car.Price;
                     dbEntry.Image = car.Image;
-
+                    dbEntry.Door = car.Door;
+                    dbEntry.IsDeleted = car.IsDeleted;
+                    dbEntry.FuelConsump = car.FuelConsump;
+                    dbEntry.FuelType = car.FuelType;
+                    dbEntry.EngSize = car.EngSize;
                 }
 
             }

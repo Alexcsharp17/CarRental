@@ -103,7 +103,7 @@
 
 
 
-    <div class="col-12 col-sm-12 col-md-4 rounded bg-light mt-3 ml-sm-3 border d-flex justify-content-center">
+    <div class="col-12 col-sm-12 col-md-4 rounded bg-light mt-3 ml-sm-3 border border-primary  d-flex justify-content-center">
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
@@ -135,7 +135,8 @@
                     @Html.ValidationMessageFor(model => model.CarId, "", new { @class = "text-danger" })
                 </div>
             </div>
-            <h5 class="ml-2">Take car</h5>
+            <div><h5 class="ml-2 text-center">Car issuance</h5></div>
+
             <div class="form-group ml-2  ">
                 <select id="start_p" class="form-control ">
                     <option value="Kharkiv Gagarina 23">Kharkiv Gagarina 23</option>
@@ -147,7 +148,7 @@
             <div class="d-flex flex-row mb-0">
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label d-inp datepicker ml-3 mb-0" })
+                    @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label d-inp datepicker ml-3 mb-0 " })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control d-inp" } })
                     </div>
@@ -165,7 +166,8 @@
                 </div>
 
             </div>
-            <h5 class="ml-2 mt-0">Return car</h5>
+          
+            <div class="mt-1"><h5 class="ml-2 text-center">Car return</h5></div>
             <div class="form-group ml-2 ">
                 <select id="end_p" class="form-control ">
                     <option value="Kharkiv Gagarina 23">Kharkiv Gagarina 23</option>
@@ -180,7 +182,7 @@
                         @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control d-inp" } })
                     </div>
                 </div>
-               
+
 
                 <div class="  ">
                     <select id="end_t" class="form-control ">
@@ -195,15 +197,14 @@
                 </div>
 
             </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Driver, htmlAttributes: new { @class = "control-label ml-3" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.Driver, new { htmlAttributes = new { @class = "big_check mb-0" } })
-                        @Html.ValidationMessageFor(model => model.Driver, "", new { @class = "text-danger" })
+
+            
+                    <span class=" ml-3 mb-2">Driver Necessity </span>
+                    <div class="checkbox d-inline mt-2">
+                        @Html.EditorFor(model => model.Driver, new { htmlAttributes = new { @class = "big_check mb-0 mt-1 ml-3" } })
                     </div>
-                </div>
-            </div>
+                
+
             <div class="form-group">
                 <p class="control-label ml-3"> Passport Number</p>
                 <div class="col-md-10">
@@ -232,11 +233,11 @@
             </div>
             @Html.Hidden("start_time", null, new { AllowHtmlAttributes = new { @id = "start_time" } })
             @Html.Hidden("end_time", null, new { AllowHtmlAttributes = new { @id = "end_time" } })
-            @Html.Hidden("start_place",null, new { AllowHtmlAttributes = new { @id = "start_place" } })
+            @Html.Hidden("start_place", null, new { AllowHtmlAttributes = new { @id = "start_place" } })
             @Html.Hidden("end_place", new { AllowHtmlAttributes = new { @id = "end_place" } })
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Order" class="btn btn-success" id="sb_but" />
+                    <button type="submit" id="sb_but" class="btn btn-success"><span class="fa fa-cart-plus mr-1"></span>Order</button>
                 </div>
             </div>
         </div>
