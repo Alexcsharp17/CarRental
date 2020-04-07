@@ -1919,7 +1919,6 @@
     <Content Include="Areas\Admin\Views\UserManag\SuccessRegister.cshtml" />
     <Content Include="Areas\Admin\Views\UserManag\Register.cshtml" />
     <Content Include="Areas\Admin\Views\UserManag\GetUsers.cshtml" />
-    <Content Include="Areas\Admin\Views\UserManag\RendUsers.cshtml" />
     <Content Include="Areas\Admin\Views\Manager\OrderIndex.cshtml" />
     <Content Include="Areas\Admin\Views\Main\ExceptionDetails.cshtml" />
     <Content Include="Areas\Admin\Views\Main\FileDelete.cshtml" />

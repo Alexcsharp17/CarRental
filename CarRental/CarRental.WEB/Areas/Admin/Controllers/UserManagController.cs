@@ -73,8 +73,11 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 DatAcessService.CreateUser(user);
-                return RedirectToAction("GetUsers", "UserManag", new { res = "changed" });
+                return RedirectToAction("UserIndex", "UserManag", new { res = "changed" });
             }
+            var errors = ModelState.Where(x => x.Value.Errors.Any())
+                .Select(x => new { x.Key, x.Value.Errors });
+            
             return View(user);
         }
       

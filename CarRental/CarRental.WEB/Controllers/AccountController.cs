@@ -26,6 +26,11 @@ namespace CarRental.WEB.Controllers
                 return HttpContext.GetOwinContext().GetUserManager<IUserService>();
             }
         }
+        private IDatAcessService DatAcessService;
+        public AccountController(IDatAcessService serv)
+        {
+            DatAcessService = serv;
+        }
 
         private IAuthenticationManager AuthenticationManager
             {
@@ -50,12 +55,26 @@ namespace CarRental.WEB.Controllers
                 {
                     UserDTO userDto = new UserDTO { Email = model.Email, Password = model.Password };
                     ClaimsIdentity claim = await UserService.Authenticate(userDto);
-                
-                    if (claim == null)
-                    {
-                        ModelState.AddModelError("", "Incorrect login/password or your account has been banned.");
-                    }
-                    
+                if (DatAcessService.Users.Where(u => u.Email == model.Email).FirstOrDefault() == null)
+                {
+                    ModelState.AddModelError("", "Account with this name doesn't exist");
+                }
+
+                   else  if (claim == null)
+                        {
+                            if (DatAcessService.Users.Where(u => u.Email == model.Email).FirstOrDefault().Banned == true)
+                            {
+                                ModelState.AddModelError("", "Your account was banned!");
+                            }
+                            else
+                            {
+                                ModelState.AddModelError("", "Incorrect login/password.");
+                            }
+
+                        }
+                   
+                   
+                 
                     else
                     {
                         AuthenticationManager.SignOut();

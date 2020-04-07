@@ -159,10 +159,10 @@ namespace CarRental.WEB.Controllers
             var fillpfof = false;
             
             if(User.Identity.IsAuthenticated) { 
-            if(user.Name==null || user.PassportNumb==0)
-            {
-                fillpfof = true;
-            }
+            //if(user.Name==null || user.PassportNumb==0)
+            //{
+            //    fillpfof = true;
+            //}
             ViewBag.Fines = fines.Count();
             ViewBag.Orders = orders.Count();
             ViewBag.Fillprof = fillpfof;

@@ -16,28 +16,28 @@ else if (ViewBag.Res == "deleted")
 <div class="row">   
  
         <div class="col-10 offset-1  ">
-            <div class="bg-secondary border rounded"><h4 class="text-center">Your Orders</h4></div>
+            <div class="bg-dark text-white border rounded"><h4 class="text-center">Your Orders</h4></div>
             
             <table class="table table-striped table-bordered">
                 <tr>
-                    <th>
+                    <th class="align-middle text-center">
                         @Html.DisplayNameFor(model => model.Orders.FirstOrDefault().CarDTO.Name)
                     </th>
 
 
-                    <th>
+                    <th class="align-middle text-center">
                         @Html.DisplayNameFor(model => model.Orders.FirstOrDefault().StartTime)
                     </th>
-                    <th>
+                    <th class="align-middle text-center">
                         @Html.DisplayNameFor(model => model.Orders.FirstOrDefault().EndTime)
                     </th>
-                    <th class=" align-middle ">
+                    <th class="align-middle text-center">
                         <p class=" align-middle text-center">@Html.DisplayNameFor(model => model.Orders.FirstOrDefault().Driver)</p>  
                     </th>
-                    <th class="align-middle">
+                    <th class="align-middle text-center">
                         @Html.DisplayNameFor(model => model.Orders.FirstOrDefault().Status)
                     </th>
-                    <th class="align-text-bottom">
+                    <th class="align-middle text-center">
                         <p class="text-center">Manager comment</p>  
                     </th>
                     <th></th>
@@ -45,51 +45,46 @@ else if (ViewBag.Res == "deleted")
 
                 @foreach (var item in Model.Orders)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CarDTO.Name)
-                        </td>
+                <tr>
+                    <td class="align-middle text-center">
+                        @Html.DisplayFor(modelItem => item.CarDTO.Name)
+                    </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.StartTime)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.EndTime)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Driver)
-                        </td>
-                        <td>
-                            @if (item.Status.ToLower() == "confirmed")
-                            {
-                                <div class="alert alert-success ">@item.Status</div>
+                    <td class="align-middle text-center">
+                        @Html.DisplayFor(modelItem => item.StartTime)
+                    </td>
+                    <td class="align-middle text-center">
+                        @Html.DisplayFor(modelItem => item.EndTime)
+                    </td>
+                    <td class="align-middle text-center">
+                        @Html.DisplayFor(modelItem => item.Driver)
+                    </td>
+                    @if (item.Status.ToLower() == "pending")
+                    {
+                        <td class="  text-center align-middle ">@item.Status</td>
+                    }
+                    else if (item.Status.ToLower() == "completed")
+                    {
+                        <td class="bg-secondary  text-center align-middle ">@item.Status</td>
+                    }
+                    else if (item.Status.ToLower() == "confirmed")
+                    {
+                        <td class="bg-success  text-center align-middle ">@item.Status</td> }
+                    else if (item.Status.ToLower() == "rejected")
+                    {
+                        <td class="bg-warning  text-center align-middle ">@item.Status</td> }
+                    else if (item.Status.ToLower() == "fine")
+                    {
+                        <td class="bg-danger  text-center align-middle ">@item.Status</td>}
 
-                            }
-                            else if (item.Status.ToLower() == "rejected")
-                            {
-                                <div class="alert alert-warning ">@item.Status</div>
-                            }
-                            else if (item.Status.ToLower() == "completed")
-                            {
-                                <div class="alert alert-secondary ">@item.Status</div>
-                            }
-                            else if (item.Status.ToLower() == "fined")
-                            {
-                                <div class="alert alert-danger ">@item.Status</div>
-                            }
-                            else
-                            {
-                                <div class="alert alert-info ">@item.Status</div>
-                            }
-                        </td>
-                        <td>
-                            @item.ManagComment
-                        </td>
-                        <td>
+                    <td class="align-middle text-center">
+                        @item.ManagComment
+                    </td>
+                    <td>
 
-                            @Html.ActionLink("Cancel", "DeleteOrder", "PersCab", new { Id = item.OrderId }, new { @class = "btn btn-danger" })
-                        </td>
-                    </tr>
+                        @Html.ActionLink("Cancel", "DeleteOrder", "PersCab", new { Id = item.OrderId }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
                 }
 
             </table>

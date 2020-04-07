@@ -4,15 +4,22 @@
     ViewBag.Title = "Index";
 }
 
-<h4 class="container-fluid text-center font-weight-bolder">Car Managment</h4>
 
-<p class="ml-3 mb-0">
-    <a href="@Url.Action("CreateCar" )" class="btn btn-info ml-1"><i class="fa fa-plus mr-1"></i>Add Car</a>
-</p>
 
-<br />
+
+
+
 <div class="ml-3 pl-0 container-fluid">
-    <table class="table table-bordered table-striped table-hover">
+    <div class="mb-0 mt-1">
+        <h4 class=" p-3 text-center font-weight-bolder text-white bg-dark">
+            Car Managment
+            <span class="ml-3 mb-2 d-inline float-left">
+                <a href="@Url.Action("CreateCar" )" class="btn btn-info ml-1"><i class="fa fa-plus mr-1"></i>Add Car</a>
+            </span>
+        </h4>
+       
+    </div>
+    <table class="table table-bordered table-striped table-hover mt-0">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -63,7 +70,7 @@
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                   
+
                     <a href="@Url.Action("EditCar", new { id = item.CarId } )" class="btn btn-warning adm_but"><i class="fa fa-edit mr-1 d-inline"></i>Edit</a>
                     <a href="@Url.Action("CarDetail", new { id = item.CarId } )" class="btn btn-info adm_but text-dark"><i class="fa fa-info mr-1 d-inline"></i>Detail</a>
                     <a href="@Url.Action("Delete", new { id = item.CarId } )" class="btn btn-danger adm_but text-dark"><i class="fa fa-trash mr-1 d-inline"></i>Delete</a>
