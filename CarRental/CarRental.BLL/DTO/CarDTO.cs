@@ -73,7 +73,10 @@ namespace CarRental.BLL.DTO
         [Display(Name = "Engine capacity")]
         
         public int EngSize { get; set; }
+        
+        public int Popular { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
+
         
         public CarDTO()
         {

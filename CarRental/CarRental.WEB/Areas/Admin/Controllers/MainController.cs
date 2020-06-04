@@ -195,7 +195,46 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             DatAcessService.DeleteCarSoft(car.CarId);
             return RedirectToAction("Index", "Main");
         }
-      
+        public ActionResult GetStats()
+        {
+            var ords = DatAcessService.Orders.Where(x=>(DateTime.Now-x.StartTime).TotalDays<30).Count();
+            var sum = DatAcessService.Orders.Where(x => (DateTime.Now - x.StartTime).TotalDays < 30).Select(x => x.OrdSum).Sum();
+            ViewBag.ords = ords;
+            ViewBag.sum = sum;
+            return View();
+        }
+       public ActionResult CreateReport()
+        {
+            string writePath = @"D:\MonthRevenue.doc";
+            using (StreamWriter sw = new StreamWriter(writePath, false, System.Text.Encoding.Default))
+            {
+                sw.WriteLine("                  Month Report data");
+
+                int ords = DatAcessService.Orders.Where(x => (DateTime.Now - x.StartTime).TotalDays < 30).Count();
+                double sum = DatAcessService.Orders.Where(x => (DateTime.Now - x.StartTime).TotalDays < 30).Select(x => x.OrdSum).Sum();
+                string orders = "Total orders: "+ords;
+                string summ = "Month income: " + sum + "$";
+                
+                sw.WriteLine(orders);
+                sw.WriteLine(summ);
+            }
+            string writePath2 = @"D:\Prices.doc";
+            using (StreamWriter sw2 = new StreamWriter(writePath2, false, System.Text.Encoding.Default))
+            {
+                sw2.WriteLine("                             Car prices");
+                sw2.WriteLine();
+                sw2.WriteLine("Car Name"+ new String(' ',30-"Car Name".Length)+"Car price");
+                sw2.WriteLine();
+                var cars = DatAcessService.Cars;
+                foreach(var c in cars)
+                {
+                sw2.WriteLine(c.Name + new String(' ', 30-c.Name.Length) + c.Price + "$");
+                }
+
+               
+            }
+            return RedirectToAction("GetStats");
+          }
 
     }
 }

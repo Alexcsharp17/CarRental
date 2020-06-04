@@ -198,11 +198,9 @@ namespace CarRental.DAL.Repositories
         }
         public Car DeleteCar(int id)
         {
-            Car dbEntry = db.Cars.Find(id);
-           
+            Car dbEntry = db.Cars.Find(id);          
             if (dbEntry != null)
             {
-
                 db.Cars.Remove(dbEntry);
                 db.SaveChanges();
             }

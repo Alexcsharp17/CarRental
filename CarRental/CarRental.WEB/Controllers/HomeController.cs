@@ -79,7 +79,10 @@ namespace CarRental.WEB.Controllers
                 crs=crs.Skip((page - 1) * pageSize)
                    .Take(pageSize).ToList();
             }
-            IEnumerable<CarDTO> cars = crs.Where(c=>c.IsDeleted==false);
+
+            
+
+            IEnumerable<CarDTO> cars = crs.Where(c=>c.IsDeleted==false).OrderBy(x=>x.Popular);
             if (sort != null)
             {
                 if (sort == "ascending")
@@ -105,7 +108,21 @@ namespace CarRental.WEB.Controllers
                 }
 
             };
+            List<int> popCar = new List<int>();
+            int[] ids = cars.OrderBy(x => x.Popular).Select(x => x.CarId).ToArray();
+            int em = 0;
+            foreach(var i in ids)
+            {
+                if (em > 4)
+                {
+                    break;
+                }
+                popCar.Add(i);
+                em++;
+            }
+
             ViewBag.Sort = new List<string>() { "ascending", "descending" };
+            ViewBag.popCar = popCar;
             return View(model);
         }
         public PartialViewResult RendCars( int page = 1,string id=null,string sort="")
@@ -148,6 +165,20 @@ namespace CarRental.WEB.Controllers
             };
             ViewBag.Sort = new List<string>() { "ascending", "descending" };
             ViewBag.s = sort;
+            List<int> popCar = new List<int>();
+            int[] ids = cars.OrderBy(x => x.Popular).Select(x => x.CarId).ToArray();
+            int em = 0;
+            foreach (var i in ids)
+            {
+                if (em > 4)
+                {
+                    break;
+                }
+                popCar.Add(i);
+                em++;
+            }
+
+            ViewBag.popCar = popCar;
             return PartialView(model);
         }
        public PartialViewResult RendMenu()

@@ -1,0 +1,20 @@
+﻿<div class="row">
+    <div class="col-4 offset-4">
+        <div class="container-fluid mt-1 p-2 bg-info  text-center"><h2>Rent data for 30 days</h2></div>
+        <div class=" border">
+            <table class="table table-striped">
+                <tr>
+                    <td>Cars rentet total:</td>
+                    <td>@ViewBag.ords</td>
+                </tr>
+                <tr>
+                    <td>Money earned total:</td>
+                    <td class="text-danger">@ViewBag.sum</td>
+                </tr>
+            </table>
+
+           
+            <a href="@Url.Action("CreateReport")" , class="btn btn-info m-1 text-dark"><i class="fa fa-plus mr-1 d-inline"></i>Create Report</a>
+        </div>
+    </div>
+</div>

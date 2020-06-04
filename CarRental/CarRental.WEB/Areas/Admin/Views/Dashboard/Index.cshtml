@@ -42,5 +42,15 @@
                 @Html.ActionLink("Open", "GetCars", "Main", new { area = "Admin" }, new { @class = "btn btn-info" })
             </div>
         </div>
+        <div class="card m-1">
+            <div class="card-header text-info">
+                <h4 class="text-center">Statistics</h4>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Find out information about recent orders(Admin/Manager)</h5>
+                
+                @Html.ActionLink("Open", "GetStats", "Main", new { area = "Admin" }, new { @class = "btn btn-info" })
+            </div>
+        </div>
     </div>
 </div>
