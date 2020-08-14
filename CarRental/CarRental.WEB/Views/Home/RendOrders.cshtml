@@ -16,7 +16,7 @@
                 @Html.DisplayNameFor(model => model.FirstOrDefault().User_Id)
             </th>
             <th class="align-middle  text-center">
-                @Html.DisplayNameFor(model => model.FirstOrDefault().CarDTO.Name)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Car.Name)
             </th>
 
             <th class="align-middle text-center">
@@ -46,7 +46,7 @@
                 <p>@item.User_Id</p>
             </td>
             <td class="align-middle text-center">
-                @Html.DisplayFor(modelItem => item.CarDTO.Name)
+                @Html.DisplayFor(modelItem => item.Car.Name)
             </td>
 
             <td class="align-middle text-center">
@@ -82,9 +82,9 @@
                 @Html.DisplayFor(modelItem => item.ManagComment)
             </td>
             <td>
-                <a href="@Url.Action("EditStatus", new {  Id = item.OrderId} )" class="btn btn-warning adm_but"><i class="fa fa-edit mr-1 d-inline"></i>Edit</a>
-                <a href="@Url.Action("Details", new { Id = item.OrderId } )" class="btn btn-info adm_but text-dark"><i class="fa fa-info mr-1 d-inline"></i>Detail</a>
-                <a href="@Url.Action("DeleteOrder", new { ordId = item.OrderId } )" class="btn btn-danger adm_but text-dark"><i class="fa fa-trash mr-1 d-inline"></i>Delete</a>
+                <a href="@Url.Action("EditStatus", new {  Id = item.Id} )" class="btn btn-warning adm_but"><i class="fa fa-edit mr-1 d-inline"></i>Edit</a>
+                <a href="@Url.Action("Details", new { Id = item.Id } )" class="btn btn-info adm_but text-dark"><i class="fa fa-info mr-1 d-inline"></i>Detail</a>
+                <a href="@Url.Action("DeleteOrder", new { ordId = item.Id } )" class="btn btn-danger adm_but text-dark"><i class="fa fa-trash mr-1 d-inline"></i>Delete</a>
 
             </td>
         </tr>

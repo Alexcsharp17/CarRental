@@ -20,7 +20,7 @@ namespace CarRental.BLL.DTO
     {
         [HiddenInput(DisplayValue = false)]
        
-        public int OrderId { get; set; }
+        public int Id { get; set; }
       
         public string User_Id { get; set; }
         
@@ -45,6 +45,6 @@ namespace CarRental.BLL.DTO
         public int PassportNumb { get; set; }
         public string ManagComment { get; set; }
         public double OrdSum { get; set; }
-        public CarDTO CarDTO { get; set; }
+        public CarDTO Car { get; set; }
     }
 }

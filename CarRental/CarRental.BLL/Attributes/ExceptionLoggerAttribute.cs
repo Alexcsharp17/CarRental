@@ -20,8 +20,8 @@ namespace CarRental.BLL.Attributes
             {
                 ExceptionMessage = filterContext.Exception.Message,
                 StackTrace = filterContext.Exception.StackTrace,
-                ControllerName = filterContext.RouteData.Values["controller"].ToString(),
-                ActionName = filterContext.RouteData.Values["action"].ToString(),
+                //ControllerName = filterContext.RouteData.Values["controller"].ToString(),
+                //ActionName = filterContext.RouteData.Values["action"].ToString(),
                 Date = DateTime.Now
             };
 
@@ -32,6 +32,7 @@ namespace CarRental.BLL.Attributes
             }
 
             filterContext.ExceptionHandled = true;
+           
         }
     }
 }

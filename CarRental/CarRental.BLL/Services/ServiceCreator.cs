@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace CarRental.BLL.Services
 {
+    /// <summary>
+    /// This is Factory metod, which is used for dependency invercion
+    /// </summary>
     public class ServiceCreator : IServiceCreator
     {
         public IUserService CreateUserService(string connection)

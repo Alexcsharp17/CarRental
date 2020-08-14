@@ -15,16 +15,26 @@ namespace CarRental.DAL.EF
     public class ApplicationContext : IdentityDbContext<ApplicationUser> 
     {
         public ApplicationContext(string conectionString) : base(conectionString) { }
+        public ApplicationContext()
+           : base("DefaultConnection")
+        { }
 
-  
+        //Initializer call to fill db with default data
+        static ApplicationContext()
+        {
+            Database.SetInitializer<ApplicationContext>(new CarRentalDbInitializer()); //custom initializer
+        }
+
         public DbSet<Car> Cars { get; set; }
         public DbSet<ExceptionDetail> ExceptionDetails { get; set; }
         public DbSet<Order> Orders { get; set; }
-        //Initializer call to fill db with default data
+        public DbSet<Log> Logs { get; set; }
+    
 
-        static ApplicationContext()
+       
+        public static ApplicationContext Create()
         {
-            Database.SetInitializer<ApplicationContext>(new CarRentalDbInitializer());
+            return new ApplicationContext();
         }
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)

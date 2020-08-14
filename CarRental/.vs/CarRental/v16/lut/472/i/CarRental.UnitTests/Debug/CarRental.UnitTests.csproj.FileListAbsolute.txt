@@ -1,0 +1,12 @@
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\b\CarRental.UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\b\CarRental.UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\b\CarRental.UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\b\CarRental.UnitTests\bin\Debug\ru\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\b\CarRental.UnitTests\bin\Debug\ru\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\b\CarRental.UnitTests\bin\Debug\ru\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\b\CarRental.UnitTests\bin\Debug\CarRental.UnitTests.dll.config
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\b\CarRental.UnitTests\bin\Debug\CarRental.UnitTests.dll
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\i\CarRental.UnitTests\Debug\CarRental.UnitTests.dll.config
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\i\CarRental.UnitTests\Debug\CarRental.UnitTests.csproj.CoreCompileInputs.cache
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\i\CarRental.UnitTests\Debug\CarRental.UnitTests.csproj.CopyComplete
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\i\CarRental.UnitTests\Debug\CarRental.UnitTests.dll

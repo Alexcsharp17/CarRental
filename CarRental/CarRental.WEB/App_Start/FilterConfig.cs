@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
+using CarRental.BLL.Attributes;
 
 namespace CarRental.WEB
 {
@@ -8,6 +9,8 @@ namespace CarRental.WEB
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new ExceptionLoggerAttribute());
+            filters.Add(new LogFilterAttribute());
         }
     }
 }

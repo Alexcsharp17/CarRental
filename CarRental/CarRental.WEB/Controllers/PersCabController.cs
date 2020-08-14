@@ -14,7 +14,7 @@ using System.Web.Mvc;
 
 namespace CarRental.WEB.Controllers
 {
-    [ExceptionLogger]
+    
     [Authorize(Roles = "user,admin,manager")]
     public class PersCabController : Controller
     {
@@ -31,6 +31,7 @@ namespace CarRental.WEB.Controllers
         public ActionResult Index(string res = null, int page = 1)
         {
             User.Identity.GetUserId();
+            
             var ords = DatAcessService.Orders.Where(o => o.User_Id == User.Identity.GetUserId());
             if (ords.Count() == 0)
             {
@@ -38,7 +39,7 @@ namespace CarRental.WEB.Controllers
             }
             foreach (var o in ords)
             {
-                o.CarDTO = DatAcessService.FindCar(o.CarId);
+                o.Car = DatAcessService.FindCar(o.CarId);
             }
             PersonalCabViewModel model = new PersonalCabViewModel()
             {
@@ -58,14 +59,16 @@ namespace CarRental.WEB.Controllers
             }
             foreach (var o in ords)
             {
-                o.CarDTO = DatAcessService.FindCar(o.CarId);
+                o.Car = DatAcessService.FindCar(o.CarId);
             }
             return View(ords);
         }
-        public ActionResult Profile()
+        public ActionResult Prof()
         {
-           
-           return View(DatAcessService.Users.FirstOrDefault(u => u.Id == User.Identity.GetUserId()));
+            var usrs = DatAcessService.Users.Where(u => u.Id == User.Identity.GetUserId()).First();
+          
+            var us = DatAcessService.Users.FirstOrDefault(u => u.Id == User.Identity.GetUserId());
+            return View(us);
         }
         [HttpGet]
         public ActionResult Checkout(int id=0)
@@ -81,12 +84,14 @@ namespace CarRental.WEB.Controllers
                 return HttpNotFound();
             }
             OrderDTO order = new OrderDTO();
-            order.CarDTO = car;
-            order.CarId = car.CarId;
+            order.Car = car;
+            order.CarId = car.Id;
           
             order.User_Id= User.Identity.GetUserId();
             order.StartTime = DateTime.Now.Date;
             order.PassportNumb = DatAcessService.Users.FirstOrDefault(u => u.Id == order.User_Id).PassportNumb;
+        
+
             return View(order);
         }
         [HttpPost]
@@ -97,6 +102,7 @@ namespace CarRental.WEB.Controllers
           order.EndTime=order.EndTime.AddHours(Convert.ToDouble(end_time));
             order.StartPlace = start_place;
             order.EndPlace = end_place;
+            order.Id = 0;
             if (ModelState.IsValid)
             {
                 var car = DatAcessService.FindCar(order.CarId);
@@ -105,7 +111,7 @@ namespace CarRental.WEB.Controllers
                 DatAcessService.CreateOrder(order);
                 return RedirectToAction("Index", "PersCab", new { res = "added" });
             }
-            order.CarDTO= DatAcessService.FindCar(order.CarId); 
+            order.Car= DatAcessService.FindCar(order.CarId); 
             return View(order);
         }
         public ActionResult DeleteOrder(int Id)

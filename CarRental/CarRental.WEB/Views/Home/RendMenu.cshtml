@@ -10,7 +10,7 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <label class="dropdown-item m-0 " for="us_ar">
                       
-                        <button type="button" onclick="location.href='@Url.Action("Profile", "PersCab")'" class="btn btn-secondary w-100">@User.Identity.Name
+                        <button type="button" onclick="location.href='@Url.Action("Prof", "PersCab")'" class="btn btn-secondary w-100">@User.Identity.Name
                         @if (ViewBag.Fillprof.ToString().ToLower() == "true")
                         {
                             <span class="badge badge-secondary  bg-info float-right">Edit</span>

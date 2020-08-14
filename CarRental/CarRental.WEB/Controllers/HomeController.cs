@@ -7,24 +7,28 @@ using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
 namespace CarRental.WEB.Controllers
 {
-    [ExceptionLogger]
-    public class HomeController : Controller
+   
+    public  class HomeController : Controller
     {
-        public int pageSize = 10;
+        public  const int pageSize = 10;
        
         private IDatAcessService DatAcessService;
-       public HomeController(IDatAcessService serv)
+        private IOrderService OrderService;
+       public HomeController(IDatAcessService serv,IOrderService ords)
         {
             DatAcessService = serv;
+            OrderService = ords;
+
         }
 
         
-        public ActionResult Test(int id)
+        public ActionResult Test(int? id)
         {
             if (id > 3)
             {
@@ -37,21 +41,25 @@ namespace CarRental.WEB.Controllers
             }
             else
             {
-                throw new Exception("Некорректное значение для параметра id");
+                //throw new exception("некорректное значение для параметра id");
             }
-            return View();
-        }
+            ViewBag.hash = this.GetHashCode().ToString();
+            try
+            {
+                OrderDTO o = OrderService.FindOrder(1);
+                ViewBag.car = o.Car.Name;
+            }
+            catch (Exception ex)
+            {
+                string mes = ex.Message;
+            }
 
-        public ActionResult About()
-        {
-            
-            ViewBag.Message = "Your application description page.";
-
+          
             return View();
         }
         
       
-        public ActionResult Index(string id=null,int page=1,string sort = null  )
+        public  ActionResult Index(string id=null,int page=1,string sort = null  )
         {
             page = page < Convert.ToInt32(Math.Ceiling((double)DatAcessService.Cars.Count() / pageSize)) ? page :
                 Convert.ToInt32(Math.Ceiling((double)DatAcessService.Cars.Count() / pageSize));
@@ -60,9 +68,9 @@ namespace CarRental.WEB.Controllers
             List<CarDTO> crs = new List<CarDTO>();
             if (id == null)
             {
-                crs = DatAcessService.Cars
+                crs =  DatAcessService.Cars
                     .Where(c=>c.IsDeleted==false)
-                   .OrderBy(car => car.CarId)
+                   .OrderBy(car => car.Id)
                    .Skip((page - 1) * pageSize)
                    .Take(pageSize).ToList();
              }
@@ -109,21 +117,26 @@ namespace CarRental.WEB.Controllers
 
             };
             List<int> popCar = new List<int>();
-            int[] ids = cars.OrderBy(x => x.Popular).Select(x => x.CarId).ToArray();
-            int em = 0;
-            foreach(var i in ids)
+            int[] ids = cars.OrderBy(x => x.Popular).Select(x => x.Id).ToArray();
+            if (ids.Length > 3)
             {
-                if (em > 4)
+                for (int i = 0; i < ids.Length / 3; i++)
                 {
-                    break;
+                    popCar.Add(i);
                 }
-                popCar.Add(i);
-                em++;
             }
+            else
+            {
+                popCar.Add(ids.FirstOrDefault());
+            }
+           
+            
+            
 
             ViewBag.Sort = new List<string>() { "ascending", "descending" };
             ViewBag.popCar = popCar;
-            return View(model);
+            ViewBag.cars = cars;
+            return View("Index",model);
         }
         public PartialViewResult RendCars( int page = 1,string id=null,string sort="")
         {
@@ -166,16 +179,11 @@ namespace CarRental.WEB.Controllers
             ViewBag.Sort = new List<string>() { "ascending", "descending" };
             ViewBag.s = sort;
             List<int> popCar = new List<int>();
-            int[] ids = cars.OrderBy(x => x.Popular).Select(x => x.CarId).ToArray();
-            int em = 0;
-            foreach (var i in ids)
+            int[] ids = cars.OrderBy(x => x.Popular).Select(x => x.Id).ToArray();
+
+            for (int i = 0; i < ids.Length / 3; i++)
             {
-                if (em > 4)
-                {
-                    break;
-                }
                 popCar.Add(i);
-                em++;
             }
 
             ViewBag.popCar = popCar;
@@ -198,6 +206,7 @@ namespace CarRental.WEB.Controllers
             ViewBag.Orders = orders.Count();
             ViewBag.Fillprof = fillpfof;
             }
+            
             return PartialView();
         }
 

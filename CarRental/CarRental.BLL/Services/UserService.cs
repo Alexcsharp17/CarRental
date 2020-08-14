@@ -1,10 +1,17 @@
-﻿using CarRental.BLL.DTO;
+﻿using AutoMapper;
+using CarRental.BLL.DTO;
+using CarRental.BLL.IdentityLogic;
 using CarRental.BLL.Infrastracture;
 using CarRental.BLL.Interfaces;
-
+using CarRental.DAL.EF;
 using CarRental.DAL.Entities;
+using CarRental.DAL.Identity;
 using CarRental.DAL.Interfaces;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin;
+using Microsoft.Owin.Security.DataProtection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +29,89 @@ namespace CarRental.BLL.Services
         {
             Database = uow;
         }
+        public bool IsInRole(string id, string name)
+        {
+          return  Database.UserManager.IsInRole(id, name);
+        }
+        public async Task<UserDTO> Find(string us,string pass)
+        {
+
+          ApplicationUser user = await Database.UserManager.FindAsync(us, pass);
+         
+            //ICollection<IdentityUserRole> rol = user.Roles;
+            UserDTO userdto = null;
+            if(user!= null)
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<ApplicationUser, UserDTO>());
+                var mapper = new Mapper(config);
+                userdto = mapper.Map<UserDTO>(user);
+                
+            }
+            return userdto;
+        }
+        public async Task<UserDTO> FindByEmail(string email)
+        {
+
+            ApplicationUser user = await Database.UserManager.FindByEmailAsync(email);
+            //ICollection<IdentityUserRole> rol = user.Roles;
+            UserDTO userdto = null;
+            if (user != null)
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<ApplicationUser, UserDTO>());
+                var mapper = new Mapper(config);
+                userdto = mapper.Map<UserDTO>(user);
+
+            }
+            return userdto;
+        }
+        public async Task<UserDTO> FindById(string id)
+        {
+
+            ApplicationUser user = await Database.UserManager.FindByIdAsync(id);
+            //ICollection<IdentityUserRole> rol = user.Roles;
+            UserDTO userdto = null;
+            if (user != null)
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<ApplicationUser, UserDTO>());
+                var mapper = new Mapper(config);
+                userdto = mapper.Map<UserDTO>(user);
+
+            }
+            return userdto;
+        }
+        public async Task UpdateAsync(UserDTO userdto)
+        {
+            ApplicationUser userd = await Database.UserManager.FindByIdAsync(userdto.Id);
+
+            userd.EmailConfirmed = userdto.EmailConfirmed;
+            try
+            {
+                await Database.UserManager.UpdateAsync(userd);
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+        public  async Task<string> GenerateEmailConfirmationTokenAsync(string id)
+        {
+
+
+            var provider = new DpapiDataProtectionProvider("CarRental");
+
+            var userMan = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationContext()));
+
+            userMan.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(
+                provider.Create("CarRental"));
+
+            return await userMan.GenerateEmailConfirmationTokenAsync(id);
+        }
+        public async Task SendEmailAsync(string id,string subject,string body)
+        {
+            var userMan = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationContext()));
+            userMan.EmailService = new EmailService();
+            await userMan.SendEmailAsync( id, subject, body);
+        }
 
 
         public async Task<OperationDetails> Create(UserDTO userDto)
@@ -35,6 +125,7 @@ namespace CarRental.BLL.Services
                     PassportNumb=userDto.PassportNumb,Banned=userDto.Banned, Name=userDto.Name
                 };
                 var result = await Database.UserManager.CreateAsync(user, userDto.Password);
+                
                 if (result.Errors.Count() > 0)
                     return new OperationDetails(false, result.Errors.FirstOrDefault(), "");
                 // add role
@@ -48,6 +139,17 @@ namespace CarRental.BLL.Services
                 return new OperationDetails(false, "User with this nick is have already created!", "Email");
             }
         }
+        public static DAL.Identity.ApplicationUserManager Create(UserDTO userDto, IOwinContext context)
+        {
+
+            var manager = new DAL.Identity.ApplicationUserManager(
+                       new UserStore<ApplicationUser>(context.Get<ApplicationContext>()));
+            //..........................
+            manager.EmailService = new EmailService();
+            
+            return manager;
+           
+        }
 
         public async Task<ClaimsIdentity> Authenticate(UserDTO userDto)
         {
@@ -57,34 +159,14 @@ namespace CarRental.BLL.Services
             // авторизуем его и возвращаем объект ClaimsIdentity
             if (user != null && !user.Banned)
                 claim = await Database.UserManager.CreateIdentityAsync(user,
-                                            DefaultAuthenticationTypes.ApplicationCookie);
+                                   DefaultAuthenticationTypes.ApplicationCookie);
             return claim;
         }
-
-        // начальная инициализация бд
-        public async Task SetInitialData(UserDTO adminDto, List<string> roles)
-        {
-            foreach (string roleName in roles)
-            {
-                var role = await Database.RoleManager.FindByNameAsync(roleName);
-                if (role == null)
-                {
-                    role = new ApplicationRole { Name = roleName };
-                    await Database.RoleManager.CreateAsync(role);
-                }
-            }
-            await Create(adminDto);
-        }
-
+      
         public void Dispose()
         {
             Database.Dispose();
         }
-
-    
-
        
-
-        
     }
 }

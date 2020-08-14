@@ -175,7 +175,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             {
                 System.IO.File.Delete(filePath);
             }
-            DatAcessService.DeleteCar(car.CarId);
+            DatAcessService.DeleteCar(car.Id);
             return RedirectToAction("GetCars", "Main");
         }
 
@@ -192,7 +192,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Deletesoft(CarDTO car)
         {
-            DatAcessService.DeleteCarSoft(car.CarId);
+            DatAcessService.DeleteCarSoft(car.Id);
             return RedirectToAction("Index", "Main");
         }
         public ActionResult GetStats()

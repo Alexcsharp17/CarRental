@@ -1,0 +1,6 @@
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\b\CarRental.BLL\bin\Debug\CarRental.BLL.dll.config
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\b\CarRental.BLL\bin\Debug\CarRental.BLL.dll
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\i\CarRental.BLL\Debug\CarRental.BLL.csprojAssemblyReference.cache
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\i\CarRental.BLL\Debug\CarRental.BLL.csproj.CoreCompileInputs.cache
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\i\CarRental.BLL\Debug\CarRental.BLL.csproj.CopyComplete
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\i\CarRental.BLL\Debug\CarRental.BLL.dll

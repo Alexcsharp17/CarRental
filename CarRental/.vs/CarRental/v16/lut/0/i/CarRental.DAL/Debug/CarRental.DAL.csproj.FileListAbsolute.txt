@@ -1,0 +1,10 @@
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\b\CarRental.DAL\bin\Debug\CarRental.DAL.dll.config
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\b\CarRental.DAL\bin\Debug\CarRental.DAL.dll
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\i\CarRental.DAL\Debug\CarRental.DAL.csprojAssemblyReference.cache
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\i\CarRental.DAL\Debug\CarRental.DAL.Migrations.InitialCreate.resources
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\i\CarRental.DAL\Debug\CarRental.DAL.Migrations.OptimizedCarTable.resources
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\i\CarRental.DAL\Debug\CarRental.DAL.Migrations.OptimizedOrdersTable.resources
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\i\CarRental.DAL\Debug\CarRental.DAL.csproj.GenerateResource.cache
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\i\CarRental.DAL\Debug\CarRental.DAL.csproj.CoreCompileInputs.cache
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\i\CarRental.DAL\Debug\CarRental.DAL.csproj.CopyComplete
+D:\GitHub\CarRental\CarRental\.vs\CarRental\v16\lut\0\i\CarRental.DAL\Debug\CarRental.DAL.dll

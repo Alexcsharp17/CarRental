@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace CarRental.WEB.Areas.Admin.Controllers
 {
-    [ExceptionLogger]
+   
     [Authorize(Roles = "admin, manager")]
     public class DashboardController : Controller
     {
@@ -20,10 +20,11 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         public ActionResult Index()
         {
            
-            ViewBag.Orders = DatAcessService.Orders.Count();
+           ViewBag.Orders = DatAcessService.Orders.Count();
             ViewBag.Users = DatAcessService.Users.Count();
             ViewBag.Exceptions = DatAcessService.Exceptions.Count();
             ViewBag.Cars = DatAcessService.Cars.Count();
+            
             return View();
         }
     }

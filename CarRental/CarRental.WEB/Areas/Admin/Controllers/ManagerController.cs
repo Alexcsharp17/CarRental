@@ -29,7 +29,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             var ord = DatAcessService.Orders;
             foreach(var o in ord)
             {
-                o.CarDTO = DatAcessService.FindCar(o.CarId);
+                o.Car = DatAcessService.FindCar(o.CarId);
             }
             return View(ord);
         }
@@ -48,13 +48,13 @@ namespace CarRental.WEB.Areas.Admin.Controllers
                 string[] strid = id.Split(Convert.ToChar("|"));
                 for (int i = 0; i < strid.Length; i++)
                 {
-                    ordrs.Add(DatAcessService.Orders.FirstOrDefault(o => o.OrderId == Convert.ToInt32(strid[i])));
+                    ordrs.Add(DatAcessService.Orders.FirstOrDefault(o => o.Id == Convert.ToInt32(strid[i])));
                 }
             }
            IEnumerable<OrderDTO> orders = ordrs;
             foreach(var o in orders)
             {
-                o.CarDTO = DatAcessService.FindCar(o.CarId);
+                o.Car = DatAcessService.FindCar(o.CarId);
             }
             return PartialView("~/Views/Home/RendOrders.cshtml", orders);
         }
@@ -62,7 +62,8 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult EditStatus(int id)
         {
-            var order = DatAcessService.FindOrder(id);
+           
+            OrderDTO order = DatAcessService.FindOrder(id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -86,7 +87,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         }
 
         public ActionResult DeleteOrder(int ordId){
-            var order = DatAcessService.Orders.Where(o => o.OrderId == ordId);
+            var order = DatAcessService.Orders.Where(o => o.Id == ordId);
             if (order == null)
             {
                 return HttpNotFound();
@@ -101,7 +102,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             var ord = DatAcessService.FindOrder(id);
-             ord.CarDTO = DatAcessService.FindCar(ord.CarId);
+             ord.Car = DatAcessService.FindCar(ord.CarId);
             return View(ord);
         }
         public ActionResult AutocompleteUsName(string term)

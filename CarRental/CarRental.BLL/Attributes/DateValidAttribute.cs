@@ -10,7 +10,7 @@ namespace CarRental.BLL.Attributes
 {/// <summary>
 /// Used to validate car rent time span 
 /// </summary>
-    class DateValidAttribute : ValidationAttribute
+   public class DateValidAttribute : ValidationAttribute
     {
         public override bool IsValid(object value)
         {

@@ -22,6 +22,8 @@ namespace CarRental.BLL.DTO
         public string Name { get; set; }
        
         public string Role { get; set; }
+        public bool EmailConfirmed { get; set; }
+      
         public bool Banned { get; set; }
         public string RepairInvoice { get; set; }
         [Display(Name = "Mobile Number:")]

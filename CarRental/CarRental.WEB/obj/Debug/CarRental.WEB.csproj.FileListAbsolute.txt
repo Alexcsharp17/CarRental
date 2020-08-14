@@ -106,7 +106,6 @@ D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\Ninject.Web.Common.WebHost.xml
 D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\Ninject.Web.Mvc.xml
 D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\CarRental.DAL.pdb
 D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\CarRental.DAL.dll.config
-D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\EntityFramework.xml
 D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\EntityFramework.SqlServer.dll
 D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\EntityFramework.SqlServer.xml
@@ -120,5 +119,17 @@ D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\roslyn\System.Runtime.InteropSer
 D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\roslyn\System.Threading.Tasks.Extensions.dll
 D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\WebActivatorEx.dll
 D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\AutoMapper.dll
-D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\AutoMapper.pdb
 D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\AutoMapper.xml
+D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\Google.Apis.Auth.dll
+D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\Google.Apis.Auth.PlatformServices.dll
+D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\Google.Apis.Core.dll
+D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\Google.Apis.dll
+D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\Google.Apis.PlatformServices.dll
+D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\Microsoft.Owin.Security.Google.dll
+D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\Google.Apis.pdb
+D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\Google.Apis.xml
+D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\Google.Apis.Auth.pdb
+D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\Google.Apis.Auth.xml
+D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\Google.Apis.Core.pdb
+D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\Google.Apis.Core.xml
+D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\Microsoft.Owin.Security.Google.xml

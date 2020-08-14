@@ -6,10 +6,10 @@
     "\\CarRental\\CarRental.BLL\\Interfaces",
     "\\CarRental\\CarRental.BLL\\Services",
     "\\CarRental\\CarRental.WEB",
+    "\\CarRental\\CarRental.WEB\\App_Start",
     "\\CarRental\\CarRental.WEB\\Areas",
     "\\CarRental\\CarRental.WEB\\Areas\\Admin",
-    "\\CarRental\\CarRental.WEB\\Areas\\Admin\\Views",
-    "\\CarRental\\CarRental.WEB\\Areas\\Admin\\Views\\Main"
+    "\\CarRental\\CarRental.WEB\\Areas\\Admin\\Views"
   ],
   "PreviewInSolutionExplorer": false
 }

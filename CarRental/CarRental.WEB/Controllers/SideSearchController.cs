@@ -1,5 +1,6 @@
 ﻿using CarRental.BLL.Attributes;
 using CarRental.BLL.DTO;
+using CarRental.BLL.Enums;
 using CarRental.BLL.Interfaces;
 using CarRental.WEB.Areas.Admin.Models;
 using CarRental.WEB.Models;
@@ -13,16 +14,20 @@ using System.Web.Mvc;
 
 namespace CarRental.WEB.Controllers
 {
-    [ExceptionLogger]
+   
     public class SideSearchController : Controller
     {
         static IEnumerable<string> carss = new List<string>();
         static IEnumerable<string> userss = new List<string>();
         private IDatAcessService DatAcessService;
-        public SideSearchController(IDatAcessService serv)
+        private ICarService CarService;
+        private IOrderService OrderService;
+        public SideSearchController(IDatAcessService serv, ICarService carserv, IOrderService ordserv)
         {
             DatAcessService = serv;
-            var cr = DatAcessService.Cars.Select(c => c.Name).Distinct();       
+            CarService = carserv;
+            OrderService = ordserv;
+            var cr = CarService.Cars.Select(c => c.Name).Distinct();       
             carss = cr;
             var us = DatAcessService.Users.Select(u => u.Name);
             userss = us;
@@ -30,56 +35,41 @@ namespace CarRental.WEB.Controllers
         [HttpGet]
         public ActionResult CarSearch()
         {
-            CarSearchModel mod = new CarSearchModel();           
-            var uniqueManuf = DatAcessService.Cars
+                     
+            var uniqueManuf = CarService.Cars
                               .Select(c => c.Manufacturer)
                               .Distinct();
             
-            var uniqueCarTyp= DatAcessService.Cars
+            var uniqueCarTyp= CarService.Cars
                               .Select(c => c.CarType)
                               .Distinct();
-            var uniqueFuelTyp= DatAcessService.Cars
+            
+            var uniqueFuelTyp= CarService.Cars
                               .Select(c => c.FuelType)
                               .Distinct();
-            var uniqueTransm = DatAcessService.Cars
+            var uniqueTransm = CarService.Cars
                               .Select(c => c.AutomaticTransm)
                               .Distinct();
 
-            var MaxPrice = DatAcessService.Cars
+            var MaxPrice = CarService.Cars
                           .Select(c => c.Price)
                           .Max();
-            var MinPrice = DatAcessService.Cars
+            var MinPrice = CarService.Cars
                             .Select(c => c.Price)
                             .Min();
-           
-            foreach(var t in uniqueManuf)
-            {
-                mod.manufactorers.Add(t);
-               
-            }
-          
+
+            CarSearchModel mod = new CarSearchModel() {
+                manufactorers = uniqueManuf.ToList(),
+                CarTypes = uniqueCarTyp.ToList(),
+                FuelTypes = uniqueFuelTyp.ToList()
+        };
             
-            
-            foreach (var t in uniqueCarTyp)
-            {
-                mod.CarTypes.Add(t);
-               
-            }
-           
 
             foreach (var t in uniqueTransm)
             {
                 mod.Transmissions.Add(t.ToString());
                
             }
-            
-
-            foreach (var t in uniqueFuelTyp)
-            {
-                mod.FuelTypes.Add(t);
-               
-            }
-
 
             ViewBag.MaxPrice = MaxPrice;
             ViewBag.MinPrice = MinPrice;
@@ -147,7 +137,7 @@ namespace CarRental.WEB.Controllers
                 
                  foreach(var car in c)
                 {
-                    ids = ids + car.CarId + "I";
+                    ids = ids + car.Id + "I";
                 }
                
                 return RedirectToAction("RendCars", "Home", new{id=ids,page=model.Page!=0?model.Page:1,sort=model.Sort
@@ -214,7 +204,7 @@ namespace CarRental.WEB.Controllers
         public ActionResult OrderSearch(string[] statuses=null,
             string usid = null)
         {
-            IEnumerable<OrderDTO> orders = DatAcessService.Orders;
+            IEnumerable<OrderDTO> orders = OrderService.Orders;
             if (usid != null && usid != "")
             {
 
@@ -235,7 +225,7 @@ namespace CarRental.WEB.Controllers
 
             foreach (var o in orders)
             {
-                ids = ids + o.OrderId + "|";
+                ids = ids + o.Id + "|";
             }
 
             return RedirectToAction("GetOrders", "Manager", new

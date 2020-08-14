@@ -10,7 +10,7 @@
 
 
             <dd>
-                @Html.HiddenFor(model => model.OrderId)
+                @Html.HiddenFor(model => model.Id)
             </dd>
 
             <dt>
@@ -29,11 +29,11 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.CarDTO.Name)
+                @Html.DisplayNameFor(model => model.Car.Name)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.CarDTO.Name)
+                @Html.DisplayFor(model => model.Car.Name)
             </dd>
 
             <dt>
@@ -111,7 +111,7 @@
                 @Html.DisplayFor(model => model.OrdSum)
             </dd>
             <p>
-                @Html.ActionLink("Edit", "EditStatus", new { id = Model.OrderId }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Edit", "EditStatus", new { id = Model.Id }, new { @class = "btn btn-warning" })
 
             </p>
         </dl>

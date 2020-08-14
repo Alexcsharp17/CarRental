@@ -95,11 +95,11 @@ namespace CarRental.DAL.Repositories
         }
         public void CreateCar(Entities.Car car)
         {
-            if (car.CarId == 0)
+            if (car.Id == 0)
                 db.Cars.Add(car);
             else
             {
-                Car dbEntry = db.Cars.Find(car.CarId); 
+                Car dbEntry = db.Cars.Find(car.Id); 
                 if (dbEntry != null)
                 {
                     dbEntry.Name = car.Name;
@@ -121,11 +121,11 @@ namespace CarRental.DAL.Repositories
         }
         public void CreateOrder(Entities.Order order)
         {
-            if (order.OrderId == 0)
+            if (order.Id == 0)
                 db.Orders.Add(order);
             else
             {
-                Order dbEntry = db.Orders.Find(order.OrderId);
+                Order dbEntry = db.Orders.Find(order.Id);
                 if (dbEntry != null)
                 {
                     dbEntry.CarId = order.CarId;
@@ -133,7 +133,7 @@ namespace CarRental.DAL.Repositories
                     dbEntry.StartTime = order.StartTime;
                     dbEntry.EndTime = order.EndTime;
                     dbEntry.OrdSum = order.OrdSum;
-                    dbEntry.OrderId = order.OrderId;
+                    dbEntry.Id = order.Id;
                     dbEntry.Status = order.Status;
                     dbEntry.ManagComment = order.ManagComment;
                 }
@@ -144,13 +144,14 @@ namespace CarRental.DAL.Repositories
 
         public Car FindCar(int id)
         {
-            var cars = db.Cars.FirstOrDefault(c => c.CarId == id);
-            return cars;
+            var car = db.Cars.FirstOrDefault(c => c.Id == id);         
+            return car;
         }
         public Order FindOrder(int id)
         {
-            var orders = db.Orders.FirstOrDefault(o => o.OrderId == id);
-            return (orders);
+            var order = db.Orders.FirstOrDefault(o => o.Id == id);
+            
+            return (order);
         }
         public IEnumerable<Order> FindOrders(string userId)
         {
@@ -296,6 +297,10 @@ namespace CarRental.DAL.Repositories
             }
         
         db.SaveChanges();
+        }
+        public void CreateLog(Log log) {
+            db.Logs.Add(log);
+            db.SaveChanges();
         }
     }
 }

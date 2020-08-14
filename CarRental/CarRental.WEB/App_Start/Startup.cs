@@ -1,14 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using CarRental.BLL.Services;
 using Microsoft.AspNet.Identity;
+using CarRental.BLL.Services;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Google;
 using Owin;
 using CarRental.BLL.Interfaces;
 using CarRental.BLL.Infrastracture;
+
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
 using Ninject.Modules;
 using CarRental.WEB.Util;
 using Ninject;
@@ -26,8 +30,22 @@ namespace CarRental.WEB.App_Start
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Account/Login"),
+
             });
+            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+
+            app.UseTwoFactorSignInCookie(DefaultAuthenticationTypes.TwoFactorCookie, TimeSpan.FromMinutes(5));
+
+            app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
+
+            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            //{
+            //    ClientId = "",
+            //    ClientSecret = ""
+            //});
         }
+
+
 
         private IUserService CreateUserService()
         {

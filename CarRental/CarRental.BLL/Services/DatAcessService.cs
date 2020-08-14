@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using CarRental.BLL.DTO;
 using CarRental.BLL.Interfaces;
-
 using CarRental.DAL.Entities;
 using CarRental.DAL.Interfaces;
 using System;
@@ -20,7 +19,7 @@ namespace CarRental.BLL.Services
     /// </summary>
     public class DatAcessService : IDatAcessService
     {
-        IUnitOfWork Database { get; set; }
+        IUnitOfWork Database { get;  }
 
         public DatAcessService(IUnitOfWork uow)
         {
@@ -40,7 +39,7 @@ namespace CarRental.BLL.Services
             }
 
         }
-        void IDatAcessService.CreateCar(CarDTO cardto)
+      public  void CreateCar(CarDTO cardto)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<CarDTO, Car>());
 
@@ -49,7 +48,7 @@ namespace CarRental.BLL.Services
             Database.CreateCar(car);
         }
 
-        CarDTO IDatAcessService.FindCar(int id)
+       public CarDTO FindCar(int id)
         {
             Car car = Database.FindCar(id);
             if (car == null)
@@ -64,7 +63,7 @@ namespace CarRental.BLL.Services
 
             return (cardto);
         }
-        IEnumerable<CarDTO> IDatAcessService.FindCars(string name = null, string manufactorer = null,
+       public IEnumerable<CarDTO> FindCars(string name = null, string manufactorer = null,
             string carType = null, string fuelType = null, string transmission = null, int LowPrice = 0, int UppPrice = int.MaxValue)
         {
     
@@ -73,16 +72,16 @@ namespace CarRental.BLL.Services
                 var mapper = new Mapper(config);
 
                 var cars = mapper.Map<List<CarDTO>>(Database.FindCars(name, manufactorer, carType,fuelType,transmission, LowPrice, UppPrice).ToList());
-            var cc = cars.Count();
+           
             
             return cars;
         }
-        void IDatAcessService.DeleteCar(int id)
+       public void DeleteCar(int id)
         {
             Database.DeleteCar(id);
 
         }
-        void IDatAcessService.DeleteCarSoft(int id)
+       public void DeleteCarSoft(int id)
         {
             Database.DeleteCarSoft(id);
         }
@@ -90,41 +89,64 @@ namespace CarRental.BLL.Services
         {
           get
             {               
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<Order, OrderDTO>());
-                var mapper = new Mapper(config);
-                var orders = mapper.Map<List<OrderDTO>>(Database.Orders.ToList());
-                return orders;        
+              
+                var config = new MapperConfiguration(cfg => {
+                    cfg.CreateMap<Order, OrderDTO>();
+                    cfg.CreateMap<Car, CarDTO>().ForMember(x => x.Popular, opt => opt.Ignore());
+                });
+                config.AssertConfigurationIsValid();
+                var mapper = config.CreateMapper();
+                var orders = mapper.Map<List<Order>, List<OrderDTO>>(Database.Orders.ToList());
+                return orders;
             }
         }
 
-        void IDatAcessService.CreateOrder(OrderDTO orderdto)
+      public  void CreateOrder(OrderDTO orderdto)
         {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<OrderDTO, Order>());
-            var mapper = new Mapper(config);
-            var order = mapper.Map<Order>(orderdto);           
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<OrderDTO, Order>();
+
+            }); var mapper = new Mapper(config);
+            var order = mapper.Map<Order>(orderdto);
             Database.CreateOrder(order);
+
+
         }
 
-        OrderDTO IDatAcessService.FindOrder(int id)
+       public OrderDTO FindOrder(int id)
         {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Order, OrderDTO>());
-            var mapper = new Mapper(config);
-            var order = mapper.Map<OrderDTO>(Database.FindOrder(id));
+
+
+            var config = new MapperConfiguration(cfg => {
+                cfg.CreateMap<Order, OrderDTO>();
+                cfg.CreateMap<Car, CarDTO>().ForMember(x => x.Popular, opt => opt.Ignore());
+            });
+            config.AssertConfigurationIsValid();
+            var mapper = config.CreateMapper();
+            var order = mapper.Map<Order, OrderDTO>(Database.FindOrder(id));
+
             return order;
         }
-        IEnumerable<OrderDTO> IDatAcessService.FindOrders(string userId)
+       public IEnumerable<OrderDTO> FindOrders(string userId)
         {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Order, OrderDTO>());
-            var mapper = new Mapper(config);
-            var orders = mapper.Map<List<OrderDTO>>(Database.FindOrders(userId).ToList());
-            return orders;
+            var config = new MapperConfiguration(cfg => {
+                cfg.CreateMap<Order, OrderDTO>();
+                cfg.CreateMap<Car, CarDTO>().ForMember(x => x.Popular, opt => opt.Ignore());
+            });
+            config.AssertConfigurationIsValid();
+            var mapper = config.CreateMapper();
+            var orders = mapper.Map<List<Order>, List<OrderDTO>>(Database.FindOrders(userId).ToList());
+
+            return orders;          
         }
-        void IDatAcessService.DeleteOrder(int id)
+       public void DeleteOrder(int id)
         {
             Database.DeleteOrder(id);
 
         }
-        void IDatAcessService.DeleteOrderSoft(int id)
+       public void DeleteOrderSoft(int id)
         {
             Database.DeleteOrderSoft(id);
         }
@@ -150,7 +172,7 @@ namespace CarRental.BLL.Services
             var us = mapper.Map<ApplicationUser>(user);
             Database.EditUser(us);
         }
-        void IDatAcessService.CreateUser(UserDTO userdto)
+        public void CreateUser(UserDTO userdto)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<UserDTO, ApplicationUser>());
 
@@ -169,14 +191,18 @@ namespace CarRental.BLL.Services
                 return exepts;
                 }
          }
-        void IDatAcessService.DeleteExceptions()
+         public void DeleteExceptions()
         {
             Database.DeleteExceptions();
         }
-        void IDatAcessService.DeleteException(int id)
+       public void DeleteException(int id)
         {
             Database.DeleteException(id);
         }
 
+        public void Dispose()
+        {
+            this.Dispose();
+        }
     }
 }

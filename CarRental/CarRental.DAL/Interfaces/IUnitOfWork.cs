@@ -23,5 +23,6 @@ namespace CarRental.DAL.Interfaces
         void EditUser(ApplicationUser user);
         IEnumerable<ApplicationUser> Users{get;}      
         void CreateUser(ApplicationUser user);
+        void CreateLog(Log l);
     }
 }

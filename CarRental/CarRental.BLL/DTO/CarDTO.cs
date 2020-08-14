@@ -16,7 +16,7 @@ namespace CarRental.BLL.DTO
    public class CarDTO
     {
         [HiddenInput(DisplayValue = false)]
-        public int CarId { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "Car Name")]
         [Required(ErrorMessage = "Please input car name")]
@@ -75,13 +75,9 @@ namespace CarRental.BLL.DTO
         public int EngSize { get; set; }
         
         public int Popular { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
+        
 
         
-        public CarDTO()
-        {
-            
-            Orders = new List<Order>();
-        }
+        
     }
 }
