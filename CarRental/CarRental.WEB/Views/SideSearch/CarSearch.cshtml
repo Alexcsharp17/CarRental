@@ -7,26 +7,26 @@
         @Html.AntiForgeryToken()
     <div class="form-horizontal mr-5">
         <div id="close-sec" class="mb-2 container-fluid ">
-            @*<div class="icon-menu  ml-2 d-flex flex-row p-1" >
+            <div class="icon-menu  ml-2 d-flex flex-row p-1">
                 <div class="d-flex flex-row container-fluid ml-5">
-                    
-                    <img alt="X" src="~/Content/img/ico/close.png" style="height:35px;width:35px;" class="float-right d-inline"  id="cl-ic"/>
+
+                    <img alt="X" src="~/Content/img/ico/close.png" style="height:35px;width:35px;" class="float-right d-inline" id="cl-ic" />
                 </div>
 
-            </div>*@
+            </div>
         </div>
-        <div id="top-bl" ></div>        
+        <div id="top-bl"></div>
         <div class="form-group mt-2">
             <div class="sear-sec">
                 <div class="cheks-head container-fluid"><p>Model name</p></div>
                 <div class="sear_name mt-1 mb-1 pl-1">
                     <span>
                         <input type="text" name="Name" data-autocomplete-source='@Url.Action("AutocompleteSearch", "SideSearch")' class="form-control d-inline w-75 ml-1" />
-                        <button type="submit"  class="btn btn-success s_btn  " id="sbm"><i class="fa fa-search mr-2 ml-2 d-inline"></i></button>
+                        <button type="submit" class="btn btn-success s_btn  " id="sbm"><i class="fa fa-search mr-2 ml-2 d-inline"></i></button>
 
                     </span>
                 </div>
-            </div>           
+            </div>
         </div>
         <div class="sear-sec">
             <div class="cheks-head container-fluid"><p>Select manufactorer</p></div>
@@ -50,7 +50,7 @@
                     <span>
                         <input type="checkbox" class="big_check custom-checkbox" name="typess" value=@Model.CarTypes[i] />
                     </span>
-                    <span  class="ml-1">
+                    <span class="ml-1">
                         @Html.DisplayFor(model => model.CarTypes[i])
                     </span>
                 </label>
@@ -64,8 +64,50 @@
                     <span>
                         <input type="checkbox" class="big_check" name="fueltypess" value=@Model.FuelTypes[i] />
                     </span>
-                    <span  class="ml-1">
+                    <span class="ml-1">
                         @Html.DisplayFor(model => model.FuelTypes[i])
+                    </span>
+                </label>
+            }
+        </div>
+        <div class="sear-sec">
+            <div class="cheks-head"> <p>Select capacity</p></div>
+            @for (var i = 0; i < Model.Capacities.Count(); i++)
+            {
+                <label class="check_row d-flex align-content-center">
+                    <span>
+                        <input type="checkbox" class="big_check custom-checkbox" name="capacity" value=@Model.Capacities[i] />
+                    </span>
+                    <span class="ml-1">
+                        @Html.DisplayFor(model => model.Capacities[i])
+                    </span>
+                </label>
+            }
+        </div>
+        <div class="sear-sec">
+            <div class="cheks-head"> <p>Select engine Size</p></div>
+            @for (var i = 0; i < Model.EngSizes.Count(); i++)
+            {
+                <label class="check_row d-flex align-content-center">
+                    <span>
+                        <input type="checkbox" class="big_check custom-checkbox" name="engSize" value=@Model.EngSizes[i] />
+                    </span>
+                    <span class="ml-1">
+                        @Html.DisplayFor(model => model.EngSizes[i])
+                    </span>
+                </label>
+            }
+        </div>
+        <div class="sear-sec">
+            <div class="cheks-head"> <p>Select fuel consumption</p></div>
+            @for (var i = 0; i < Model.FuelConsump.Count(); i++)
+            {
+                <label class="check_row d-flex align-content-center">
+                    <span>
+                        <input type="checkbox" class="big_check custom-checkbox" name="fuelConsump" value=@Model.FuelConsump[i] />
+                    </span>
+                    <span class="ml-1">
+                        @Html.DisplayFor(model => model.FuelConsump[i])
                     </span>
                 </label>
             }
@@ -78,14 +120,14 @@
                     <span>
                         <input type="checkbox" class="big_check " name="transmissionss" value=@Model.Transmissions[i] />
                     </span>
-                    <span  class="ml-1">
+                    <span class="ml-1">
                         @Html.DisplayFor(model => model.Transmissions[i])
                     </span>
                 </label>
             }
         </div>
         <div class="sear-sec">
-            <div class="cheks-head"><p>Price</p></div>
+            <div class="cheks-head"><p>Price in $</p></div>
             <div class="d-flex flex-row">
                 <div>
                     @Html.LabelFor(model => model.LowPrice, new { @class = "pl-2" })
@@ -99,7 +141,7 @@
         </div>
         @*<input type="hidden" name="sort" id="sort" />*@
         @Html.HiddenFor(model => model.Sort, new { @id = "sort", name = "sort" })
-        @Html.HiddenFor(model => model.Page, new { @id="Page",name="page"})
+        @Html.HiddenFor(model => model.Page, new { @id = "Page", name = "page" })
     </div>
     }
 </div>

@@ -50,7 +50,7 @@ namespace CarRental.BLL.Services
 
         }
         public IEnumerable<CarDTO> FindCars(string name = null, string manufactorer = null,
-            string carType = null, string fuelType = null, string transmission = null, int LowPrice = 0, int UppPrice = int.MaxValue)
+            string carType = null, string fuelType = null, string transmission = null, string capacities = null, string fuelCons = null, string engSizes = null, int LowPrice = 0, int UppPrice = int.MaxValue)
         {
 
             IEnumerable<Car> cars = db.Cars.GetAll();
@@ -74,6 +74,18 @@ namespace CarRental.BLL.Services
             if (transmission != "")
             {
                 cars = cars.Where(c => transmission.ToLower().Contains(c.AutomaticTransm.ToString().ToLower()));
+            }
+            if (capacities != "")
+            {
+                cars = cars.Where(c => capacities.ToLower().Contains(c.Capacity.ToString().ToLower()));
+            }
+            if (engSizes != "")
+            {
+                cars = cars.Where(c => engSizes.ToLower().Contains(c.EngSize.ToString().ToLower()));
+            }
+            if (fuelCons != "")
+            {
+                cars = cars.Where(c => fuelCons.ToLower().Contains(c.FuelConsump.ToString().ToLower()));
             }
             if (UppPrice != 0 && LowPrice != 0)
             {

@@ -50,6 +50,32 @@ namespace CarRental.WEB.Controllers
             var uniqueTransm = CarService.Cars
                               .Select(c => c.AutomaticTransm)
                               .Distinct();
+            var uniqueEngSize = CarService.Cars.OrderBy(c=>c.EngSize)
+                             .Select(c => c.EngSize)
+                             .Distinct();
+            var unEngSize = new List<string>();
+            foreach (var item in uniqueEngSize)
+            {
+                unEngSize.Add(item.ToString());
+            }
+            var uniqueFuelConsump = CarService.Cars.OrderBy(c=>c.FuelConsump)
+                            .Select(c => c.FuelConsump)
+                            .Distinct();
+            var unFuelCon = new List<string>();
+            foreach (var item in uniqueFuelConsump)
+            {
+                unFuelCon.Add(item.ToString());
+            }
+
+            var uniqueCapac = CarService.Cars.OrderBy(c => c.Capacity)
+                              .Select(c => c.Capacity)
+                              .Distinct();
+                              
+            var unCap = new List<string>();
+            foreach (var item in uniqueCapac)
+            {
+                unCap.Add(item.ToString());
+            }
 
             var MaxPrice = CarService.Cars
                           .Select(c => c.Price)
@@ -61,8 +87,11 @@ namespace CarRental.WEB.Controllers
             CarSearchModel mod = new CarSearchModel() {
                 manufactorers = uniqueManuf.ToList(),
                 CarTypes = uniqueCarTyp.ToList(),
-                FuelTypes = uniqueFuelTyp.ToList()
-        };
+                FuelTypes = uniqueFuelTyp.ToList(),
+                Capacities = unCap,
+                FuelConsump= unFuelCon,
+                EngSizes=unEngSize
+            };
             
 
             foreach (var t in uniqueTransm)
@@ -80,7 +109,7 @@ namespace CarRental.WEB.Controllers
         }
         [HttpPost]
         public ActionResult CarSearch(CarSearchModel model=null, string[] manufss=null,
-            string[] typess=null,string[] transmissionss=null, string[]fueltypess=null)
+            string[] typess=null,string[] transmissionss=null, string[] fueltypess=null, string[] capacity=null, string[] engSize= null, string[] fuelConsump=null)
         {            
             string manufactorers = "";
             if (manufss != null)
@@ -115,11 +144,36 @@ namespace CarRental.WEB.Controllers
                     transmissions += tr;
                 }
             }
+            string capacities = "";
+
+            if (capacity != null)
+            {
+                foreach (var tr in capacity)
+                {
+                    capacities += tr;
+                }
+            }
+            string engSizes = "";
+            if (engSize!= null)
+            {
+                foreach (var i in engSize)
+                {
+                    engSizes += i;
+                }
+            }
+            string fuelCons = "";
+            if (fuelConsump != null)
+            {
+                foreach (var i in fuelConsump)
+                {
+                    fuelCons += i;
+                }
+            }
 
             if (model != null)
             {
                 IEnumerable<CarDTO> c = DatAcessService.FindCars(model.Name,
-                    manufactorers,types,fueltypes,transmissions, model.LowPrice, model.UppPrice);
+                    manufactorers,types,fueltypes,transmissions, capacities , fuelCons, engSizes, model.LowPrice, model.UppPrice);
                 
                 if (model.Sort != null)
                 {

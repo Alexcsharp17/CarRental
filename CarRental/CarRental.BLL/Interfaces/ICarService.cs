@@ -14,7 +14,7 @@ namespace CarRental.BLL.Interfaces
         void CreateCar(CarDTO car);
         CarDTO FindCar(int id);
         IEnumerable<CarDTO> FindCars(string name = "", string manufactorer = "",
-            string carType = "", string fuelType = "", string transmission = "", int LowPrice = 0, int UppPrice = int.MaxValue);
+            string carType = "", string fuelType = "", string transmission = "", string capacities = "", string fuelCons = "", string engSizes = "", int LowPrice = 0, int UppPrice = int.MaxValue);
         void DeleteCar(int id);
         void DeleteCarSoft(int id);
 

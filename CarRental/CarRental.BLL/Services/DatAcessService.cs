@@ -64,14 +64,14 @@ namespace CarRental.BLL.Services
             return (cardto);
         }
        public IEnumerable<CarDTO> FindCars(string name = null, string manufactorer = null,
-            string carType = null, string fuelType = null, string transmission = null, int LowPrice = 0, int UppPrice = int.MaxValue)
+            string carType = null, string fuelType = null, string transmission = null, string capacities = null, string fuelCons=null, string engSizes=null, int LowPrice = 0, int UppPrice = int.MaxValue)
         {
     
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<Car, CarDTO>());
 
                 var mapper = new Mapper(config);
 
-                var cars = mapper.Map<List<CarDTO>>(Database.FindCars(name, manufactorer, carType,fuelType,transmission, LowPrice, UppPrice).ToList());
+                var cars = mapper.Map<List<CarDTO>>(Database.FindCars(name, manufactorer, carType,fuelType,transmission,capacities, fuelCons,engSizes, LowPrice, UppPrice).ToList());
            
             
             return cars;
