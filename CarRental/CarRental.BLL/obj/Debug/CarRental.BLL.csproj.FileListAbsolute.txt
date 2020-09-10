@@ -152,3 +152,5 @@ D:\GitHub\CarRental\CarRental\CarRental.BLL\bin\Debug\System.Text.Json.xml
 D:\GitHub\CarRental\CarRental\CarRental.BLL\bin\Debug\System.Memory.xml
 D:\GitHub\CarRental\CarRental\CarRental.BLL\bin\Debug\System.Text.Encodings.Web.xml
 D:\GitHub\CarRental\CarRental\CarRental.BLL\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\GitHub\CarRental\CarRental\CarRental.BLL\bin\Debug\FluentValidation.dll
+D:\GitHub\CarRental\CarRental\CarRental.BLL\bin\Debug\FluentValidation.xml

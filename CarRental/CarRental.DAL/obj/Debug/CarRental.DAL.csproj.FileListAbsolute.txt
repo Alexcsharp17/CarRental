@@ -284,3 +284,5 @@ D:\GitHub\CarRental\CarRental\CarRental.DAL\bin\Debug\Microsoft.Extensions.Optio
 D:\GitHub\CarRental\CarRental\CarRental.DAL\bin\Debug\Microsoft.Extensions.Primitives.xml
 D:\GitHub\CarRental\CarRental\CarRental.DAL\bin\Debug\System.Collections.Immutable.xml
 D:\GitHub\CarRental\CarRental\CarRental.DAL\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\GitHub\CarRental\CarRental\CarRental.DAL\bin\Debug\FluentValidation.dll
+D:\GitHub\CarRental\CarRental\CarRental.DAL\bin\Debug\FluentValidation.xml

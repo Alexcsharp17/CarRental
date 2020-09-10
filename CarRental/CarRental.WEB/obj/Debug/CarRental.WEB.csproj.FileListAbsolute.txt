@@ -507,3 +507,5 @@ D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\System.Text.Json.xml
 D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\System.Text.Encodings.Web.xml
 D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\System.Threading.Tasks.Extensions.xml
 D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\Microsoft.Bcl.AsyncInterfaces.xml
+D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\FluentValidation.dll
+D:\GitHub\CarRental\CarRental\CarRental.WEB\bin\FluentValidation.xml
