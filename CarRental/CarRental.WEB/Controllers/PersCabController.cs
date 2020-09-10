@@ -47,6 +47,7 @@ namespace CarRental.WEB.Controllers
                 Orders = ords
             };
             ViewBag.Res = res;
+            ViewBag.CarItem = ords.FirstOrDefault().CarItem;
             return View(model);
         }
         public ActionResult Fines()

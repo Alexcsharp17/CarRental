@@ -29,6 +29,8 @@ namespace CarRental.DAL.EF
         public DbSet<ExceptionDetail> ExceptionDetails { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Log> Logs { get; set; }
+
+        public DbSet<CarItem> CarItems { get; set; }
     
 
        

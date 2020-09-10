@@ -46,5 +46,6 @@ namespace CarRental.BLL.DTO
         public string ManagComment { get; set; }
         public double OrdSum { get; set; }
         public CarDTO Car { get; set; }
+        public CarItemDTO CarItem { get; set; }
     }
 }

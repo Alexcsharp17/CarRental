@@ -130,6 +130,7 @@
     <Compile Include="Attributes\LogFilter.cs" />
     <Compile Include="Calculations\PriceCalc.cs" />
     <Compile Include="DTO\CarDTO.cs" />
+    <Compile Include="DTO\CarItemDTO.cs" />
     <Compile Include="DTO\ExceptionDetailDTO.cs" />
     <Compile Include="DTO\LogDTO.cs" />
     <Compile Include="DTO\OrderDTO.cs" />

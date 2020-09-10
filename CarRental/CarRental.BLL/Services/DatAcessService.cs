@@ -93,6 +93,7 @@ namespace CarRental.BLL.Services
                 var config = new MapperConfiguration(cfg => {
                     cfg.CreateMap<Order, OrderDTO>();
                     cfg.CreateMap<Car, CarDTO>().ForMember(x => x.Popular, opt => opt.Ignore());
+                    cfg.CreateMap<CarItem, CarItemDTO>();
                 });
                 config.AssertConfigurationIsValid();
                 var mapper = config.CreateMapper();
@@ -134,6 +135,7 @@ namespace CarRental.BLL.Services
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<Order, OrderDTO>();
                 cfg.CreateMap<Car, CarDTO>().ForMember(x => x.Popular, opt => opt.Ignore());
+                cfg.CreateMap<CarItem, CarItemDTO>();
             });
             config.AssertConfigurationIsValid();
             var mapper = config.CreateMapper();

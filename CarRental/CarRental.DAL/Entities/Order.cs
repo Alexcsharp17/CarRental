@@ -25,6 +25,8 @@ namespace CarRental.DAL.Entities
 
         public virtual Car Car { get; set; }
 
+        public virtual CarItem CarItem { get; set; }
+
         [Required]       
         public DateTime StartTime { get; set; }
 
