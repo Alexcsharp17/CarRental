@@ -1,2 +1,10 @@
 
 *.mdf
+CarRental/.vs/CarRental/v16/.suo
+*.mdf
+CarRental/CarRental.WEB/App_Data/CarRental_log.ldf
+*.dll
+*.mdf
+*.dll
+*.dll
+CarRental/CarRental.WEB/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
