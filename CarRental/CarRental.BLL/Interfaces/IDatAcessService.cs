@@ -10,15 +10,17 @@ namespace CarRental.BLL.Interfaces
     /// <summary>
     /// Specify the methods which should be implemented in DAtaAcess Service
     /// </summary>
-    public interface IDatAcessService : ICarService,IOrderService
+    public interface IDatAcessService : ICarService, IOrderService
     {
-       
+
         IEnumerable<UserDTO> Users { get; }
         void CreateUser(UserDTO userdto);
         IEnumerable<ExceptionDetailDTO> Exceptions { get; }
         void EditUser(UserDTO user);
         void DeleteExceptions();
         void DeleteException(int id);
-        
+        List<OrderDTO> GetCarOrders(int carId);
+        List<CarItemDTO> CarItems();
+
     }
 }

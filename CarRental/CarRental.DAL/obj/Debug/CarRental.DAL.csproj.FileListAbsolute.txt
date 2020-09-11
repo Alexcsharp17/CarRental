@@ -493,3 +493,4 @@ F:\GitHub\CarRental\CarRental\CarRental.DAL\bin\Debug\ru\System.Web.WebPages.Dep
 F:\GitHub\CarRental\CarRental\CarRental.DAL\bin\Debug\ru\System.Web.WebPages.Razor.resources.dll
 F:\GitHub\CarRental\CarRental\CarRental.DAL\obj\Debug\CarRental.DAL.csproj.CopyComplete
 F:\GitHub\CarRental\CarRental\CarRental.DAL\obj\Debug\CarRental.DAL.Migrations.AddedtableCarItem.resources
+D:\GitHub\CarRental\CarRental\CarRental.DAL\obj\Debug\CarRental.DAL.Migrations.AddedtableCarItem.resources

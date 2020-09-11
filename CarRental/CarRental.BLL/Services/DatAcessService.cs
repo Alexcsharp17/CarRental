@@ -101,6 +101,26 @@ namespace CarRental.BLL.Services
                 return orders;
             }
         }
+        public List<OrderDTO> GetCarOrders(int carId)
+        {
+            var config = new MapperConfiguration(cfg => {
+                cfg.CreateMap<Order, OrderDTO>();
+                cfg.CreateMap<Car, CarDTO>().ForMember(x => x.Popular, opt => opt.Ignore());
+                cfg.CreateMap<CarItem, CarItemDTO>();
+            });
+           var mapper = config.CreateMapper();
+            return mapper.Map<List<Order>, List<OrderDTO>>(Database.GetCarOrders(carId));
+        }
+        public List<CarItemDTO> CarItems()
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<CarItem, CarItemDTO>();
+
+            }); 
+            var mapper = new Mapper(config);
+            return mapper.Map<List<CarItem>,List<CarItemDTO>>(Database.CarItems());
+        }
 
       public  void CreateOrder(OrderDTO orderdto)
         {

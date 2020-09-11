@@ -3,8 +3,10 @@ using CarRental.DAL.Entities;
 using CarRental.DAL.Identity;
 using CarRental.DAL.Interfaces;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Spatial;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -79,9 +81,10 @@ namespace CarRental.DAL.Repositories
         }
 
         public IEnumerable<Car> Cars
-        {   
-            get {
-                
+        {
+            get
+            {
+
                 return db.Cars.ToList();
             }
         }
@@ -99,7 +102,7 @@ namespace CarRental.DAL.Repositories
                 db.Cars.Add(car);
             else
             {
-                Car dbEntry = db.Cars.Find(car.Id); 
+                Car dbEntry = db.Cars.Find(car.Id);
                 if (dbEntry != null)
                 {
                     dbEntry.Name = car.Name;
@@ -144,13 +147,13 @@ namespace CarRental.DAL.Repositories
 
         public Car FindCar(int id)
         {
-            var car = db.Cars.FirstOrDefault(c => c.Id == id);         
+            var car = db.Cars.FirstOrDefault(c => c.Id == id);
             return car;
         }
         public Order FindOrder(int id)
         {
             var order = db.Orders.FirstOrDefault(o => o.Id == id);
-            
+
             return (order);
         }
         public IEnumerable<Order> FindOrders(string userId)
@@ -158,10 +161,10 @@ namespace CarRental.DAL.Repositories
             var orders = db.Orders.Where(o => o.User_Id == userId);
             return (orders);
         }
-        IEnumerable<Car> ICarRepository.FindCars(string name= null, string manufactorer = null, 
+        IEnumerable<Car> ICarRepository.FindCars(string name = null, string manufactorer = null,
             string carType = null, string fuelType = null, string transmission = null, string capacities = null, string fuelCons = null, string engSizes = null, int LowPrice = 0, int UppPrice = int.MaxValue)
         {
-            IEnumerable<Car> cars= db.Cars.ToList();
+            IEnumerable<Car> cars = db.Cars.ToList();
             if (name != null)
             {
                 cars = cars.Where(c => c.Name.ToLower().Contains(name.ToLower()));
@@ -169,11 +172,11 @@ namespace CarRental.DAL.Repositories
             if (manufactorer != "")
             {
                 cars = cars.Where(c => manufactorer.ToLower().Contains(c.Manufacturer.ToLower()));
-              
+
             }
             if (carType != "")
             {
-                cars = cars.Where(c =>carType.ToLower().Contains(c.CarType.ToLower()));
+                cars = cars.Where(c => carType.ToLower().Contains(c.CarType.ToLower()));
             }
             if (fuelType != "")
             {
@@ -195,23 +198,24 @@ namespace CarRental.DAL.Repositories
             {
                 cars = cars.Where(c => fuelCons.ToLower().Contains(c.FuelConsump.ToString().ToLower()));
             }
-            if (UppPrice!=0 && LowPrice != 0){
+            if (UppPrice != 0 && LowPrice != 0)
+            {
                 cars = cars.Where(c => c.Price <= UppPrice && c.Price >= LowPrice);
-            }          
+            }
             else if (UppPrice != 0)
             {
                 cars = cars.Where(c => c.Price < UppPrice);
             }
-            else if(LowPrice != 0)
+            else if (LowPrice != 0)
             {
                 cars = cars.Where(c => c.Price > LowPrice);
             }
-           
+
             return cars;
         }
         public Car DeleteCar(int id)
         {
-            Car dbEntry = db.Cars.Find(id);          
+            Car dbEntry = db.Cars.Find(id);
             if (dbEntry != null)
             {
                 db.Cars.Remove(dbEntry);
@@ -249,7 +253,7 @@ namespace CarRental.DAL.Repositories
             if (dbEntry != null)
             {
                 dbEntry.IsDeleted = true;
-               
+
                 db.SaveChanges();
             }
             return dbEntry;
@@ -269,20 +273,20 @@ namespace CarRental.DAL.Repositories
             if (dbEntry != null)
             {
                 db.ExceptionDetails.Remove(dbEntry);
-             
+
                 db.SaveChanges();
             }
         }
         public void DeleteExceptions()
         {
             var ex = db.ExceptionDetails;
-            foreach(var e in ex)
+            foreach (var e in ex)
             {
                 db.ExceptionDetails.Remove(e);
             }
             db.SaveChanges();
         }
-       
+
         public void EditUser(ApplicationUser user)
         {
             var us = db.Users.Find(user.Id);
@@ -294,9 +298,9 @@ namespace CarRental.DAL.Repositories
             us.PhoneNumber = user.PhoneNumber;
             us.RepairInvoice = user.RepairInvoice;
             db.Users.Add(us);
-           
+
         }
-       public void CreateUser(ApplicationUser user)
+        public void CreateUser(ApplicationUser user)
         {
             ApplicationUser dbEntry = db.Users.Find(user.Id);
             if (dbEntry != null)
@@ -305,12 +309,21 @@ namespace CarRental.DAL.Repositories
                 dbEntry.PassportNumb = user.PassportNumb;
                 dbEntry.PhoneNumber = user.PhoneNumber;
                 dbEntry.Banned = user.Banned;
-                
+
             }
-        
-        db.SaveChanges();
+
+            db.SaveChanges();
         }
-        public void CreateLog(Log log) {
+        public List<Order> GetCarOrders(int carId)
+        {
+            return db.Orders.Where(o => o.CarId == carId).ToList();
+        }
+        public List<CarItem> CarItems()
+        {
+            return db.CarItems.ToList();
+        }
+        public void CreateLog(Log log)
+        {
             db.Logs.Add(log);
             db.SaveChanges();
         }

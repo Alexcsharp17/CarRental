@@ -79,17 +79,37 @@ namespace CarRental.WEB.Controllers
                 return HttpNotFound();
             }
            CarDTO car= DatAcessService.FindCar(id);
-           
+            List<OrderDTO> orders = DatAcessService.GetCarOrders(id);
+            List<DateTime> dates = new List<DateTime>();
+            List<DateTime> fullOrdered = new List<DateTime>();
+            foreach (var ord in orders)
+            {
+                for (DateTime i = ord.StartTime.Date; DateTime.Compare(i,ord.EndTime)<=0 ; i=i.AddDays(1))
+                {
+                    dates.Add(i);
+                }
+            }
+            var carCount = DatAcessService.CarItems().Count();
+            var q = from x in dates
+                    group x by x into g
+                    let count = g.Count()
+                    select new { Value = g.Key, Count = count };
+            foreach (var x in q)
+            {
+                if (carCount == x.Count)
+                    fullOrdered.Add(x.Value);
+            }
+
             if (car== null)
             {
                 return HttpNotFound();
             }
             OrderDTO order = new OrderDTO();
             order.Car = car;
-            order.CarId = car.Id;
-          
+            order.CarId = car.Id;         
             order.User_Id= User.Identity.GetUserId();
             order.StartTime = DateTime.Now.Date;
+            order.EndTime = DateTime.Now.Date.AddDays(1);
             order.PassportNumb = DatAcessService.Users.FirstOrDefault(u => u.Id == order.User_Id).PassportNumb;
         
 
