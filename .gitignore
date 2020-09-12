@@ -40,3 +40,6 @@ CarRental/CarRental.WEB/bin/CarRental.WEB.pdb
 CarRental/CarRental.WEB/obj/Debug/CarRental.WEB.csprojAssemblyReference.cache
 CarRental/CarRental.WEB/obj/Debug/CarRental.WEB.dll
 CarRental/CarRental.WEB/obj/Debug/CarRental.WEB.pdb
+CarRental/.vs/CarRental/v16/.suo
+CarRental/CarRental.WEB/App_Data/CarRental.mdf
+CarRental/CarRental.WEB/App_Data/CarRental_log.ldf
