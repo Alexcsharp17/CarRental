@@ -49,3 +49,7 @@ CarRental/CarRental.WEB/App_Data/CarRental.mdf
 *.mdf
 *.ldf
 CarRental/CarRental.WEB/App_Data/CarRental_log.ldf
+*.mdf
+CarRental/CarRental.WEB/App_Data/CarRental.mdf
+CarRental/.vs/CarRental/v16/.suo
+CarRental/CarRental.WEB/App_Data/CarRental_log.ldf
