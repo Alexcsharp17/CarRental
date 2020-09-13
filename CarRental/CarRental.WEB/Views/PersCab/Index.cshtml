@@ -1,22 +1,22 @@
 ﻿@model CarRental.WEB.Models.PersonalCabViewModel
-
+@using CarRental.BLL
 <div class="m-5">
 @if (ViewBag.Res == "added")
 {
     <div class="alert alert-primary" role="alert" id="alert">
-        You have added new reservation!
+        @Resource.AddedReservation
     </div>
 }
 else if (ViewBag.Res == "deleted")
 {
     <div class="alert alert-danger" role="alert" id="alert">
-        You have canceled  reservation!
+        @Resource.CanseledReservation
     </div>
 }
 <div class="row">   
  
         <div class="col-10 offset-1  ">
-            <div class="bg-dark text-white border rounded"><h4 class="text-center">Your Orders</h4></div>
+            <div class="bg-dark text-white border rounded"><h4 class="text-center">@Resource.YourOrders</h4></div>
             
             <table class="table table-striped table-bordered">
                 <tr>
@@ -38,7 +38,7 @@ else if (ViewBag.Res == "deleted")
                         @Html.DisplayNameFor(model => model.Orders.FirstOrDefault().Status)
                     </th>
                     <th class="align-middle text-center">
-                        <p class="text-center">Manager comment</p>  
+                        <p class="text-center">@Resource.ManagerComment</p>  
                     </th>
                     <th></th>
                 </tr>
@@ -82,7 +82,7 @@ else if (ViewBag.Res == "deleted")
                     </td>
                     <td>
 
-                        @Html.ActionLink("Cancel", "DeleteOrder", "PersCab", new { Id = item.Id }, new { @class = "btn btn-danger" })
+                        @Html.ActionLink(Resource.Cancel, "DeleteOrder", "PersCab", new { Id = item.Id }, new { @class = "btn btn-danger" })
                     </td>
                 </tr>
                 }

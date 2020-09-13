@@ -1,15 +1,16 @@
-﻿<div class="row mt-3 d-flex flex-row" >
+﻿@using CarRental.BLL
+<div class="row mt-3 d-flex flex-row" >
     <div class="offset-3 col-6   adm_dash">
-        <div class="bg-dark text-white border rounded text-capitalize"><h4 class="text-center">Dashboard</h4></div>
+        <div class="bg-dark text-white border rounded text-capitalize"><h4 class="text-center">@Resource.Dashboard</h4></div>
 
         <div class="card m-1">
             <div class="card-header text-primary">
-                <h4 class="text-center">Orders</h4>
+                <h4 class="text-center">@Resource.Orders</h4>
             </div>
             <div class="card-body">
-                <h5 class="card-title">Order management (Manager)</h5>
-                <p class="card-text">Total orders - <span class="text-primary">@ViewBag.Orders</span></p>
-                @Html.ActionLink("Open", "OrderIndex", "Manager", new { area = "Admin" }, new { @class = "btn btn-info" })
+                <h5 class="card-title">@Resource.OrderManagment</h5>
+                <p class="card-text">@Resource.TotalOrders - <span class="text-primary">@ViewBag.Orders</span></p>
+                @Html.ActionLink(Resource.Open, "OrderIndex", "Manager", new { area = "Admin" }, new { @class = "btn btn-info" })
             </div>
         </div>
         <div class="card m-1 ">
@@ -17,39 +18,39 @@
                 <h4 class="text-center">Exeptions</h4>
             </div>
             <div class="card-body">
-                <h5 class="card-title">Exeption management (Admin)</h5>
-                <p class="card-text">Exeption occured -<span class="text-danger">@ViewBag.Exceptions</span> </p>
-                @Html.ActionLink("Open", "GetExceptions", "Main", new { area = "Admin" }, new { @class = "btn btn-info" })
+                <h5 class="card-title">@Resource.ExceptionManagment</h5>
+                <p class="card-text">@Resource.TotalException -<span class="text-danger">@ViewBag.Exceptions</span> </p>
+                @Html.ActionLink(Resource.Open, "GetExceptions", "Main", new { area = "Admin" }, new { @class = "btn btn-info" })
             </div>
         </div>
         <div class="card m-1 ">
             <div class="card-header text-success">
-                <h4 class="text-center"> Users</h4>
+                <h4 class="text-center"> @Resource.Users</h4>
             </div>
             <div class="card-body">
-                <h5 class="card-title">User management(Admin)</h5>
+                <h5 class="card-title">@Resource.UserManagment</h5>
                 <p class="card-text">User list -<span class="text-success">@ViewBag.Users</span> </p>
-                @Html.ActionLink("Open", "UserIndex", "UserManag", new { area = "Admin" }, new { @class = "btn btn-info" })
+                @Html.ActionLink(Resource.Open, "UserIndex", "UserManag", new { area = "Admin" }, new { @class = "btn btn-info" })
             </div>
         </div>
         <div class="card m-1">
             <div class="card-header text-warning">
-                <h4 class="text-center">Cars</h4>
+                <h4 class="text-center">@Resource.Cars</h4>
             </div>
             <div class="card-body">
-                <h5 class="card-title">Car park management(Admin)</h5>
-                <p class="card-text">User list -<span class="text-warning"> @ViewBag.Cars</span></p>
-                @Html.ActionLink("Open", "GetCars", "Main", new { area = "Admin" }, new { @class = "btn btn-info" })
+                <h5 class="card-title">@Resource.CarManagment</h5>
+                <p class="card-text">@Resource.TotalCars -<span class="text-warning"> @ViewBag.Cars</span></p>
+                @Html.ActionLink(Resource.Open, "GetCars", "Main", new { area = "Admin" }, new { @class = "btn btn-info" })
             </div>
         </div>
         <div class="card m-1">
             <div class="card-header text-info">
-                <h4 class="text-center">Statistics</h4>
+                <h4 class="text-center">@Resource.Statistics</h4>
             </div>
             <div class="card-body">
-                <h5 class="card-title">Find out information about recent orders(Admin/Manager)</h5>
+                <h5 class="card-title">@Resource.StatisticManagment</h5>
                 
-                @Html.ActionLink("Open", "GetStats", "Main", new { area = "Admin" }, new { @class = "btn btn-info" })
+                @Html.ActionLink(Resource.Open, "GetStats", "Main", new { area = "Admin" }, new { @class = "btn btn-info" })
             </div>
         </div>
     </div>

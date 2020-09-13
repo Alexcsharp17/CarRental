@@ -18,7 +18,7 @@
         <div id="top-bl"></div>
         <div class="form-group mt-2">
             <div class="sear-sec">
-                <div class="cheks-head container-fluid"><p>Model name</p></div>
+                <div class="cheks-head container-fluid"><p>@CarRental.BLL.Resource.CarName</p></div>
                 <div class="sear_name mt-1 mb-1 pl-1">
                     <span>
                         <input type="text" name="Name" data-autocomplete-source='@Url.Action("AutocompleteSearch", "SideSearch")' class="form-control d-inline w-75 ml-1" />
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="sear-sec">
-            <div class="cheks-head container-fluid"><p>Select manufactorer</p></div>
+            <div class="cheks-head container-fluid"><p>@CarRental.BLL.Resource.SelectCarManuf</p></div>
             @for (var i = 0; i < Model.manufactorers.Count(); i++)
             {
                 <label class="check_row d-flex align-content-center ">
@@ -43,35 +43,74 @@
             }
         </div>
         <div class="sear-sec">
-            <div class="cheks-head"> <p>Select class</p></div>
+            <div class="cheks-head"> <p>@CarRental.BLL.Resource.Select @CarRental.BLL.Resource.CarType</p></div>
             @for (var i = 0; i < Model.CarTypes.Count(); i++)
             {
-                <label class="check_row d-flex align-content-center">
-                    <span>
-                        <input type="checkbox" class="big_check custom-checkbox" name="typess" value=@Model.CarTypes[i] />
-                    </span>
-                    <span class="ml-1">
-                        @Html.DisplayFor(model => model.CarTypes[i])
-                    </span>
-                </label>
+        <label class="check_row d-flex align-content-center">
+            <span>
+                <input type="checkbox" class="big_check custom-checkbox" name="typess" value=@Model.CarTypes[i] />
+            </span>
+
+            @if (Model.CarTypes[i].ToLower() == "econom")
+            {
+                <span class="ml-1">
+                    @CarRental.BLL.Resource.Econom
+                </span>
+            }
+            else if (Model.CarTypes[i].ToLower() == "premium")
+            {
+                <span class="ml-1">
+                    @CarRental.BLL.Resource.Premium
+                </span>
+            }
+            else if (Model.CarTypes[i].ToLower() == "business")
+            {
+                <span class="ml-1">
+                    @CarRental.BLL.Resource.Business
+                </span>
+            }
+            else
+            {
+                <span class="ml-1">
+                    @Html.DisplayFor(model => model.CarTypes[i])
+                </span>
+            }
+        </label>
             }
         </div>
         <div class="sear-sec">
-            <div class="cheks-head"><p>Select Fuel Type</p></div>
+            <div class="cheks-head"><p>@CarRental.BLL.Resource.Select @CarRental.BLL.Resource.FuelType</p></div>
             @for (var i = 0; i < Model.FuelTypes.Count(); i++)
             {
-                <label class="check_row d-flex align-content-center">
-                    <span>
-                        <input type="checkbox" class="big_check" name="fueltypess" value=@Model.FuelTypes[i] />
-                    </span>
-                    <span class="ml-1">
-                        @Html.DisplayFor(model => model.FuelTypes[i])
-                    </span>
-                </label>
+        <label class="check_row d-flex align-content-center">
+            <span>
+                <input type="checkbox" class="big_check" name="fueltypess" value=@Model.FuelTypes[i] />
+            </span>
+
+            @if (Model.FuelTypes[i].ToLower() == "petrol")
+            {
+                <span class="ml-1">
+                    @CarRental.BLL.Resource.Dysel
+                </span>
+            }
+            else if (Model.FuelTypes[i].ToLower() == "dysel")
+            {
+                <span class="ml-1">
+                    @CarRental.BLL.Resource.Petrol
+                </span>
+            }
+            else
+            {
+                <span class="ml-1">
+                   @Html.DisplayFor(model=>model.FuelTypes[i])
+                </span>
+            }
+
+        </label>
             }
         </div>
         <div class="sear-sec">
-            <div class="cheks-head"> <p>Select capacity</p></div>
+            <div class="cheks-head"> <p>@CarRental.BLL.Resource.Select @CarRental.BLL.Resource.Capacity</p></div>
             @for (var i = 0; i < Model.Capacities.Count(); i++)
             {
                 <label class="check_row d-flex align-content-center">
@@ -85,7 +124,7 @@
             }
         </div>
         <div class="sear-sec">
-            <div class="cheks-head"> <p>Select engine Size</p></div>
+            <div class="cheks-head"> <p>@CarRental.BLL.Resource.Select @CarRental.BLL.Resource.EngineCapacity</p></div>
             @for (var i = 0; i < Model.EngSizes.Count(); i++)
             {
                 <label class="check_row d-flex align-content-center">
@@ -99,7 +138,7 @@
             }
         </div>
         <div class="sear-sec">
-            <div class="cheks-head"> <p>Select fuel consumption</p></div>
+            <div class="cheks-head"> <p>@CarRental.BLL.Resource.Select @CarRental.BLL.Resource.FuelConsumption</p></div>
             @for (var i = 0; i < Model.FuelConsump.Count(); i++)
             {
                 <label class="check_row d-flex align-content-center">
@@ -113,21 +152,31 @@
             }
         </div>
         <div class="sear-sec">
-            <div class="cheks-head"><p>Automatic transmission</p></div>
+            <div class="cheks-head"><p>@CarRental.BLL.Resource.Select @CarRental.BLL.Resource.AutomaticTransmission</p></div>
             @for (var i = 0; i < Model.Transmissions.Count(); i++)
             {
-                <label class="check_row d-flex align-content-center">
-                    <span>
-                        <input type="checkbox" class="big_check " name="transmissionss" value=@Model.Transmissions[i] />
-                    </span>
-                    <span class="ml-1">
-                        @Html.DisplayFor(model => model.Transmissions[i])
-                    </span>
-                </label>
+        <label class="check_row d-flex align-content-center">
+            <span>
+                <input type="checkbox" class="big_check " name="transmissionss" value=@Model.Transmissions[i] />
+            </span>
+            @if (Model.Transmissions[i].ToLower() == "false")
+            {
+                <span class="ml-1">
+                    @CarRental.BLL.Resource.TransManual
+                </span>
+            }
+            else
+            {
+                <span class="ml-1">
+                    @CarRental.BLL.Resource.TransAuto
+                </span>
+            }
+           
+        </label>
             }
         </div>
         <div class="sear-sec">
-            <div class="cheks-head"><p>Price in $</p></div>
+            <div class="cheks-head"><p>@CarRental.BLL.Resource.Price $</p></div>
             <div class="d-flex flex-row">
                 <div>
                     @Html.LabelFor(model => model.LowPrice, new { @class = "pl-2" })

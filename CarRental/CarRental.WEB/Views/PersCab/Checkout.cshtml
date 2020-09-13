@@ -1,5 +1,5 @@
 ﻿@model CarRental.BLL.DTO.OrderDTO
-
+@using CarRental.BLL
 @{
     ViewBag.Title = "Checkout";
 }
@@ -135,7 +135,7 @@
                     @Html.ValidationMessageFor(model => model.CarId, "", new { @class = "text-danger" })
                 </div>
             </div>
-            <div><h5 class="ml-2 text-center">Car issuance</h5></div>
+            <div><h5 class="ml-2 text-center">@Resource.CarIssuance</h5></div>
 
             <div class="form-group ml-2  ">
                 <select id="start_p" class="form-control ">
@@ -145,7 +145,7 @@
                 </select>
             </div>
 
-            <div class="mt-1"><h5 class="ml-2 text-center">Car return</h5></div>
+            <div class="mt-1"><h5 class="ml-2 text-center">@Resource.CarReturn</h5></div>
             <div class="form-group ml-2 ">
                 <select id="end_p" class="form-control ">
                     <option value="Kharkiv Gagarina 23">Kharkiv Gagarina 23</option>
@@ -153,7 +153,7 @@
                     <option value="Kharkiv Central Airport">"Kharkiv Central Airport</option>
                 </select>
             </div>
-            <div><h5 class="ml-2 text-center">RentTime</h5></div>
+            <div><h5 class="ml-2 text-center">@Resource.RentTime</h5></div>
 
             <div class="form-group ml-2 " id="datepicker">
                 <p id="datepickerError"></p>
@@ -162,14 +162,14 @@
 
 
 
-            <span class=" ml-3 mb-2">Driver Necessity </span>
+            <span class=" ml-3 mb-2">@Resource.DriverNecessity</span>
             <div class="checkbox d-inline mt-2">
                 @Html.EditorFor(model => model.Driver, new { htmlAttributes = new { @class = "big_check mb-0 mt-1 ml-3" } })
             </div>
 
 
             <div class="form-group">
-                <p class="control-label ml-3"> Passport Number</p>
+                <p class="control-label ml-3"> @Resource.PassportNumb</p>
                 <div class="col-md-10">
                     <div class="checkbox">
                         @Html.EditorFor(model => model.PassportNumb, new { htmlAttributes = new { @class = "control-label d-inp rounded" } })
@@ -201,7 +201,7 @@
             @Html.Hidden("end_place", new { AllowHtmlAttributes = new { @id = "end_place" } })
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <button type="submit" id="sb_but" class="btn btn-success"><span class="fa fa-cart-plus mr-1"></span>Order</button>
+                    <button type="submit" id="sb_but" class="btn btn-success"><span class="fa fa-cart-plus mr-1"></span>@Resource.Order</button>
                 </div>
             </div>
         </div>

@@ -26,25 +26,28 @@ namespace CarRental.BLL.DTO
         public string User_Id { get; set; }
         
         public int CarId { get; set; }
-        
-        [Display(Name = "Start rent")]
+
+        [Display(Name = "StartRent", ResourceType = typeof(Resource))]
         public DateTime StartTime { get; set; }
-        [Display(Name = "Take car")]
+        [Display(Name = "StartPlace", ResourceType = typeof(Resource))]
         public string StartPlace { get; set; }
-        [Display(Name = "Return car")]
+        [Display(Name = "EndPlace", ResourceType = typeof(Resource))]
         public string EndPlace { get; set; }
-        [Display(Name = "End rent")]
+        [Display(Name = "EndRent", ResourceType = typeof(Resource))]
         public DateTime EndTime { get; set; }
         //Client needs driver
-        [Display(Name = "Driver necessity")]
+        [Display(Name = "DriverNecessity", ResourceType = typeof(Resource))]
         public bool Driver { get; set; }
        
         public bool IsDeleted { get; set; }
-        
+
+        [Display(Name = "Status", ResourceType = typeof(Resource))]
         public string Status { get; set; }
-       
+        [Display(Name = "PassportNumb", ResourceType = typeof(Resource))]
         public int PassportNumb { get; set; }
+        [Display(Name = "ManagerComment", ResourceType = typeof(Resource))]
         public string ManagComment { get; set; }
+        [Display(Name = "OrdSum", ResourceType = typeof(Resource))]
         public double OrdSum { get; set; }
         public CarDTO Car { get; set; }
         public CarItemDTO CarItem { get; set; }

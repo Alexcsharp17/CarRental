@@ -19,7 +19,7 @@
                     </label>
                     <label class="dropdown-item">
                         <button type="button" onclick="location.href='@Url.Action("Index", "PersCab")'" class="btn btn-secondary w-100">
-                            <span>My Orders</span>
+                            <span>@CarRental.BLL.Resource.MyOrders</span>
                             @if (ViewBag.Orders !=null )
                             {
                                 <span class="badge badge-secondary  bg-info float-right">@ViewBag.Orders</span>
@@ -29,7 +29,7 @@
 
                     <label class="dropdown-item">
                         <button type="button" onclick="location.href='@Url.Action("Fines", "PersCab")'" class="btn btn-secondary w-100">
-                            <span>Fines</span>
+                            <span>@CarRental.BLL.Resource.Fines</span>
                             @if (ViewBag.Orders != null)
                             {
                                 <span class="badge badge-danger bg-danger float-right">@ViewBag.Fines</span>
@@ -43,7 +43,7 @@
                             <span class="badge badge-secondary  bg-info float-right">
                                 <img alt="Us. Area" src="~/Content/img/ico/logout-rounded-left.png" style="height:20px;" />
                             </span>
-                            <span>Log Out</span>
+                            <span>@CarRental.BLL.Resource.LogOut</span>
                         </button>
 
                     </label>

@@ -1,6 +1,7 @@
 ﻿using CarRental.BLL.Attributes;
 using CarRental.BLL.DTO;
 using CarRental.BLL.Interfaces;
+using CarRental.WEB.Languages;
 using CarRental.WEB.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -27,7 +28,12 @@ namespace CarRental.WEB.Controllers
 
         }
 
-        
+        public ActionResult ChangeLanguage(string lang)
+        {
+            new LanguageMang().SetLanguage(lang);
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult Test(int? id)
         {
             if (id > 3)

@@ -227,6 +227,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\PersCabController.cs" />
     <Compile Include="Controllers\SideSearchController.cs" />
     <Compile Include="Global.asax.cs">
@@ -234,6 +235,7 @@
     </Compile>
     <Compile Include="Helpers\PagingHelpers.cs" />
     <Compile Include="Infrastracture\Util.cs" />
+    <Compile Include="Languages\LanguageMang.cs" />
     <Compile Include="Models\CarSearchModel.cs" />
     <Compile Include="Models\CarsListViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -2181,6 +2183,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\AutoComplete\" />
     <Folder Include="Views\Cart\" />
+    <Folder Include="Views\Language\" />
     <Folder Include="Views\Manage\" />
   </ItemGroup>
   <ItemGroup>
