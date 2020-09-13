@@ -1,4 +1,5 @@
 ﻿using CarRental.BLL.Attributes;
+using CarRental.BLL.Services;
 using CarRental.DAL.Entities;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace CarRental.BLL.DTO
     /// Used to transfer data of car entity between DAL and BLL(Layers)
     /// </summary>
 
-    [DateValid(ErrorMessage ="End Date Should be grater or equal to start.")]
+    [DateValid(ErrorMessage ="Select rent dates")]
    public class OrderDTO
     {
         [HiddenInput(DisplayValue = false)]
@@ -47,5 +48,7 @@ namespace CarRental.BLL.DTO
         public double OrdSum { get; set; }
         public CarDTO Car { get; set; }
         public CarItemDTO CarItem { get; set; }
+
+       public List<DateTime> fullOrdered { get; set; }
     }
 }

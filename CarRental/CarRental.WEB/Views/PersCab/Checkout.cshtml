@@ -145,29 +145,6 @@
                 </select>
             </div>
 
-            <div class="d-flex flex-row mb-0">
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label d-inp datepicker ml-3 mb-0 " })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control d-inp"} })
-
-                    </div>
-                </div>
-                <div class="  ">
-                    <select id="start_t" class="form-control ">
-                        @for (int i = 0; i < 24; i++)
-                        {
-                            <option value=@i>@i:00</option>
-                        }
-
-                    </select>
-                    @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
-                    
-                </div>
-
-            </div>
-          
             <div class="mt-1"><h5 class="ml-2 text-center">Car return</h5></div>
             <div class="form-group ml-2 ">
                 <select id="end_p" class="form-control ">
@@ -176,35 +153,20 @@
                     <option value="Kharkiv Central Airport">"Kharkiv Central Airport</option>
                 </select>
             </div>
-            <div class="flex-row d-flex">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label d-inp datepicker ml-3 mb-0" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control d-inp" } })
-                    </div>
-                </div>
+            <div><h5 class="ml-2 text-center">RentTime</h5></div>
 
-
-                <div class="  ">
-                    <select id="end_t" class="form-control ">
-                        @for (int i = 0; i < 24; i++)
-                        {
-                            <option value=@i>@i:00</option>
-                        }
-
-                    </select>
-                    @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
-
-                </div>
-
+            <div class="form-group ml-2 " id="datepicker">
+                <p id="datepickerError"></p>
+                <input name="daterange" class="form-control" />
             </div>
 
-            
-                    <span class=" ml-3 mb-2">Driver Necessity </span>
-                    <div class="checkbox d-inline mt-2">
-                        @Html.EditorFor(model => model.Driver, new { htmlAttributes = new { @class = "big_check mb-0 mt-1 ml-3" } })
-                    </div>
-                
+
+
+            <span class=" ml-3 mb-2">Driver Necessity </span>
+            <div class="checkbox d-inline mt-2">
+                @Html.EditorFor(model => model.Driver, new { htmlAttributes = new { @class = "big_check mb-0 mt-1 ml-3" } })
+            </div>
+
 
             <div class="form-group">
                 <p class="control-label ml-3"> Passport Number</p>
@@ -232,8 +194,9 @@
                     @Html.HiddenFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
                 </div>
             </div>
-            @Html.Hidden("start_time", null, new { AllowHtmlAttributes = new { @id = "start_time" } })
-            @Html.Hidden("end_time", null, new { AllowHtmlAttributes = new { @id = "end_time" } })
+            @Html.HiddenFor(model => model.StartTime)
+
+            @Html.HiddenFor(model => model.EndTime)
             @Html.Hidden("start_place", null, new { AllowHtmlAttributes = new { @id = "start_place" } })
             @Html.Hidden("end_place", new { AllowHtmlAttributes = new { @id = "end_place" } })
             <div class="form-group">
@@ -244,41 +207,19 @@
         </div>
         }
     </div>
+    @foreach (var item in ViewBag.FullOrdered)
+    {
+        <input type="hidden" class="FullOrdered highlighted-cal-dates" value=@item />
+    }
+    
 </div>
 <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
 @section Scripts {
 
-
-    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('input[type=datetime]').datepicker({
-                startDate: new Date(),
-                changeMonth: true,
-                changeYear: true,
-                minDate: new Date(),
-                maxDate: '+2y',
-                onSelect: function (dateText, inst) {
-                    $("#txtEndDate").datepicker("option", "minDate",
-                        $("#txtStartDate").datepicker("getDate"));
-                }
-            });
-            $('#sb_but').click(function (e) {
-                
-                var s1 = $("#start_time").val($("#start_t").find(":selected").val());
-                var s2 = $("#end_time").val($("#end_t").find(":selected").val());
-                var p1 = $("#start_place").val($("#start_p").find(":selected").val());
-                var s2 = $("#end_place").val($("#end_p").find(":selected").val());
-                $("#start_time").replaceWith(s1);
-                $("#end_time").replaceWith(s2);
-                $("#start_place").replaceWith(p1);
-                $("#end_place").replaceWith(p2);
-                
-            });
-                          
-
-        });
-    </script>
+    <script src="~/Content/js/checkout.js"></script>
+   
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 }

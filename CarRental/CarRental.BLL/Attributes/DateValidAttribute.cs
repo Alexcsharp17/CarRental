@@ -1,4 +1,5 @@
 ﻿using CarRental.BLL.DTO;
+using CarRental.BLL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,14 +13,15 @@ namespace CarRental.BLL.Attributes
 /// </summary>
    public class DateValidAttribute : ValidationAttribute
     {
+        
         public override bool IsValid(object value)
         {
             OrderDTO o = value as OrderDTO;
-            if (o.StartTime >= o.EndTime )
+            if(o.StartTime!=new DateTime(1,1,1) && o.EndTime != new DateTime(1, 1, 1))
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
     }
 }

@@ -291,3 +291,18 @@ textarea {
     margin-bottom: 6px;
 }
 
+/* Datepicker stiles*/
+.in-range {
+    background: #5a99e6 !important;
+    color: black !important;
+}
+.highlighted-cal-dates {
+    background: #ed858c !important;
+    
+}
+.start-date, .end-date {
+    background: #04378a !important;
+    color:white !important;
+}
+
+
