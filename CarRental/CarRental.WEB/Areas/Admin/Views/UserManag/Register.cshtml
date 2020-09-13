@@ -1,11 +1,11 @@
 ﻿@model CarRental.WEB.Models.RegisterModel
-
+@using CarRental.BLL
 @{
     ViewBag.Title = "Register";
 }
 <div class="row">
     <div class="bg-light p-4 border col-4 offset-4 mt-4">
-        <h2 class="text-center">Create Manager Account</h2>
+        <h2 class="text-center">@Resource.CreateManager</h2>
         <hr />
         @using (Html.BeginForm())
         {
@@ -58,7 +58,7 @@
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                
-                        <button type="submit" class="btn btn-primary adm_but text-white"><i class="fa fa-save mr-2 d-inline"></i>Save</button>
+                        <button type="submit" class="btn btn-primary adm_but text-white"><i class="fa fa-save mr-2 d-inline"></i>@Resource.Save</button>
 
                     </div>
                 </div>

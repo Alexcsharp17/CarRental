@@ -1,20 +1,15 @@
 ﻿@model IEnumerable<CarRental.BLL.DTO.CarDTO>
-
+@using CarRental.BLL
 @{
     ViewBag.Title = "Index";
 }
-
-
-
-
-
 
 <div class="ml-3 pl-0 container-fluid">
     <div class="mb-0 mt-1">
         <h4 class=" p-3 text-center font-weight-bolder text-white bg-dark">
             Car Managment
             <span class="ml-3 mb-2 d-inline float-left">
-                <a href="@Url.Action("CreateCar" )" class="btn btn-info ml-1"><i class="fa fa-plus mr-1"></i>Add Car</a>
+                <a href="@Url.Action("CreateCar" )" class="btn btn-info ml-1"><i class="fa fa-plus mr-1"></i>@Resource.AddCar</a>
             </span>
         </h4>
        
@@ -71,9 +66,9 @@
                 </td>
                 <td>
 
-                    <a href="@Url.Action("EditCar", new { id = item.Id } )" class="btn btn-warning adm_but"><i class="fa fa-edit mr-1 d-inline"></i>Edit</a>
-                    <a href="@Url.Action("CarDetail", new { id = item.Id } )" class="btn btn-info adm_but text-dark"><i class="fa fa-info mr-1 d-inline"></i>Detail</a>
-                    <a href="@Url.Action("Delete", new { id = item.Id } )" class="btn btn-danger adm_but text-dark"><i class="fa fa-trash mr-1 d-inline"></i>Delete</a>
+                    <a href="@Url.Action("EditCar", new { id = item.Id } )" class="btn btn-warning adm_but"><i class="fa fa-edit mr-1 d-inline"></i>@Resource.Edit</a>
+                    <a href="@Url.Action("CarDetail", new { id = item.Id } )" class="btn btn-info adm_but text-dark"><i class="fa fa-info mr-1 d-inline"></i>@Resource.Detail</a>
+                    <a href="@Url.Action("Delete", new { id = item.Id } )" class="btn btn-danger adm_but text-dark"><i class="fa fa-trash mr-1 d-inline"></i>@Resource.Delete</a>
                 </td>
             </tr>
         }

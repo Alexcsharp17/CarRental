@@ -120,8 +120,14 @@
   <data name="Add" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="AddCar" xml:space="preserve">
+    <value>Add Car</value>
+  </data>
   <data name="AddedReservation" xml:space="preserve">
     <value>You have added new reservation!</value>
+  </data>
+  <data name="AdminDashboard" xml:space="preserve">
+    <value>Admin Dashboard</value>
   </data>
   <data name="AirCondition" xml:space="preserve">
     <value>Air Contidion</value>
@@ -153,6 +159,9 @@
   <data name="CapacityRequired" xml:space="preserve">
     <value>Please input capacity</value>
   </data>
+  <data name="CarInfo" xml:space="preserve">
+    <value>Car Info</value>
+  </data>
   <data name="CarIssuance" xml:space="preserve">
     <value>Car issuance</value>
   </data>
@@ -174,6 +183,18 @@
   <data name="CarTypeRequired" xml:space="preserve">
     <value>Please input class of the car</value>
   </data>
+  <data name="ClearAll" xml:space="preserve">
+    <value>Clear All</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="Confirmed" xml:space="preserve">
+    <value>Confirmed</value>
+  </data>
+  <data name="CreateManager" xml:space="preserve">
+    <value>Create Manager</value>
+  </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Dashboard</value>
   </data>
@@ -183,8 +204,14 @@
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="DeleteWarning" xml:space="preserve">
+    <value>Are you sure you want to delete this?</value>
+  </data>
   <data name="Descending" xml:space="preserve">
     <value>descending</value>
+  </data>
+  <data name="Detail" xml:space="preserve">
+    <value>Detail</value>
   </data>
   <data name="Door" xml:space="preserve">
     <value>Door</value>
@@ -210,11 +237,23 @@
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="EditCar" xml:space="preserve">
+    <value>Edit Car</value>
+  </data>
   <data name="EditProfile" xml:space="preserve">
     <value>Edit Profile</value>
   </data>
+  <data name="EditUser" xml:space="preserve">
+    <value>Edit User</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
+  </data>
+  <data name="EmptyCarSear" xml:space="preserve">
+    <value>Zero cars have been found mathing your request.</value>
+  </data>
+  <data name="EmptyUserSear" xml:space="preserve">
+    <value>Zero users have been found mathing your request.</value>
   </data>
   <data name="EndPlace" xml:space="preserve">
     <value>Return car</value>
@@ -231,8 +270,14 @@
   <data name="Exception" xml:space="preserve">
     <value>Exception</value>
   </data>
+  <data name="ExceptionDetails" xml:space="preserve">
+    <value>Exception Details</value>
+  </data>
   <data name="ExceptionManagment" xml:space="preserve">
     <value>Exeption management (Admin)</value>
+  </data>
+  <data name="Fine" xml:space="preserve">
+    <value>Fine</value>
   </data>
   <data name="Fines" xml:space="preserve">
     <value>Fines</value>
@@ -263,6 +308,9 @@
   </data>
   <data name="ManagerComment" xml:space="preserve">
     <value>Manager Comment</value>
+  </data>
+  <data name="ManagerDashboard" xml:space="preserve">
+    <value>Manager Dashboard</value>
   </data>
   <data name="Manufacturer" xml:space="preserve">
     <value>Manufacturer</value>
@@ -300,6 +348,9 @@
   <data name="PassportNumb" xml:space="preserve">
     <value>Passport numb</value>
   </data>
+  <data name="Pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
   <data name="Petrol" xml:space="preserve">
     <value>Petrol</value>
   </data>
@@ -324,11 +375,17 @@
   <data name="PriceRange" xml:space="preserve">
     <value>The value must be more than 0</value>
   </data>
+  <data name="ProfileDetails" xml:space="preserve">
+    <value>Profile Details</value>
+  </data>
   <data name="RearWheel" xml:space="preserve">
     <value>Rear-Wheel</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
+  </data>
+  <data name="Rejected" xml:space="preserve">
+    <value>Rejected</value>
   </data>
   <data name="Rent" xml:space="preserve">
     <value>Rent</value>

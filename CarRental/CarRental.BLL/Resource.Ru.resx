@@ -120,8 +120,14 @@
   <data name="Add" xml:space="preserve">
     <value>Добавить</value>
   </data>
+  <data name="AddCar" xml:space="preserve">
+    <value>Добавить Авто</value>
+  </data>
   <data name="AddedReservation" xml:space="preserve">
     <value>Заказ успешно добавлен в карзину</value>
+  </data>
+  <data name="AdminDashboard" xml:space="preserve">
+    <value>Доска админимтратора</value>
   </data>
   <data name="AirCondition" xml:space="preserve">
     <value>Кондиционер</value>
@@ -153,6 +159,9 @@
   <data name="CapacityRequired" xml:space="preserve">
     <value>Пожалуйста введите колво мест</value>
   </data>
+  <data name="CarInfo" xml:space="preserve">
+    <value>Информация об авто</value>
+  </data>
   <data name="CarIssuance" xml:space="preserve">
     <value>Выдача авто</value>
   </data>
@@ -174,6 +183,18 @@
   <data name="CarTypeRequired" xml:space="preserve">
     <value>Пожалуйста введите класс машины</value>
   </data>
+  <data name="ClearAll" xml:space="preserve">
+    <value>Очистить Все</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Завершен</value>
+  </data>
+  <data name="Confirmed" xml:space="preserve">
+    <value>Подтвержден</value>
+  </data>
+  <data name="CreateManager" xml:space="preserve">
+    <value>Добавить Менеджера</value>
+  </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Доска</value>
   </data>
@@ -183,8 +204,14 @@
   <data name="Delete" xml:space="preserve">
     <value>Удалить</value>
   </data>
+  <data name="DeleteWarning" xml:space="preserve">
+    <value>Вы точно хотити удалить это авто?</value>
+  </data>
   <data name="Descending" xml:space="preserve">
     <value>Убывание</value>
+  </data>
+  <data name="Detail" xml:space="preserve">
+    <value>Инфо</value>
   </data>
   <data name="Door" xml:space="preserve">
     <value>Двери</value>
@@ -210,11 +237,23 @@
   <data name="Edit" xml:space="preserve">
     <value>Редакт.</value>
   </data>
+  <data name="EditCar" xml:space="preserve">
+    <value>Редактировать авто</value>
+  </data>
   <data name="EditProfile" xml:space="preserve">
     <value>Редакт Профиль</value>
   </data>
+  <data name="EditUser" xml:space="preserve">
+    <value>Редактировать Пользователя</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Эмейл</value>
+  </data>
+  <data name="EmptyCarSear" xml:space="preserve">
+    <value>Нет машин соответствующих фильтру</value>
+  </data>
+  <data name="EmptyUserSear" xml:space="preserve">
+    <value>Нет пользователей соответствующих фильтру</value>
   </data>
   <data name="EndRent" xml:space="preserve">
     <value>Конец аренды</value>
@@ -228,8 +267,14 @@
   <data name="Exception" xml:space="preserve">
     <value>Ошибка</value>
   </data>
+  <data name="ExceptionDetails" xml:space="preserve">
+    <value>Детали Ошибки</value>
+  </data>
   <data name="ExceptionManagment" xml:space="preserve">
     <value>Управление ошибками(Менеджер)</value>
+  </data>
+  <data name="Fine" xml:space="preserve">
+    <value>Штраф</value>
   </data>
   <data name="Fines" xml:space="preserve">
     <value>Штрафы</value>
@@ -261,6 +306,9 @@
   <data name="ManagerComment" xml:space="preserve">
     <value>Коментарий менеджера</value>
   </data>
+  <data name="ManagerDashboard" xml:space="preserve">
+    <value>Доска менеджера</value>
+  </data>
   <data name="Manufacturer" xml:space="preserve">
     <value>Марка авто</value>
   </data>
@@ -285,8 +333,14 @@
   <data name="Orders" xml:space="preserve">
     <value>Заказы</value>
   </data>
+  <data name="OrdSum" xml:space="preserve">
+    <value>Сумма </value>
+  </data>
   <data name="Passport" xml:space="preserve">
     <value>Паспорт</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>Ожидание</value>
   </data>
   <data name="Petrol" xml:space="preserve">
     <value>Бензин</value>
@@ -312,11 +366,17 @@
   <data name="PriceRange" xml:space="preserve">
     <value>Введите цену больше 0</value>
   </data>
+  <data name="ProfileDetails" xml:space="preserve">
+    <value>Детали Профиля</value>
+  </data>
   <data name="RearWheel" xml:space="preserve">
     <value>Задний</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Регистрация</value>
+  </data>
+  <data name="Rejected" xml:space="preserve">
+    <value>Отклонен</value>
   </data>
   <data name="Rent" xml:space="preserve">
     <value>Аренда</value>

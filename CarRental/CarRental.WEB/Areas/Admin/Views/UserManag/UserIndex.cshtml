@@ -1,9 +1,10 @@
 ﻿
 @model IEnumerable<CarRental.BLL.DTO.UserDTO>
+@using  CarRental.BLL
 @Styles.Render("~/Content/themes/base/all.css")
 <div class="content   " id="user_area">
     <p>
-        <a href="@Url.Action("Register" )" class="btn btn-info ml-1"><i class="fa fa-plus mr-1"></i>Add Manager</a>
+        <a href="@Url.Action("Register" )" class="btn btn-info ml-1"><i class="fa fa-plus mr-1"></i>@Resource.CreateManager</a>
     </p>
    
 
@@ -40,8 +41,8 @@
 
                 <td>
                    
-                    <a href="@Url.Action("EditUser", new { id =item.Id } )" class="btn btn-warning adm_but"><i class="fa fa-edit mr-1 d-inline"></i>Edit</a>
-                    <a href="@Url.Action("UserDetails", new { id = item.Id } )" class="btn btn-info adm_but text-dark"><i class="fa fa-info mr-1 d-inline"></i>Detail</a>
+                    <a href="@Url.Action("EditUser", new { id =item.Id } )" class="btn btn-warning adm_but"><i class="fa fa-edit mr-1 d-inline"></i>@Resource.Edit</a>
+                    <a href="@Url.Action("UserDetails", new { id = item.Id } )" class="btn btn-info adm_but text-dark"><i class="fa fa-info mr-1 d-inline"></i>@Resource.Detail</a>
                 </td>
             </tr>
         }

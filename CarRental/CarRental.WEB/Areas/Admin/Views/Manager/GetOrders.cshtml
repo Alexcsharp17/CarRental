@@ -1,11 +1,12 @@
 ﻿@model CarRental.WEB.Models.OrderListViewModel
 @using CarRental.WEB.Helpers;
+@using CarRental.BLL
 
 @{
     ViewBag.Title = "GetOrders";
 }
 
-<h2>Manager dashboard </h2>
+<h2>@Resource.ManagerDashboard</h2>
 
 <div class="content" id="order_area">
     <table class="table table-bordered table-striped">
@@ -69,9 +70,9 @@
                     @Html.DisplayFor(modelItem => item.ManagComment)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "EditStatus", new { Id = item.Id }, new { @class = "btn btn-warning  adm_but" })
-                    @Html.ActionLink("Details", "Details", new { Id = item.Id }, new { @class = "btn btn-info adm_but" })
-                    @Html.ActionLink("Delete", "DeleteOrder", new { ordId = item.Id }, new { @class = "btn btn-danger adm_but" })
+                    @Html.ActionLink(Resource.Edit, "EditStatus", new { Id = item.Id }, new { @class = "btn btn-warning  adm_but" })
+                    @Html.ActionLink(Resource.Detail, "Details", new { Id = item.Id }, new { @class = "btn btn-info adm_but" })
+                    @Html.ActionLink(Resource.Delete, "DeleteOrder", new { ordId = item.Id }, new { @class = "btn btn-danger adm_but" })
                 </td>
             </tr>
         }

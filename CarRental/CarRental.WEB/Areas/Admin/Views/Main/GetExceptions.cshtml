@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<CarRental.BLL.DTO.ExceptionDetailDTO>
-
+@using CarRental.BLL
 <div class="m-2">
     <p class="ml-3">
-        <a href="@Url.Action("DeleteExceptions")" , class="btn btn-danger  text-dark"><i class="fa fa-fire-alt mr-1 d-inline"></i>Clear all</a>
+        <a href="@Url.Action("DeleteExceptions")" , class="btn btn-danger  text-dark"><i class="fa fa-fire-alt mr-1 d-inline"></i>@Resource.ClearAll</a>
 
     </p>
     
@@ -41,8 +41,8 @@
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
-                    <a href="@Url.Action("ExceptionDetails", new { id = item.Id } )" , class="btn btn-info adm_but text-dark"><i class="fa fa-info mr-1 d-inline"></i>Detail</a>
-                    <a href="@Url.Action("DeleteException", new { id = item.Id } )" , class="btn btn-warning adm_but text-dark"><i class="fa fa-trash mr-1 d-inline"></i>Delete</a>
+                    <a href="@Url.Action("ExceptionDetails", new { id = item.Id } )" , class="btn btn-info adm_but text-dark"><i class="fa fa-info mr-1 d-inline"></i>@Resource.Detail</a>
+                    <a href="@Url.Action("DeleteException", new { id = item.Id } )" , class="btn btn-warning adm_but text-dark"><i class="fa fa-trash mr-1 d-inline"></i>@Resource.Delete</a>
                 </td>
             </tr>
         }

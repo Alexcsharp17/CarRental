@@ -70,11 +70,29 @@ namespace CarRental.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Car.
+        /// </summary>
+        public static string AddCar {
+            get {
+                return ResourceManager.GetString("AddCar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have added new reservation!.
         /// </summary>
         public static string AddedReservation {
             get {
                 return ResourceManager.GetString("AddedReservation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Admin Dashboard.
+        /// </summary>
+        public static string AdminDashboard {
+            get {
+                return ResourceManager.GetString("AdminDashboard", resourceCulture);
             }
         }
         
@@ -169,6 +187,15 @@ namespace CarRental.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Car Info.
+        /// </summary>
+        public static string CarInfo {
+            get {
+                return ResourceManager.GetString("CarInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Car issuance.
         /// </summary>
         public static string CarIssuance {
@@ -232,6 +259,42 @@ namespace CarRental.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clear All.
+        /// </summary>
+        public static string ClearAll {
+            get {
+                return ResourceManager.GetString("ClearAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed.
+        /// </summary>
+        public static string Completed {
+            get {
+                return ResourceManager.GetString("Completed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmed.
+        /// </summary>
+        public static string Confirmed {
+            get {
+                return ResourceManager.GetString("Confirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Manager.
+        /// </summary>
+        public static string CreateManager {
+            get {
+                return ResourceManager.GetString("CreateManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dashboard.
         /// </summary>
         public static string Dashboard {
@@ -259,11 +322,29 @@ namespace CarRental.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this?.
+        /// </summary>
+        public static string DeleteWarning {
+            get {
+                return ResourceManager.GetString("DeleteWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to descending.
         /// </summary>
         public static string Descending {
             get {
                 return ResourceManager.GetString("Descending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detail.
+        /// </summary>
+        public static string Detail {
+            get {
+                return ResourceManager.GetString("Detail", resourceCulture);
             }
         }
         
@@ -340,6 +421,15 @@ namespace CarRental.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Car.
+        /// </summary>
+        public static string EditCar {
+            get {
+                return ResourceManager.GetString("EditCar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Profile.
         /// </summary>
         public static string EditProfile {
@@ -349,11 +439,38 @@ namespace CarRental.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit User.
+        /// </summary>
+        public static string EditUser {
+            get {
+                return ResourceManager.GetString("EditUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zero cars have been found mathing your request..
+        /// </summary>
+        public static string EmptyCarSear {
+            get {
+                return ResourceManager.GetString("EmptyCarSear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zero users have been found mathing your request..
+        /// </summary>
+        public static string EmptyUserSear {
+            get {
+                return ResourceManager.GetString("EmptyUserSear", resourceCulture);
             }
         }
         
@@ -403,11 +520,29 @@ namespace CarRental.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Exception Details.
+        /// </summary>
+        public static string ExceptionDetails {
+            get {
+                return ResourceManager.GetString("ExceptionDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exeption management (Admin).
         /// </summary>
         public static string ExceptionManagment {
             get {
                 return ResourceManager.GetString("ExceptionManagment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fine.
+        /// </summary>
+        public static string Fine {
+            get {
+                return ResourceManager.GetString("Fine", resourceCulture);
             }
         }
         
@@ -498,6 +633,15 @@ namespace CarRental.BLL {
         public static string ManagerComment {
             get {
                 return ResourceManager.GetString("ManagerComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manager Dashboard.
+        /// </summary>
+        public static string ManagerDashboard {
+            get {
+                return ResourceManager.GetString("ManagerDashboard", resourceCulture);
             }
         }
         
@@ -610,6 +754,15 @@ namespace CarRental.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pending.
+        /// </summary>
+        public static string Pending {
+            get {
+                return ResourceManager.GetString("Pending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Petrol.
         /// </summary>
         public static string Petrol {
@@ -682,6 +835,15 @@ namespace CarRental.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Profile Details.
+        /// </summary>
+        public static string ProfileDetails {
+            get {
+                return ResourceManager.GetString("ProfileDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rear-Wheel.
         /// </summary>
         public static string RearWheel {
@@ -696,6 +858,15 @@ namespace CarRental.BLL {
         public static string Register {
             get {
                 return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rejected.
+        /// </summary>
+        public static string Rejected {
+            get {
+                return ResourceManager.GetString("Rejected", resourceCulture);
             }
         }
         

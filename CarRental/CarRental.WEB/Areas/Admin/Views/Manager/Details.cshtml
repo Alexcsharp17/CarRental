@@ -111,11 +111,8 @@
                 @Html.DisplayFor(model => model.OrdSum)
             </dd>
             <p>
-                @Html.ActionLink("Edit", "EditStatus", new { id = Model.Id }, new { @class = "btn btn-warning" })
-
+                @Html.ActionLink(CarRental.BLL.Resource.Edit, "EditStatus", new { id = Model.Id }, new { @class = "btn btn-warning" })
             </p>
-        </dl>
-
-        
+        </dl>     
     </div>
 </div>

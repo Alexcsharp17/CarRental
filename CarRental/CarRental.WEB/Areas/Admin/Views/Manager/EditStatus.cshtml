@@ -1,11 +1,10 @@
-﻿
-    @model CarRental.BLL.DTO.OrderDTO
-
+﻿ @model CarRental.BLL.DTO.OrderDTO
+@using CarRental.BLL
      <div class=" bg-light p-0 border offset-4 col-4 mt-3 border-primary">
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
-                <div class="bg-dark text-white border-bottom"><h4 class="font-weight-bold text-center">Edit Order</h4></div>
+                <div class="bg-dark text-white border-bottom"><h4 class="font-weight-bold text-center">@Resource.Edit @Resource.Orders </h4></div>
 
                 <div class="form-horizontal p-3 ">
 
@@ -34,7 +33,7 @@
                     </div>
 
                     <div class="form-group">
-                        <span class="ml-3 text-primary mr-1 font-weight-bold">Start rent:</span>
+                        <span class="ml-3 text-primary mr-1 font-weight-bold">@Resource.StartRent:</span>
                         <div class="d-inline">
                             @Html.HiddenFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.DisplayFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control" } })
@@ -43,14 +42,14 @@
                     </div>
 
                     <div class="form-group">
-                        <span class="ml-3 text-primary mr-1 font-weight-bold">End rent:</span>
+                        <span class="ml-3 text-primary mr-1 font-weight-bold">@Resource.EndRent:</span>
                         <div class="d-inline">
                             @Html.HiddenFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.DisplayFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control" } })
                         </div>
                     </div>
                     <div class="form-group">
-                        <span class="ml-3 text-primary mr-1 font-weight-bold">Order sum:</span>
+                        <span class="ml-3 text-primary mr-1 font-weight-bold">@Resource.OrdSum:</span>
                         <div class="d-inline">
                             @Html.HiddenFor(model => model.OrdSum, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.DisplayFor(model => model.OrdSum, new { htmlAttributes = new { @class = "form-control" } })
@@ -77,11 +76,11 @@
 
                     <div class="form-group ml-3 w-50">
                         <select class="form-control" id="Status" name="Status">
-                            <option value="pending">Pending</option>
-                            <option value="confirmed">Confirmed</option>
-                            <option value="rejected">Rejected</option>
-                            <option value="fine">Fine</option>
-                            <option value="completed">Completed</option>
+                            <option value="pending">@Resource.Pending</option>
+                            <option value="confirmed">@Resource.Confirmed</option>
+                            <option value="rejected">@Resource.Rejected</option>
+                            <option value="fine">@Resource.Fine</option>
+                            <option value="completed">@Resource.Completed</option>
                         </select>
                     </div>
 
@@ -94,7 +93,7 @@
                     </div>
 
                     <div class="form-group">
-                        <span title="Details about oreder and bill to pay." class="ml-3 text-primary mr-1 font-weight-bold">Manager comment:</span>
+                        <span title="Details about oreder and bill to pay." class="ml-3 text-primary mr-1 font-weight-bold">@Resource.ManagerComment:</span>
                         <div class="col-md-10">
 
                             @Html.TextAreaFor(model => model.ManagComment, new { htmlAttributes = new { @class = "form-control cols-50" } })
@@ -106,7 +105,7 @@
 
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <button type="submit" class="btn btn-success adm_but text-white"><i class="fa fa-save mr-2 d-inline"></i>Save</button>
+                            <button type="submit" class="btn btn-success adm_but text-white"><i class="fa fa-save mr-2 d-inline"></i>@Resource.Save</button>
                         </div>
                     </div>
                 </div>

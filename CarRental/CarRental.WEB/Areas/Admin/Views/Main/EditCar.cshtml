@@ -4,7 +4,7 @@
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
-            <div class="bg-dark p-1 text-white"><h4 class="font-weight-bold text-center">Edit Car</h4></div>
+            <div class="bg-dark p-1 text-white"><h4 class="font-weight-bold text-center">@CarRental.BLL.Resource.EditCar</h4></div>
 
             <div class="form-horizontal card p-3 bg-light p-3">
 
@@ -144,7 +144,7 @@
 
                 <div class="form-group mt-2">
                     <div class="col-md-offset-2 col-md-10">
-                        <button type="submit" class="btn btn-primary adm_but text-white"><i class="fa fa-save mr-2 d-inline"></i>Save</button>
+                        <button type="submit" class="btn btn-primary adm_but text-white"><i class="fa fa-save mr-2 d-inline"></i>@CarRental.BLL.Resource.Save</button>
                     </div>
                 </div>
             </div>
