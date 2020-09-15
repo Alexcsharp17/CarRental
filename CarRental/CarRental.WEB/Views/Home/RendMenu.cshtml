@@ -1,4 +1,5 @@
 ﻿<h3>@ViewBag.Test</h3>
+@using CarRental.BLL
 @if (User.Identity.IsAuthenticated)
 {
     <div class="mt-2">
@@ -60,11 +61,11 @@ else
 {
     <span class="font" >
         <img alt="Us. Area" src="~/Content/img/ico/login-rounded-right.png" style="height:20px;" />
-        <span > @Html.ActionLink("Log in", "Login", "Account",null,new {@class= "text-dark font-weight-bolder " })</span>
+        <span > @Html.ActionLink(Resource.LogIn, "Login", "Account",null,new {@class= "text-dark font-weight-bolder " })</span>
     </span>
     <span class="text-dark">
         <img alt="Us. Area" src="~/Content/img/ico/user-male-circle.png" style="height:20px;" />
-        <span>@Html.ActionLink("Register", "Register", "Account",null, new { @class = "text-dark font-weight-bold " })</span>
+        <span>@Html.ActionLink(Resource.Register, "Register", "Account",null, new { @class = "text-dark font-weight-bold " })</span>
     </span>
 
 }

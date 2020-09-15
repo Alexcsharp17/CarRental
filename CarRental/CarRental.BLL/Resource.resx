@@ -129,6 +129,9 @@
   <data name="AdminDashboard" xml:space="preserve">
     <value>Admin Dashboard</value>
   </data>
+  <data name="Adress" xml:space="preserve">
+    <value>Adress</value>
+  </data>
   <data name="AirCondition" xml:space="preserve">
     <value>Air Contidion</value>
   </data>
@@ -191,6 +194,9 @@
   </data>
   <data name="Confirmed" xml:space="preserve">
     <value>Confirmed</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm Password</value>
   </data>
   <data name="CreateManager" xml:space="preserve">
     <value>Create Manager</value>
@@ -347,6 +353,9 @@
   </data>
   <data name="PassportNumb" xml:space="preserve">
     <value>Passport numb</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
   </data>
   <data name="Pending" xml:space="preserve">
     <value>Pending</value>

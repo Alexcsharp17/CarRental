@@ -53,6 +53,9 @@ namespace CarRental.WEB.Controllers
             var uniqueEngSize = CarService.Cars.OrderBy(c=>c.EngSize)
                              .Select(c => c.EngSize)
                              .Distinct();
+            var uniqueDoors = CarService.Cars.OrderBy(c => c.Door)
+                            .Select(c => c.Door)
+                            .Distinct();
             var unEngSize = new List<string>();
             foreach (var item in uniqueEngSize)
             {
@@ -76,6 +79,11 @@ namespace CarRental.WEB.Controllers
             {
                 unCap.Add(item.ToString());
             }
+            var unDor = new List<string>();
+            foreach (var item in uniqueDoors)
+            {
+                unDor.Add(item.ToString());
+            }
 
             var MaxPrice = CarService.Cars
                           .Select(c => c.Price)
@@ -90,7 +98,8 @@ namespace CarRental.WEB.Controllers
                 FuelTypes = uniqueFuelTyp.ToList(),
                 Capacities = unCap,
                 FuelConsump= unFuelCon,
-                EngSizes=unEngSize
+                EngSizes=unEngSize,
+                Doors= unDor
             };
             
 
@@ -109,7 +118,7 @@ namespace CarRental.WEB.Controllers
         }
         [HttpPost]
         public ActionResult CarSearch(CarSearchModel model=null, string[] manufss=null,
-            string[] typess=null,string[] transmissionss=null, string[] fueltypess=null, string[] capacity=null, string[] engSize= null, string[] fuelConsump=null)
+            string[] typess=null,string[] transmissionss=null, string[] fueltypess=null, string[] capacity=null, string[] engSize= null, string[] fuelConsump=null, string[] door=null)
         {            
             string manufactorers = "";
             if (manufss != null)
@@ -169,11 +178,19 @@ namespace CarRental.WEB.Controllers
                     fuelCons += i;
                 }
             }
+            string doors = "";
+            if (door != null)
+            {
+                foreach (var d in door)
+                {
+                    doors += d;
+                }
+            }
 
             if (model != null)
             {
                 IEnumerable<CarDTO> c = DatAcessService.FindCars(model.Name,
-                    manufactorers,types,fueltypes,transmissions, capacities , fuelCons, engSizes, model.LowPrice, model.UppPrice);
+                    manufactorers,types,fueltypes,transmissions, capacities , fuelCons, engSizes, doors, model.LowPrice, model.UppPrice);
                 
                 if (model.Sort != null)
                 {

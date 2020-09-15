@@ -19,6 +19,7 @@ namespace CarRental.WEB.Models
         public List<string> Capacities = new List<string>();
         public List<string> FuelConsump = new List<string>();
         public List<string> EngSizes = new List<string>();
+        public List<string> Doors = new List<string>();
         [Display(Name = "Model Name")]
         public  string Name { get; set; }
         public int Page { get; set; }

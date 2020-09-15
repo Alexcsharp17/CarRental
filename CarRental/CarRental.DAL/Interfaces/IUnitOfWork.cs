@@ -25,6 +25,6 @@ namespace CarRental.DAL.Interfaces
         void CreateUser(ApplicationUser user);
         void CreateLog(Log l);
         List<Order> GetCarOrders(int carId);
-        List<CarItem> CarItems();
+
     }
 }

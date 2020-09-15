@@ -20,7 +20,6 @@ namespace CarRental.BLL.Interfaces
         void DeleteExceptions();
         void DeleteException(int id);
         List<OrderDTO> GetCarOrders(int carId);
-        List<CarItemDTO> CarItems();
 
     }
 }

@@ -68,6 +68,8 @@ namespace CarRental.DAL.Entities
        
         public byte EngSize { get; set; }
 
+        public string LisencePlate { get; set; }
+
         public string Image { get; set; }
 
         [MaxLength(50)]

@@ -97,6 +97,15 @@ namespace CarRental.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adress.
+        /// </summary>
+        public static string Adress {
+            get {
+                return ResourceManager.GetString("Adress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Air Contidion.
         /// </summary>
         public static string AirCondition {
@@ -282,6 +291,15 @@ namespace CarRental.BLL {
         public static string Confirmed {
             get {
                 return ResourceManager.GetString("Confirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Password.
+        /// </summary>
+        public static string ConfirmPassword {
+            get {
+                return ResourceManager.GetString("ConfirmPassword", resourceCulture);
             }
         }
         
@@ -750,6 +768,15 @@ namespace CarRental.BLL {
         public static string PassportNumb {
             get {
                 return ResourceManager.GetString("PassportNumb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
             }
         }
         

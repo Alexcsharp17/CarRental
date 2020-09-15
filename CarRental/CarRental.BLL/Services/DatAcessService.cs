@@ -64,14 +64,14 @@ namespace CarRental.BLL.Services
             return (cardto);
         }
        public IEnumerable<CarDTO> FindCars(string name = null, string manufactorer = null,
-            string carType = null, string fuelType = null, string transmission = null, string capacities = null, string fuelCons=null, string engSizes=null, int LowPrice = 0, int UppPrice = int.MaxValue)
+            string carType = null, string fuelType = null, string transmission = null, string capacities = null, string fuelCons=null, string engSizes=null, string doors=null, int LowPrice = 0, int UppPrice = int.MaxValue)
         {
     
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<Car, CarDTO>());
 
                 var mapper = new Mapper(config);
 
-                var cars = mapper.Map<List<CarDTO>>(Database.FindCars(name, manufactorer, carType,fuelType,transmission,capacities, fuelCons,engSizes, LowPrice, UppPrice).ToList());
+                var cars = mapper.Map<List<CarDTO>>(Database.FindCars(name, manufactorer, carType,fuelType,transmission,capacities, fuelCons,engSizes, doors, LowPrice, UppPrice).ToList());
            
             
             return cars;
@@ -93,7 +93,6 @@ namespace CarRental.BLL.Services
                 var config = new MapperConfiguration(cfg => {
                     cfg.CreateMap<Order, OrderDTO>();
                     cfg.CreateMap<Car, CarDTO>().ForMember(x => x.Popular, opt => opt.Ignore());
-                    cfg.CreateMap<CarItem, CarItemDTO>();
                 });
        
                 var mapper = config.CreateMapper();
@@ -106,20 +105,9 @@ namespace CarRental.BLL.Services
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<Order, OrderDTO>();
                 cfg.CreateMap<Car, CarDTO>().ForMember(x => x.Popular, opt => opt.Ignore());
-                cfg.CreateMap<CarItem, CarItemDTO>();
             });
            var mapper = config.CreateMapper();
             return mapper.Map<List<Order>, List<OrderDTO>>(Database.GetCarOrders(carId));
-        }
-        public List<CarItemDTO> CarItems()
-        {
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<CarItem, CarItemDTO>();
-
-            }); 
-            var mapper = new Mapper(config);
-            return mapper.Map<List<CarItem>,List<CarItemDTO>>(Database.CarItems());
         }
 
       public  void CreateOrder(OrderDTO orderdto)
@@ -143,7 +131,6 @@ namespace CarRental.BLL.Services
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<Order, OrderDTO>();
                 cfg.CreateMap<Car, CarDTO>().ForMember(x => x.Popular, opt => opt.Ignore());
-                cfg.CreateMap<CarItem, CarItemDTO>();
             });
             var mapper = config.CreateMapper();
             var order = mapper.Map<Order, OrderDTO>(Database.FindOrder(id));
@@ -155,7 +142,6 @@ namespace CarRental.BLL.Services
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<Order, OrderDTO>();
                 cfg.CreateMap<Car, CarDTO>().ForMember(x => x.Popular, opt => opt.Ignore());
-                cfg.CreateMap<CarItem, CarItemDTO>();
             });
 
             var mapper = config.CreateMapper();

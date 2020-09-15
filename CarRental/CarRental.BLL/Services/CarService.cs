@@ -50,7 +50,7 @@ namespace CarRental.BLL.Services
 
         }
         public IEnumerable<CarDTO> FindCars(string name = null, string manufactorer = null,
-            string carType = null, string fuelType = null, string transmission = null, string capacities = null, string fuelCons = null, string engSizes = null, int LowPrice = 0, int UppPrice = int.MaxValue)
+            string carType = null, string fuelType = null, string transmission = null, string capacities = null, string fuelCons = null, string engSizes = null,string doors = null, int LowPrice = 0, int UppPrice = int.MaxValue)
         {
 
             IEnumerable<Car> cars = db.Cars.GetAll();

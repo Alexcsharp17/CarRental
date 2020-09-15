@@ -80,25 +80,15 @@ namespace CarRental.WEB.Controllers
             }
            CarDTO car= DatAcessService.FindCar(id);
             List<OrderDTO> orders = DatAcessService.GetCarOrders(id);
-            List<DateTime> dates = new List<DateTime>();
-            List<DateTime> fullOrdered = new List<DateTime>();
+            List<string> dates = new List<string>();
             foreach (var ord in orders)
             {
-                for (DateTime i = ord.StartTime.Date; DateTime.Compare(i,ord.EndTime)<=0 ; i=i.AddDays(1))
-                {
-                    dates.Add(i);
+                for (DateTime i = ord.StartTime.Date; DateTime.Compare(i, ord.EndTime) <= 0; i = i.AddDays(1))
+                {                   
+                    dates.Add(i.ToString("MM/dd/yyyy"));
                 }
             }
-            var carCount = DatAcessService.CarItems().Count();
-            var q = from x in dates
-                    group x by x into g
-                    let count = g.Count()
-                    select new { Value = g.Key, Count = count };
-            foreach (var x in q)
-            {
-                if (carCount >= x.Count)
-                    fullOrdered.Add(x.Value);
-            }
+
 
             if (car== null)
             {
@@ -109,8 +99,7 @@ namespace CarRental.WEB.Controllers
             order.CarId = car.Id;         
             order.User_Id= User.Identity.GetUserId();
             order.PassportNumb = DatAcessService.Users.FirstOrDefault(u => u.Id == order.User_Id).PassportNumb;
-            order.fullOrdered = fullOrdered;
-            ViewBag.FullOrdered = fullOrdered;
+            ViewBag.FullOrdered = dates;
 
             return View(order);
         }
@@ -121,7 +110,6 @@ namespace CarRental.WEB.Controllers
            
             List<OrderDTO> orders = DatAcessService.GetCarOrders(order.CarId);
             List<DateTime> dates = new List<DateTime>();
-            List<DateTime> fullOrdered = new List<DateTime>();
             foreach (var ord in orders)
             {
                 for (DateTime i = ord.StartTime.Date; DateTime.Compare(i, ord.EndTime) <= 0; i = i.AddDays(1))
@@ -129,17 +117,8 @@ namespace CarRental.WEB.Controllers
                     dates.Add(i);
                 }
             }
-            var carCount = DatAcessService.CarItems().Count();
-            var q = from x in dates
-                    group x by x into g
-                    let count = g.Count()
-                    select new { Value = g.Key, Count = count };
-            foreach (var x in q)
-            {
-                if (carCount >= x.Count)
-                    fullOrdered.Add(x.Value);
-            }
-            ViewBag.FullOrdered = fullOrdered;
+           
+            ViewBag.FullOrdered = dates;
 
             if (ModelState.IsValid)
             {
@@ -148,15 +127,7 @@ namespace CarRental.WEB.Controllers
                 order.Status = "Pending";               
                 order.StartPlace = start_place;
                 order.EndPlace = end_place;
-                order.Id = 0;
-                
-                foreach (var c in DatAcessService.CarItems())
-                {
-                    if (!orders.Any(o => o.CarItem.LicencePlate.Contains(c.LicencePlate)))
-                    {
-                        order.CarItem = c;
-                    }
-                }
+                order.Id = 0;              
 
                 DatAcessService.CreateOrder(order);
                 return RedirectToAction("Index", "PersCab", new { res = "added" });
