@@ -2,6 +2,7 @@
 using CarRental.BLL.DTO;
 using CarRental.BLL.Infrastracture;
 using CarRental.BLL.Interfaces;
+using CarRental.WEB.Areas.Admin.Models;
 using CarRental.WEB.Models;
 using Microsoft.AspNet.Identity.Owin;
 using System;
@@ -11,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Razor.Generator;
 
 namespace CarRental.WEB.Areas.Admin.Controllers
 {
@@ -93,12 +95,13 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public PartialViewResult FileUpload(HttpPostedFileBase uploadFile)
+        public PartialViewResult FileUpload(HttpPostedFileBase uploadFile, int img = 1)
         {
            
             if (uploadFile != null && uploadFile.ContentLength > 0 && uploadFile.ContentLength<10000000)
             {
-                string filePath = Path.Combine(Server.MapPath("/Content/Img/cars"), Path.GetFileName(uploadFile.FileName));
+                string filePath = Path.Combine(Server.MapPath("/Content/Img/cars"), Path.GetFileName(uploadFile.FileName)+img.ToString());
+
                 uploadFile.SaveAs(filePath);
                 ViewBag.Name=uploadFile.FileName;
                 ViewBag.filePath = filePath;
@@ -197,11 +200,28 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         }
         public ActionResult GetStats()
         {
-            var ords = DatAcessService.Orders.Where(x=>(DateTime.Now-x.StartTime).TotalDays<30).Count();
+            var thirtyDayOrd = DatAcessService.Orders.Where(x => DateTime.Compare(DateTime.Now, x.StartTime) >= 0 && ( DateTime.Now - x.StartTime).TotalDays < 30);
             var sum = DatAcessService.Orders.Where(x => (DateTime.Now - x.StartTime).TotalDays < 30).Select(x => x.OrdSum).Sum();
-            ViewBag.ords = ords;
+            ViewBag.ords = thirtyDayOrd.Count();
             ViewBag.sum = sum;
-            return View();
+
+            var orders =thirtyDayOrd.GroupBy(o => o.StartTime.Date)
+                        .Select(g => new { date = g.Key, count = g.Count() })
+                        .OrderBy(g => g.date);
+            var cars = thirtyDayOrd.GroupBy(o => o.Car.Name)
+                        .Select(g => new { name = g.Key, count = g.Count() });
+
+            StatisticsModel model = new StatisticsModel();
+  
+            foreach (var o in orders)
+            {
+                model.DaySales.Add(o.date.ToString(), o.count);
+            }
+            foreach (var car in cars)
+            {
+                model.CarSales.Add(car.name.ToString(), car.count);
+            }
+            return View(model);
         }
        public ActionResult CreateReport()
         {
@@ -235,6 +255,8 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             }
             return RedirectToAction("GetStats");
           }
+
+        
 
     }
 }

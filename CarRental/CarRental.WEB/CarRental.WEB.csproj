@@ -223,6 +223,7 @@
     <Compile Include="Areas\Admin\Controllers\MainController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManagerController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserManagController.cs" />
+    <Compile Include="Areas\Admin\Models\StatisticsModel.cs" />
     <Compile Include="Areas\Admin\Models\UserSearModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />

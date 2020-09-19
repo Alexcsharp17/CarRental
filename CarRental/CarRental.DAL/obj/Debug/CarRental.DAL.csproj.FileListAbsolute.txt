@@ -495,3 +495,4 @@ D:\GitHub\CarRental\CarRental\CarRental.DAL\obj\Debug\CarRental.DAL.dll
 D:\GitHub\CarRental\CarRental\CarRental.DAL\obj\Debug\CarRental.DAL.pdb
 D:\GitHub\CarRental\CarRental\CarRental.DAL\obj\Debug\CarRental.DAL.csprojAssemblyReference.cache
 D:\GitHub\CarRental\CarRental\CarRental.DAL\obj\Debug\CarRental.DAL.Migrations.DeleteCarItemsTable.resources
+D:\GitHub\CarRental\CarRental\CarRental.DAL\obj\Debug\CarRental.DAL.Migrations.AddedImagesToCarTable.resources

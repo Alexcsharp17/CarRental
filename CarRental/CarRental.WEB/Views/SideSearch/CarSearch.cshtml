@@ -6,22 +6,18 @@
     {
         @Html.AntiForgeryToken()
     <div class="form-horizontal mr-5">
-        <div id="close-sec" class="mb-2 container-fluid ">
-            <div class="icon-menu  ml-2 d-flex flex-row p-1">
-                <div class="d-flex flex-row container-fluid ml-5">
-
-                    <img alt="X" src="~/Content/img/ico/close.png" style="height:35px;width:35px;" class="float-right d-inline" id="cl-ic" />
-                </div>
-
-            </div>
-        </div>
         <div id="top-bl"></div>
-        <div class="form-group mt-2">
+        <div class="form-group mt-2 mt-3 mr-3">
             <div class="sear-sec">
+                <div class="icon-menu  ">
+                    <div class="d-flex flex-row container-fluid ml-4">
+                        <img alt="X" src="~/Content/img/ico/close.png" style="height:30px;width:30px;" class="float-right d-inline" id="cl-ic" />
+                    </div>
+                </div>
                 <div class="cheks-head container-fluid"><p>@CarRental.BLL.Resource.CarName</p></div>
-                <div class="sear_name mt-1 mb-1 pl-1">
+                <div class="sear_name mt-1 mb-1 pr-3">
                     <span>
-                        <input type="text" name="Name" data-autocomplete-source='@Url.Action("AutocompleteSearch", "SideSearch")' class="form-control d-inline w-75 ml-1" />
+                        <input type="text" name="Name" data-autocomplete-source='@Url.Action("AutocompleteSearch", "SideSearch")' class="form-control d-inline w-75" />
                         <button type="submit" class="btn btn-success s_btn  " id="sbm"><i class="fa fa-search mr-2 ml-2 d-inline"></i></button>
 
                     </span>

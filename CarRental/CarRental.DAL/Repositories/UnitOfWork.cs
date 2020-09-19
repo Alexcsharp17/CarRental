@@ -198,7 +198,7 @@ namespace CarRental.DAL.Repositories
             {
                 cars = cars.Where(c => fuelCons.ToLower().Contains(c.FuelConsump.ToString().ToLower()));
             }
-            if (doors!=null)
+            if (doors!="")
             {
                 cars = cars.Where(c => doors.ToLower().Contains(c.Door.ToString().ToLower()));
             }

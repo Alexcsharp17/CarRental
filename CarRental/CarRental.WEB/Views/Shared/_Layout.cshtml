@@ -65,7 +65,8 @@
         $(document).ready(function ($) {
             $('.icon-menu').click(function (event) {
                 $('.sidebar').toggleClass('active');
-                $('.content').toggleClass('ml-0');
+                $('.content').toggleClass('blur-car-area');
+                $('#burger').toggleClass('d-none');
             });
             if ($(window).width() > 991) {
                 $("#close-sec").hide();

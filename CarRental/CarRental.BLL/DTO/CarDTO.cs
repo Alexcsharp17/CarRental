@@ -52,7 +52,7 @@ namespace CarRental.BLL.DTO
         public int Price { get; set; }
 
         [Display(Name = "Door", ResourceType = typeof(Resource))]
-        [Range(1, 1, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "DoorRange")]
+        [Range(1, 10, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "DoorRange")]
         public int Door { get; set; }
 
         //Oil fuel/dizel fuel/
@@ -68,6 +68,8 @@ namespace CarRental.BLL.DTO
         public bool IsDeleted { get; set; }
 
         public string Image { get; set; }
+        public string Image2 { get; set; }
+        public string Image3 { get; set; }
 
         [Display(Name = "CarType", ResourceType = typeof(Resource))]
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "CarTypeRequired")]
