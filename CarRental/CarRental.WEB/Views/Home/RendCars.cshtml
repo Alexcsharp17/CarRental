@@ -76,6 +76,11 @@
         $('.carousel').carousel({
             interval: false
         });
+        $('.icon-menu').click(function (event) {
+            $('.sidebar').toggleClass('active');
+            $('.content').toggleClass('blur-car-area');
+            $('#burger').toggleClass('d-none');
+        });
     });
     var limit = $(window).height() / 3,
         $backToTop = $('#back-to-top');
