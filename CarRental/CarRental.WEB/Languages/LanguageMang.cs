@@ -14,7 +14,7 @@ namespace CarRental.WEB.Languages
                 LanguageFullName = "English", LanguageCultureName = "en"
             },
             new Languages {
-                LanguageFullName = "Russian", LanguageCultureName = "Ru"
+                LanguageFullName = "Russian", LanguageCultureName = "ru"
             },
            
         };
@@ -31,9 +31,9 @@ namespace CarRental.WEB.Languages
             try
             {
                 if (!IsLanguageAvailable(lang)) lang = GetDefaultLanguage();
-                var cultureInfo = new CultureInfo(lang);
-                Thread.CurrentThread.CurrentUICulture = cultureInfo;
-                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(cultureInfo.Name);
+                var cultureInfo = CultureInfo.GetCultureInfo(lang);
+                Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo(lang);
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(lang);
                 HttpCookie langCookie = new HttpCookie("culture", lang);
                 langCookie.Expires = DateTime.Now.AddYears(1);
                 HttpContext.Current.Response.Cookies.Add(langCookie);
