@@ -105,7 +105,7 @@ namespace CarRental.WEB.Helpers
                 tagc.AddCssClass("btn btn-default");
                 result.Append(tagc.ToString());
 
-                if(pagingInfo.CurrentPage<=3 )
+             
                 for(int i = pagingInfo.CurrentPage-2; i < pagingInfo.CurrentPage + 2; i++)
                     {
 

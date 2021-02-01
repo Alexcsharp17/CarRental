@@ -35,11 +35,12 @@
     google.charts.setOnLoadCallback(drawChart2);
 
     var orders = @Html.Raw(Json.Encode(Model.DaySales));
+      console.log();
     var lineArray=[];
-    lineArray[0] = ['Day', 'Sales']
+      lineArray[0] = ['Day', 'Sales'];
     let i = 1;
     for (var o in orders) {
-        lineArray[i] = [o.split(" ")[0], orders[o]]
+        lineArray[i] = [o.split(" ")[0], orders[o]];
         i++;
     }
     function drawChart() {
@@ -60,7 +61,7 @@
     pieArray[0] = ['Cars', 'Rented']; 
      i = 1;
     for (var c in cars) {
-        pieArray[i] = [c, cars[c]]
+        pieArray[i] = [c, cars[c]];
         i++;
     }
     function drawChart2() {

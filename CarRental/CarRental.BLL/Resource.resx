@@ -295,7 +295,7 @@
     <value>Front-Wheel</value>
   </data>
   <data name="FuelConsumption" xml:space="preserve">
-    <value>Fuel consumption</value>
+    <value>Fuel consump.</value>
   </data>
   <data name="FuelConsumptionRequired" xml:space="preserve">
     <value>Please Input fuel consumption</value>
@@ -446,6 +446,9 @@
   </data>
   <data name="TransManual" xml:space="preserve">
     <value>Manual</value>
+  </data>
+  <data name="Transmission" xml:space="preserve">
+    <value>Transmission</value>
   </data>
   <data name="TransmissionRequired" xml:space="preserve">
     <value>Please select transmission type</value>

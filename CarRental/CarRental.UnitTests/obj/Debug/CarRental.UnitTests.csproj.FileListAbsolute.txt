@@ -410,5 +410,4 @@ D:\GitHub\CarRental\CarRental\CarRental.UnitTests\obj\Debug\CarRental.UnitTests.
 D:\GitHub\CarRental\CarRental\CarRental.UnitTests\obj\Debug\CarRental.UnitTests.csproj.CopyComplete
 D:\GitHub\CarRental\CarRental\CarRental.UnitTests\obj\Debug\CarRental.UnitTests.dll
 D:\GitHub\CarRental\CarRental\CarRental.UnitTests\obj\Debug\CarRental.UnitTests.pdb
-D:\GitHub\CarRental\CarRental\CarRental.UnitTests\bin\Debug\en\CarRental.BLL.resources.dll
 D:\GitHub\CarRental\CarRental\CarRental.UnitTests\bin\Debug\ru\CarRental.BLL.resources.dll

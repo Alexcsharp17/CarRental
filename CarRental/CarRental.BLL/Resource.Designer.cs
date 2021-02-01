@@ -592,7 +592,7 @@ namespace CarRental.BLL {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fuel consumption.
+        ///   Looks up a localized string similar to Fuel consump..
         /// </summary>
         public static string FuelConsumption {
             get {
@@ -1047,6 +1047,15 @@ namespace CarRental.BLL {
         public static string TransManual {
             get {
                 return ResourceManager.GetString("TransManual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transmission.
+        /// </summary>
+        public static string Transmission {
+            get {
+                return ResourceManager.GetString("Transmission", resourceCulture);
             }
         }
         

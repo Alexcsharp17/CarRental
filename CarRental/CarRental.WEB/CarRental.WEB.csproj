@@ -1880,6 +1880,10 @@
     <Content Include="Content\img\cars\mercedes-sprinter-272.jpg" />
     <Content Include="Content\img\cars\mercedes-sprinter.jpg" />
     <Content Include="Content\img\cars\Peugeot 301.jpg" />
+    <Content Include="Content\img\socialNetworks\phone.png" />
+    <Content Include="Content\img\socialNetworks\telegram.png" />
+    <Content Include="Content\img\socialNetworks\viber.png" />
+    <Content Include="Content\img\socialNetworks\whatsapp.png" />
     <Content Include="Content\img\vehicle1.jpg" />
     <Content Include="Content\img\visa.jpg" />
     <Content Include="Content\img\logo.png" />
@@ -1980,6 +1984,8 @@
     <Content Include="Areas\Admin\Views\Manager\OrderIndex.cshtml" />
     <Content Include="Areas\Admin\Views\Main\ExceptionDetails.cshtml" />
     <Content Include="Areas\Admin\Views\Main\FileDelete.cshtml" />
+    <Content Include="Areas\Admin\Views\Main\GetStats.cshtml" />
+    <Content Include="App_Data\cars.json" />
     <Content Include="Content\Fonts\fontawesome-free-5.12.1-web\less\brands.less" />
     <Content Include="Content\Fonts\fontawesome-free-5.12.1-web\less\fontawesome.less" />
     <Content Include="Content\Fonts\fontawesome-free-5.12.1-web\less\regular.less" />
@@ -2034,8 +2040,6 @@
     <Content Include="Content\Fonts\fontawesome-free-5.12.1-web\webfonts\fa-solid-900.ttf" />
     <Content Include="Content\Fonts\fontawesome-free-5.12.1-web\webfonts\fa-solid-900.woff" />
     <Content Include="Content\Fonts\fontawesome-free-5.12.1-web\webfonts\fa-solid-900.woff2" />
-    <Content Include="Areas\Admin\Views\Main\GetStats.cshtml" />
-    <Content Include="App_Data\cars.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

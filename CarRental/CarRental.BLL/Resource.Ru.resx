@@ -435,6 +435,9 @@
   <data name="TransManual" xml:space="preserve">
     <value>Ручная</value>
   </data>
+  <data name="Transmission" xml:space="preserve">
+    <value>Трансмисию</value>
+  </data>
   <data name="TransmissionRequired" xml:space="preserve">
     <value>Укажите тип коробки передач</value>
   </data>

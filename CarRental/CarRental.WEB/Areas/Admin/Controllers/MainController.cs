@@ -200,7 +200,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         }
         public ActionResult GetStats()
         {
-            var thirtyDayOrd = DatAcessService.Orders.Where(x => DateTime.Compare(DateTime.Now, x.StartTime) >= 0 && ( DateTime.Now - x.StartTime).TotalDays < 30);
+            var thirtyDayOrd = DatAcessService.Orders.Where(x => DateTime.Compare(DateTime.Now, x.StartTime) >= 0 && ( DateTime.Now - x.StartTime).TotalDays < 150);
             var sum = DatAcessService.Orders.Where(x => (DateTime.Now - x.StartTime).TotalDays < 30).Select(x => x.OrdSum).Sum();
             ViewBag.ords = thirtyDayOrd.Count();
             ViewBag.sum = sum;
