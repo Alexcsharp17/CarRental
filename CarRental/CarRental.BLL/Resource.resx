@@ -172,7 +172,7 @@
     <value>Car park management(Admin)</value>
   </data>
   <data name="CarName" xml:space="preserve">
-    <value>CarName	Name</value>
+    <value>CarName</value>
   </data>
   <data name="CarReturn" xml:space="preserve">
     <value>Car Return</value>
