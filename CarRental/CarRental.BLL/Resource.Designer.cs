@@ -223,7 +223,7 @@ namespace CarRental.BLL {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CarName.
+        ///   Looks up a localized string similar to Car Name.
         /// </summary>
         public static string CarName {
             get {

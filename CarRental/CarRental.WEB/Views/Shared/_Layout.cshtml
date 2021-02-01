@@ -21,7 +21,7 @@
             <a href="@Url.Action("Index", "Home", new { area = "" })">
                 <img class="" src="~/Content/img/logo.png" alt="Logo" style="height:40px;" />
             </a>
-            <div >
+            @*<div >
 
                 @{
                     foreach (var i in CarRental.WEB.Languages.LanguageMang.AvailableLanguages)
@@ -29,7 +29,7 @@
                         @Html.ActionLink(i.LanguageFullName, "ChangeLanguage", "Home", new {Area="", lang = i.LanguageCultureName },null) <text> </text>
                     }
                 }
-            </div>
+            </div>*@
             <div class=" d-none d-md-flex">
                @{
                    var user = "@Csharp17";
