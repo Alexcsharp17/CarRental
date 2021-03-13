@@ -3,6 +3,8 @@
 ###################
 *.com
 *.class
+*.mdf
+*.ldf
 *.dll
 *.exe
 *.pdb
