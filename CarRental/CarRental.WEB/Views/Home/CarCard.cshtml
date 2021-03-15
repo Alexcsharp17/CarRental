@@ -1,7 +1,17 @@
 ﻿@model CarRental.BLL.DTO.CarDTO
 @using CarRental.BLL
-<div class="card mr-3 mt-3 rounded-lg" style="width: 18rem;">
-    <h4 class="text-center mb-0 mt-1">@Model.Name</h4>
+<div class="card mr-3 mt-3 rounded-lg shadow-sm" style="width: 18rem;">
+    <div>
+        @if (ViewBag.popCar.Contains(Model.Id))
+        {
+            <h4 class="text-center mb-0 mt-1"><span class="ml-5 text-center"> @Model.Name</span><span class="badge badge-danger h-25 float-right mr-1 ">@Resource.Popular</span></h4>
+        }
+        else
+        {
+            <h4 class="text-center mb-0 mt-1"><span > @Model.Name</span></h4>
+        }
+    </div>
+    
     <div class="text-center ">
         <span class="mr-1">@Model.FuelConsump L</span>|
         <span class="mr-1">
@@ -39,10 +49,7 @@
             }
         </span>
     </div>
-    @if (ViewBag.popCar.Contains(Model.Id))
-    {
-        <span class="badge badge-danger w-25 ">@Resource.Popular</span>
-    }
+
     @if (Model.Image == null)
     {
         Model.Image = "/Content/img/vehicle1.jpg";

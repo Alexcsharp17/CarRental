@@ -76,31 +76,21 @@
     </div>
 <footer id="footer" class=" container-fluid  text-center">
 
-    <div class=" d-flex d-md-none">
-        @{
-            var userr = "@Csharp17";
-        }
-        <div class="d-flex justify-content-between ml-2">
-            <a href="tg://resolve?domain=<@userr>" class="text-decoration-none font-weight-bold text-dark ">
-                <img alt="Whats app" src="~/Content/img/socialNetworks/telegram.png" style="width: 40px; height: 40px;"/>
-                <span> Telegram</span>
-            </a>
+    <div class="d-flex justify-content-center flex-wrap">
+        <div class="mr-2">
+            <h5 class="text-muted">Our Email</h5>
+            <p class="footer-contact">car.rental.kharkiv@@gmail.com</p>
         </div>
-        <div class=" d-flex justify-content-between flex-nowrap ml-2">
-
-            <a href="https://api.whatsapp.com/send?phone=0996602810" class="text-decoration-none font-weight-bold text-dark">
-                <img alt="Whats app" src="~/Content/img/socialNetworks/whatsapp.png" style="width: 40px; height: 40px;"/>
-                <span> WhatsApp</span>
-            </a>
+        <div class="ml-2">
+            <h5 class="text-muted ">Our Phone</h5>
+            <p class="footer-contact">+(38)0995502514</p>
         </div>
-        <div class=" d-flex justify-content-between ml-2">
-            <a href="viber://pa?chatURI=[public account URI]&text=[Hello]" class="text-decoration-none font-weight-bold text-dark">
-                <img alt="Whats app" src="~/Content/img/socialNetworks/viber.png" style="width: 40px; height: 40px;"/>
-                <span> Viber</span>
-            </a>
+        <div class="ml-2">
+            <h5 class="text-muted ">Our Adress</h5>
+            <p class="footer-contact">Kharkiv, Street Sumska 17</p>
         </div>
     </div>
-    <div class="text-muted pb-1 mt-1 ">&copy; @DateTime.Now.Year – Car Rental All Rights Reserved</div>
+    <div class="text-muted pb-1">&copy; @DateTime.Now.Year – Car Rental All Rights Reserved</div>
 </footer>
    
     @Styles.Render("~/Content/themes/base/jquery-ui.css")

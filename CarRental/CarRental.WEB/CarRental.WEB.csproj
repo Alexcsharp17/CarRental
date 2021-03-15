@@ -2040,6 +2040,7 @@
     <Content Include="Content\Fonts\fontawesome-free-5.12.1-web\webfonts\fa-solid-900.ttf" />
     <Content Include="Content\Fonts\fontawesome-free-5.12.1-web\webfonts\fa-solid-900.woff" />
     <Content Include="Content\Fonts\fontawesome-free-5.12.1-web\webfonts\fa-solid-900.woff2" />
+    <Content Include="Areas\Admin\Views\Main\GetStatsPartial.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

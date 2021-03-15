@@ -198,32 +198,99 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             DatAcessService.DeleteCarSoft(car.Id);
             return RedirectToAction("Index", "Main");
         }
+
+        [HttpGet]
         public ActionResult GetStats()
         {
-            var thirtyDayOrd = DatAcessService.Orders.Where(x => DateTime.Compare(DateTime.Now, x.StartTime) >= 0 && ( DateTime.Now - x.StartTime).TotalDays < 150);
-            var sum = DatAcessService.Orders.Where(x => (DateTime.Now - x.StartTime).TotalDays < 30).Select(x => x.OrdSum).Sum();
-            ViewBag.ords = thirtyDayOrd.Count();
-            ViewBag.sum = sum;
-
-            var orders =thirtyDayOrd.GroupBy(o => o.StartTime.Date)
-                        .Select(g => new { date = g.Key, count = g.Count() })
-                        .OrderBy(g => g.date);
-            var cars = thirtyDayOrd.GroupBy(o => o.Car.Name)
-                        .Select(g => new { name = g.Key, count = g.Count() });
-
             StatisticsModel model = new StatisticsModel();
-  
-            foreach (var o in orders)
+            var orderList = DatAcessService.Orders;
+
+            //sets month list to show only one year statistics
+            List<DateTime> monthList = orderList
+                .Where(o => o.StartTime.Year > DateTime.Now.AddYears(-1).Year)
+                .GroupBy(o => o.StartTime)
+                .Select(grp => grp.First().StartTime)
+                .OrderBy(o => o)
+                .ToList();
+
+            if(monthList != null)
             {
-                model.DaySales.Add(o.date.ToString(), o.count);
+                DateTime lastMonth = monthList.OrderBy(m => m).Last();
+                var monthOrders = orderList.Where(o => o.StartTime.Month == lastMonth.Month);
+                var orders = orderList.Where(o => o.StartTime.Month == lastMonth.Month) .GroupBy(o => o.StartTime.Date)
+                    .Select(g => new { date = g.Key, count = g.Count() })
+                    .OrderBy(g => g.date);
+                var cars = monthOrders.GroupBy(o => o.Car.Name)
+                .Select(g => new { name = g.Key, count = g.Count() });
+
+                ViewBag.sum = monthOrders.Sum(o => o.OrdSum);
+
+                foreach (var o in orders)
+                {
+                    model.DaySales.Add(o.date.ToString(), o.count);
+                }
+                foreach (var car in cars)
+                {
+                    model.CarSales.Add(car.name.ToString(), car.count);
+                }
+
+                model.MonthList = monthList.Select(m => m.Month).Distinct().ToList();
+
+                model.SelectedMonth = lastMonth.Month;
+
+                model.DataExist = true;
+
             }
-            foreach (var car in cars)
+            else
             {
-                model.CarSales.Add(car.name.ToString(), car.count);
+                model.DataExist = false;
             }
+
             return View(model);
         }
-       public ActionResult CreateReport()
+
+        [HttpPost]
+        public PartialViewResult GetStats(StatisticsModel statisticsModel)
+        {
+            var orderList = DatAcessService.Orders;
+            List<DateTime> monthList = orderList.GroupBy(o => o.StartTime).Select(grp => grp.First().StartTime).ToList();
+            statisticsModel.MonthList = monthList.Select(m => m.Month).Distinct().ToList();
+
+            if (monthList != null && statisticsModel.MonthList.Contains(Convert.ToInt32(statisticsModel.SelectedMonth))){
+
+                var monthOrders = orderList.Where(o => o.StartTime.Month == statisticsModel.SelectedMonth);
+                var orders = orderList.Where(o => o.StartTime.Month == statisticsModel.SelectedMonth).GroupBy(o => o.StartTime.Date)
+                    .Select(g => new { date = g.Key, count = g.Count() })
+                    .OrderBy(g => g.date);
+                var cars = monthOrders.GroupBy(o => o.Car.Name)
+                .Select(g => new { name = g.Key, count = g.Count() });
+
+                ViewBag.sum = monthOrders.Sum(o => o.OrdSum);
+
+                ViewBag.ords = monthOrders.Count();
+
+                foreach (var o in orders)
+                {
+                    statisticsModel.DaySales.Add(o.date.ToString(), o.count);
+                }
+                foreach (var car in cars)
+                {
+                    statisticsModel.CarSales.Add(car.name.ToString(), car.count);
+                }
+
+                statisticsModel.MonthList = monthList.Select(m => m.Month).ToList();
+
+                statisticsModel.DataExist = true;
+            }
+            else
+            {
+                statisticsModel.DataExist = false;
+            }
+                
+            return PartialView("GetStatsPartial", statisticsModel);
+        }
+
+        public ActionResult CreateReport()
         {
             string writePath = @"D:\MonthRevenue.doc";
             using (StreamWriter sw = new StreamWriter(writePath, false, System.Text.Encoding.Default))
