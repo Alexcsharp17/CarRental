@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CarRental.BLL.DTO
 {
-   public class CarTypeDTO
+    public class CarTypeDTO
     {
         public int CarTypeId { get; set; }
         public string Name { get; set; }

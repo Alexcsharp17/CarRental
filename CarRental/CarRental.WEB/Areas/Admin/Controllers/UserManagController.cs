@@ -37,7 +37,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         {
             return View(DatAcessService.Users);
         }
-        public PartialViewResult GetUsers(string id=null)
+        public PartialViewResult GetUsers(string id = null)
         {
             List<UserDTO> usrs = new List<UserDTO>();
             if (id == null)
@@ -53,18 +53,18 @@ namespace CarRental.WEB.Areas.Admin.Controllers
                     usrs.Add(DatAcessService.Users.FirstOrDefault(u => u.Id == strid[i]));
                 }
             }
-            IEnumerable<UserDTO> users=usrs;
+            IEnumerable<UserDTO> users = usrs;
             //return PartialView("~/Views/Areas/Admin/UserManag/GetUsers",usrs);
-            return PartialView("~/Views/Home/RendUsers.cshtml",users);
+            return PartialView("~/Views/Home/RendUsers.cshtml", users);
         }
-       
-      
+
+
         [HttpGet]
-      public ActionResult EditUser(string id)
+        public ActionResult EditUser(string id)
         {
-        
+
             var user = DatAcessService.Users.FirstOrDefault(u => u.Id == id);
-            
+
             return View(user);
         }
         [HttpPost]
@@ -77,10 +77,10 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             }
             var errors = ModelState.Where(x => x.Value.Errors.Any())
                 .Select(x => new { x.Key, x.Value.Errors });
-            
+
             return View(user);
         }
-      
+
         public ActionResult UserDetails(string id)
         {
             return View(DatAcessService.Users.FirstOrDefault(u => u.Id == id));

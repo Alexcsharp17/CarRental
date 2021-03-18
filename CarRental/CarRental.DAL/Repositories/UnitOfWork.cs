@@ -162,7 +162,7 @@ namespace CarRental.DAL.Repositories
             return (orders);
         }
         IEnumerable<Car> ICarRepository.FindCars(string name = null, string manufactorer = null,
-            string carType = null, string fuelType = null, string transmission = null, string capacities = null, string fuelCons = null, string engSizes = null, string doors=null, int LowPrice = 0, int UppPrice = int.MaxValue)
+            string carType = null, string fuelType = null, string transmission = null, string capacities = null, string fuelCons = null, string engSizes = null, string doors = null, int LowPrice = 0, int UppPrice = int.MaxValue)
         {
             IEnumerable<Car> cars = db.Cars.ToList();
             if (name != null)
@@ -198,7 +198,7 @@ namespace CarRental.DAL.Repositories
             {
                 cars = cars.Where(c => fuelCons.ToLower().Contains(c.FuelConsump.ToString().ToLower()));
             }
-            if (doors!="")
+            if (doors != "")
             {
                 cars = cars.Where(c => doors.ToLower().Contains(c.Door.ToString().ToLower()));
             }
@@ -322,7 +322,7 @@ namespace CarRental.DAL.Repositories
         {
             return db.Orders.Where(o => o.CarId == carId).ToList();
         }
-     
+
         public void CreateLog(Log log)
         {
             db.Logs.Add(log);

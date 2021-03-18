@@ -8,11 +8,11 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using CarRental.DAL.Entities;
 
 namespace CarRental.DAL.EF
-{  
+{
     /// <summary>
     /// Application context used to connect to database  
     /// </summary>
-    public class ApplicationContext : IdentityDbContext<ApplicationUser> 
+    public class ApplicationContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationContext(string conectionString) : base(conectionString) { }
         public ApplicationContext()
@@ -29,9 +29,9 @@ namespace CarRental.DAL.EF
         public DbSet<ExceptionDetail> ExceptionDetails { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Log> Logs { get; set; }
-    
 
-       
+
+
         public static ApplicationContext Create()
         {
             return new ApplicationContext();

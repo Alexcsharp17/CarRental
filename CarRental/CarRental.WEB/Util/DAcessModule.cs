@@ -12,7 +12,7 @@ namespace CarRental.WEB.Util
     {
         public override void Load()
         {
-          
+
             Bind<IDatAcessService>().To<DatAcessService>();
             Bind<ILogService>().To<LogService>();
             Bind<IExceptionService>().To<ExceptionService>();

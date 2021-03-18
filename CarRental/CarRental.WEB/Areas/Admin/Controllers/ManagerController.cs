@@ -27,15 +27,15 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         public ActionResult OrderIndex()
         {
             var ord = DatAcessService.Orders;
-            foreach(var o in ord)
+            foreach (var o in ord)
             {
                 o.Car = DatAcessService.FindCar(o.CarId);
             }
             return View(ord);
         }
 
-      
-        public PartialViewResult GetOrders(string id=null)
+
+        public PartialViewResult GetOrders(string id = null)
         {
             List<OrderDTO> ordrs = new List<OrderDTO>();
             if (id == null)
@@ -51,8 +51,8 @@ namespace CarRental.WEB.Areas.Admin.Controllers
                     ordrs.Add(DatAcessService.Orders.FirstOrDefault(o => o.Id == Convert.ToInt32(strid[i])));
                 }
             }
-           IEnumerable<OrderDTO> orders = ordrs;
-            foreach(var o in orders)
+            IEnumerable<OrderDTO> orders = ordrs;
+            foreach (var o in orders)
             {
                 o.Car = DatAcessService.FindCar(o.CarId);
             }
@@ -62,7 +62,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult EditStatus(int id)
         {
-           
+
             OrderDTO order = DatAcessService.FindOrder(id);
             if (order == null)
             {
@@ -86,7 +86,8 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             }
         }
 
-        public ActionResult DeleteOrder(int ordId){
+        public ActionResult DeleteOrder(int ordId)
+        {
             var order = DatAcessService.Orders.Where(o => o.Id == ordId);
             if (order == null)
             {
@@ -102,7 +103,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             var ord = DatAcessService.FindOrder(id);
-             ord.Car = DatAcessService.FindCar(ord.CarId);
+            ord.Car = DatAcessService.FindCar(ord.CarId);
             return View(ord);
         }
         public ActionResult AutocompleteUsName(string term)

@@ -14,14 +14,14 @@ using System.Web.Mvc;
 
 namespace CarRental.WEB.Controllers
 {
-   
-    public  class HomeController : Controller
+
+    public class HomeController : Controller
     {
-        public  const int pageSize = 10;
-       
+        public const int pageSize = 10;
+
         private IDatAcessService DatAcessService;
         private IOrderService OrderService;
-       public HomeController(IDatAcessService serv,IOrderService ords)
+        public HomeController(IDatAcessService serv, IOrderService ords)
         {
             DatAcessService = serv;
             OrderService = ords;
@@ -60,12 +60,12 @@ namespace CarRental.WEB.Controllers
                 string mes = ex.Message;
             }
 
-          
+
             return View();
         }
-        
-      
-        public  ActionResult Index(string id=null,int page=1,string sort = null  )
+
+
+        public ActionResult Index(string id = null, int page = 1, string sort = null)
         {
             page = page < Convert.ToInt32(Math.Ceiling((double)DatAcessService.Cars.Count() / pageSize)) ? page :
                 Convert.ToInt32(Math.Ceiling((double)DatAcessService.Cars.Count() / pageSize));
@@ -74,29 +74,29 @@ namespace CarRental.WEB.Controllers
             List<CarDTO> crs = new List<CarDTO>();
             if (id == null)
             {
-                crs =  DatAcessService.Cars
-                    .Where(c=>c.IsDeleted==false)
+                crs = DatAcessService.Cars
+                    .Where(c => c.IsDeleted == false)
                    .OrderBy(car => car.Id)
                    .Skip((page - 1) * pageSize)
                    .Take(pageSize).ToList();
-             }
+            }
             else
             {
                 id = id.Substring(0, id.Length - 1);
-                string[] strid =id.Split(Convert.ToChar("I"));
-               
-                
-                for(int i=0;i<strid.Length;i++)
+                string[] strid = id.Split(Convert.ToChar("I"));
+
+
+                for (int i = 0; i < strid.Length; i++)
                 {
-                    crs.Add(DatAcessService.FindCar( Convert.ToInt32(strid[i])));
+                    crs.Add(DatAcessService.FindCar(Convert.ToInt32(strid[i])));
                 }
-                crs=crs.Skip((page - 1) * pageSize)
+                crs = crs.Skip((page - 1) * pageSize)
                    .Take(pageSize).ToList();
             }
 
-            
 
-            IEnumerable<CarDTO> cars = crs.Where(c=>c.IsDeleted==false).OrderBy(x=>x.Popular);
+
+            IEnumerable<CarDTO> cars = crs.Where(c => c.IsDeleted == false).OrderBy(x => x.Popular);
             if (sort != null)
             {
                 if (sort == "ascending")
@@ -111,14 +111,14 @@ namespace CarRental.WEB.Controllers
             CarsListViewModel model = new CarsListViewModel
             {
 
-               Cars=cars
+                Cars = cars
                 ,
                 PagingInfo = new PagingInfo
-                {   
+                {
                     TotalItems = DatAcessService.Cars.Count(),
                     CurrentPage = page,
                     ItemsPerPage = pageSize,
-                   
+
                 }
 
             };
@@ -135,21 +135,21 @@ namespace CarRental.WEB.Controllers
             {
                 popCar.Add(ids.FirstOrDefault());
             }
-           
-            
-            
+
+
+
 
             ViewBag.Sort = new List<string>() { "ascending", "descending" };
             ViewBag.popCar = popCar;
             ViewBag.cars = cars;
-            return View("Index",model);
+            return View("Index", model);
         }
-        public PartialViewResult RendCars( int page = 1,string id=null,string sort="")
+        public PartialViewResult RendCars(int page = 1, string id = null, string sort = "")
         {
             page = page < Convert.ToInt32(Math.Ceiling((double)DatAcessService.Cars.Count() / pageSize)) ? page :
                Convert.ToInt32(Math.Ceiling((double)DatAcessService.Cars.Count() / pageSize));
             List<CarDTO> crs = new List<CarDTO>();
-          
+
             if (id == null)
             {
                 return PartialView("~/Views/Home/EmptySear.cshtml");
@@ -163,7 +163,7 @@ namespace CarRental.WEB.Controllers
                 for (int i = 0; i < strid.Length; i++)
                 {
                     crs.Add(DatAcessService.FindCar(Convert.ToInt32(strid[i])));
-                }              
+                }
             }
             int totCars = crs.Count();
             crs = crs.Skip((page - 1) * pageSize)
@@ -195,24 +195,25 @@ namespace CarRental.WEB.Controllers
             ViewBag.popCar = popCar;
             return PartialView(model);
         }
-       public PartialViewResult RendMenu()
+        public PartialViewResult RendMenu()
         {
             var userID = User.Identity.GetUserId();
             var orders = DatAcessService.FindOrders(userID);
             var fines = orders.Where(o => o.Status == "fine");
             UserDTO user = DatAcessService.Users.FirstOrDefault(u => u.Id == userID);
             var fillpfof = false;
-            
-            if(User.Identity.IsAuthenticated) { 
-            //if(user.Name==null || user.PassportNumb==0)
-            //{
-            //    fillpfof = true;
-            //}
-            ViewBag.Fines = fines.Count();
-            ViewBag.Orders = orders.Count();
-            ViewBag.Fillprof = fillpfof;
+
+            if (User.Identity.IsAuthenticated)
+            {
+                //if(user.Name==null || user.PassportNumb==0)
+                //{
+                //    fillpfof = true;
+                //}
+                ViewBag.Fines = fines.Count();
+                ViewBag.Orders = orders.Count();
+                ViewBag.Fillprof = fillpfof;
             }
-            
+
             return PartialView();
         }
 

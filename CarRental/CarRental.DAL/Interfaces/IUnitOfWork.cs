@@ -13,7 +13,7 @@ namespace CarRental.DAL.Interfaces
     /// which implement this interface.(Class Should give acess to operations with database 
     /// entities such as CRUD functionality etc.)
     /// </summary>
-    public interface IUnitOfWork : IDisposable, ICarRepository ,IOrderRepository,IExceptionRepository
+    public interface IUnitOfWork : IDisposable, ICarRepository, IOrderRepository, IExceptionRepository
     {
         ApplicationUserManager UserManager { get; }
         IClientManager ClientManager { get; }
@@ -21,7 +21,7 @@ namespace CarRental.DAL.Interfaces
         List<ApplicationUser> GetUsers();
         Task SaveAsync();
         void EditUser(ApplicationUser user);
-        IEnumerable<ApplicationUser> Users{get;}      
+        IEnumerable<ApplicationUser> Users { get; }
         void CreateUser(ApplicationUser user);
         void CreateLog(Log l);
         List<Order> GetCarOrders(int carId);

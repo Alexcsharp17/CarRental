@@ -12,6 +12,6 @@ namespace CarRental.DAL.Interfaces
     /// </summary>
     public interface IClientManager : IDisposable
     {
-        
+
     }
 }

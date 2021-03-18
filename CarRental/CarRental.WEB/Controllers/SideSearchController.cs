@@ -14,7 +14,7 @@ using System.Web.Mvc;
 
 namespace CarRental.WEB.Controllers
 {
-   
+
     public class SideSearchController : Controller
     {
         static IEnumerable<string> carss = new List<string>();
@@ -27,7 +27,7 @@ namespace CarRental.WEB.Controllers
             DatAcessService = serv;
             CarService = carserv;
             OrderService = ordserv;
-            var cr = CarService.Cars.Select(c => c.Name).Distinct();       
+            var cr = CarService.Cars.Select(c => c.Name).Distinct();
             carss = cr;
             var us = DatAcessService.Users.Select(u => u.Name);
             userss = us;
@@ -35,22 +35,22 @@ namespace CarRental.WEB.Controllers
         [HttpGet]
         public ActionResult CarSearch()
         {
-                     
+
             var uniqueManuf = CarService.Cars
                               .Select(c => c.Manufacturer)
                               .Distinct();
-            
-            var uniqueCarTyp= CarService.Cars
+
+            var uniqueCarTyp = CarService.Cars
                               .Select(c => c.CarType)
                               .Distinct();
-            
-            var uniqueFuelTyp= CarService.Cars
+
+            var uniqueFuelTyp = CarService.Cars
                               .Select(c => c.FuelType)
                               .Distinct();
             var uniqueTransm = CarService.Cars
                               .Select(c => c.AutomaticTransm)
                               .Distinct();
-            var uniqueEngSize = CarService.Cars.OrderBy(c=>c.EngSize)
+            var uniqueEngSize = CarService.Cars.OrderBy(c => c.EngSize)
                              .Select(c => c.EngSize)
                              .Distinct();
             var uniqueDoors = CarService.Cars.OrderBy(c => c.Door)
@@ -61,7 +61,7 @@ namespace CarRental.WEB.Controllers
             {
                 unEngSize.Add(item.ToString());
             }
-            var uniqueFuelConsump = CarService.Cars.OrderBy(c=>c.FuelConsump)
+            var uniqueFuelConsump = CarService.Cars.OrderBy(c => c.FuelConsump)
                             .Select(c => c.FuelConsump)
                             .Distinct();
             var unFuelCon = new List<string>();
@@ -73,7 +73,7 @@ namespace CarRental.WEB.Controllers
             var uniqueCapac = CarService.Cars.OrderBy(c => c.Capacity)
                               .Select(c => c.Capacity)
                               .Distinct();
-                              
+
             var unCap = new List<string>();
             foreach (var item in uniqueCapac)
             {
@@ -92,34 +92,35 @@ namespace CarRental.WEB.Controllers
                             .Select(c => c.Price)
                             .Min();
 
-            CarSearchModel mod = new CarSearchModel() {
+            CarSearchModel mod = new CarSearchModel()
+            {
                 manufactorers = uniqueManuf.ToList(),
                 CarTypes = uniqueCarTyp.ToList(),
                 FuelTypes = uniqueFuelTyp.ToList(),
                 Capacities = unCap,
-                FuelConsump= unFuelCon,
-                EngSizes=unEngSize,
-                Doors= unDor
+                FuelConsump = unFuelCon,
+                EngSizes = unEngSize,
+                Doors = unDor
             };
-            
+
 
             foreach (var t in uniqueTransm)
             {
                 mod.Transmissions.Add(t.ToString());
-               
+
             }
 
             ViewBag.MaxPrice = MaxPrice;
             ViewBag.MinPrice = MinPrice;
             mod.UppPrice = MaxPrice;
             mod.LowPrice = MinPrice;
-            return PartialView("~/Views/SideSearch/CarSearch.cshtml",mod);
-          
+            return PartialView("~/Views/SideSearch/CarSearch.cshtml", mod);
+
         }
         [HttpPost]
-        public ActionResult CarSearch(CarSearchModel model=null, string[] manufss=null,
-            string[] typess=null,string[] transmissionss=null, string[] fueltypess=null, string[] capacity=null, string[] engSize= null, string[] fuelConsump=null, string[] door=null)
-        {            
+        public ActionResult CarSearch(CarSearchModel model = null, string[] manufss = null,
+            string[] typess = null, string[] transmissionss = null, string[] fueltypess = null, string[] capacity = null, string[] engSize = null, string[] fuelConsump = null, string[] door = null)
+        {
             string manufactorers = "";
             if (manufss != null)
             {
@@ -128,7 +129,7 @@ namespace CarRental.WEB.Controllers
                     manufactorers += m;
                 }
             }
-            
+
             string types = "";
             if (typess != null)
             {
@@ -163,7 +164,7 @@ namespace CarRental.WEB.Controllers
                 }
             }
             string engSizes = "";
-            if (engSize!= null)
+            if (engSize != null)
             {
                 foreach (var i in engSize)
                 {
@@ -190,8 +191,8 @@ namespace CarRental.WEB.Controllers
             if (model != null)
             {
                 IEnumerable<CarDTO> c = DatAcessService.FindCars(model.Name,
-                    manufactorers,types,fueltypes,transmissions, capacities , fuelCons, engSizes, doors, model.LowPrice, model.UppPrice);
-                
+                    manufactorers, types, fueltypes, transmissions, capacities, fuelCons, engSizes, doors, model.LowPrice, model.UppPrice);
+
                 if (model.Sort != null)
                 {
                     if (model.Sort == "ascending")
@@ -203,26 +204,30 @@ namespace CarRental.WEB.Controllers
                         c = c.OrderByDescending(car => car.Price);
                     }
                 }
-                
-                string ids="";
-                
-                 foreach(var car in c)
+
+                string ids = "";
+
+                foreach (var car in c)
                 {
                     ids = ids + car.Id + "I";
                 }
-               
-                return RedirectToAction("RendCars", "Home", new{id=ids,page=model.Page!=0?model.Page:1,sort=model.Sort
-            }); 
+
+                return RedirectToAction("RendCars", "Home", new
+                {
+                    id = ids,
+                    page = model.Page != 0 ? model.Page : 1,
+                    sort = model.Sort
+                });
             }
             return View();
         }
-       [HttpGet]
+        [HttpGet]
         public ActionResult UserSearch()
-        {        
+        {
             return PartialView();
         }
         [HttpPost]
-        public ActionResult UserSearch(string name=null,string[] roles=null,
+        public ActionResult UserSearch(string name = null, string[] roles = null,
             string[] statuses = null)
         {
             IEnumerable<UserDTO> users = DatAcessService.Users;
@@ -272,14 +277,14 @@ namespace CarRental.WEB.Controllers
             return PartialView();
         }
         [HttpPost]
-        public ActionResult OrderSearch(string[] statuses=null,
+        public ActionResult OrderSearch(string[] statuses = null,
             string usid = null)
         {
             IEnumerable<OrderDTO> orders = OrderService.Orders;
             if (usid != null && usid != "")
             {
 
-                orders = orders.Where(o =>usid.Contains(o.User_Id));
+                orders = orders.Where(o => usid.Contains(o.User_Id));
 
             }
             if (statuses != null)
@@ -291,7 +296,7 @@ namespace CarRental.WEB.Controllers
                 }
                 orders = orders.Where(u => st.ToString().ToLower().Contains(u.Status.ToString().ToLower()));
             }
-   
+
             string ids = "";
 
             foreach (var o in orders)
@@ -309,7 +314,7 @@ namespace CarRental.WEB.Controllers
         {
             var models = carss.Where(a => a.ToLower().Contains(term.ToLower()))
                             .Select(a => new { value = a })
-                            .Distinct();         
+                            .Distinct();
             return Json(models, JsonRequestBehavior.AllowGet);
         }
         public ActionResult AutocompleteUsName(string term)

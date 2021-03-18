@@ -16,13 +16,13 @@ namespace CarRental.BLL.Interfaces
     public interface IUserService : IDisposable
     {
         Task<OperationDetails> Create(UserDTO userDto);
-        Task<ClaimsIdentity> Authenticate(UserDTO userDto);      
+        Task<ClaimsIdentity> Authenticate(UserDTO userDto);
         bool IsInRole(string id, string name);
-        Task<UserDTO> Find(string user,string pass);
+        Task<UserDTO> Find(string user, string pass);
         Task<UserDTO> FindByEmail(string email);
         Task<UserDTO> FindById(string id);
         Task<string> GenerateEmailConfirmationTokenAsync(string id);
-        Task SendEmailAsync(string id,string subject,string body);
+        Task SendEmailAsync(string id, string subject, string body);
         Task UpdateAsync(UserDTO userdto);
 
 

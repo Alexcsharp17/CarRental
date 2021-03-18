@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace CarRental.BLL.Services
 {
-  public  class ExceptionService : IExceptionService
+    public class ExceptionService : IExceptionService
     {
         private IUoW<ApplicationContext> db { get; }
         public ExceptionService(IUoW<ApplicationContext> db)
@@ -33,7 +33,7 @@ namespace CarRental.BLL.Services
             db.Exceptions.Create(exep);
             db.Commit();
         }
-        void  IExceptionService.DeleteEx(int id)
+        void IExceptionService.DeleteEx(int id)
         {
             db.Exceptions.Delete(id);
             db.Commit();

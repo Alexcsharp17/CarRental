@@ -31,21 +31,21 @@ namespace CarRental.BLL.Services
         }
         public bool IsInRole(string id, string name)
         {
-          return  Database.UserManager.IsInRole(id, name);
+            return Database.UserManager.IsInRole(id, name);
         }
-        public async Task<UserDTO> Find(string us,string pass)
+        public async Task<UserDTO> Find(string us, string pass)
         {
 
-          ApplicationUser user = await Database.UserManager.FindAsync(us, pass);
-         
+            ApplicationUser user = await Database.UserManager.FindAsync(us, pass);
+
             //ICollection<IdentityUserRole> rol = user.Roles;
             UserDTO userdto = null;
-            if(user!= null)
+            if (user != null)
             {
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<ApplicationUser, UserDTO>());
                 var mapper = new Mapper(config);
                 userdto = mapper.Map<UserDTO>(user);
-                
+
             }
             return userdto;
         }
@@ -88,12 +88,12 @@ namespace CarRental.BLL.Services
             {
                 await Database.UserManager.UpdateAsync(userd);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
         }
-        public  async Task<string> GenerateEmailConfirmationTokenAsync(string id)
+        public async Task<string> GenerateEmailConfirmationTokenAsync(string id)
         {
 
 
@@ -106,11 +106,11 @@ namespace CarRental.BLL.Services
 
             return await userMan.GenerateEmailConfirmationTokenAsync(id);
         }
-        public async Task SendEmailAsync(string id,string subject,string body)
+        public async Task SendEmailAsync(string id, string subject, string body)
         {
             var userMan = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationContext()));
             userMan.EmailService = new EmailService();
-            await userMan.SendEmailAsync( id, subject, body);
+            await userMan.SendEmailAsync(id, subject, body);
         }
 
 
@@ -121,16 +121,21 @@ namespace CarRental.BLL.Services
             if (user == null)
             {
 
-                user = new ApplicationUser { Email = userDto.Email, UserName = userDto.Email,
-                    PassportNumb=userDto.PassportNumb,Banned=userDto.Banned, Name=userDto.Name
+                user = new ApplicationUser
+                {
+                    Email = userDto.Email,
+                    UserName = userDto.Email,
+                    PassportNumb = userDto.PassportNumb,
+                    Banned = userDto.Banned,
+                    Name = userDto.Name
                 };
                 var result = await Database.UserManager.CreateAsync(user, userDto.Password);
-                
+
                 if (result.Errors.Count() > 0)
                     return new OperationDetails(false, result.Errors.FirstOrDefault(), "");
                 // add role
                 await Database.UserManager.AddToRoleAsync(user.Id, userDto.Role);
-                
+
                 await Database.SaveAsync();
                 return new OperationDetails(true, "You have sucessfully completed registration", "");
             }
@@ -146,9 +151,9 @@ namespace CarRental.BLL.Services
                        new UserStore<ApplicationUser>(context.Get<ApplicationContext>()));
             //..........................
             manager.EmailService = new EmailService();
-            
+
             return manager;
-           
+
         }
 
         public async Task<ClaimsIdentity> Authenticate(UserDTO userDto)
@@ -162,11 +167,11 @@ namespace CarRental.BLL.Services
                                    DefaultAuthenticationTypes.ApplicationCookie);
             return claim;
         }
-      
+
         public void Dispose()
         {
             Database.Dispose();
         }
-       
+
     }
 }

@@ -14,15 +14,15 @@ namespace CarRental.DAL.Entities
     /// which is stored in database and to transfer data about the 
     /// car to upper architecture level
     /// </summary>
-   public class Car : BaseEntity
+    public class Car : BaseEntity
     {
-        
-        
+
+
         [Required(ErrorMessage = "Please input car name")]
         [MaxLength(100)]
         public string Name { get; set; }
 
-       
+
         [Required(ErrorMessage = "Please input manufactorer")]
         [MaxLength(100)]
         public string Manufacturer { get; set; }
@@ -39,22 +39,22 @@ namespace CarRental.DAL.Entities
         public string DriveUnit { get; set; }
 
         //(True-transsmision is automatic, False-manual)
-       
+
         [Required(ErrorMessage = "Please select transmission type")]
-        
+
         public bool AutomaticTransm { get; set; }
 
-        
+
         [Required(ErrorMessage = "Please select air condition.")]
         public bool AirConditon { get; set; }
 
-        
+
         [Required(ErrorMessage = "Please input price")]
-        [Range(1, int.MaxValue, ErrorMessage = "The value must be more than 0")]        
+        [Range(1, int.MaxValue, ErrorMessage = "The value must be more than 0")]
         //The price is set in gryvnas per day.
         public int Price { get; set; }
 
-        
+
         [Range(1, 10, ErrorMessage = "Input value between 1 and 10")]
         public byte Door { get; set; }
 
@@ -65,7 +65,7 @@ namespace CarRental.DAL.Entities
 
         public byte FuelConsump { get; set; }
 
-       
+
         public byte EngSize { get; set; }
 
         public string LisencePlate { get; set; }
@@ -84,10 +84,10 @@ namespace CarRental.DAL.Entities
         /// </summary>
         public Car()
         {
-            
+
             Orders = new List<Order>();
         }
-     
+
 
     }
 }

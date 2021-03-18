@@ -22,26 +22,26 @@ namespace CarRental.WEB.Controllers
     {
         private IUserService UserService
         {
-            get { return HttpContext.GetOwinContext().GetUserManager<IUserService>(); }          
+            get { return HttpContext.GetOwinContext().GetUserManager<IUserService>(); }
         }
-       
+
         private IAuthenticationManager AuthenticationManager
         {
-            get { return HttpContext.GetOwinContext().Authentication; }                                   
+            get { return HttpContext.GetOwinContext().Authentication; }
         }
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return View();       
+            return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginModel model, string returnUrl)
-        {          
+        {
             if (ModelState.IsValid)
             {
-                UserDTO userDto = new UserDTO { Email = model.Email, Password = model.Password,  };
+                UserDTO userDto = new UserDTO { Email = model.Email, Password = model.Password, };
                 ClaimsIdentity claim = await UserService.Authenticate(userDto);
                 UserDTO user = await UserService.FindByEmail(userDto.Email);
                 if (user == null)
@@ -58,13 +58,13 @@ namespace CarRental.WEB.Controllers
                     {
                         ModelState.AddModelError("", "Incorrect login/password.");
                     }
-                }                                                    
+                }
                 else
-                {                   
+                {
                     AuthenticationManager.SignOut();
                     AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = true }, claim);
-                                                  
-                    if (UserService.IsInRole(user.Id,"admin"))
+
+                    if (UserService.IsInRole(user.Id, "admin"))
                     {
                         return RedirectToAction("Index", "Dashboard", new { Area = "Admin" });
                     }
@@ -92,7 +92,7 @@ namespace CarRental.WEB.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterModel model)
-        {                      
+        {
             if (ModelState.IsValid)
             {
                 UserDTO userDto = new UserDTO
@@ -105,7 +105,7 @@ namespace CarRental.WEB.Controllers
                 };
 
                 OperationDetails operationDetails = await UserService.Create(userDto);
-               
+
                 ClaimsIdentity claim = await UserService.Authenticate(userDto);
                 if (operationDetails.Succedeed)
                 {
@@ -113,7 +113,7 @@ namespace CarRental.WEB.Controllers
                     try
                     {
                         var code = await UserService.GenerateEmailConfirmationTokenAsync(user.Id);
-                     
+
 
 
                         // создаем ссылку для подтверждения
@@ -124,20 +124,20 @@ namespace CarRental.WEB.Controllers
                                    "To finish your registration click the link:: <a href=\""
                                                                    + callbackUrl + "\">Finish registration</a>");
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
 
                         var mes = ex.Message;
                         var mess = ex.HelpLink;
                         var messs = ex.Source;
 
-                       
-                      
+
+
                     }
                     AuthenticationManager.SignIn(new AuthenticationProperties
                     {
                         IsPersistent = true
-                    },claim);
+                    }, claim);
 
                     return View("SuccessRegister");
                 }
@@ -150,18 +150,18 @@ namespace CarRental.WEB.Controllers
         public async Task<ActionResult> ConfirmEm(string userId, string Email)
         {
             UserDTO user = await UserService.FindById(userId);
-            
+
             //ClaimsIdentity claim = await UserService.Authenticate(user);
             if (user != null)
             {
                 if (user.Id == userId)
                 {
                     user.EmailConfirmed = true;
-                        await UserService.UpdateAsync(user);
-                        //AuthenticationManager.SignIn(new AuthenticationProperties
-                        //{
-                        //    IsPersistent = true
-                        //}, claim);                   
+                    await UserService.UpdateAsync(user);
+                    //AuthenticationManager.SignIn(new AuthenticationProperties
+                    //{
+                    //    IsPersistent = true
+                    //}, claim);                   
                     return RedirectToAction("Index", "Home", new { ConfirmedEmail = user.Email });
                 }
                 else
@@ -176,5 +176,5 @@ namespace CarRental.WEB.Controllers
         }
 
     }
-    
+
 }

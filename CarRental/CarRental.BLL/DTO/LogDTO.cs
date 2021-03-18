@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CarRental.BLL.DTO
 {
-   public class LogDTO
+    public class LogDTO
     {
         public DateTime Date { get; set; }
         public string UserName { get; set; }

@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace CarRental.BLL.Interfaces
 {
-   public interface IExceptionService : IDisposable
+    public interface IExceptionService : IDisposable
     {
         void AddEx(ExceptionDetailDTO obj);
         void DeleteEx(int id);
         void DeleteAllEx();
         IEnumerable<ExceptionDetailDTO> GetExceptions();
-        
+
     }
 }

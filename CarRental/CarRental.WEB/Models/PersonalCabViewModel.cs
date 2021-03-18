@@ -8,7 +8,7 @@ namespace CarRental.WEB.Models
 {
     public class PersonalCabViewModel
     {
-       public IEnumerable<OrderDTO> Orders { get; set; }
+        public IEnumerable<OrderDTO> Orders { get; set; }
         public UserDTO User { get; set; }
     }
 }

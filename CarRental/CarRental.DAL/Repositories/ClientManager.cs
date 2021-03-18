@@ -17,7 +17,7 @@ namespace CarRental.DAL.Repositories
             Database = db;
         }
 
-        
+
 
         public void Dispose()
         {

@@ -16,7 +16,7 @@ namespace CarRental.WEB.Languages
             new Languages {
                 LanguageFullName = "Russian", LanguageCultureName = "ru"
             },
-           
+
         };
         public static bool IsLanguageAvailable(string lang)
         {

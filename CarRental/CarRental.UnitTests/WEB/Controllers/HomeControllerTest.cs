@@ -21,18 +21,18 @@ namespace CarRental.UnitTests.WEB.Controllers
             var mock = new Mock<IDatAcessService>();
             var mock2 = new Mock<IOrderService>();
             var expected = CarSamples();
-            
-            mock.Setup(x => x.Cars).Returns(expected.cars);
-            mock.Setup(x => x.FindCar(1)).Returns(CarSamples(new int[] {1 }).cars.FirstOrDefault());
-            mock.Setup(x => x.FindCar(2)).Returns(CarSamples(new int[] {2 }).cars.FirstOrDefault());
 
-            HomeController controller = new HomeController(mock.Object,mock2.Object);
+            mock.Setup(x => x.Cars).Returns(expected.cars);
+            mock.Setup(x => x.FindCar(1)).Returns(CarSamples(new int[] { 1 }).cars.FirstOrDefault());
+            mock.Setup(x => x.FindCar(2)).Returns(CarSamples(new int[] { 2 }).cars.FirstOrDefault());
+
+            HomeController controller = new HomeController(mock.Object, mock2.Object);
             string expModelName = "Index";
-           
+
             //Act
-            ViewResult result = controller.Index(sort:"ascending") as ViewResult;
+            ViewResult result = controller.Index(sort: "ascending") as ViewResult;
             string idsArr = "1I2I";
-          
+
             ViewResult result2 = controller.Index(idsArr) as ViewResult;
 
             //Assert
@@ -40,7 +40,7 @@ namespace CarRental.UnitTests.WEB.Controllers
             Assert.IsNotNull(result);
             Assert.AreEqual(expModelName, result.ViewName);
 
-            if (expected.popcars.Count()>3)
+            if (expected.popcars.Count() > 3)
             {
                 for (int i = 0; i < expected.popcars.Count; i++)
                 {
@@ -48,14 +48,14 @@ namespace CarRental.UnitTests.WEB.Controllers
                 }
                 Assert.AreEqual(result.ViewBag.popCar.Count, expected.popcars.Count);
             }
-            
-           
+
+
 
         }
 
         public (List<CarDTO> cars, List<int> popcars) CarSamples(int[] idss = null)
         {
-         
+
             List<CarDTO> cars = new List<CarDTO>()
             {
                 new CarDTO { Id = 1, Name = "Ford Focus", AirConditon = true, AutomaticTransm = false, DriveUnit = "front", Capacity = 5, Manufacturer = "Ford", Price = 35, CarType = "econom", Door = 4, FuelType = "Petrol", EngSize = 2, FuelConsump = 4, Image = "/Content/img/cars/car1.jpg",Popular=10 },
@@ -82,8 +82,8 @@ namespace CarRental.UnitTests.WEB.Controllers
                     carsorted.Add(cars.FirstOrDefault(c => c.Id == i));
                 }
             }
-            return (cars,popcars);
+            return (cars, popcars);
         }
-       
+
     }
 }

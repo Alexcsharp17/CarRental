@@ -14,6 +14,6 @@ namespace CarRental.BLL.Interfaces
         /// </summary>
         /// <param name="obj">Log object</param>
         void AddLog(LogDTO obj);
-         IEnumerable<LogDTO> GetLogs();
+        IEnumerable<LogDTO> GetLogs();
     }
 }

@@ -17,7 +17,7 @@ namespace CarRental.DAL.Entities
 
         public virtual ApplicationUser User { get; set; }
 
-        [Required]   
+        [Required]
         public int PassportNumb { get; set; }
 
         [Required]
@@ -25,7 +25,7 @@ namespace CarRental.DAL.Entities
 
         public virtual Car Car { get; set; }
 
-        [Required]       
+        [Required]
         public DateTime StartTime { get; set; }
 
         [Required]
@@ -38,7 +38,7 @@ namespace CarRental.DAL.Entities
         [Required]
         [MaxLength(100)]
         public string EndPlace { get; set; }
-        
+
         //Client needs driver
         public bool Driver { get; set; }
 

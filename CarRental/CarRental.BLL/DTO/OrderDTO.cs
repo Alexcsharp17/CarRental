@@ -16,15 +16,15 @@ namespace CarRental.BLL.DTO
     /// Used to transfer data of car entity between DAL and BLL(Layers)
     /// </summary>
 
-    [DateValid(ErrorMessage ="Select rent dates")]
-   public class OrderDTO
+    [DateValid(ErrorMessage = "Select rent dates")]
+    public class OrderDTO
     {
         [HiddenInput(DisplayValue = false)]
-       
+
         public int Id { get; set; }
-      
+
         public string User_Id { get; set; }
-        
+
         public int CarId { get; set; }
 
         [Display(Name = "StartRent", ResourceType = typeof(Resource))]
@@ -38,7 +38,7 @@ namespace CarRental.BLL.DTO
         //Client needs driver
         [Display(Name = "DriverNecessity", ResourceType = typeof(Resource))]
         public bool Driver { get; set; }
-       
+
         public bool IsDeleted { get; set; }
 
         [Display(Name = "Status", ResourceType = typeof(Resource))]
@@ -52,6 +52,6 @@ namespace CarRental.BLL.DTO
         public CarDTO Car { get; set; }
         public CarItemDTO CarItem { get; set; }
 
-       public List<DateTime> fullOrdered { get; set; }
+        public List<DateTime> fullOrdered { get; set; }
     }
 }

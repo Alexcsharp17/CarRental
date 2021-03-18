@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CarRental.DAL.Interfaces
 {
-  public  interface IExceptionRepository
+    public interface IExceptionRepository
     {
         IEnumerable<ExceptionDetail> Exceptions { get; }
         void AddExeption(ExceptionDetail ex);

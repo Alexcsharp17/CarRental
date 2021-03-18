@@ -14,12 +14,12 @@ namespace CarRental.BLL.DTO
     /// CarDTO - special Data transfer object.
     /// Used to transfer data of car entity between DAL and BLL(Layers)
     /// </summary>
-   public class CarDTO
+    public class CarDTO
     {
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
 
-        [Display(Name = "CarName",ResourceType = typeof(Resource))]
+        [Display(Name = "CarName", ResourceType = typeof(Resource))]
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "NameRequired")]
         public string Name { get; set; }
 
@@ -29,7 +29,7 @@ namespace CarRental.BLL.DTO
 
         [Display(Name = "Capacity", ResourceType = typeof(Resource))]
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "CapacityRequired")]
-        [Range(1, 5, ErrorMessageResourceType = typeof(Resource),ErrorMessageResourceName ="CapacityRange") ]
+        [Range(1, 5, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "CapacityRange")]
         public int Capacity { get; set; }
 
         //(Four, front,rear)
@@ -79,11 +79,11 @@ namespace CarRental.BLL.DTO
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "EngineCapacityRequired")]
 
         public int EngSize { get; set; }
-        
-        public int Popular { get; set; }
-        
 
-        
-        
+        public int Popular { get; set; }
+
+
+
+
     }
 }

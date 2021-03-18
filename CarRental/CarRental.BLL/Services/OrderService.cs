@@ -26,15 +26,16 @@ namespace CarRental.BLL.Services
             db = new UoW();
         }
 
-        public IEnumerable<OrderDTO>  Orders
+        public IEnumerable<OrderDTO> Orders
         {
-            get {
+            get
+            {
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<Order, OrderDTO>());
                 var mapper = new Mapper(config);
                 return mapper.Map<List<OrderDTO>>(db.Orders.GetAll());
             }
         }
-        
+
         public void CreateOrder(OrderDTO o)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<OrderDTO, Order>());
@@ -44,23 +45,24 @@ namespace CarRental.BLL.Services
         }
         public OrderDTO FindOrder(int id)
         {
-            
-            var config = new MapperConfiguration(cfg => {
+
+            var config = new MapperConfiguration(cfg =>
+            {
                 cfg.CreateMap<Order, OrderDTO>();
-                cfg.CreateMap<Car, CarDTO>().ForMember(x=>x.Popular,opt=>opt.Ignore());
+                cfg.CreateMap<Car, CarDTO>().ForMember(x => x.Popular, opt => opt.Ignore());
             });
             config.AssertConfigurationIsValid();
-            var mapper = config.CreateMapper();            
-            var order= mapper.Map<Order,OrderDTO>(db.Orders.Get(id));
-            
+            var mapper = config.CreateMapper();
+            var order = mapper.Map<Order, OrderDTO>(db.Orders.Get(id));
+
             return order;
-            
+
         }
         public IEnumerable<OrderDTO> FindOrders(string userId)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Order, OrderDTO>());
             var mapper = new Mapper(config);
-            return mapper.Map<List<OrderDTO>>(db.Orders.GetAll().Where(o=>o.User_Id==userId));
+            return mapper.Map<List<OrderDTO>>(db.Orders.GetAll().Where(o => o.User_Id == userId));
         }
         public void DeleteOrder(int id)
         {

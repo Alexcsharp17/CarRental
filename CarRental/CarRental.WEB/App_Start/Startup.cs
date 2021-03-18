@@ -52,6 +52,6 @@ namespace CarRental.WEB.App_Start
             return serviceCreator.CreateUserService("DefaultConnection");
         }
 
-      
+
     }
 }

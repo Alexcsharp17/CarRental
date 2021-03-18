@@ -24,8 +24,8 @@ namespace CarRental.DAL.EF
 
             //Create a list of cars for database first initialization
             //If json deserializer doesnt return cars then add that default list
-            List <Car> cars = new List<Car>();
-            cars.Add( new Car { Id = 1, Name = "Fiat 500", AirConditon = true, AutomaticTransm = false, DriveUnit = "front", Capacity = 5, Manufacturer = "Fiat", Price = 24, CarType = "econom", Door = 4, FuelType = "Petrol", EngSize = 2, FuelConsump = 4, Image = "/Content/img/cars/Duster.jpg" });
+            List<Car> cars = new List<Car>();
+            cars.Add(new Car { Id = 1, Name = "Fiat 500", AirConditon = true, AutomaticTransm = false, DriveUnit = "front", Capacity = 5, Manufacturer = "Fiat", Price = 24, CarType = "econom", Door = 4, FuelType = "Petrol", EngSize = 2, FuelConsump = 4, Image = "/Content/img/cars/Duster.jpg" });
             cars.Add(new Car { Id = 2, Name = "Ford Focus", AirConditon = true, AutomaticTransm = false, DriveUnit = "front", Capacity = 5, Manufacturer = "Ford", Price = 35, CarType = "econom", Door = 4, FuelType = "Petrol", EngSize = 2, FuelConsump = 4, Image = "/Content/img/cars/car1.jpg" });
             cars.Add(new Car { Id = 3, Name = "Volkswagen Polo", AirConditon = true, AutomaticTransm = false, DriveUnit = "front", Capacity = 5, Manufacturer = "Volkswagen", CarType = "econom", Price = 34, Door = 4, FuelType = "Petrol", EngSize = 2, FuelConsump = 5, Image = "/Content/img/cars/car2.jpg" });
             cars.Add(new Car { Id = 4, Name = "Volkswagen Golf", AirConditon = false, AutomaticTransm = true, DriveUnit = "rear", Capacity = 2, Manufacturer = "Volkswagen", CarType = "econom", Price = 37, Door = 4, FuelType = "Petrol", EngSize = 4, FuelConsump = 2, Image = "/Content/img/cars/Logan.jpg" });

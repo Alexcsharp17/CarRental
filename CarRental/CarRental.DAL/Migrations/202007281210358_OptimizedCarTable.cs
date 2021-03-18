@@ -2,7 +2,7 @@
 {
     using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class OptimizedCarTable : DbMigration
     {
         public override void Up()
@@ -17,7 +17,7 @@
             AlterColumn("dbo.Cars", "EngSize", c => c.Byte(nullable: false));
             AlterColumn("dbo.Cars", "CarType", c => c.String(nullable: false, maxLength: 50));
         }
-        
+
         public override void Down()
         {
             AlterColumn("dbo.Cars", "CarType", c => c.String());

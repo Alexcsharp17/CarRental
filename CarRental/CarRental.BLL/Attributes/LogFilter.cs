@@ -16,7 +16,7 @@ namespace CarRental.BLL.Attributes
         private ILogService logService;
         public LogFilterAttribute(ILogService service)
         {
-            logService = service ;
+            logService = service;
         }
         public LogFilterAttribute()
         {

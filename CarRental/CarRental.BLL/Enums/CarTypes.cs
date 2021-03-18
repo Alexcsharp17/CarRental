@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace CarRental.BLL.Enums
 {
-    public enum CarTypes { premium,econom,business }
+    public enum CarTypes { premium, econom, business }
 }

@@ -17,17 +17,17 @@ using System.Web.Razor.Generator;
 namespace CarRental.WEB.Areas.Admin.Controllers
 {
     [ExceptionLogger]
-    [Authorize(Roles ="admin")]
+    [Authorize(Roles = "admin")]
     public class MainController : Controller
     {
         private IDatAcessService DatAcessService;
         public MainController(IDatAcessService serv)
         {
             DatAcessService = serv;
-           
+
         }
-      
-      
+
+
 
         private IUserService UserService
         {
@@ -53,7 +53,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         }
         public ActionResult ExceptionDetails(int id)
         {
-          ExceptionDetailDTO exc= DatAcessService.Exceptions.FirstOrDefault(e => e.Id == id);
+            ExceptionDetailDTO exc = DatAcessService.Exceptions.FirstOrDefault(e => e.Id == id);
             return View(exc);
         }
 
@@ -62,11 +62,11 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             var cars = DatAcessService.Cars;
             return View(cars);
         }
-        [Authorize(Roles ="admin, manager")]
+        [Authorize(Roles = "admin, manager")]
         [HttpGet]
         public ActionResult CreateCar()
         {
-           
+
             return View();
         }
         [Authorize(Roles = "admin, manager")]
@@ -86,7 +86,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         }
         public ActionResult CarDetail(int id)
         {
-           var car= DatAcessService.FindCar(id);
+            var car = DatAcessService.FindCar(id);
             if (car == null)
             {
                 return HttpNotFound();
@@ -97,18 +97,18 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         [HttpPost]
         public PartialViewResult FileUpload(HttpPostedFileBase uploadFile, int img = 1)
         {
-           
-            if (uploadFile != null && uploadFile.ContentLength > 0 && uploadFile.ContentLength<10000000)
+
+            if (uploadFile != null && uploadFile.ContentLength > 0 && uploadFile.ContentLength < 10000000)
             {
-                string filePath = Path.Combine(Server.MapPath("/Content/Img/cars"), Path.GetFileName(uploadFile.FileName)+img.ToString());
+                string filePath = Path.Combine(Server.MapPath("/Content/Img/cars"), Path.GetFileName(uploadFile.FileName) + img.ToString());
 
                 uploadFile.SaveAs(filePath);
-                ViewBag.Name=uploadFile.FileName;
+                ViewBag.Name = uploadFile.FileName;
                 ViewBag.filePath = filePath;
-            }           
+            }
             return PartialView();
         }
-      public PartialViewResult FileDelete(string route)
+        public PartialViewResult FileDelete(string route)
         {
             var filePath = Server.MapPath("~" + route);
             if (System.IO.File.Exists(filePath))
@@ -125,7 +125,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             return View();
         }
 
-       
+
 
         // GET: Admin/Main/Edit/5
         [HttpGet]
@@ -136,7 +136,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-           
+
             return View(car);
         }
 
@@ -158,9 +158,9 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
-           
-            var car= DatAcessService.FindCar(id);
-           
+
+            var car = DatAcessService.FindCar(id);
+
             if (car == null)
             {
                 return HttpNotFound();
@@ -172,7 +172,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Delete(CarDTO car)
         {
-           
+
             var filePath = Server.MapPath("~" + car.Image);
             if (System.IO.File.Exists(filePath))
             {
@@ -213,11 +213,11 @@ namespace CarRental.WEB.Areas.Admin.Controllers
                 .OrderBy(o => o)
                 .ToList();
 
-            if(monthList != null)
+            if (monthList != null)
             {
                 DateTime lastMonth = monthList.OrderBy(m => m).Last();
                 var monthOrders = orderList.Where(o => o.StartTime.Month == lastMonth.Month);
-                var orders = orderList.Where(o => o.StartTime.Month == lastMonth.Month) .GroupBy(o => o.StartTime.Date)
+                var orders = orderList.Where(o => o.StartTime.Month == lastMonth.Month).GroupBy(o => o.StartTime.Date)
                     .Select(g => new { date = g.Key, count = g.Count() })
                     .OrderBy(g => g.date);
                 var cars = monthOrders.GroupBy(o => o.Car.Name)
@@ -256,7 +256,8 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             List<DateTime> monthList = orderList.GroupBy(o => o.StartTime).Select(grp => grp.First().StartTime).ToList();
             statisticsModel.MonthList = monthList.Select(m => m.Month).Distinct().ToList();
 
-            if (monthList != null && statisticsModel.MonthList.Contains(Convert.ToInt32(statisticsModel.SelectedMonth))){
+            if (monthList != null && statisticsModel.MonthList.Contains(Convert.ToInt32(statisticsModel.SelectedMonth)))
+            {
 
                 var monthOrders = orderList.Where(o => o.StartTime.Month == statisticsModel.SelectedMonth);
                 var orders = orderList.Where(o => o.StartTime.Month == statisticsModel.SelectedMonth).GroupBy(o => o.StartTime.Date)
@@ -286,7 +287,7 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             {
                 statisticsModel.DataExist = false;
             }
-                
+
             return PartialView("GetStatsPartial", statisticsModel);
         }
 
@@ -299,9 +300,9 @@ namespace CarRental.WEB.Areas.Admin.Controllers
 
                 int ords = DatAcessService.Orders.Where(x => (DateTime.Now - x.StartTime).TotalDays < 30).Count();
                 double sum = DatAcessService.Orders.Where(x => (DateTime.Now - x.StartTime).TotalDays < 30).Select(x => x.OrdSum).Sum();
-                string orders = "Total orders: "+ords;
+                string orders = "Total orders: " + ords;
                 string summ = "Month income: " + sum + "$";
-                
+
                 sw.WriteLine(orders);
                 sw.WriteLine(summ);
             }
@@ -310,20 +311,20 @@ namespace CarRental.WEB.Areas.Admin.Controllers
             {
                 sw2.WriteLine("                             Car prices");
                 sw2.WriteLine();
-                sw2.WriteLine("Car Name"+ new String(' ',30-"Car Name".Length)+"Car price");
+                sw2.WriteLine("Car Name" + new String(' ', 30 - "Car Name".Length) + "Car price");
                 sw2.WriteLine();
                 var cars = DatAcessService.Cars;
-                foreach(var c in cars)
+                foreach (var c in cars)
                 {
-                sw2.WriteLine(c.Name + new String(' ', 30-c.Name.Length) + c.Price + "$");
+                    sw2.WriteLine(c.Name + new String(' ', 30 - c.Name.Length) + c.Price + "$");
                 }
 
-               
+
             }
             return RedirectToAction("GetStats");
-          }
+        }
 
-        
+
 
     }
 }

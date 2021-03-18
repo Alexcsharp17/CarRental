@@ -10,11 +10,11 @@ namespace CarRental.BLL.Interfaces
 {
     public interface IOrderService : IDisposable
     {
-       IEnumerable<OrderDTO> Orders { get; }
+        IEnumerable<OrderDTO> Orders { get; }
         void CreateOrder(OrderDTO order);
         OrderDTO FindOrder(int id);
         IEnumerable<OrderDTO> FindOrders(string userId);
-         void DeleteOrder(int id);
+        void DeleteOrder(int id);
         void DeleteOrderSoft(int id);
     }
 }

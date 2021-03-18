@@ -13,7 +13,7 @@ namespace CarRental.BLL.Attributes
 {
     public class ExceptionLoggerAttribute : FilterAttribute, IExceptionFilter
     {
-      
+
         public void OnException(ExceptionContext filterContext)
         {
             ExceptionDetail exceptionDetail = new ExceptionDetail()
@@ -32,7 +32,7 @@ namespace CarRental.BLL.Attributes
             }
 
             filterContext.ExceptionHandled = true;
-           
+
         }
     }
 }

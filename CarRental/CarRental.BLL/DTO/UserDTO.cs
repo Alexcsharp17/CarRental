@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace CarRental.BLL.DTO
 {
-   public class UserDTO
+    public class UserDTO
     {
         [HiddenInput(DisplayValue = false)]
         public string Id { get; set; }
@@ -17,17 +17,17 @@ namespace CarRental.BLL.DTO
         public string Email { get; set; }
         [HiddenInput(DisplayValue = false)]
         public string Password { get; set; }
-        
+
         public string UserName { get; set; }
         public string Name { get; set; }
-       
+
         public string Role { get; set; }
         public bool EmailConfirmed { get; set; }
-      
+
         public bool Banned { get; set; }
         public string RepairInvoice { get; set; }
         [Display(Name = "Mobile Number:")]
-       
+
         [RegularExpression(@"^([0-9]{10})$", ErrorMessage = "Invalid Mobile Number.")]
         public string PhoneNumber { get; set; }
 

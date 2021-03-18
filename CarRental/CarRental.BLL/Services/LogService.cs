@@ -48,8 +48,8 @@ namespace CarRental.BLL.Services
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Log, LogDTO>());
             var mapper = new Mapper(config);
             var logs = mapper.Map<List<LogDTO>>(db.Logs.GetAll());
-           
-            return  logs;
+
+            return logs;
         }
 
         void IDisposable.Dispose()
