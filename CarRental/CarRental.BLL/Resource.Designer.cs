@@ -385,6 +385,15 @@ namespace CarRental.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Driver Licence.
+        /// </summary>
+        public static string DriverLicence {
+            get {
+                return ResourceManager.GetString("DriverLicence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Driver.
         /// </summary>
         public static string DriverNecessity {
@@ -628,6 +637,15 @@ namespace CarRental.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Driver Licence.
+        /// </summary>
+        public static string Licence {
+            get {
+                return ResourceManager.GetString("Licence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Log in.
         /// </summary>
         public static string LogIn {
@@ -750,24 +768,6 @@ namespace CarRental.BLL {
         public static string OrdSum {
             get {
                 return ResourceManager.GetString("OrdSum", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Passport.
-        /// </summary>
-        public static string Passport {
-            get {
-                return ResourceManager.GetString("Passport", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Passport numb.
-        /// </summary>
-        public static string PassportNumb {
-            get {
-                return ResourceManager.GetString("PassportNumb", resourceCulture);
             }
         }
         
@@ -1096,6 +1096,15 @@ namespace CarRental.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your Driver Licence.
+        /// </summary>
+        public static string YourDriverLicence {
+            get {
+                return ResourceManager.GetString("YourDriverLicence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your Name.
         /// </summary>
         public static string YourName {
@@ -1110,15 +1119,6 @@ namespace CarRental.BLL {
         public static string YourOrders {
             get {
                 return ResourceManager.GetString("YourOrders", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Your Passport.
-        /// </summary>
-        public static string YourPassport {
-            get {
-                return ResourceManager.GetString("YourPassport", resourceCulture);
             }
         }
         

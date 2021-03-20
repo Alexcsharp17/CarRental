@@ -125,7 +125,7 @@ namespace CarRental.BLL.Services
                 {
                     Email = userDto.Email,
                     UserName = userDto.Email,
-                    PassportNumb = userDto.PassportNumb,
+                    DriverLicenceNumber = userDto.DriverLinenceNumber,
                     Banned = userDto.Banned,
                     Name = userDto.Name
                 };

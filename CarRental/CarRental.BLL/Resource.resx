@@ -225,6 +225,9 @@
   <data name="DoorRange" xml:space="preserve">
     <value>Input value between 1 and 10</value>
   </data>
+  <data name="DriverLicence" xml:space="preserve">
+    <value>Driver Licence</value>
+  </data>
   <data name="DriverNecessity" xml:space="preserve">
     <value>Driver</value>
   </data>
@@ -306,6 +309,9 @@
   <data name="FuelTypeRequired" xml:space="preserve">
     <value>Please Input Fuel Type</value>
   </data>
+  <data name="Licence" xml:space="preserve">
+    <value>Driver Licence</value>
+  </data>
   <data name="LogIn" xml:space="preserve">
     <value>Log in</value>
   </data>
@@ -347,12 +353,6 @@
   </data>
   <data name="OrdSum" xml:space="preserve">
     <value>Order sum</value>
-  </data>
-  <data name="Passport" xml:space="preserve">
-    <value>Passport</value>
-  </data>
-  <data name="PassportNumb" xml:space="preserve">
-    <value>Passport numb</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
@@ -462,14 +462,14 @@
   <data name="WithoutPleage" xml:space="preserve">
     <value>Without pleage</value>
   </data>
+  <data name="YourDriverLicence" xml:space="preserve">
+    <value>Your Driver Licence</value>
+  </data>
   <data name="YourName" xml:space="preserve">
     <value>Your Name</value>
   </data>
   <data name="YourOrders" xml:space="preserve">
     <value>Your orders</value>
-  </data>
-  <data name="YourPassport" xml:space="preserve">
-    <value>Your Passport</value>
   </data>
   <data name="YourPhone" xml:space="preserve">
     <value>Your Phone</value>

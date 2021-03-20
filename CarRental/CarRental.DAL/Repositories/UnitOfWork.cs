@@ -297,7 +297,7 @@ namespace CarRental.DAL.Repositories
 
             us.UserName = user.UserName;
             us.Banned = user.Banned;
-            us.PassportNumb = user.PassportNumb;
+            us.DriverLicenceNumber = user.DriverLicenceNumber;
             us.Name = user.Name;
             us.PhoneNumber = user.PhoneNumber;
             us.RepairInvoice = user.RepairInvoice;
@@ -310,7 +310,7 @@ namespace CarRental.DAL.Repositories
             if (dbEntry != null)
             {
                 dbEntry.UserName = user.UserName;
-                dbEntry.PassportNumb = user.PassportNumb;
+                dbEntry.DriverLicenceNumber = user.DriverLicenceNumber;
                 dbEntry.PhoneNumber = user.PhoneNumber;
                 dbEntry.Banned = user.Banned;
 

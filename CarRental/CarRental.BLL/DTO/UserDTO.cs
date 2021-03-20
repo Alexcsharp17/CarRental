@@ -31,6 +31,6 @@ namespace CarRental.BLL.DTO
         [RegularExpression(@"^([0-9]{10})$", ErrorMessage = "Invalid Mobile Number.")]
         public string PhoneNumber { get; set; }
 
-        public int PassportNumb { get; set; }
+        public string DriverLinenceNumber { get; set; }
     }
 }

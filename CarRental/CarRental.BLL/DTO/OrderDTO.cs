@@ -29,12 +29,16 @@ namespace CarRental.BLL.DTO
 
         [Display(Name = "StartRent", ResourceType = typeof(Resource))]
         public DateTime StartTime { get; set; }
+
         [Display(Name = "StartPlace", ResourceType = typeof(Resource))]
         public string StartPlace { get; set; }
+
         [Display(Name = "EndPlace", ResourceType = typeof(Resource))]
         public string EndPlace { get; set; }
+
         [Display(Name = "EndRent", ResourceType = typeof(Resource))]
         public DateTime EndTime { get; set; }
+
         //Client needs driver
         [Display(Name = "DriverNecessity", ResourceType = typeof(Resource))]
         public bool Driver { get; set; }
@@ -43,13 +47,19 @@ namespace CarRental.BLL.DTO
 
         [Display(Name = "Status", ResourceType = typeof(Resource))]
         public string Status { get; set; }
-        [Display(Name = "PassportNumb", ResourceType = typeof(Resource))]
-        public int PassportNumb { get; set; }
+
+        [Display(Name = "DriverLicence", ResourceType = typeof(Resource))]
+        [RegularExpression("[A-Z]{3}[0-9]{6}", ErrorMessage = "Driver licence must consist of 3 Latin Letter and 6 numbers")]
+        public string DriverLicenceNumber { get; set; }
+
         [Display(Name = "ManagerComment", ResourceType = typeof(Resource))]
         public string ManagComment { get; set; }
+
         [Display(Name = "OrdSum", ResourceType = typeof(Resource))]
         public double OrdSum { get; set; }
+
         public CarDTO Car { get; set; }
+
         public CarItemDTO CarItem { get; set; }
 
         public List<DateTime> fullOrdered { get; set; }

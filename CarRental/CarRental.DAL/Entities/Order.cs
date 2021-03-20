@@ -18,7 +18,7 @@ namespace CarRental.DAL.Entities
         public virtual ApplicationUser User { get; set; }
 
         [Required]
-        public int PassportNumb { get; set; }
+        public string DriverLicenceNumber { get; set; }
 
         [Required]
         public int CarId { get; set; }

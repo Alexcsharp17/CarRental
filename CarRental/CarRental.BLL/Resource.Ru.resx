@@ -225,6 +225,9 @@
   <data name="DoorRange" xml:space="preserve">
     <value>Введите значение от 1 до 10</value>
   </data>
+  <data name="DriverLicence" xml:space="preserve">
+    <value>Водительские права</value>
+  </data>
   <data name="DriverNecessity" xml:space="preserve">
     <value>Водитель</value>
   </data>
@@ -303,6 +306,9 @@
   <data name="FuelTypeRequired" xml:space="preserve">
     <value>Укажите тип топлива</value>
   </data>
+  <data name="Licence" xml:space="preserve">
+    <value>Паспорт</value>
+  </data>
   <data name="LogIn" xml:space="preserve">
     <value>Войти</value>
   </data>
@@ -341,12 +347,6 @@
   </data>
   <data name="OrdSum" xml:space="preserve">
     <value>Сумма </value>
-  </data>
-  <data name="Passport" xml:space="preserve">
-    <value>Паспорт</value>
-  </data>
-  <data name="Password" xml:space="preserve">
-    <value>Пароль</value>
   </data>
   <data name="Pending" xml:space="preserve">
     <value>Ожидание</value>
@@ -450,14 +450,14 @@
   <data name="WithoutPleage" xml:space="preserve">
     <value>Без залога</value>
   </data>
+  <data name="YourDriverLicence" xml:space="preserve">
+    <value>Номер Водительских Прав</value>
+  </data>
   <data name="YourName" xml:space="preserve">
     <value>Ваше Имя</value>
   </data>
   <data name="YourOrders" xml:space="preserve">
     <value>Ваши Заказы</value>
-  </data>
-  <data name="YourPassport" xml:space="preserve">
-    <value>Номер Паспорта</value>
   </data>
   <data name="YourPhone" xml:space="preserve">
     <value>Ваш Телефон</value>

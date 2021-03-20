@@ -234,12 +234,12 @@
                     </div>
 
                     <div class="form-group">
-                        <p class="control-label ml-3"> @Resource.PassportNumb</p>
+                        <p class="control-label ml-3"> @Resource.DriverLicence</p>
                         <div class="col-md-10">
                             <div class="checkbox">
-                                @Html.EditorFor(model => model.PassportNumb, new { htmlAttributes = new { @class = "control-label d-inp rounded" } })
+                                @Html.EditorFor(model => model.DriverLicenceNumber, new { htmlAttributes = new { @class = "control-label d-inp rounded" } })
 
-                                @Html.ValidationMessageFor(model => model.PassportNumb, "", new { @class = "text-danger" })
+                                @Html.ValidationMessageFor(model => model.DriverLicenceNumber, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>

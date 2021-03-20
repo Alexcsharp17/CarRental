@@ -13,7 +13,7 @@ namespace CarRental.DAL.Entities
 
         public bool Banned { get; set; }
         public string Name { get; set; }
-        public int PassportNumb { get; set; }
+        public string DriverLicenceNumber { get; set; }
         public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
         public string RepairInvoice { get; set; }
 

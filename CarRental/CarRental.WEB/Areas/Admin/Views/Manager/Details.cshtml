@@ -88,11 +88,22 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.PassportNumb)
+                @Html.DisplayNameFor(model => model.DriverLicenceNumber)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.PassportNumb)
+                <div class="d-flex justify-content-start flex-wrap">
+                    <p class="mt-1">
+                        @Html.DisplayFor(model => model.DriverLicenceNumber)
+                    </p>
+                    @if (Model.DriverLicenceNumber != null && Model.DriverLicenceNumber != "")
+                    {
+                        <p>
+                            <a href="https://opendata.hsc.gov.ua/check-driver-license" target="_blank" class="btn btn-outline-info rounded ml-4">Check Validity</a>
+                        </p>
+                    }
+                </div>
+               
             </dd>
 
             <dt>
