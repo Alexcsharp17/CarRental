@@ -48,6 +48,7 @@ namespace CarRental.BLL.DTO
         [Display(Name = "Status", ResourceType = typeof(Resource))]
         public string Status { get; set; }
 
+        [Required]
         [Display(Name = "DriverLicence", ResourceType = typeof(Resource))]
         [RegularExpression("[A-Z]{3}[0-9]{6}", ErrorMessage = "Driver licence must consist of 3 Latin Letter and 6 numbers")]
         public string DriverLicenceNumber { get; set; }

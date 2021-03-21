@@ -70,8 +70,8 @@
             <p title="Passport number contains 9 numbers." class="ml-3 mb-1 mt-1 text-primary">@Resource.YourDriverLicence:</p>
             <div class="form-group">
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.DriverLinenceNumber, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DriverLinenceNumber, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.DriverLinenceNumber, new { htmlAttributes = new { @class = "form-control", @pattern = "[A-Z]{3}[0-9]{6}", @placeholder = "AAA000000", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.DriverLinenceNumber, "", new { @class = "text-danger"  })
                 </div>
             </div>
 

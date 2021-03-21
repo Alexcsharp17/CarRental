@@ -105,6 +105,15 @@ namespace CarRental.WEB.Areas.Admin.Controllers
                 uploadFile.SaveAs(filePath);
                 ViewBag.Name = uploadFile.FileName;
                 ViewBag.filePath = filePath;
+                if (img == 1)
+                {
+                    ViewBag.Image = "Image";
+                }
+                else
+                {
+                    ViewBag.Image = String.Concat("Image", img);
+                }
+
             }
             return PartialView();
         }
