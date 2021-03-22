@@ -1,0 +1,83 @@
+﻿@model CarRental.WEB.Areas.Admin.Models.StatisticsModel
+
+<div class="row mt-1" id="stats_area">
+    <div class="col-4 offset-4 mt-2 card">
+        <div class="container-fluid mt-1 p-2 bg-info  text-center"><h3>Rent data for 30 days</h3></div>
+        <div class=" border">
+            <table class="table table-striped">
+                <tr>
+                    <td>Cars rentet total:</td>
+                    <td>@ViewBag.ords</td>
+                </tr>
+                <tr>
+                    <td>Money earned total:</td>
+                    <td class="text-danger">@ViewBag.sum</td>
+                </tr>
+            </table>
+            <a href="@Url.Action("CreateReport")" , class="btn btn-info m-1 text-dark"><i class="fa fa-plus mr-1 d-inline"></i>Create Report</a>
+        </div>
+    </div>
+    <div class=" col-4 offset-4 mt-2 card">
+        <div class="container-fluid mt-1 p-2 bg-info  text-center"><h3>Sales Statistic</h3></div>
+        <div id="curve_chart"></div>
+    </div>
+    <div class=" col-4 offset-4 mt-2 card">
+        <div class="container-fluid mt-1 p-2 bg-info  text-center"><h3>Car Rented statistics</h3></div>
+        <div id="pie_chart"></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+      google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    google.charts.setOnLoadCallback(drawChart2);
+
+    var orders = @Html.Raw(Json.Encode(Model.DaySales));
+      console.log();
+    var lineArray=[];
+      lineArray[0] = ['Day', 'Sales'];
+    let i = 1;
+    for (var o in orders) {
+        lineArray[i] = [o.split(" ")[0], orders[o]];
+        i++;
+    }
+    function drawChart() {
+
+        var data = google.visualization.arrayToDataTable(lineArray);
+
+        var options = {
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+    }
+    var cars = @Html.Raw(Json.Encode(Model.CarSales));
+    var pieArray = [];
+    pieArray[0] = ['Cars', 'Rented'];
+     i = 1;
+    for (var c in cars) {
+        pieArray[i] = [c, cars[c]];
+        i++;
+    }
+    function drawChart2() {
+
+        var data = google.visualization.arrayToDataTable(pieArray);
+
+        var options = {
+            title: 'Cars Rented'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+
+        chart.draw(data, options);
+    }
+    });
+
+
+</script>

@@ -1,0 +1,22 @@
+﻿@model CarRental.BLL.DTO.CarDTO
+
+
+<div class="card mr-2 mt-2" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="carDescription">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <div class="flex-row d-flex justify-content-around">
+            <div class="border p-2">
+                @Model.AutomaticTransm
+            </div>
+            <div class="border p-2">@Model.Capacity</div>
+            <div class="border p-2">@Model.DriveUnit</div>
+            <div class="border p-2">@Model.Manufacturer</div>
+        </div>
+
+
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+      
+    </div>
+</div>

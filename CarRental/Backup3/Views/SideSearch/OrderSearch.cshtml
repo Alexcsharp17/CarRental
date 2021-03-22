@@ -1,0 +1,66 @@
+﻿<div class="sidebar">
+    @using (Ajax.BeginForm("OrderSearch", "SideSearch", new AjaxOptions { UpdateTargetId = "order_area", InsertionMode = InsertionMode.Replace }))
+    {<div class="">
+    <div class="sear-sec">
+        <div class="sear_name mb-2 check_row ">
+            <span>
+                <input type="text" name="usid" class="form-control d-inline w-75" placeholder="User Id" />
+                <button type="submit" class="btn btn-success s_btn  " id="sbm"><i class="fa fa-search mr-2 ml-2 d-inline"></i></button>
+            </span>
+        </div>
+    </div>
+    <div class=" sear-sec">
+        <div class="cheks-head">Order Status</div>
+        <label class="check_row">
+            <span>
+                <input type="checkbox" class="big_check" name="statuses" value="pending" />
+            </span>
+            <span class="ml-1 pb-4">
+                Pending
+            </span>
+        </label>
+        <label class="check_row">
+            <span>
+                <input type="checkbox" class="big_check" name="statuses" value="completed" />
+            </span>
+            <span class="ml-1 ">
+                Completed
+            </span>
+        </label>
+        <label class="check_row">
+            <span>
+                <input type="checkbox" class="big_check" name="statuses" value="confirmed" />
+            </span>
+            <span class="ml-1 mb-5 pb-5">
+                Confirmed
+            </span>
+        </label>
+        <label class="check_row">
+            <span>
+                <input type="checkbox" class="big_check" name="statuses" value="rejected" />
+            </span>
+            <span class="ml-1 pb-4">
+                Rejected
+            </span>
+        </label>
+        <label class="check_row">
+            <span>
+                <input type="checkbox" class="big_check" name="statuses" value="fine" />
+            </span>
+            <span class="ml-1 pb-4">
+                Fine
+            </span>
+        </label>
+    </div>
+</div>    
+    }
+
+ </div>
+<script>
+
+    $(document).on('change', ':input', function () {
+        $("#sbm").click();
+    });
+
+</script>
+

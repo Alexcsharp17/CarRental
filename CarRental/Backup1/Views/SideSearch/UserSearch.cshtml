@@ -1,0 +1,66 @@
+﻿<div class="sidebar">
+    @using(Ajax.BeginForm("UserSearch", "SideSearch", new AjaxOptions { UpdateTargetId = "user_area", InsertionMode = InsertionMode.Replace }))
+    {<div class="">
+        <div class="sear-sec">
+            <div class="sear_name mb-2 check_row ">
+                <span>
+                    <input type="text" name="Name" data-autocomplete-source='@Url.Action("AutocompleteUsName", "UserManag")' class="form-control d-inline w-75" placeholder="User Name" />
+                    <button type="submit" class="btn btn-success s_btn  " id="sbm"><i class="fa fa-search mr-2 ml-2 d-inline"></i></button>
+
+                </span>
+            </div>
+         </div>
+        @*<div class=" sear-sec">
+            <div class="cheks-head">User Role</div>
+            <div class="check_row">
+                <span>
+                    <input type="checkbox" class="big_check" name="roles" value="manager" />
+                </span>
+                <span class="ml-1 pb-4">
+                    Managers
+                </span>
+            </div>
+            <div class="check_row">
+                <span>
+                    <input type="checkbox" class="big_check" name="roles" value="user" />
+                </span>
+                <span class="ml-1">
+                    Users
+                </span>
+            </div>
+        </div>*@
+        <div class="sear-sec">
+            <div class="cheks-head">Status</div>
+            <label class="check_row">
+                <span>
+                    <input type="checkbox" class="big_check" name="statuses" value="true" />
+                </span>
+                <span class="ml-1 pb-4">
+                    Blocked
+                </span>
+            </label>
+            <label class="check_row">
+                <span>
+                    <input type="checkbox" class="big_check" name="statuses" value="false" />
+                </span>
+                <span class="ml-1">
+                    Unlocked
+                </span>
+            </label>
+        </div>    
+        </div>
+    }
+</div>
+<script>
+
+    $(document).on('change', ':input', function () {
+        $("#sbm").click();
+    });
+    $(function () {
+        $("[data-autocomplete-source]").each(function () {
+            var target = $(this);
+            target.autocomplete({ source: target.attr("data-autocomplete-source") });
+        });
+    });
+
+</script>

@@ -1,0 +1,177 @@
+﻿@model CarRental.BLL.DTO.CarDTO
+@using CarRental.BLL
+@{
+    ViewBag.Title = "CreateCar";
+}
+@Styles.Render("~/Content/themes/base/all.css")
+<div class=" m-5  row">    
+    <div class="p-0 col-6 offset-3 bg-light border border-primary rounded">
+        <h2 class="text-center bg-dark text-white p-1">Create Car</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal p-2">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <p class="ml-3 mb-1 text-primary font-weight-bold">@Resource.CarName</p>
+                    <div class="col-md-10">
+                        <input type="text" name="Name" data-autocomplete-source='@Url.Action("AutocomCars", "AutoComplete")' class="form-control d-inline w-75" />
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p class="ml-3 mb-1 text-primary font-weight-bold">@Resource.Manufacturer</p>
+                    <div class="col-md-10">
+                        <input type="text" name="Manufacturer" data-autocomplete-source='@Url.Action("AutocomManuf", "AutoComplete")' class="form-control d-inline w-75" />
+                        @Html.ValidationMessageFor(model => model.Manufacturer, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <p class="ml-3 mb-1 text-primary font-weight-bold">@Resource.CarType</p>
+                    <div class="col-md-10">
+                        <input type="text" name="CarType" data-autocomplete-source='@Url.Action("AutocomCarTypes", "AutoComplete")' class="form-control d-inline w-75" />
+                        @Html.ValidationMessageFor(model => model.CarType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <p class="ml-3 mb-1 text-primary font-weight-bold">@Resource.Capacity</p>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Capacity, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Capacity, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p class="ml-3 mb-1 text-primary font-weight-bold">@Resource.Door</p>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Door, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Door, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p class="ml-3 mb-1 text-primary font-weight-bold">@Resource.EngineCapacity</p>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.EngSize, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.EngSize, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p class="ml-3 mb-1 text-primary font-weight-bold">@Resource.FuelConsumption</p>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FuelConsump, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FuelConsump, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <p class="ml-3 mb-1 text-primary font-weight-bold">@Resource.DriveUnit</p>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DriveUnit, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DriveUnit, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <p class="ml-3 mb-1 text-primary font-weight-bold">@Resource.FuelType</p>
+                    <div class="col-md-10">
+                        <input type="text" name="FuelType" data-autocomplete-source='@Url.Action("AutocomFuel", "AutoComplete")' class="form-control d-inline w-75" />
+                        @Html.ValidationMessageFor(model => model.FuelType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <p class="ml-3 mb-1 text-primary font-weight-bold">@Resource.Price</p>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p class="ml-3 mb-1 text-primary font-weight-bold">@Resource.AutomaticTransmission</p>
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.AutomaticTransm)
+                            @Html.ValidationMessageFor(model => model.AutomaticTransm, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <p class="ml-3 mb-1 text-primary font-weight-bold">@Resource.AirCondition</p>
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.AirConditon)
+                            @Html.ValidationMessageFor(model => model.AirConditon, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex ">
+                <label for="fil" class="btn btn-secondary ml-4"><i class="fa fa-images mr-1"></i> Image</label>
+                <p class="ml-2">Select 1 image</p>
+            </div>
+            
+            <div id="res" class="bg-secondary">
+
+            </div>
+            <div class="d-flex">
+                <label for="fil2" class="btn btn-secondary ml-4"><i class="fa fa-images mr-1"></i> Image</label>
+                <p class="ml-2">Select 2 image</p>
+            </div>
+       
+            <div id="res2" class="bg-secondary">
+
+            </div>
+            <div class="form-group m-2">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-primary adm_but text-white"><i class="fa fa-save mr-1 d-inline"></i>@Resource.Save</button>
+                </div>
+            </div>
+
+
+        }
+
+        @using (Ajax.BeginForm("FileUpload", new { img = 1 }, new AjaxOptions { UpdateTargetId = "res" }, new { enctype = "multipart/form-data" }))
+        {
+
+            <input id="fil" type="file" name="uploadFile" value="Choose Immage" class="btn btn-secondary d-none" />
+
+            <input type="submit" value="Confirm Immage" class="btn btn-primary d-none mr-2" id="sb" />
+
+        }
+        @using (Ajax.BeginForm("FileUpload", new { img = 2 }, new AjaxOptions { UpdateTargetId = "res2" }, new { enctype = "multipart/form-data" }))
+        {
+
+            <input id="fil2" type="file" name="uploadFile" value="Choose Immage" class="btn btn-secondary d-none" />
+
+            <input type="submit" value="Confirm Immage" class="btn btn-primary d-none mr-2" id="sb2" />
+
+        }
+
+        <div>
+
+        </div>
+
+
+    </div>
+</div>
+<script>
+    $(function () {
+        $("[data-autocomplete-source]").each(function () {
+            var target = $(this);
+            target.autocomplete({ source: target.attr("data-autocomplete-source") });
+        });
+    });
+    $(document).on('change', '#fil', function () {
+        $("#sb").click();
+    }); 
+    $(document).on('change', '#fil2', function () {
+        $("#sb2").click();
+    }); 
+</script>

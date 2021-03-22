@@ -1,0 +1,68 @@
+﻿@model IEnumerable<CarRental.BLL.DTO.UserDTO>
+@Styles.Render("~/Content/themes/base/all.css")
+<div id="user_area">
+    <p class="btn btn-info">
+        @Html.ActionLink("Add Manager", "Register", null, new { @class = "btn btn-info" })
+    </p>
+    
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role)
+                </td>
+                <td>
+                    @Html.ActionLink(CarRental.BLL.Resource.Edit, "EditUser", new { id = item.Id }) |
+                    @Html.ActionLink(CarRental.BLL.Resource.Detail, "UserDetails", new { id = item.Id }) |
+                    @Html.ActionLink(CarRental.BLL.Resource.Delete, "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<script>
+    $(function () {
+        $("[data-autocomplete-source]").each(function () {
+            var target = $(this);
+            target.autocomplete({ source: target.attr("data-autocomplete-source") });
+        });
+        $(document).on('change', ':input', function () {
+            $("#sbm").click();
+        });
+    });
+</script>

@@ -1,0 +1,129 @@
+﻿@model CarRental.BLL.DTO.OrderDTO
+
+<div class="m-5 row ">
+    <div class="border border-primary rounded p-0 bg-light body-content col-4 offset-4 ">
+        <div class="bg-dark text-white p-1">
+            <h4 class="font-weight-bold text-center">Order details</h4>
+        </div>
+
+        <dl class="dl-horizontal pl-3 pt-0">
+
+
+            <dd>
+                @Html.HiddenFor(model => model.Id)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.User_Id)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.User_Id)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CarId)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CarId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Car.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Car.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StartTime)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StartPlace)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StartPlace)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EndTime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EndTime)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.EndPlace)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EndTime)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Driver)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Driver)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsDeleted)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DriverLicenceNumber)
+            </dt>
+
+            <dd>
+                <div class="d-flex justify-content-start flex-wrap">
+                    <p class="mt-1">
+                        @Html.DisplayFor(model => model.DriverLicenceNumber)
+                    </p>
+                    @if (Model.DriverLicenceNumber != null && Model.DriverLicenceNumber != "")
+                    {
+                        <p>
+                            <a href="https://opendata.hsc.gov.ua/check-driver-license" target="_blank" class="btn btn-outline-info rounded ml-4">Check Validity</a>
+                        </p>
+                    }
+                </div>
+               
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ManagComment)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ManagComment)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.OrdSum)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OrdSum)
+            </dd>
+            <p>
+                @Html.ActionLink(CarRental.BLL.Resource.Edit, "EditStatus", new { id = Model.Id }, new { @class = "btn btn-warning" })
+            </p>
+        </dl>     
+    </div>
+</div>

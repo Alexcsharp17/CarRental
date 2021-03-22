@@ -1,0 +1,97 @@
+﻿@using CarRental.WEB.Helpers
+@model CarRental.WEB.Models.CarsListViewModel
+
+@{
+    ViewBag.Title = CarRental.BLL.Resource.Cars;
+}
+
+<div class=" content " id="car_area">
+    <div class="container-fluid mt-3 ">
+        <div class=" float-left" id="burger">
+            <div class="icon-menu border p1 ">
+                <span class="divide"></span>
+                <span class="divide"></span>
+                <span class="divide"></span>
+            </div>
+        </div>
+    </div>
+    <div class="top-block  ml-5">
+        @using (Ajax.BeginForm("CarSearch", "SideSearch", new AjaxOptions { UpdateTargetId = "car_area" }))
+        {
+            <div class="offset-6 col-4">
+                <select id="sorting" class="custom-select">
+                    <option selected disabled>Sort $</option>
+                    @foreach (var e in ViewBag.Sort)
+                    {
+
+                        if (e == "ascending")
+                        {
+                            <option value=@e>@CarRental.BLL.Resource.Ascending</option>
+                        }
+                        else if (e == "descending")
+                        {
+                            <option value=@e>@CarRental.BLL.Resource.Descending</option>
+                        }
+                        else
+                        {
+                            <option value=@e>@e</option>
+                        }
+                    }
+                </select>
+            </div>
+        }
+    </div>
+
+    <div class="flex-row flex-wrap d-flex justify-content-center">
+       
+        @foreach (var c in Model.Cars)
+        {
+
+            @Html.Partial("CarCard", c);
+        
+        }
+    </div>
+
+    <div id="back-to-top">
+
+        <i class=""><img alt="TOP" src="~/Content/img/ico/icon_top.png" /></i>
+
+    </div>  
+
+    <div class="clearfix"></div>
+    <div class="text-center mt-2 paginat">
+
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
+    </div>
+</div>
+@section SideSearch{
+    @Html.Action("CarSearch", "SideSearch")
+}
+
+<script>
+    var limit = $(window).height() / 3,
+        $backToTop = $('#back-to-top');
+
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > limit) {
+            $backToTop.fadeIn();
+        } else {
+            $backToTop.fadeOut();
+        }
+    });
+
+    // scroll body to 0px on click
+    $backToTop.click(function () {
+        $('body,html').animate({
+            scrollTop: 0
+        }, 1500);
+        return false;
+    });
+
+    $(document).ready(function () {
+        $('.carousel').carousel({
+            interval: false
+        })
+    });
+ 
+</script>

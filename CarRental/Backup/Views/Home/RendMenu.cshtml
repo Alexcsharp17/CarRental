@@ -1,0 +1,71 @@
+﻿<h3>@ViewBag.Test</h3>
+@using CarRental.BLL
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="mt-2">
+        <div>
+            <div class="dropdown mr-3">
+                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span>@User.Identity.Name</span>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <label class="dropdown-item m-0 " for="us_ar">
+                      
+                        <button type="button" onclick="location.href='@Url.Action("Prof", "PersCab")'" class="btn btn-secondary w-100">@User.Identity.Name
+                        @if (ViewBag.Fillprof.ToString().ToLower() == "true")
+                        {
+                            <span class="badge badge-secondary  bg-info float-right">Edit</span>
+                        }
+                        </button>
+                    </label>
+                    <label class="dropdown-item">
+                        <button type="button" onclick="location.href='@Url.Action("Index", "PersCab")'" class="btn btn-secondary w-100">
+                            <span>@CarRental.BLL.Resource.MyOrders</span>
+                            @if (ViewBag.Orders !=null )
+                            {
+                                <span class="badge badge-secondary  bg-info float-right">@ViewBag.Orders</span>
+                            }
+                        </button>
+                    </label>
+
+                    <label class="dropdown-item">
+                        <button type="button" onclick="location.href='@Url.Action("Fines", "PersCab")'" class="btn btn-secondary w-100">
+                            <span>@CarRental.BLL.Resource.Fines</span>
+                            @if (ViewBag.Orders != null)
+                            {
+                                <span class="badge badge-danger bg-danger float-right">@ViewBag.Fines</span>
+                            }
+                        </button>
+                    </label>
+                    <label class="dropdown-item">
+                        @*<img alt="Us. Area" src="~/Content/img/ico/logout-rounded-left.png" style="height:20px;" />*@
+                        @*<span class="d-block">@Html.ActionLink("Exit", "Logout", "Account", null, new { @class = "btn btn-secondary w-100 pr-5" })</span>*@
+                        <button type="button" onclick="location.href='@Url.Action("Logout", "Account")'" class="btn btn-secondary w-100">
+                            <span class="badge badge-secondary  bg-info float-right">
+                                <img alt="Us. Area" src="~/Content/img/ico/logout-rounded-left.png" style="height:20px;" />
+                            </span>
+                            <span>@CarRental.BLL.Resource.LogOut</span>
+                        </button>
+
+                    </label>
+                </div>
+            </div>
+
+            <div class="btn-"></div>
+            <span ml-1></span>
+        </div>
+
+    </div>
+}
+else
+{
+    <span class="font" >
+        <img alt="Us. Area" src="~/Content/img/ico/login-rounded-right.png" style="height:20px;" />
+        <span > @Html.ActionLink(Resource.LogIn, "Login", "Account",null,new {@class= "text-dark font-weight-bolder " })</span>
+    </span>
+    <span class="text-dark">
+        <img alt="Us. Area" src="~/Content/img/ico/user-male-circle.png" style="height:20px;" />
+        <span>@Html.ActionLink(Resource.Register, "Register", "Account",null, new { @class = "text-dark font-weight-bold " })</span>
+    </span>
+
+}

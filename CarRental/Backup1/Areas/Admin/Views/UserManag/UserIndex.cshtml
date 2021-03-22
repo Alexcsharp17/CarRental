@@ -1,0 +1,64 @@
+﻿
+@model IEnumerable<CarRental.BLL.DTO.UserDTO>
+@using  CarRental.BLL
+@Styles.Render("~/Content/themes/base/all.css")
+<div class="content   " id="user_area">
+    <p>
+        <a href="@Url.Action("Register" )" class="btn btn-info ml-1"><i class="fa fa-plus mr-1"></i>@Resource.CreateManager</a>
+    </p>
+   
+
+    <table class="table table-bordered table-striped table-hover">
+        <tr >
+            <th class="text-center align-middle">
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+
+            <th class="text-center align-middle">
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th class="text-center align-middle">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+
+           
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center align-middle">
+                    @item.Email
+                </td>
+
+                <td class="text-center align-middle">
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td class="text-center align-middle">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+
+                <td>
+                   
+                    <a href="@Url.Action("EditUser", new { id =item.Id } )" class="btn btn-warning adm_but"><i class="fa fa-edit mr-1 d-inline"></i>@Resource.Edit</a>
+                    <a href="@Url.Action("UserDetails", new { id = item.Id } )" class="btn btn-info adm_but text-dark"><i class="fa fa-info mr-1 d-inline"></i>@Resource.Detail</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+@section SideSearch{
+    @Html.Action("UserSearch", "SideSearch",new {area=""})
+}
+<script>
+    $(function () {
+        $("[data-autocomplete-source]").each(function () {
+            var target = $(this);
+            target.autocomplete({ source: target.attr("data-autocomplete-source") });
+        });
+        $(document).on('change', ':input', function () {
+            $("#sbm").click();
+        });
+    });
+</script>

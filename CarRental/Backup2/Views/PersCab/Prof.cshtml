@@ -1,0 +1,43 @@
+﻿@model CarRental.BLL.DTO.UserDTO
+@using CarRental.BLL
+<div class="row mt-4">
+
+
+    <div class=" col-12  offset-md-4 col-md-4">
+        <div class=" text-center d-flex justify-content-center ">
+            <div class=" text-center ml-1">
+                <div class="card bg-light" style="width: 18rem;">
+
+                    <div class="text-center">
+                  
+                        <img class="card-img-top img-fluid " src="~/Content/img/ico/circled-user.png" alt="Card image cap" style="height:150px; width:150px">
+                    </div>
+                    <div class="card-body mt-1 p-1">
+                        <h5 class="card-title">@Model.UserName</h5>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="text-primary">@Resource.Email</th>
+                                    <td>@Model.Email</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-primary">@Resource.Phone </th>
+                                    <td>@Model.PhoneNumber</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-primary">@Resource.DriverLicence</th>
+                                    <td>@Model.DriverLinenceNumber</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a id="sb-btt" href="@Url.Action("EditProf", "PersCab", new { usId = Model.Id })" , class="btn btn-info  text-dark"><i class="fa fa-edit mr-1 d-inline"></i>@Resource.EditProfile</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

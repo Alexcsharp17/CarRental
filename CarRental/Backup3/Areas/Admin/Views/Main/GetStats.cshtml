@@ -1,0 +1,66 @@
+﻿@model CarRental.WEB.Areas.Admin.Models.StatisticsModel
+@using System.Globalization
+
+@if (Model.DataExist == false)
+{
+    <div>No data availible</div>
+}
+else
+{
+    using (Ajax.BeginForm("GetStats", "Main", new AjaxOptions { UpdateTargetId = "stats_area" }))
+    {
+        <div class="row checkout pt-1 mt-3">
+            <div class="col-6 offset-3" style="border-top: 5px solid red;">
+                <div class=" position-relative text-center text-capitalize red_border_with_caption ">
+                    <h4>Shop Analitic</h4>
+                </div>
+            </div>
+            <div class="col-6 offset-3">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-center">
+                        <div>Select the month you want to check statistics</div>
+                        <div class="w-50">
+                            <select id="SelectedMonth" name="SelectedMonth">
+                                <option selected disabled>Month statistics</option>
+                                @foreach (var month in Model.MonthList)
+                                {
+                                    var m = new DateTime(DateTime.Now.Year, month, 1).ToString("MMMM", CultureInfo.CreateSpecificCulture("eng"));
+
+                                    if (month == Model.SelectedMonth)
+                                    {
+                                        <option selected value="@month">@m</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@month">@m</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button id="sbm" type="submit" class="d-none"></button>
+            @Html.HiddenFor(model => model.SelectedMonth, new { @id = "selMonth", name = "SelectedMonth" })
+        </div>
+    }
+<div id="stats_area">
+    @if (Model.SelectedMonth != null)
+    {
+        {Html.RenderPartial("GetStatsPartial");}
+    }
+</div>
+
+}
+
+<script>
+    $(document).ready(function () {
+        $('#SelectedMonth').on('change', function () {
+            var s = $("#selMonth").val($("#SelectedMonth").find(":selected").val());
+            $("#selMonth").replaceWith(s);
+            $("#sbm").click();
+        });
+    });
+</script>

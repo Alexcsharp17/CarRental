@@ -1,0 +1,105 @@
+﻿@model CarRental.BLL.DTO.CarDTO
+@using CarRental.BLL
+@{
+    ViewBag.Title = "Delete";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="mt-3 row ">
+    <div class="border bg-light border-primary col-4 offset-4 p-0">
+        <div class="bg-dark text-white p-2 ">
+            <h3 class="text-center">@Resource.DeleteWarning</h3>
+        </div>
+        <div class="p-4">
+
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Id)
+                </dt>
+
+                <dd>
+                    <p>@Model.Id</p>
+                    @Html.HiddenFor(m => m.Id)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Manufacturer)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Manufacturer)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Capacity)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Capacity)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DriveUnit)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DriveUnit)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AutomaticTransm)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AutomaticTransm)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AirConditon)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AirConditon)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+
+
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CarType)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CarType)
+                </dd>
+
+            </dl>
+            <button class="btn btn-danger" type="submit"><span class="fa fa-trash mr-1"></span>@Resource.Delete</button>
+        </div>
+    </div>
+   
+</div>
+    }
+
+<script>
+    $(document).ready(){
+        alert(@Model.Name);
+
+</script>

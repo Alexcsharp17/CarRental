@@ -1,0 +1,274 @@
+﻿@model CarRental.WEB.Models.CarSearchModel
+@using CarRental.BLL
+
+@Styles.Render("~/Content/themes/base/all.css")
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+@Scripts.Render("~/bundles/bootstrap.bundle.js")
+<div class="sidebar  h-100">
+    @using (Ajax.BeginForm("CarSearch", "SideSearch", FormMethod.Post, new AjaxOptions { UpdateTargetId = "car_area" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal mr-5">
+            <div id="top-bl"></div>
+            <div class="form-group mt-2 mt-3 mr-3">
+                <div class="sear-sec">
+                    <div class="icon-menu  ">
+                        <div class="d-flex flex-row ">
+                            <div class=align-self-end>
+                                <img alt="X" src="~/Content/img/ico/close.png" style="height:30px;width:30px; margin-left: 220px;" class="float-right d-inline " id="cl-ic" />
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="cheks-head container-fluid"><p>@CarRental.BLL.Resource.CarName</p></div>
+                    <div class="sear_name mt-1 mb-1">
+                        <span>
+                            <input type="text" name="Name" data-autocomplete-source='@Url.Action("AutocompleteSearch", "SideSearch")' style="width:65%" class="form-control d-inline ml-1" />
+                            <button type="submit" class="btn btn-success s_btn  " id="sbm" data-toggle="tooltip" data-placement="top" title="Search"
+                                    ><i class="fa fa-search mr-1 ml-1 d-inline text-dark"></i></button>
+                            <a href="@Url.Action("Index", "Home")" , class="btn btn-warning s_btn text-dark " data-toggle="tooltip" data-placement="top" title="Reset filters"><i class="fa fa-broom  d-inline mr-1 ml-1"></i></a>
+
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="sear-sec rounded">
+                <a class="btn btn-primary  cheks-head container-fluid" data-toggle="collapse" href="#carManufs" role="button" aria-expanded="false" aria-controls="carManufs">
+                    <p>@CarRental.BLL.Resource.Manufacturer <i class="fas fa-angle-down float-right text-dark  fa-2x "></i></p>
+                </a>
+
+                <div class="collapse" id="carManufs">
+                    @for (var i = 0; i < Model.manufactorers.Count(); i++)
+                    {
+                        <label class="check_row d-flex align-content-center ">
+                            <span>
+                                <input type="checkbox" class="big_check" name="manufss" value=@Model.manufactorers[i] />
+                            </span>
+                            <span class="ml-1">
+                                @Html.DisplayFor(model => model.manufactorers[i])
+                            </span>
+                        </label>
+                    }
+                </div>
+            </div>
+            <div class="sear-sec rounded">
+                <a class="btn btn-primary cheks-head container-fluid" data-toggle="collapse" href="#carClasses" role="button" aria-expanded="false" aria-controls="carClasses">
+                    <p> @CarRental.BLL.Resource.CarType  <i class="fas fa-angle-down float-right text-dark  fa-2x "></i></p>
+                </a>
+                <div class="collapse" id="carClasses">
+                    @for (var i = 0; i < Model.CarTypes.Count(); i++)
+                    {
+                        <label class="check_row d-flex align-content-center">
+                            <span>
+                                <input type="checkbox" class="big_check custom-checkbox" name="typess" value=@Model.CarTypes[i] />
+                            </span>
+
+                            @if (Model.CarTypes[i].ToLower() == "econom")
+                            {
+                                <span class="ml-1">
+                                    @CarRental.BLL.Resource.Econom
+                                </span>
+                            }
+                            else if (Model.CarTypes[i].ToLower() == "premium")
+                            {
+                                <span class="ml-1">
+                                    @CarRental.BLL.Resource.Premium
+                                </span>
+                            }
+                            else if (Model.CarTypes[i].ToLower() == "business")
+                            {
+                                <span class="ml-1">
+                                    @CarRental.BLL.Resource.Business
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="ml-1">
+                                    @Html.DisplayFor(model => model.CarTypes[i])
+                                </span>
+                            }
+                        </label>
+                    }
+                </div>
+            </div>
+            <div class="sear-sec rounded">
+                <a class="btn btn-primary cheks-head container-fluid" data-toggle="collapse" href="#carFuel" role="button" aria-expanded="false" aria-controls="carFuel">
+                    <p>@CarRental.BLL.Resource.FuelType <i class="fas fa-angle-down float-right text-dark  fa-2x "></i></p>
+                </a>
+                <div class="collapse" id="carFuel">
+                    @for (var i = 0; i < Model.FuelTypes.Count(); i++)
+                    {
+                        <label class="check_row d-flex align-content-center">
+                            <span>
+                                <input type="checkbox" class="big_check" name="fueltypess" value=@Model.FuelTypes[i] />
+                            </span>
+
+                            @if (Model.FuelTypes[i].ToLower() == "petrol")
+                            {
+                                <span class="ml-1">
+                                    @CarRental.BLL.Resource.Dysel
+                                </span>
+                            }
+                            else if (Model.FuelTypes[i].ToLower() == "dysel")
+                            {
+                                <span class="ml-1">
+                                    @CarRental.BLL.Resource.Petrol
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="ml-1">
+                                    @Html.DisplayFor(model => model.FuelTypes[i])
+                                </span>
+                            }
+
+                        </label>
+                    }
+                </div>
+
+            </div>
+            <div class="sear-sec rounded">
+                <a class="btn btn-primary cheks-head container-fluid" data-toggle="collapse" href="#carCapacity" role="button" aria-expanded="false" aria-controls="carCapacity">
+                    <p> @CarRental.BLL.Resource.Capacity  <i class="fas fa-angle-down float-right text-dark  fa-2x "></i></p>
+                </a>
+                <div class="collapse" id="carCapacity">
+                    @for (var i = 0; i < Model.Capacities.Count(); i++)
+                    {
+                        <label class="check_row d-flex align-content-center">
+                            <span>
+                                <input type="checkbox" class="big_check custom-checkbox" name="capacity" value=@Model.Capacities[i] />
+                            </span>
+                            <span class="ml-1">
+                                @Html.DisplayFor(model => model.Capacities[i])
+                            </span>
+                        </label>
+                    }
+                </div>
+
+            </div>
+            <div class="sear-sec rounded">
+                <a class="btn btn-primary cheks-head container-fluid" data-toggle="collapse" href="#engCapacity" role="button" aria-expanded="false" aria-controls="engCapacity">
+                    <p> @CarRental.BLL.Resource.EngineCapacity  <i class="fas fa-angle-down float-right text-dark  fa-2x "></i></p>
+                </a>
+                <div class="collapse" id="engCapacity">
+                    @for (var i = 0; i < Model.EngSizes.Count(); i++)
+                    {
+                        <label class="check_row d-flex align-content-center">
+                            <span>
+                                <input type="checkbox" class="big_check custom-checkbox" name="engSize" value=@Model.EngSizes[i] />
+                            </span>
+                            <span class="ml-1">
+                                @Html.DisplayFor(model => model.EngSizes[i])
+                            </span>
+                        </label>
+                    }
+                </div>
+            </div>
+            <div class="sear-sec rounded">
+                <a class="btn btn-primary cheks-head container-fluid" data-toggle="collapse" href="#fuelConsump" role="button" aria-expanded="false" aria-controls="fuelConsump">
+                    <p> @CarRental.BLL.Resource.FuelConsumption <i class="fas fa-angle-down float-right text-dark  fa-2x "></i></p>
+                </a>
+                <div class="collapse" id="fuelConsump">
+                    @for (var i = 0; i < Model.FuelConsump.Count(); i++)
+                    {
+                        <label class="check_row d-flex align-content-center">
+                            <span>
+                                <input type="checkbox" class="big_check custom-checkbox" name="fuelConsump" value=@Model.FuelConsump[i] />
+                            </span>
+                            <span class="ml-1">
+                                @Html.DisplayFor(model => model.FuelConsump[i])
+                            </span>
+                        </label>
+                    }
+                </div>
+            </div>
+            <div class="sear-sec rounded">
+                <a class="btn btn-primary cheks-head container-fluid" data-toggle="collapse" href="#carDoor" role="button" aria-expanded="false" aria-controls="carDoor">
+                    <p> @CarRental.BLL.Resource.Door <i class="fas fa-angle-down float-right text-dark  fa-2x "></i></p>
+                </a>
+                <div class="collapse" id="carDoor">
+                    @for (var i = 0; i < Model.Doors.Count(); i++)
+                    {
+                        <label class="check_row d-flex align-content-center">
+                            <span>
+                                <input type="checkbox" class="big_check custom-checkbox" name="door" value=@Model.Doors[i] />
+                            </span>
+                            <span class="ml-1">
+                                @Html.DisplayFor(model => model.Doors[i])
+                            </span>
+                        </label>
+                    }
+                </div>
+
+            </div>
+            <div class="sear-sec rounded">
+                <a class="btn btn-primary cheks-head container-fluid" data-toggle="collapse" href="#CarTransm" role="button" aria-expanded="false" aria-controls="CarTransm">
+                    <p>@CarRental.BLL.Resource.Transmission <i class="fas fa-angle-down float-right text-dark  fa-2x "></i></p>
+                </a>
+                <div class="collapse" id="CarTransm">
+                    @for (var i = 0; i < Model.Transmissions.Count(); i++)
+                    {
+                        <label class="check_row d-flex align-content-center">
+                            <span>
+                                <input type="checkbox" class="big_check " name="transmissionss" value=@Model.Transmissions[i] />
+                            </span>
+                            @if (Model.Transmissions[i].ToLower() == "false")
+                            {
+                                <span class="ml-1">
+                                    @CarRental.BLL.Resource.TransManual
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="ml-1">
+                                    @CarRental.BLL.Resource.TransAuto
+                                </span>
+                            }
+
+                        </label>
+                    }
+                </div>
+            </div>
+            <div class="sear-sec">
+                <div class="cheks-head"><p>@CarRental.BLL.Resource.Price $</p></div>
+                <div class="d-flex flex-row">
+                    <div>
+                        @Html.LabelFor(model => model.LowPrice, new { @class = "pl-2" })
+                        @Html.EditorFor(model => model.LowPrice, new { htmlAttributes = new { @class = "form-control", placeholder = Model.UppPrice } })
+                    </div>
+                    <div class="ml-2">
+                        @Html.LabelFor(model => model.UppPrice, new { @class = "pl-2" })
+                        @Html.EditorFor(model => model.UppPrice, new { htmlAttributes = new { @class = "form-control", placeholder = Model.LowPrice } })
+                    </div>
+                </div>
+            </div>
+            @*<input type="hidden" name="sort" id="sort" />*@
+            @Html.HiddenFor(model => model.Sort, new { @id = "sort", name = "sort" })
+            @Html.HiddenFor(model => model.Page, new { @id = "Page", name = "page" })
+        </div>
+    }
+</div>
+
+
+<script>
+
+
+    $(document).on('change', ':input', function () {
+        var s = $("#sort").val($("#sorting").find(":selected").val());
+        $("#sort").replaceWith(s);
+
+        $("#sbm").click();
+    });
+    $(function () {
+        $("[data-autocomplete-source]").each(function () {
+            var target = $(this);
+            target.autocomplete({ source: target.attr("data-autocomplete-source") });
+        });
+    });
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+</script>
