@@ -4,6 +4,7 @@
 *.com
 *.class
 *.ldf
+*.mdf
 *.dll
 *.exe
 *.pdb
