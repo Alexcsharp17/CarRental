@@ -21,7 +21,7 @@
     },
     "resourceName": {
       "type": "string",
-      "defaultValue": "CarRentalWEB20210321165712",
+      "defaultValue": "CarRentalWEB20210404124801",
       "metadata": {
         "description": "Name of the main resource to be created by this template."
       }

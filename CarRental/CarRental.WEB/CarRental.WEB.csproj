@@ -239,6 +239,9 @@
     <Compile Include="Languages\LanguageMang.cs" />
     <Compile Include="Models\CarSearchModel.cs" />
     <Compile Include="Models\CarsListViewModel.cs" />
+    <Compile Include="Models\LiqPay\LiqPayCheckout.cs" />
+    <Compile Include="Models\LiqPay\LiqPayCheckoutFormModel.cs" />
+    <Compile Include="Models\LiqPay\LiqPayHelper.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\OrderListViewModel.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
@@ -2041,7 +2044,7 @@
     <Content Include="Content\Fonts\fontawesome-free-5.12.1-web\webfonts\fa-solid-900.woff" />
     <Content Include="Content\Fonts\fontawesome-free-5.12.1-web\webfonts\fa-solid-900.woff2" />
     <Content Include="Areas\Admin\Views\Main\GetStatsPartial.cshtml" />
-    <None Include="Properties\PublishProfiles\CarRentalWEB20210321165712 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\CarRentalWEB20210404124801 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2186,6 +2189,8 @@
     <Content Include="Views\SideSearch\OrderSearch.cshtml" />
     <Content Include="Views\Home\RendOrders.cshtml" />
     <Content Include="Views\Home\RendMenu.cshtml" />
+    <Content Include="Views\PersCab\PayTheBill.cshtml" />
+    <Content Include="Views\Shared\SuccessPayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\AutoComplete\" />

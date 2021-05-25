@@ -117,7 +117,7 @@ namespace CarRental.BLL.Services
 
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<OrderDTO, Order>();
+                cfg.CreateMap<OrderDTO, Order>().ForMember(x => x.Car, otp => otp.Ignore());
 
             }); var mapper = new Mapper(config);
             var order = mapper.Map<Order>(orderdto);

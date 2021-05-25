@@ -56,17 +56,25 @@ else if (ViewBag.Res == "deleted")
                                     {
                                         <span class="p-2 badge badge-pill badge-danger text-center align-middle ">@o.Status</span>
                                     }
+                                    else if (o.Status.ToLower() == "payed")
+                                    {
+                                        <span class="p-2 badge badge-pill badge-primary text-center align-middle ">@o.Status</span>
+                                    }
                                 </div>
                                 @if (o.Status.ToLower() == "confirmed")
                                 {
-                                    <a href="@Url.Action( "PayTheBill",  new {Id = o.Id })" , class="btn btn-primary  text-white mb-2 pay-btt"><i class="fa fa-money-check-alt mr-2 d-inline mr-2">  Pay bill</i></a>
+                                    <a href="@Url.Action( "PayTheBill",  new {orderId = o.Id })" , class="btn btn-primary  text-white mb-2 pay-btt"><i class="fa fa-money-check-alt mr-2 d-inline mr-2">  Pay bill</i></a>
                                 }
                                 else if (o.Status.ToLower() == "fine")
                                 {
                                     <a href="@Url.Action( "PayTheFine",  new {Id = o.Id })" , class="btn btn-danger  text-white mb-2 mr-1 pay-btt" ml-1><i class="fa fa-money-check-alt mr-1 d-inline">  Pay fine</i></a>
 
                                 }
-                                <a id="sb-btt" href="@Url.Action( "DeleteOrder",  new {Id = o.Id })" , class="btn btn-danger  text-dark mb-2 ml-1 remove-btt "><i class="fa fa-trash mr-1 d-inline"></i></a>
+                                @if (o.Status.ToLower() != "payed")
+                                {
+                                    <a id="sb-btt" href="@Url.Action( "DeleteOrder",  new {Id = o.Id })" , class="btn btn-danger  text-dark mb-2 ml-1 remove-btt "><i class="fa fa-trash mr-1 d-inline"></i></a>
+
+                                }
                             </div>
 
                         </div>

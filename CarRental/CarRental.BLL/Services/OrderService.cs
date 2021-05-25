@@ -30,7 +30,11 @@ namespace CarRental.BLL.Services
         {
             get
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<Order, OrderDTO>());
+                var config = new MapperConfiguration(cfg =>
+                {
+                    cfg.CreateMap<Order, OrderDTO>();
+                    cfg.CreateMap<Car, CarDTO>().ForMember(x => x.Popular, opt => opt.Ignore());
+                });
                 var mapper = new Mapper(config);
                 return mapper.Map<List<OrderDTO>>(db.Orders.GetAll());
             }
