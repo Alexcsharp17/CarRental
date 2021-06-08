@@ -264,6 +264,9 @@
   <data name="EmptyCarSear" xml:space="preserve">
     <value>Zero cars have been found mathing your request.</value>
   </data>
+  <data name="EmptyOrders" xml:space="preserve">
+    <value>Your order list is empty</value>
+  </data>
   <data name="EmptyUserSear" xml:space="preserve">
     <value>Zero users have been found mathing your request.</value>
   </data>
@@ -375,6 +378,9 @@
   <data name="Payed" xml:space="preserve">
     <value>Payed</value>
   </data>
+  <data name="PaymentPage" xml:space="preserve">
+    <value>Payment page</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Pending</value>
   </data>
@@ -447,6 +453,9 @@
   <data name="Status" xml:space="preserve">
     <value>Status</value>
   </data>
+  <data name="SuccessfullyRegistered" xml:space="preserve">
+    <value>You have been successfully registrated.</value>
+  </data>
   <data name="TotalCars" xml:space="preserve">
     <value>Car List </value>
   </data>
@@ -470,6 +479,9 @@
   </data>
   <data name="TransmissionRequired" xml:space="preserve">
     <value>Please select transmission type</value>
+  </data>
+  <data name="UseLoginPassword" xml:space="preserve">
+    <value>Use your login and password to log in our website</value>
   </data>
   <data name="UserManagment" xml:space="preserve">
     <value>User management(Admin)</value>

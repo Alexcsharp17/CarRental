@@ -502,6 +502,15 @@ namespace CarRental.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your order list is empty.
+        /// </summary>
+        public static string EmptyOrders {
+            get {
+                return ResourceManager.GetString("EmptyOrders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zero users have been found mathing your request..
         /// </summary>
         public static string EmptyUserSear {
@@ -835,6 +844,15 @@ namespace CarRental.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Payment page.
+        /// </summary>
+        public static string PaymentPage {
+            get {
+                return ResourceManager.GetString("PaymentPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pending.
         /// </summary>
         public static string Pending {
@@ -1051,6 +1069,15 @@ namespace CarRental.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have been successfully registrated..
+        /// </summary>
+        public static string SuccessfullyRegistered {
+            get {
+                return ResourceManager.GetString("SuccessfullyRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Car List .
         /// </summary>
         public static string TotalCars {
@@ -1119,6 +1146,15 @@ namespace CarRental.BLL {
         public static string TransmissionRequired {
             get {
                 return ResourceManager.GetString("TransmissionRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use your login and password to log in our website.
+        /// </summary>
+        public static string UseLoginPassword {
+            get {
+                return ResourceManager.GetString("UseLoginPassword", resourceCulture);
             }
         }
         

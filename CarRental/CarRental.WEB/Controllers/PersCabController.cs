@@ -101,7 +101,7 @@ namespace CarRental.WEB.Controllers
             order.Car = car;
             order.CarId = car.Id;
             order.User_Id = User.Identity.GetUserId();
-            order.DriverLicenceNumber = DatAcessService.Users.FirstOrDefault(u => u.Id == order.User_Id).DriverLinenceNumber;
+            order.DriverLicenceNumber = DatAcessService.Users.FirstOrDefault(u => u.Id == order.User_Id).DriverLicenceNumber;
             ViewBag.FullOrdered = dates;
 
             return View(order);

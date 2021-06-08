@@ -5,10 +5,10 @@
 }
 <script src="~/Scripts/umd/popper.js"></script>
 <div>
-    <div class="row mt-2 checkout pt-1 mt-3">
-        <div class="col-6 offset-3" style="border-top: 5px solid red;">
+    <div class="row mt-3 checkout pt-1">
+        <div class="col-10 offset-1" style="border-top: 7px solid red;">
             <div class=" position-relative text-center text-capitalize red_border_with_caption ">
-                <h4>@CarRental.BLL.Resource.Rent</h4>
+                <h4>@Resource.Rent</h4>
             </div>
         </div>
     </div>
@@ -67,10 +67,10 @@
 
                     <div id="@dataTarget" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators mt-3 pt-5">
-                                <li data-target="#@dataTarget" data-slide-to="0" class="active bg-warning"></li>
-                                <li data-target="#@dataTarget" data-slide-to="1" class="bg-warning"></li>
-                                <li data-target="#@dataTarget" data-slide-to="2" class="bg-warning"></li>
-                          </ol>
+                            <li data-target="#@dataTarget" data-slide-to="0" class="active bg-warning"></li>
+                            <li data-target="#@dataTarget" data-slide-to="1" class="bg-warning"></li>
+                            <li data-target="#@dataTarget" data-slide-to="2" class="bg-warning"></li>
+                        </ol>
 
                         <div class="carousel-inner">
                             @if (Model.Car.Image != null)
@@ -273,15 +273,14 @@
                 </div>
 
                 <div class="form-group">
-                    <p class="control-label ml-3"> @Resource.DriverLicence </p>
-
+                    <p class=" ml-3"> @Resource.DriverLicence </p>
                     <div class="col-md-10">
-                        <div class="checkbox">
+                        <div class="checkbox ">
                             @Html.EditorFor(model => model.DriverLicenceNumber,
                                 new
                                 {
                                     htmlAttributes = new
-                                    { @class = "control-label d-inp rounded", @pattern = "[A-Z]{3}[0-9]{6}", @placeholder = "AAA000000", required = "required" }
+                                    { @class = "control-label form-control rounded", @pattern = "[A-Z]{3}[0-9]{6}", @placeholder = "AAA000000", required = "required" }
                                 })
 
                             @Html.ValidationMessageFor(model => model.DriverLicenceNumber, "", new { @class = "text-danger" })
@@ -310,9 +309,10 @@
                 @Html.Hidden("end_place", new { AllowHtmlAttributes = new { @id = "end_place" } })
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <button type="submit" id="sb_but" class="btn btn-success"><span class="fa fa-cart-plus mr-1"></span>@Resource.Order</button>
+                        <button type="submit" id="sb_but" class=" form-control btn btn-success"><span class="fa fa-cart-plus mr-1"></span>@Resource.Order</button>
                     </div>
                 </div>
+
             </div>
             }
         </div>

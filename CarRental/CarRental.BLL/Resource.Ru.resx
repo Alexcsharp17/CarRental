@@ -264,6 +264,9 @@
   <data name="EmptyCarSear" xml:space="preserve">
     <value>Нет машин соответствующих фильтру</value>
   </data>
+  <data name="EmptyOrders" xml:space="preserve">
+    <value>Ваш список заказов пуст</value>
+  </data>
   <data name="EmptyUserSear" xml:space="preserve">
     <value>Нет пользователей соответствующих фильтру</value>
   </data>
@@ -366,6 +369,9 @@
   <data name="Payed" xml:space="preserve">
     <value>Оплачено</value>
   </data>
+  <data name="PaymentPage" xml:space="preserve">
+    <value>Страница оплаты</value>
+  </data>
   <data name="Pending" xml:space="preserve">
     <value>Ожидание</value>
   </data>
@@ -435,6 +441,9 @@
   <data name="Status" xml:space="preserve">
     <value>Статус</value>
   </data>
+  <data name="SuccessfullyRegistered" xml:space="preserve">
+    <value>Вы успешно зарегестрировались на сайте</value>
+  </data>
   <data name="TotalCars" xml:space="preserve">
     <value>Список Машин</value>
   </data>
@@ -458,6 +467,9 @@
   </data>
   <data name="TransmissionRequired" xml:space="preserve">
     <value>Укажите тип коробки передач</value>
+  </data>
+  <data name="UseLoginPassword" xml:space="preserve">
+    <value>Используйте пароль и логин чтобы зайти на сайт</value>
   </data>
   <data name="UserManagment" xml:space="preserve">
     <value>Управление аккаунтами пользователей(Админ)</value>

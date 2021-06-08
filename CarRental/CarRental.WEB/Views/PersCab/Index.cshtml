@@ -14,8 +14,8 @@ else if (ViewBag.Res == "deleted")
 }
 
 <div>
-    <div class="row mt-2 checkout pt-1 mt-3">
-        <div class="col-6 offset-3" style="border-top: 5px solid red;">
+    <div class="row mt-3 checkout pt-1">
+        <div class="col-10 offset-1" style="border-top: 7px solid red;">
             <div class=" position-relative text-center text-capitalize red_border_with_caption ">
                 <h4>@Resource.YourOrders</h4>
             </div>
@@ -134,12 +134,12 @@ else if (ViewBag.Res == "deleted")
 
                         <div class="mr-1 ml-1 col-12 col-md-3 ">
                             @if (o.ManagComment != null)
-                            {           
-                                 <p class="font-weight-bold">@Resource.ManagerComment</p>
-                                 <p>@o.ManagComment</p>
+                            {
+                                <p class="font-weight-bold">@Resource.ManagerComment</p>
+                                <p>@o.ManagComment</p>
                             }
                         </div>
-      
+
 
                     </div>
                 </div>

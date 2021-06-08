@@ -323,8 +323,8 @@ textarea {
 .red_border_with_caption {
     background-color: white;
     bottom: 20px;
-    width: 160px;
-    left: calc(50% - 80px);
+    width: 200px;
+    left: calc(50% - 100px);
 }
 
 /* Datepicker stiles*/

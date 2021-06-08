@@ -1,85 +1,96 @@
 ﻿@model IEnumerable<CarRental.BLL.DTO.OrderDTO>
-
-
+@using CarRental.BLL
 @{
     ViewBag.Title = "GetOrders";
 }
 
+<div>
+    <div class="row mt-2 checkout pt-1 mt-3">
+        <div class="col-6 offset-3" style="border-top: 7px solid red;">
+            <div class=" position-relative text-center text-capitalize red_border_with_caption ">
+                <h4>@Resource.FinesPage</h4>
+            </div>
+        </div>
+    </div>
 
+    <div class="content " id="order_area">
+        <div class="bg-dark text-danger p-1 border rounded text-capitalize border border-primary"><h4 class="text-center">Fines</h4></div>
 
-<div class="content " id="order_area">
-    <div class="bg-dark text-danger p-1 border rounded text-capitalize border border-primary"><h4 class="text-center">Fines</h4></div>
+        <table class="table table-bordered table-striped table-hover">
+            <tr>
 
-    <table class="table table-bordered table-striped table-hover">
-        <tr>
-           
-            <th class="align-middle  text-center">
-                @Html.DisplayNameFor(model => model.FirstOrDefault().Car.Name)
-            </th>
+                <th class="align-middle  text-center">
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().Car.Name)
+                </th>
 
-            <th class="align-middle text-center">
-                @Html.DisplayNameFor(model => model.FirstOrDefault().StartTime)
-            </th>
-            <th class="align-middle text-center">
-                @Html.DisplayNameFor(model => model.FirstOrDefault().EndTime)
-            </th>
+                <th class="align-middle text-center">
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().StartTime)
+                </th>
+                <th class="align-middle text-center">
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().EndTime)
+                </th>
 
-            <th class="align-middle text-center">
-                @Html.DisplayNameFor(model => model.FirstOrDefault().OrdSum)
-            </th>
-            <th class="align-middle text-center">
-                @Html.DisplayNameFor(model => model.FirstOrDefault().Status)
-            </th>
+                <th class="align-middle text-center">
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().OrdSum)
+                </th>
+                <th class="align-middle text-center">
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().Status)
+                </th>
 
-            <th class="align-middle text-center">
-                @Html.DisplayNameFor(model => model.FirstOrDefault().ManagComment)
-            </th>
-           
-        </tr>
+                <th class="align-middle text-center">
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().ManagComment)
+                </th>
 
-        @foreach (var item in Model)
-        {
-        <tr>
+            </tr>
 
-            <td class="align-middle text-center">
-                @Html.DisplayFor(modelItem => item.Car.Name)
-            </td>
-
-            <td class="align-middle text-center">
-                @Html.DisplayFor(modelItem => item.StartTime)
-            </td>
-            <td class="align-middle text-center">
-                @Html.DisplayFor(modelItem => item.EndTime)
-            </td>
-            <td class="align-middle text-center">
-                @Html.DisplayFor(modelItem => item.OrdSum)
-            </td>
-
-            @if (item.Status.ToLower() == "pending")
+            @foreach (var item in Model)
             {
-                <td class="  text-center align-middle ">@item.Status</td>
+                <tr>
+
+                    <td class="align-middle text-center">
+                        @Html.DisplayFor(modelItem => item.Car.Name)
+                    </td>
+
+                    <td class="align-middle text-center">
+                        @Html.DisplayFor(modelItem => item.StartTime)
+                    </td>
+                    <td class="align-middle text-center">
+                        @Html.DisplayFor(modelItem => item.EndTime)
+                    </td>
+                    <td class="align-middle text-center">
+                        @Html.DisplayFor(modelItem => item.OrdSum)
+                    </td>
+
+                    @if (item.Status.ToLower() == "pending")
+                    {
+                        <td class="  text-center align-middle ">@item.Status</td>
+                    }
+                    else if (item.Status.ToLower() == "completed")
+                    {
+                        <td class="bg-secondary  text-center align-middle ">@item.Status</td>
+                    }
+                    else if (item.Status.ToLower() == "confirmed")
+                    {
+                        <td class="bg-success  text-center align-middle ">@item.Status</td>
+ }
+                    else if (item.Status.ToLower() == "rejected")
+                    {
+                        <td class="bg-warning  text-center align-middle ">@item.Status</td>
+ }
+                    else if (item.Status.ToLower() == "fine")
+                    {
+                        <td class="bg-danger  text-center align-middle ">@item.Status</td>
+}
+
+
+                    <td class="align-middle text-center">
+                        @Html.DisplayFor(modelItem => item.ManagComment)
+                    </td>
+
+                </tr>
             }
-            else if (item.Status.ToLower() == "completed")
-            {
-                <td class="bg-secondary  text-center align-middle ">@item.Status</td>
-            }
-            else if (item.Status.ToLower() == "confirmed")
-            {
-                <td class="bg-success  text-center align-middle ">@item.Status</td> }
-            else if (item.Status.ToLower() == "rejected")
-            {
-                <td class="bg-warning  text-center align-middle ">@item.Status</td> }
-            else if (item.Status.ToLower() == "fine")
-            {
-                <td class="bg-danger  text-center align-middle ">@item.Status</td>}
 
-
-            <td class="align-middle text-center">
-                @Html.DisplayFor(modelItem => item.ManagComment)
-            </td>
-
-        </tr>
-        }
-
-    </table>
+        </table>
+    </div>
 </div>
+
