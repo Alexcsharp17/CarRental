@@ -17,7 +17,7 @@ else if (ViewBag.Res == "deleted")
     <div class="row mt-2 checkout pt-1 mt-3">
         <div class="col-6 offset-3" style="border-top: 5px solid red;">
             <div class=" position-relative text-center text-capitalize red_border_with_caption ">
-                <h4>Your orders</h4>
+                <h4>@Resource.YourOrders</h4>
             </div>
         </div>
     </div>
@@ -35,39 +35,39 @@ else if (ViewBag.Res == "deleted")
                         <div class="col-8  col-md-5 offset-md-3 ">
                             <div class="d-flex justify-content-center ml-2">
                                 <div class="mr-2">
-                                    <span class="p-2  text-center align-middle pr-0">Status:</span>
+                                    <span class="p-2  text-center align-middle pr-0">@Resource.Status:</span>
                                     @if (o.Status.ToLower() == "pending")
                                     {
-                                        <span class=" p-2 badge badge-pill badge-info text-center align-middle ">@o.Status</span>
+                                        <span class=" p-2 badge badge-pill badge-info text-center align-middle ">@Resource.Pending</span>
                                     }
                                     else if (o.Status.ToLower() == "completed")
                                     {
-                                        <span class="p-2 badge badge-pill badge-secondary text-center align-middle ">@o.Status</span>
+                                        <span class="p-2 badge badge-pill badge-secondary text-center align-middle ">@Resource.Completed</span>
                                     }
                                     else if (o.Status.ToLower() == "confirmed")
                                     {
-                                        <span class="p-2 badge badge-pill badge-success  text-center align-middle ">@o.Status</span>
+                                        <span class="p-2 badge badge-pill badge-success  text-center align-middle ">@Resource.Confirmed</span>
                                     }
                                     else if (o.Status.ToLower() == "rejected")
                                     {
-                                        <span class="p-2 badge badge-pill badge-warning  text-center align-middle ">@o.Status</span>
+                                        <span class="p-2 badge badge-pill badge-warning  text-center align-middle ">@Resource.Rejected</span>
                                     }
                                     else if (o.Status.ToLower() == "fine")
                                     {
-                                        <span class="p-2 badge badge-pill badge-danger text-center align-middle ">@o.Status</span>
+                                        <span class="p-2 badge badge-pill badge-danger text-center align-middle ">@Resource.Fine</span>
                                     }
                                     else if (o.Status.ToLower() == "payed")
                                     {
-                                        <span class="p-2 badge badge-pill badge-primary text-center align-middle ">@o.Status</span>
+                                        <span class="p-2 badge badge-pill badge-primary text-center align-middle ">@Resource.Payed</span>
                                     }
                                 </div>
                                 @if (o.Status.ToLower() == "confirmed")
                                 {
-                                    <a href="@Url.Action( "PayTheBill",  new {orderId = o.Id })" , class="btn btn-primary  text-white mb-2 pay-btt"><i class="fa fa-money-check-alt mr-2 d-inline mr-2">  Pay bill</i></a>
+                                    <a href="@Url.Action( "PayTheBill",  new {orderId = o.Id })" , class="btn btn-primary  text-white mb-2 pay-btt"><i class="fa fa-money-check-alt mr-2 d-inline mr-2">  @Resource.Pay</i></a>
                                 }
                                 else if (o.Status.ToLower() == "fine")
                                 {
-                                    <a href="@Url.Action( "PayTheFine",  new {Id = o.Id })" , class="btn btn-danger  text-white mb-2 mr-1 pay-btt" ml-1><i class="fa fa-money-check-alt mr-1 d-inline">  Pay fine</i></a>
+                                    <a href="@Url.Action( "PayTheFine",  new {Id = o.Id })" , class="btn btn-danger  text-white mb-2 mr-1 pay-btt" ml-1><i class="fa fa-money-check-alt mr-1 d-inline">  @Resource.Pay</i></a>
 
                                 }
                                 @if (o.Status.ToLower() != "payed")
@@ -122,20 +122,20 @@ else if (ViewBag.Res == "deleted")
                         </div>
 
                         <div class="mr-1 ml-1 col-12 col-md-4 ">
-                            <h5 class="card-title">Manufactorer: @o.Car.Manufacturer</h5>
-                            <p class="font-weight-bold">Issuance</p>
+                            <h5 class="card-title">@Resource.Manufacturer: @o.Car.Manufacturer</h5>
+                            <p class="font-weight-bold">@Resource.CarIssuance</p>
                             <span>@o.StartTime.ToString().Split(' ')[0] - @o.StartPlace</span>
-                            <p class="mt-3 font-weight-bold">Return</p>
+                            <p class="mt-3 font-weight-bold">@Resource.CarReturn</p>
 
                             <span>@o.EndTime.ToString().Split(' ')[0] - @o.EndPlace</span>
 
-                            <p class="mt-3 font-weight-bold border-top border-dark"><span>Price:</span> @o.OrdSum</p>
+                            <p class="mt-3 font-weight-bold border-top border-dark"><span>@Resource.Price:</span> @o.OrdSum</p>
                         </div>
 
                         <div class="mr-1 ml-1 col-12 col-md-3 ">
                             @if (o.ManagComment != null)
                             {           
-                                 <p class="font-weight-bold">Manager Comment</p>
+                                 <p class="font-weight-bold">@Resource.ManagerComment</p>
                                  <p>@o.ManagComment</p>
                             }
                         </div>

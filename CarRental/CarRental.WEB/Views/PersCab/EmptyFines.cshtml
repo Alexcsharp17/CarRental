@@ -1,8 +1,18 @@
-﻿
-<div class="row align-self-center mt-5">
-    <div class="d-flex justify-content-center align-self-auto bg-success p-3  border-success rounded mt-4 offset-3 col-6 d-flex flex-row text-dark">
-        <img src="~/Content/img/ico/info.png" style="height:60px;" class="align-self-center ml-2" />
-        <h3 id="usrs" class="ml-3 align-self-center">You don't have any fines. Thanks for careful driving.</h3>
-    </div>
+﻿@using CarRental.BLL 
 
+<div>
+    <div class="row mt-2 checkout pt-1 mt-3">
+        <div class="col-6 offset-3" style="border-top: 5px solid red;">
+            <div class=" position-relative text-center text-capitalize red_border_with_caption ">
+                <h4>@Resource.FinesPage</h4>
+            </div>
+        </div>
+    </div>
+    <div class="row align-self-center mt-5">
+        <div class="d-flex justify-content-center align-self-auto bg-success p-3  border-success rounded mt-4 offset-3 col-6 d-flex flex-row text-dark">
+            <img src="~/Content/img/ico/info.png" style="height:60px;" class="align-self-center ml-2" />
+            <h3 id="usrs" class="ml-3 align-self-center">@Resource.NoFinesMessage.</h3>
+        </div>
+    </div>
 </div>
+

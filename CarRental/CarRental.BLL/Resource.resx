@@ -141,6 +141,9 @@
   <data name="Ascending" xml:space="preserve">
     <value>ascending</value>
   </data>
+  <data name="AuthPage" xml:space="preserve">
+    <value>Authentification page</value>
+  </data>
   <data name="AutomaticTransmission" xml:space="preserve">
     <value>Automatic Transmission</value>
   </data>
@@ -291,6 +294,9 @@
   <data name="Fines" xml:space="preserve">
     <value>Fines</value>
   </data>
+  <data name="FinesPage" xml:space="preserve">
+    <value>List of your fines</value>
+  </data>
   <data name="FourWheelDrive" xml:space="preserve">
     <value>Four-Wheel</value>
   </data>
@@ -339,6 +345,12 @@
   <data name="NameRequired" xml:space="preserve">
     <value>Please input name</value>
   </data>
+  <data name="NoFinesMessage" xml:space="preserve">
+    <value>You don't have any fines. Thanks for careful driving.</value>
+  </data>
+  <data name="NoOrdersMessage" xml:space="preserve">
+    <value>You don't have any orders</value>
+  </data>
   <data name="Open" xml:space="preserve">
     <value>Open</value>
   </data>
@@ -356,6 +368,12 @@
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="Pay" xml:space="preserve">
+    <value>Pay</value>
+  </data>
+  <data name="Payed" xml:space="preserve">
+    <value>Payed</value>
   </data>
   <data name="Pending" xml:space="preserve">
     <value>Pending</value>

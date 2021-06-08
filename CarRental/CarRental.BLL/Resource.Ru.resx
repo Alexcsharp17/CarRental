@@ -141,6 +141,9 @@
   <data name="Ascending" xml:space="preserve">
     <value>Возростание</value>
   </data>
+  <data name="AuthPage" xml:space="preserve">
+    <value>Страница авторизации</value>
+  </data>
   <data name="AutomaticTransmission" xml:space="preserve">
     <value>Коробка передач</value>
   </data>
@@ -288,6 +291,9 @@
   <data name="Fines" xml:space="preserve">
     <value>Штрафы</value>
   </data>
+  <data name="FinesPage" xml:space="preserve">
+    <value>Список штрафов</value>
+  </data>
   <data name="FourWheelDrive" xml:space="preserve">
     <value>Полный</value>
   </data>
@@ -333,6 +339,12 @@
   <data name="NameRequired" xml:space="preserve">
     <value>Укажите название</value>
   </data>
+  <data name="NoFinesMessage" xml:space="preserve">
+    <value>У вас нет штрафов. Спасибо за аккуратное вождение.</value>
+  </data>
+  <data name="NoOrdersMessage" xml:space="preserve">
+    <value>У вас нет активных заказов.</value>
+  </data>
   <data name="Open" xml:space="preserve">
     <value>Открыть</value>
   </data>
@@ -347,6 +359,12 @@
   </data>
   <data name="OrdSum" xml:space="preserve">
     <value>Сумма </value>
+  </data>
+  <data name="Pay" xml:space="preserve">
+    <value>Оплатить</value>
+  </data>
+  <data name="Payed" xml:space="preserve">
+    <value>Оплачено</value>
   </data>
   <data name="Pending" xml:space="preserve">
     <value>Ожидание</value>

@@ -133,6 +133,15 @@ namespace CarRental.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Authentification page.
+        /// </summary>
+        public static string AuthPage {
+            get {
+                return ResourceManager.GetString("AuthPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Automatic Transmission.
         /// </summary>
         public static string AutomaticTransmission {
@@ -583,6 +592,15 @@ namespace CarRental.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to List of your fines.
+        /// </summary>
+        public static string FinesPage {
+            get {
+                return ResourceManager.GetString("FinesPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Four-Wheel.
         /// </summary>
         public static string FourWheelDrive {
@@ -727,6 +745,24 @@ namespace CarRental.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You don&apos;t have any fines. Thanks for careful driving..
+        /// </summary>
+        public static string NoFinesMessage {
+            get {
+                return ResourceManager.GetString("NoFinesMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You don&apos;t have any orders.
+        /// </summary>
+        public static string NoOrdersMessage {
+            get {
+                return ResourceManager.GetString("NoOrdersMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open.
         /// </summary>
         public static string Open {
@@ -777,6 +813,24 @@ namespace CarRental.BLL {
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pay.
+        /// </summary>
+        public static string Pay {
+            get {
+                return ResourceManager.GetString("Pay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payed.
+        /// </summary>
+        public static string Payed {
+            get {
+                return ResourceManager.GetString("Payed", resourceCulture);
             }
         }
         

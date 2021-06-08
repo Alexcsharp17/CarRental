@@ -34,8 +34,9 @@
       google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
     google.charts.setOnLoadCallback(drawChart2);
-
-    var orders = @Html.Raw(Json.Encode(Model.DaySales));
+        
+        var orders = @Html.Raw(Json.Encode(Model.DaySales));
+        console.log(orders);
       console.log();
     var lineArray=[];
       lineArray[0] = ['Day', 'Sales'];
