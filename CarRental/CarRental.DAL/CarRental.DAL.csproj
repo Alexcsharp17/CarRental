@@ -247,7 +247,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="EF\cars.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
